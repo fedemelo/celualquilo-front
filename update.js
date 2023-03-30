@@ -41,7 +41,7 @@ const createRepos = async () => {
       fs.writeFileSync("README.md", readmeFile);
 
       let command1 = `git remote rm origin &&
-        hub create ${config.organization}/${project.name} &&
+        hub create -p ${config.organization}/${project.name} &&
         git add . &&
         git commit -m "Update Jenkinsfile" &&
         git push origin master`;
