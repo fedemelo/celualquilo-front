@@ -97,6 +97,22 @@ function getJenkinsFile(repo) {
                 url: 'https://github.com/${config.organization}/' + env.GIT_REPO
           }
        }
+       stage('GitInspector') { 
+         steps {
+            withCredentials([usernamePassword(credentialsId: env.GIT_CREDENTIAL_ID, passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
+               sh 'mkdir -p code-analyzer-report'
+               sh """ curl --request POST --url https://code-analyzer.virtual.uniandes.edu.co/analyze --header "Content-Type: application/json" --data '{"repo_url":"git@github.com:isis3710-uniandes/\${GIT_REPO}.git", "access_token": "\${GIT_PASSWORD}" }' > code-analyzer-report/index.html """   
+            }
+            publishHTML (target: [
+               allowMissing: false,
+               alwaysLinkToLastBuild: false,
+               keepAll: true,
+               reportDir: 'code-analyzer-report',
+               reportFiles: 'index.html',
+               reportName: "GitInspector"
+            ])
+         }
+       }
        stage('Build') {
           // Build app
           steps {
