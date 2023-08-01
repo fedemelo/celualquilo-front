@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
        GIT_REPO = 'ISIS3710_202310_S2_E8_Front'
-       GIT_CREDENTIAL_ID = 'de5cd571-10da-4034-8ba8-af99beef4b14'
+       GIT_CREDENTIAL_ID = '7c21addc-0cbf-4f2e-9bd8-eced479c56c6'
        SONARQUBE_URL = 'http://172.24.100.52:8082/sonar-isis2603'
     }
     stages {
@@ -14,25 +14,41 @@ pipeline {
                 url: 'https://github.com/isis3710-uniandes/' + env.GIT_REPO
           }
        }
-       stage('Build') {
+       stage('GitInspector') { 
+         steps {
+            withCredentials([usernamePassword(credentialsId: env.GIT_CREDENTIAL_ID, passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
+               sh 'mkdir -p code-analyzer-report'
+               sh """ curl --request POST --url https://code-analyzer.virtual.uniandes.edu.co/analyze --header "Content-Type: application/json" --data '{"repo_url":"git@github.com:Uniandes-isis2603/${GIT_REPO}.git", "access_token": "${GIT_PASSWORD}" }' > code-analyzer-report/index.html """   
+            }
+            publishHTML (target: [
+               allowMissing: false,
+               alwaysLinkToLastBuild: false,
+               keepAll: true,
+               reportDir: 'code-analyzer-report',
+               reportFiles: 'index.html',
+               reportName: "GitInspector"
+            ])
+         }
+      } 
+      stage('Build') {
           // Build app
           steps {
              script {
                 docker.image('citools-isis2603:latest').inside('-u root') {
                    sh '''
                       npm i -s
-                      nest build
+                      npm run build
                    '''
                 }
              }
           }
-       }
+      }
       stage('Test') {
           steps {
              script {
                 docker.image('citools-isis2603:latest').inside('-u root') {
                    sh '''
-                      npm run test:cov
+                      CI=true npm test
                    '''
                 }
              }
@@ -48,10 +64,13 @@ pipeline {
        }
     }
     post {
-       always {
-          // Clean workspace
-          cleanWs deleteDirs: true
-       }
+      always {
+        cleanWs()
+        deleteDir() 
+        dir("${env.GIT_REPO}@tmp") {
+          deleteDir()
+        }
+      }
     }
-  }
+ }
   
