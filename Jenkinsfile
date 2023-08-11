@@ -31,17 +31,18 @@ pipeline {
          }
       } 
       stage('Build') {
-          // Build app
-          steps {
-             script {
-                docker.image('citools-isis2603:latest').inside('-u root') {
-                   sh '''
-                      npm i -s
-                      npm run build
-                   '''
-                }
-             }
-          }
+         // Build app
+         steps {
+            script {
+               docker.image('citools-isis2603:latest').inside('-u root') {
+               sh '''
+                  chown -R root:root .
+                  npm install
+                  npm run build
+               '''
+               }
+            }
+         }
       }
       stage('Test') {
           steps {
