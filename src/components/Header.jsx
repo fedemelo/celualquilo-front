@@ -120,4 +120,3 @@ const LoginButton = ({ text }) =>
         }}
         variant="contained"
     >{text}</Button>;
-

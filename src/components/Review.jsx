@@ -24,15 +24,17 @@ import List from '@mui/material/List';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import CheckIcon from '@mui/icons-material/Check';
 
+
 const exampleBrand = "Apple"
 const exampleAvailability = "10 en Stock"
 
-const exampleName = "iPhone 12 Pro"
+const exampleName = "iPhone 14 Pro"
 
-const exampleSpec1 = "Brillo máximo de 800 nits (normal); brillo máximo de 1.200 nits (HDR)"
-const exampleSpec2 = "Resistencia a las salpicaduras, el agua y el polvo IP68 (hasta 6 metros de profundidad durante un máximo de 30 minutos, según la norma IEC 60529)"
-const exampleSpec3 = "Chip A14 Bionic; Neural Engine de última generación"
-
+const exampleSpecs = [
+    "Brillo máximo de 800 nits (normal); brillo máximo de 1.200 nits (HDR)",
+    "Resistencia a las salpicaduras, el agua y el polvo IP68 (hasta 6 metros de profundidad durante un máximo de 30 minutos, según la norma IEC 60529)",
+    "Chip A14 Bionic; Neural Engine de última generación",
+]
 
 
 export default function Review() {
@@ -57,22 +59,22 @@ export default function Review() {
                     <Grid item xs={12} sm={4}>
                         <img
                             style={{ maxWidth: '100%', height: '20vw' }}
-                            alt="iPhone 12 Pro"
+                            alt={exampleName}
                             src={examplePhone}
                         />
                     </Grid>
 
                     <Grid item xs={12} sm={8} sx={{ textAlign: 'left' }}>
-                        <Typography variant="h6" color="text.secondary" padding={1}>
+                        <Typography variant="h6" color="text.primary" padding={1}>
                             {exampleBrand}
                         </Typography>
-                        <Typography variant="h6" color="text.secondary" padding={1}>
+                        <Typography variant="h6" color="text.primary" padding={1}>
                             {exampleAvailability}
                         </Typography>
                         <Typography variant="h3" component="div" padding={1}>
                             {exampleName}
                         </Typography>
-                        <SpecList specs={[exampleSpec1, exampleSpec2, exampleSpec3]}/>
+                        <SpecList specs={exampleSpecs}/>
                     </Grid>
 
                 </Grid>
