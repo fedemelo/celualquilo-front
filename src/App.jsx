@@ -14,8 +14,8 @@ export default function App() {
             <Header />
 
             {/* Especificar en este punto la historia de usuario que se desea visualizar */}
-            {/* <HU7 /> */}
-            <HU8 />
+            <HU7 />
+            {/* <HU8 /> */}
 
 
             <Footer />
