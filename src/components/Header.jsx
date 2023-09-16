@@ -4,12 +4,15 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import logoCeluAlquilo from '../assets/logoCeluAlquilo.png';
-import SearchBar from './SearchBar';
-import LoginButton from './LoginButton';
+import { styled } from '@mui/material/styles';
+import InputBase from '@mui/material/InputBase';
+import SearchIcon from '@mui/icons-material/Search';
+import Button from '@mui/material/Button';
+import { COLORS } from '../styles/colors';
 import '../styles/header.css';
 
 
-const LogoCeluAlquilo = function () {
+const LogoCeluAlquilo = () => {
     return (
         <Toolbar>
             <Box className='logoCeluAlquilo'
@@ -24,9 +27,10 @@ const LogoCeluAlquilo = function () {
     )
 }
 
-const Marcas = function () {
+const Marcas = () => {
     return (
         <Typography
+            className='brands'
             variant="h5"
             noWrap
             component="div"
@@ -43,6 +47,70 @@ const Marcas = function () {
             </div>
         </Typography>
     )
+}
+
+const SearchBar = () => {
+
+    const Search = styled('div')(({ theme }) => ({
+        position: 'relative',
+        borderRadius: theme.shape.borderRadius,
+        width: '100%',
+        [theme.breakpoints.up('sm')]: {
+            marginLeft: theme.spacing(3),
+            width: 'auto',
+        },
+        border: "0.125rem solid #b1b9c0",
+    }));
+
+    const SearchIconWrapper = styled('div')(({ theme }) => ({
+        height: '100%',
+        position: 'absolute',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+    }));
+
+    const StyledInputBase = styled(InputBase)(({ theme }) => ({
+        color: "0.125rem solid #b1b9c0",
+        '& .MuiInputBase-input': {
+            padding: theme.spacing(1, 1, 1, 0),
+            // vertical padding + font size from searchIcon
+            paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+            transition: theme.transitions.create('width'),
+            width: '100%',
+            [theme.breakpoints.up('md')]: {
+                width: '20ch',
+            },
+        },
+    }));
+
+    return (
+        <>
+            <Search>
+                <SearchIconWrapper>
+                    <SearchIcon />
+                </SearchIconWrapper>
+                <StyledInputBase
+                    placeholder="Buscar..."
+                    inputProps={{ 'aria-label': 'search' }}
+                />
+            </Search>
+        </>
+    )
+}
+
+
+const LoginButton = ({ text }) => {
+    return <Button
+        style={{
+            borderRadius: 20,
+            padding: "5px 20px",
+            backgroundColor: COLORS.primary,
+            fontSize: "18px",
+            textTransform: "none",
+        }}
+        variant="contained"
+    >{text}</Button>;
 }
 
 
