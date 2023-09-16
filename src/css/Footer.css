@@ -1,0 +1,8 @@
+@import './constants.css';
+
+.Footer {
+    --footer-background: var(--dark);
+
+    background-color: var(--footer-background);
+}
+
