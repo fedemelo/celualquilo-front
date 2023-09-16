@@ -7,6 +7,19 @@ import { Box } from "@mui/material";
 import { COLORS } from "../styles/colors";
 
 
+const title1 = "General";
+const items1 = ["Sobre nosotros", "Nuestro negocio"];
+
+const title2 = "Tienda virtual";
+const items2 = ["Información de entrega", "Retornos y garantía"];
+
+const title3 = "Legal";
+const items3 = ["Términos de uso", "Términos de alquiler", "Política de privacidad"];
+
+const title4 = "Contáctanos";
+const items4 = ["Facebook", "Twitter", "Instagram", "Youtube"];
+
+
 export default function Footer() {
     return (
         <Box
@@ -21,70 +34,55 @@ export default function Footer() {
         >
             <Container maxWidth="lg">
                 <Grid container spacing={4}>
-                    <Grid item xs={12} sm={3}>
-                        <Title title="General" />
-                        <Item text="Sobre nosotros" />
-                        <Item text="Nuestro negocio" />
-                    </Grid>
-                    <Grid item xs={12} sm={3}>
-                        <Title title="Tienda virtual" />
-                        <Item text="Información de entrega" />
-                        <Item text="Retornos y garantía" />
-                    </Grid>
-                    <Grid item xs={12} sm={3}>
-                        <Title title="Legal" />
-                        <Item text="Términos de uso" />
-                        <Item text="Términos de alquiler" />
-                        <Item text="Política de privacidad" />
-                    </Grid>
-                    <Grid item xs={12} sm={3}>
-                        <Title title="Contáctanos" />
-                        <Item text="Facebook" />
-                        <Item text="Twitter" />
-                        <Item text="Instagram" />
-                        <Item text="Youtube" />
-                    </Grid>
+                    <Column title={title1} items={items1} />
+                    <Column title={title2} items={items2} />
+                    <Column title={title3} items={items3} />
+                    <Column title={title4} items={items4} />
                 </Grid>
-                <Box sx={{
-                    paddingBottom: "20px",
-                }}>
-                    <Typography variant="body2" align="center"
-                        sx={{
-                            color: "white",
-                        }}>
-                        {"Copyright © "}
-                        <Link href="https://celualquilo.com/">
-                            CeluAlquilo
-                        </Link>{" "}
-                        {new Date().getFullYear()}
-                        {"."}
-                    </Typography>
-                </Box>
+                <Copyright />
             </Container>
         </Box>
     );
 }
 
 
-const Title = function ({ title }) {
-    return (
-        <Typography variant="h6" gutterBottom sx={{
-            color: "white",
-        }}>
-            {title}
-        </Typography>
-    )
-}
+const Column = ({ title, items }) => <Grid item xs={12} sm={3}>
+    <Title title={title} />
+    {items.map((item) => (
+        <Item text={item} />
+    ))}
+</Grid>
 
 
-const Item = function ({ text }) {
-    return (
-        <Typography variant="body2" sx={{
+const Title = ({ title }) =>
+    <Typography variant="h6" gutterBottom sx={{
+        color: "white",
+    }}>
+        {title}
+    </Typography>
+
+
+const Item = ({ text }) => <Typography variant="body2" sx={{
+    color: "white",
+    fontWeight: "lighter",
+    paddingBottom: "15px",
+}}>
+    {text}
+</Typography>
+
+
+const Copyright = () => <Box sx={{
+    paddingBottom: "20px",
+}}>
+    <Typography variant="body2" align="center"
+        sx={{
             color: "white",
-            fontWeight: "lighter",
-            paddingBottom: "15px",
         }}>
-            {text}
-        </Typography>
-    )
-}
+        {"Copyright © "}
+        <Link href="https://celualquilo.com/">
+            CeluAlquilo
+        </Link>{" "}
+        {new Date().getFullYear()}
+        {"."}
+    </Typography>
+</Box>
