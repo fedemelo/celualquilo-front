@@ -6,6 +6,7 @@ import './styles/App.css';
 import GoBack from './components/GoBack';
 import Review from './components/Review';
 import Breadcrumb from './components/BreadCrumb';
+import RentHistory from './components/RentHistory';
 
 export default function App() {
     return (
@@ -13,7 +14,9 @@ export default function App() {
             <Header />
 
             {/* Especificar en este punto la historia de usuario que se desea visualizar */}
-            <HU7 />
+            {/* <HU7 /> */}
+            <HU8 />
+
 
             <Footer />
         </div>
@@ -92,11 +95,14 @@ const HU6 = () => {
 const HU7 = () => {
     const breadcrumbs = [
         { href: '/mi-cuenta', text: 'Mi cuenta' },
-        { href: '', text: 'Historial de Alquileres'},
+        { href: '', text: 'Historial de Alquileres' },
     ];
 
     return (
-        <Breadcrumb breadcrumbs={breadcrumbs} />
+        <>
+            <Breadcrumb breadcrumbs={breadcrumbs} />
+            <RentHistory />
+        </>
     );
 }
 

@@ -24,17 +24,41 @@ import List from '@mui/material/List';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import CheckIcon from '@mui/icons-material/Check';
 import Stack from '@mui/material/Stack';
+import PhoneCardSimple from './PhoneCardSimple';
+
+const exampleActiveRents = [
+    {
+        name: "iPhone 12 Pro",
+        days: "5 días de alquiler restantes",
+        image: examplePhone,
+        cost: "$ 10 000 COP / día"
+    },
+    {
+        name: "Huawey Nova Y71",
+        days: "2 días de alquiler restantes",
+        image: examplePhone,
+        cost: "$ 7 000 COP / día"
+    },
+    {
+        name: "Samsung Galaxy S21",
+        days: "1 día de alquiler restante",
+        image: examplePhone,
+        cost: "$ 15 000 COP / día"
+    },
+]
 
 
-const exampleBrand = "Apple"
-const exampleAvailability = "10 en Stock"
-
-const exampleName = "iPhone 14 Pro"
-
-const exampleSpecs = [
-    "Brillo máximo de 800 nits (normal); brillo máximo de 1.200 nits (HDR)",
-    "Resistencia a las salpicaduras, el agua y el polvo IP68 (hasta 6 metros de profundidad durante un máximo de 30 minutos, según la norma IEC 60529)",
-    "Chip A14 Bionic; Neural Engine de última generación",
+const examplePastRents = [
+    {
+        name: "iPhone 11",
+        image: examplePhone,
+        cost: "$ 10 000 COP / día"
+    },
+    {
+        name: "Huawey Nova Y71",
+        image: examplePhone,
+        cost: "$ 7 000 COP / día"
+    }
 ]
 
 
@@ -53,35 +77,26 @@ export default function Review() {
             borderRadius: "15px",
             boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
             alignSelf: "center",
+            backgroundColor: "#FFFFFF",
         }}>
-            <Grid container spacing={2} padding={7}>
-                {/* Column for Image */}
-                <Grid item xs={12} sm={4}>
-                    <img
-                        style={{ maxWidth: '100%', height: '20vw' }}
-                        alt={exampleName}
-                        src={examplePhone}
-                    />
+                <Grid container spacing={2} padding={7}>
+                    <Grid item xs={6} md={3}>
+                        <PhoneCardSimple {...exampleActiveRents[0]} />
+                    </Grid>
+                    <Grid item xs={6} md={3}>
+                        <PhoneCardSimple {...exampleActiveRents[1]} />
+                    </Grid>
+                    <Grid item xs={6} md={3}>
+                        <PhoneCardSimple {...exampleActiveRents[2]} />
+                    </Grid>
+                    <Grid item xs={6} md={3}>
+                        <PhoneCardSimple {...examplePastRents[0]} />
+                    </Grid>
                 </Grid>
 
-                <Grid item xs={12} sm={8} sx={{ textAlign: 'left' }}>
-                    <Typography variant="h6" color="text.primary" padding={1}>
-                        {exampleBrand}
-                    </Typography>
-                    <Typography variant="h6" color="text.primary" padding={1}>
-                        {exampleAvailability}
-                    </Typography>
-                    <Typography variant="h3" component="div" padding={1}>
-                        {exampleName}
-                    </Typography>
-                    <SpecList specs={exampleSpecs} />
-                </Grid>
-
-            </Grid>
-
-            <CardContent>
-                <CommentArea />
-            </CardContent>
+                <CardContent>
+                    <CommentArea />
+                </CardContent>
         </Card>
     );
 }
