@@ -1,13 +1,14 @@
 import React from 'react';
-import PurpleButton from './components/PurpleButton';
+import RentButton from './components/RentButton';
 import SearchBar from './components/SearchBar';
+import Header from './components/Header';
 
 
 function App() {
     return (
         <div className="App">
-            <SearchBar/>
-            <PurpleButton text="Alquilar" />
+            <Header />
+            <RentButton text="Alquilar" />
         </div>
     );
 }
