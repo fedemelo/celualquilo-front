@@ -99,7 +99,7 @@ export default function Header() {
         <Box sx={{
             flexGrow: 1,
             position: 'fixed',
-            top: 3,
+            top: 0,
             width: '100%',
             zIndex: 1,
         }}>

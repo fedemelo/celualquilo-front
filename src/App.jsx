@@ -3,6 +3,8 @@ import RentButton from './components/RentButton';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import './styles/App.css';
+import GoBack from './components/GoBack';
+import { Box } from '@mui/material';
 
 function HU1() {
     return (
@@ -72,9 +74,7 @@ function HU7() {
 function HU8() {
     return (
         <>
-            <h3>HU8: Dejar evaluaciones y reseñas</h3>
-            <p>Detalla: Mariana Ruiz</p>
-            <p>Revisa: David Burgos</p>
+            <GoBack text="Volver" />
         </>
     )
 }
@@ -131,21 +131,19 @@ function App() {
     return (
         <div className="App">
             <Header />
-
-            <HU1 />
-            <HU2 />
-            <HU3 />
-            <HU4 />
-            <HU5 />
-            <HU6 />
-            <HU7 />
-            <HU8 />
-            <HU9 />
-            <HU10 />
-            <HU11 />
-            <HU12 />
-            <HU13 />
-
+               <HU8 />
+               <HU13/>
+               <HU1 />
+                <HU2 />
+                <HU3 />
+                <HU4 />
+                <HU5 />
+                <HU6 />
+                <HU7 />
+                <HU9 />
+                <HU10 />
+                <HU11 />
+                <HU12 />
             <Footer />
         </div>
     );
