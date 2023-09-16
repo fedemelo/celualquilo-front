@@ -4,11 +4,10 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import logoCeluAlquilo from '../assets/logoCeluAlquilo.png';
-import { styled } from '@mui/material/styles';
-import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import Button from '@mui/material/Button';
 import { COLORS } from '../styles/colors';
+import { Container, InputAdornment, TextField } from "@mui/material";
 import '../styles/header.css';
 
 
@@ -51,51 +50,32 @@ const Marcas = () => {
 
 const SearchBar = () => {
 
-    const Search = styled('div')(({ theme }) => ({
-        position: 'relative',
-        borderRadius: theme.shape.borderRadius,
-        width: '100%',
-        [theme.breakpoints.up('sm')]: {
-            marginLeft: theme.spacing(3),
-            width: 'auto',
-        },
-        border: "0.125rem solid #b1b9c0",
-    }));
-
-    const SearchIconWrapper = styled('div')(({ theme }) => ({
-        height: '100%',
-        position: 'absolute',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-    }));
-
-    const StyledInputBase = styled(InputBase)(({ theme }) => ({
-        color: "0.125rem solid #b1b9c0",
-        '& .MuiInputBase-input': {
-            padding: theme.spacing(1, 1, 1, 0),
-            // vertical padding + font size from searchIcon
-            paddingLeft: '3em',
-            transition: theme.transitions.create('width'),
-            width: '100%',
-            [theme.breakpoints.up('md')]: {
-                width: '20ch',
-            },
-        },
-    }));
-
     return (
-        <Box sx={{ flexGrow: 0.6 }}>
-            <Search>
-                <SearchIconWrapper>
-                    <SearchIcon />
-                </SearchIconWrapper>
-                <StyledInputBase
-                    placeholder="Buscar..."
-                    inputProps={{ 'aria-label': 'search' }}
-                />
-            </Search>
-        </Box>
+        <Container
+            maxWidth="sm"
+            sx={{
+                display: 'flex',
+                width: '100%',
+            }}
+        >
+            <TextField
+                type="search"
+                defaultValue="Buscar..."
+                sx={{ 
+                    width: 380,
+                    color: "#495057",
+                 }}
+                // value={searchTerm}
+                // onChange={handleChange}
+                InputProps={{
+                    startAdornment: (
+                        <InputAdornment position="start">
+                            <SearchIcon style={{ color: '#1B1D1F' }}/>
+                        </InputAdornment>
+                    ),
+                }}
+            />
+        </Container>
     )
 }
 
