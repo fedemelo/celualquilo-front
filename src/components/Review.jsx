@@ -1,7 +1,6 @@
 import * as React from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 import RatingStars from './RatingStars';
 import { CardActionArea } from '@mui/material';
 import Box from '@mui/joy/Box';
@@ -15,9 +14,25 @@ import { COLORS } from '../styles/colors';
 import MenuItem from '@mui/joy/MenuItem';
 import ListItemDecorator from '@mui/joy/ListItemDecorator';
 import FormatBold from '@mui/icons-material/FormatBold';
-import FormatItalic from '@mui/icons-material/FormatItalic';
 import KeyboardArrowDown from '@mui/icons-material/KeyboardArrowDown';
 import Check from '@mui/icons-material/Check';
+import examplePhone from '../assets/iPhone12Pro.jpg';
+import Typography from '@mui/material/Typography';
+import Grid from '@mui/material/Grid';
+import ListItem from '@mui/material/ListItem';
+import List from '@mui/material/List';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import CheckIcon from '@mui/icons-material/Check';
+
+const exampleBrand = "Apple"
+const exampleAvailability = "10 en Stock"
+
+const exampleName = "iPhone 12 Pro"
+
+const exampleSpec1 = "Brillo máximo de 800 nits (normal); brillo máximo de 1.200 nits (HDR)"
+const exampleSpec2 = "Resistencia a las salpicaduras, el agua y el polvo IP68 (hasta 6 metros de profundidad durante un máximo de 30 minutos, según la norma IEC 60529)"
+const exampleSpec3 = "Chip A14 Bionic; Neural Engine de última generación"
+
 
 
 export default function Review() {
@@ -37,13 +52,30 @@ export default function Review() {
             alignSelf: "center",
         }}>
             <CardActionArea>
-                <CardMedia
-                    component="img"
-                    height="140"
-                    image="/static/images/cards/contemplative-reptile.jpg"
-                    alt="green iguana"
+                <Grid container spacing={2} padding={7}>
+                    {/* Column for Image */}
+                    <Grid item xs={12} sm={4}>
+                        <img
+                            style={{ maxWidth: '100%', height: '20vw' }}
+                            alt="iPhone 12 Pro"
+                            src={examplePhone}
+                        />
+                    </Grid>
 
-                />
+                    <Grid item xs={12} sm={8} sx={{ textAlign: 'left' }}>
+                        <Typography variant="h6" color="text.secondary" padding={1}>
+                            {exampleBrand}
+                        </Typography>
+                        <Typography variant="h6" color="text.secondary" padding={1}>
+                            {exampleAvailability}
+                        </Typography>
+                        <Typography variant="h3" component="div" padding={1}>
+                            {exampleName}
+                        </Typography>
+                        <SpecList specs={[exampleSpec1, exampleSpec2, exampleSpec3]}/>
+                    </Grid>
+
+                </Grid>
 
                 <CardContent>
                     <CommentArea />
@@ -53,6 +85,24 @@ export default function Review() {
     );
 }
 
+
+const SpecList = ({ specs }) => {
+    return (
+      <List>
+        {specs.map((spec, index) => (
+          <ListItem key={index} sx={{ display: 'grid', gridTemplateColumns: 'auto 1fr' }}>
+          <ListItemIcon>
+            <CheckIcon />
+          </ListItemIcon>
+          <Typography variant="h6" color="text.secondary">
+            {spec}
+          </Typography>
+        </ListItem>
+        ))}
+      </List>
+    );
+  }
+    
 
 const PublishReviewButton = ({ text }) => {
     return <Button
@@ -70,7 +120,6 @@ const PublishReviewButton = ({ text }) => {
 
 
 const CommentArea = () => {
-    const [italic, setItalic] = React.useState(false);
     const [fontWeight, setFontWeight] = React.useState('normal');
     const [anchorEl, setAnchorEl] = React.useState(null);
     return (
@@ -79,14 +128,16 @@ const CommentArea = () => {
                 sx={{
                     fontFamily: 'Inter',
                     fontStyle: 'normal',
-                    fontSize: '18px',
+                    fontSize: '24px',
                     lineHeight: '22px',
                     color: '#202020',
                 }}
             >¡Dínos tu opinión!</FormLabel>
             <RatingStars />
             <Textarea
-                placeholder="Type something here…"
+                paddingBlock="16px"
+                paddingInline="16px"
+                placeholder="Escribe tu reseña aquí..."
                 minRows={3}
                 endDecorator={
                     <Box
@@ -97,6 +148,7 @@ const CommentArea = () => {
                             borderTop: '1px solid',
                             borderColor: 'divider',
                             flex: 'auto',
+                            padding: '16px',
                         }}
                     >
                         <IconButton
@@ -132,21 +184,12 @@ const CommentArea = () => {
                                 </MenuItem>
                             ))}
                         </Menu>
-                        <IconButton
-                            variant={italic ? 'soft' : 'plain'}
-                            color={italic ? 'primary' : 'neutral'}
-                            aria-pressed={italic}
-                            onClick={() => setItalic((bool) => !bool)}
-                        >
-                            <FormatItalic />
-                        </IconButton>
                         <PublishReviewButton text="Publicar Reseña" />
                     </Box>
                 }
                 sx={{
                     minWidth: 300,
                     fontWeight,
-                    fontStyle: italic ? 'italic' : 'initial',
                 }}
             />
         </FormControl>

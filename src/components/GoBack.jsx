@@ -10,7 +10,6 @@ export default function GoBack({ text }) {
             alignItems: 'flex-start',
             flexDirection: "row",
             paddingTop: "10px",
-            width: "100%",
         }}>
             <style>
                 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
