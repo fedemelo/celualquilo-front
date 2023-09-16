@@ -54,7 +54,6 @@ export default function Header() {
                     alignItems: 'flex-start',
                     flexDirection: "row",
                     justifyContent: "space-between",
-                    alignItems: "center",
                 }}>
                     <LogoCeluAlquilo />
                     <SearchBar />
