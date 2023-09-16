@@ -122,6 +122,7 @@ function HU13() {
             <h3>HU13: Entre más me la mama, más me crece</h3>
             <p>Detalla: </p>
             <p>Revisa: David Burgos</p>
+            <RentButton text="Alquilar" />
         </>
     )
 }

@@ -1,13 +1,13 @@
-.marcas {
+.brands {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 0.25rem 1.875rem;
+    padding: 0.60rem 1.875rem;
     gap: 1.875rem;
 }
 
-.text-1 {
+.brandName {
     text-align: left;
     vertical-align: top;
     font-size: 18px;
@@ -15,47 +15,9 @@
     color: #000000;
 }
 
-.line-1 {
+.separatorLine {
     transform: rotate(-90deg);
     height: 0px;
     width: 26px;
     border: 0.0625rem solid #000000;
 }
-
-.text-2 {
-    text-align: left;
-    vertical-align: top;
-    font-size: 18px;
-    line-height: 26%;
-    color: #000000;
-}
-
-.line-2 {
-    transform: rotate(-90deg);
-    height: 0px;
-    width: 26px;
-    border: 0.0625rem solid #000000;
-}
-
-.text-3 {
-    text-align: left;
-    vertical-align: top;
-    font-size: 18px;
-    line-height: 26%;
-    color: #000000;
-}
-
-.line-3 {
-    transform: rotate(-90deg);
-    height: 0px;
-    width: 26px;
-    border: 0.0625rem solid #000000;
-}
-
-.text-4 {
-    text-align: left;
-    vertical-align: top;
-    font-size: 18px;
-    line-height: 26%;
-    color: #000000;
-}   

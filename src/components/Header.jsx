@@ -12,7 +12,7 @@ import '../styles/header.css';
 const LogoCeluAlquilo = function () {
     return (
         <Toolbar>
-            <Box
+            <Box className='logoCeluAlquilo'
                 component="img"
                 sx={{
                     height: 50,
@@ -32,14 +32,14 @@ const Marcas = function () {
             component="div"
             sx={{ flexGrow: 1, alignSelf: 'flex-end' }}
         >
-            <div className="marcas">
-                <p className="text-1">IPhone</p>
-                <div className="line-1" />
-                <p className="text-2">Xiaomi</p>
-                <div className="line-2" />
-                <p className="text-3">Samsung</p>
-                <div className="line-3" />
-                <p className="text-4">Huawei</p>
+            <div className="brands">
+                <p className="brandName">IPhone</p>
+                <div className="separatorLine" />
+                <p className="brandName">Xiaomi</p>
+                <div className="separatorLine" />
+                <p className="brandName">Samsung</p>
+                <div className="separatorLine" />
+                <p className="brandName">Huawei</p>
             </div>
         </Typography>
     )
