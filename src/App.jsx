@@ -4,9 +4,24 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import './styles/App.css';
 import GoBack from './components/GoBack';
-import { Box } from '@mui/material';
+import Review from './components/Review';
 
-function HU1() {
+
+export default function App() {
+    return (
+        <div className="App">
+            <Header />
+
+            {/* Especificar en este punto la historia de usuario que se desea visualizar */}
+            <HU8 />
+
+            <Footer />
+        </div>
+    );
+}
+
+
+const HU1 = () => {
     return (
         <>
             <h3>HU1: Registrar un usuario</h3>
@@ -15,7 +30,9 @@ function HU1() {
         </>
     )
 }
-function HU2() {
+
+
+const HU2 = () => {
     return (
         <>
             <h3>HU2: Iniciar Sesión</h3>
@@ -24,7 +41,9 @@ function HU2() {
         </>
     )
 }
-function HU3() {
+
+
+const HU3 = () => {
     return (
         <>
             <h3>HU3: Ver Teléfonos Disponibles</h3>
@@ -34,7 +53,9 @@ function HU3() {
         </>
     )
 }
-function HU4() {
+
+
+const HU4 = () => {
     return (
         <>
             <h3>HU4: Ver información del Teléfono</h3>
@@ -44,7 +65,9 @@ function HU4() {
         </>
     )
 }
-function HU5() {
+
+
+const HU5 = () => {
     return (
         <>
             <h3>HU5: Alquilar Teléfono</h3>
@@ -53,7 +76,9 @@ function HU5() {
         </>
     )
 }
-function HU6() {
+
+
+const HU6 = () => {
     return (
         <>
             <h3>HU6: Realizar pago en plataforma</h3>
@@ -62,7 +87,9 @@ function HU6() {
         </>
     )
 }
-function HU7() {
+
+
+const HU7 = () => {
     return (
         <>
             <h3>HU7: Comparar especificaciones de celulares</h3>
@@ -71,14 +98,19 @@ function HU7() {
         </>
     )
 }
-function HU8() {
+
+
+const HU8 = () => {
     return (
         <>
-            <GoBack text="Volver" />
+            <GoBack text="Escribir reseña" />
+            <Review />
         </>
     )
 }
-function HU9() {
+
+
+const HU9 = () => {
     return (
         <>
             <h3>HU9: Ver historial de celulares</h3>
@@ -87,7 +119,9 @@ function HU9() {
         </>
     )
 }
-function HU10() {
+
+
+const HU10 = () => {
     return (
         <>
             <h3>HU10: Seleccionar celulares favoritos</h3>
@@ -96,7 +130,9 @@ function HU10() {
         </>
     )
 }
-function HU11() {
+
+
+const HU11 = () => {
     return (
         <>
             <h3>HU11: Filtrar celulares por precio</h3>
@@ -105,7 +141,9 @@ function HU11() {
         </>
     )
 }
-function HU12() {
+
+
+const HU12 = () => {
     return (
         <>
             <h3>HU12: Ver celulares de una marca</h3>
@@ -115,38 +153,3 @@ function HU12() {
     )
 }
 
-function HU13() {
-    return (
-        <>
-            <h3>HU13: Entre más me la mama, más me crece</h3>
-            <p>Detalla: </p>
-            <p>Revisa: David Burgos</p>
-            <RentButton text="Alquilar" />
-        </>
-    )
-}
-
-
-function App() {
-    return (
-        <div className="App">
-            <Header />
-               <HU8 />
-               <HU13/>
-               <HU1 />
-                <HU2 />
-                <HU3 />
-                <HU4 />
-                <HU5 />
-                <HU6 />
-                <HU7 />
-                <HU9 />
-                <HU10 />
-                <HU11 />
-                <HU12 />
-            <Footer />
-        </div>
-    );
-}
-
-export default App;

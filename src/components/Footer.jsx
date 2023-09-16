@@ -6,27 +6,6 @@ import Grid from "@mui/material/Grid";
 import { Box } from "@mui/material";
 import { COLORS } from "../styles/colors";
 
-const Title = function ({ title }) {
-    return (
-        <Typography variant="h6" gutterBottom sx={{
-            color: "white",
-        }}>
-            {title}
-        </Typography>
-    )
-}
-
-const Item = function ({ text }) {
-    return (
-        <Typography variant="body2" sx={{
-            color: "white",
-            fontWeight: "lighter",
-            paddingBottom: "15px",
-        }}>
-            {text}
-        </Typography>
-    )
-}
 
 export default function Footer() {
     return (
@@ -70,9 +49,9 @@ export default function Footer() {
                     paddingBottom: "20px",
                 }}>
                     <Typography variant="body2" align="center"
-                    sx = {{
-                        color: "white",
-                    }}>
+                        sx={{
+                            color: "white",
+                        }}>
                         {"Copyright © "}
                         <Link href="https://celualquilo.com/">
                             CeluAlquilo
@@ -84,4 +63,28 @@ export default function Footer() {
             </Container>
         </Box>
     );
+}
+
+
+const Title = function ({ title }) {
+    return (
+        <Typography variant="h6" gutterBottom sx={{
+            color: "white",
+        }}>
+            {title}
+        </Typography>
+    )
+}
+
+
+const Item = function ({ text }) {
+    return (
+        <Typography variant="body2" sx={{
+            color: "white",
+            fontWeight: "lighter",
+            paddingBottom: "15px",
+        }}>
+            {text}
+        </Typography>
+    )
 }

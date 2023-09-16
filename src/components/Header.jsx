@@ -11,89 +11,6 @@ import { Container, InputAdornment, TextField } from "@mui/material";
 import '../styles/header.css';
 
 
-const LogoCeluAlquilo = () => {
-    return (
-        <Toolbar>
-            <Box className='logoCeluAlquilo'
-                component="img"
-                sx={{
-                    height: 50,
-                }}
-                alt="Logo de CeluAlquilo"
-                src={logoCeluAlquilo}
-            />
-        </Toolbar>
-    )
-}
-
-const Marcas = () => {
-    return (
-        <Typography
-            className='brands'
-            variant="h5"
-            noWrap
-            component="div"
-            sx={{ flexGrow: 1, alignSelf: 'flex-end' }}
-        >
-            <div className="brands">
-                <p className="brandName">IPhone</p>
-                <div className="separatorLine" />
-                <p className="brandName">Xiaomi</p>
-                <div className="separatorLine" />
-                <p className="brandName">Samsung</p>
-                <div className="separatorLine" />
-                <p className="brandName">Huawei</p>
-            </div>
-        </Typography>
-    )
-}
-
-const SearchBar = () => {
-
-    return (
-        <Container
-            maxWidth="sm"
-            sx={{
-                display: 'flex',
-                width: '100%',
-            }}
-        >
-            <TextField
-                type="search"
-                defaultValue="Buscar..."
-                sx={{ 
-                    width: 380,
-                    color: "#495057",
-                 }}
-                // value={searchTerm}
-                // onChange={handleChange}
-                InputProps={{
-                    startAdornment: (
-                        <InputAdornment position="start">
-                            <SearchIcon style={{ color: '#1B1D1F' }}/>
-                        </InputAdornment>
-                    ),
-                }}
-            />
-        </Container>
-    )
-}
-
-
-const LoginButton = ({ text }) => {
-    return <Button
-        style={{
-            borderRadius: 20,
-            padding: "5px 20px",
-            backgroundColor: COLORS.primary,
-            fontSize: "18px",
-            textTransform: "none",
-        }}
-        variant="contained"
-    >{text}</Button>;
-}
-
-
 export default function Header() {
     return (
         <Box sx={{
@@ -125,4 +42,89 @@ export default function Header() {
             </AppBar>
         </Box >
     );
+}
+
+
+const LogoCeluAlquilo = () => {
+    return (
+        <Toolbar>
+            <Box className='logoCeluAlquilo'
+                component="img"
+                sx={{
+                    height: 50,
+                }}
+                alt="Logo de CeluAlquilo"
+                src={logoCeluAlquilo}
+            />
+        </Toolbar>
+    )
+}
+
+
+const Marcas = () => {
+    return (
+        <Typography
+            className='brands'
+            variant="h5"
+            noWrap
+            component="div"
+            sx={{ flexGrow: 1, alignSelf: 'flex-end' }}
+        >
+            <div className="brands">
+                <p className="brandName">IPhone</p>
+                <div className="separatorLine" />
+                <p className="brandName">Xiaomi</p>
+                <div className="separatorLine" />
+                <p className="brandName">Samsung</p>
+                <div className="separatorLine" />
+                <p className="brandName">Huawei</p>
+            </div>
+        </Typography>
+    )
+}
+
+
+const SearchBar = () => {
+
+    return (
+        <Container
+            maxWidth="sm"
+            sx={{
+                display: 'flex',
+                width: '100%',
+            }}
+        >
+            <TextField
+                type="search"
+                defaultValue="Buscar..."
+                sx={{
+                    width: 380,
+                    color: "#495057",
+                }}
+                // value={searchTerm}
+                // onChange={handleChange}
+                InputProps={{
+                    startAdornment: (
+                        <InputAdornment position="start">
+                            <SearchIcon style={{ color: '#1B1D1F' }} />
+                        </InputAdornment>
+                    ),
+                }}
+            />
+        </Container>
+    )
+}
+
+
+const LoginButton = ({ text }) => {
+    return <Button
+        style={{
+            borderRadius: 20,
+            padding: "5px 20px",
+            backgroundColor: COLORS.primary,
+            fontSize: "18px",
+            textTransform: "none",
+        }}
+        variant="contained"
+    >{text}</Button>;
 }

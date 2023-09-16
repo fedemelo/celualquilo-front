@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Button from '@mui/material/Button';
 
+
 export default function RentButton({ text }) {
     return <Button
         style={{
@@ -13,6 +14,3 @@ export default function RentButton({ text }) {
         variant="contained"
     >{text}</Button>;
 }
-
-
-
