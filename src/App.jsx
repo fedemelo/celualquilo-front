@@ -122,8 +122,6 @@ function HU13() {
             <h3>HU13: Entre más me la mama, más me crece</h3>
             <p>Detalla: </p>
             <p>Revisa: David Burgos</p>
-
-            <RentButton text="Alquilar" />
         </>
     )
 }
@@ -133,7 +131,21 @@ function App() {
     return (
         <div className="App">
             <Header />
+
+            <HU1 />
+            <HU2 />
+            <HU3 />
+            <HU4 />
+            <HU5 />
+            <HU6 />
+            <HU7 />
+            <HU8 />
+            <HU9 />
+            <HU10 />
+            <HU11 />
+            <HU12 />
             <HU13 />
+
             <Footer />
         </div>
     );

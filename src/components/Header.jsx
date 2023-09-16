@@ -15,7 +15,7 @@ const LogoCeluAlquilo = function () {
             <Box
                 component="img"
                 sx={{
-                    height: 64,
+                    height: 50,
                 }}
                 alt="Logo de CeluAlquilo"
                 src={logoCeluAlquilo}
@@ -48,12 +48,19 @@ const Marcas = function () {
 
 export default function Header() {
     return (
-        <Box sx={{ flexGrow: 1 }}>
+        <Box sx={{
+            flexGrow: 1,
+            position: 'fixed',
+            top: 0,
+            width: '100%',
+            zIndex: 1,
+        }}>
             <AppBar position="static" sx={{ backgroundColor: "white" }}>
                 <Toolbar sx={{
                     alignItems: 'flex-start',
                     flexDirection: "row",
                     justifyContent: "space-between",
+                    paddingTop: "10px",
                 }}>
                     <LogoCeluAlquilo />
                     <SearchBar />
