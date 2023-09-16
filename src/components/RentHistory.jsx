@@ -1,49 +1,84 @@
 import * as React from 'react';
 import Card from '@mui/material/Card';
-import examplePhone from '../assets/iPhone12Pro.jpg';
+
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
-import ListItem from '@mui/material/ListItem';
-import List from '@mui/material/List';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import CheckIcon from '@mui/icons-material/Check';
 import Stack from '@mui/material/Stack';
 import PhoneCardSimple from './PhoneCardSimple';
+import examplePhone1 from '../assets/phones/iPhone14Pro.png';
+import examplePhone2 from '../assets/phones/HuaweiNovaY71.png';
+import examplePhone3 from '../assets/phones/SamsungGalaxyS22.png';
+import examplePhone4 from '../assets/phones/OPPOReno7.png';
+import examplePhone5 from '../assets/phones/SamsungA22.png';
+import examplePhone6 from '../assets/phones/HuaweiMate50.png';
+import examplePhone7 from '../assets/phones/iPhone13.png';
+import examplePhone8 from '../assets/phones/HuaweiP60.png';
+import examplePhone9 from '../assets/phones/HuaweiNovaY90.png';
 
 
 const exampleActiveRents = [
     {
         name: "iPhone 12 Pro",
         days: "5 días de alquiler",
-        image: examplePhone,
-        cost: "$ 10 000 COP / día"
+        image: examplePhone1,
+        cost: "$ 10 000 COP / día",
+        buttonText: "Renovar Alquiler",
     },
     {
-        name: "Huawey Nova Y71",
+        name: "Huawei Nova Y71",
         days: "2 días de alquiler",
-        image: examplePhone,
-        cost: "$ 7 000 COP / día"
+        image: examplePhone2,
+        cost: "$ 7 000 COP / día",
+        buttonText: "Renovar Alquiler",
     },
     {
-        name: "Samsung Galaxy S21",
+        name: "Samsung Galaxy S22",
         days: "1 día de alquiler",
-        image: examplePhone,
-        cost: "$ 15 000 COP / día"
+        image: examplePhone3,
+        cost: "$ 15 000 COP / día",
+        buttonText: "Renovar Alquiler",
     },
 ]
 
 
 const examplePastRents = [
     {
-        name: "iPhone 11",
-        image: examplePhone,
-        cost: "$ 10 000 COP / día"
+        name: "OPPO Reno 7",
+        image: examplePhone4,
+        cost: "$ 10 000 COP / día",
+        buttonText: "Escribir Reseña",
     },
     {
-        name: "Huawey Nova Y71",
-        image: examplePhone,
-        cost: "$ 7 000 COP / día"
+        name: "Samsung A22",
+        image: examplePhone5,
+        cost: "$ 7 000 COP / día",
+        buttonText: "Escribir Reseña",
+    },
+    {
+        name: "Huawei Mate 50",
+        image: examplePhone6,
+        cost: "$ 15 000 COP / día",
+        buttonText: "Escribir Reseña",
+    },
+    {
+        name: "iPhone 13",
+        image: examplePhone7,
+        cost: "$ 10 000 COP / día",
+        buttonText: "Escribir Reseña",
+    },
+    {
+        name: "Huawei P60",
+        image: examplePhone8,
+        cost: "$ 7 000 COP / día",
+        buttonText: "Escribir Reseña",
+    },
+    {
+        name: "Huawei Nova Y90",
+        image: examplePhone9,
+        cost: "$ 15 000 COP / día",
+        buttonText: "Escribir Reseña",
     }
+
 ]
 
 
@@ -55,12 +90,13 @@ const sectionStyle = {
     borderRadius: "15px",
     boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
     backgroundColor: "#FFFFFF",
-    alignSelf: "center",    
+    alignSelf: "center",
 }
 
-export default function Review() {
+
+export default function RentHistory() {
     return (
-        <Stack spacing={2}>
+        <Stack spacing={3.5}>
             <style>
                 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400&display=swap');
             </style>
@@ -75,6 +111,7 @@ export default function Review() {
         </Stack>
     );
 }
+
 
 const PhonesRow = ({ phones }) => {
     return (
@@ -100,20 +137,3 @@ const SectionTitle = ({ text }) =>
         textAlign: "left",
         p: 2,
     }}>{text}</Typography>
-
-const SpecList = ({ specs }) => {
-    return (
-        <List>
-            {specs.map((spec, index) => (
-                <ListItem key={index} sx={{ display: 'grid', gridTemplateColumns: 'auto 1fr' }}>
-                    <ListItemIcon>
-                        <CheckIcon />
-                    </ListItemIcon>
-                    <Typography variant="h6" color="text.secondary">
-                        {spec}
-                    </Typography>
-                </ListItem>
-            ))}
-        </List>
-    );
-}

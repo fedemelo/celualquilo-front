@@ -16,7 +16,7 @@ import ListItemDecorator from '@mui/joy/ListItemDecorator';
 import FormatBold from '@mui/icons-material/FormatBold';
 import KeyboardArrowDown from '@mui/icons-material/KeyboardArrowDown';
 import Check from '@mui/icons-material/Check';
-import examplePhone from '../assets/iPhone12Pro.jpg';
+import examplePhone from '../assets/phones/iPhone14Pro.png';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import ListItem from '@mui/material/ListItem';

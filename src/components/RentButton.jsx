@@ -10,6 +10,7 @@ export default function RentButton({ text }) {
             backgroundColor: "#7724BF",
             fontSize: "18px",
             textTransform: "none",
+            fontFamily: "Open Sans",
         }}
         variant="contained"
     >{text}</Button>;
