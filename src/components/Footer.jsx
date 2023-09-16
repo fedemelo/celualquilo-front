@@ -6,7 +6,6 @@ export default function Footer() {
   return (
     <Box
       sx={{
-        bgcolor: "secondary.main",
         p: 1.75,
         mt: 1.75,
         lineHeight: "1.2285em",
@@ -111,7 +110,6 @@ export default function Footer() {
             textAlign: "center",
             color: "white",
             "& a": {
-              color: "primary.main",
               textDecoration: "none",
             },
             m: 1.75,

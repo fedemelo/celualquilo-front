@@ -1,6 +1,6 @@
 import React from 'react';
 import './css/App.css';
-import Banner from './components/Banner';
+import Banner from './components/Header';
 import Footer from './components/Footer';
 
 function App() {
