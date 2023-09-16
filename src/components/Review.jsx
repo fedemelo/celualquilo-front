@@ -23,6 +23,7 @@ import ListItem from '@mui/material/ListItem';
 import List from '@mui/material/List';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import CheckIcon from '@mui/icons-material/Check';
+import Stack from '@mui/material/Stack';
 
 
 const exampleBrand = "Apple"
@@ -126,16 +127,17 @@ const CommentArea = () => {
     const [anchorEl, setAnchorEl] = React.useState(null);
     return (
         <FormControl>
-            <FormLabel
-                sx={{
-                    fontFamily: 'Inter',
-                    fontStyle: 'normal',
-                    fontSize: '24px',
-                    lineHeight: '22px',
-                    color: '#202020',
-                }}
-            >¡Dínos tu opinión!</FormLabel>
-            <RatingStars />
+            <Stack spacing={1.3}>
+                <FormLabel
+                    sx={{
+                        fontFamily: 'Inter',
+                        fontStyle: 'normal',
+                        fontSize: '24px',
+                        lineHeight: '22px',
+                        color: '#202020',
+                    }}
+                >¡Dínos tu opinión!</FormLabel>
+                <RatingStars />
             <Textarea
                 paddingBlock="16px"
                 paddingInline="16px"
@@ -194,6 +196,7 @@ const CommentArea = () => {
                     fontWeight,
                 }}
             />
+            </Stack>
         </FormControl>
     );
 }

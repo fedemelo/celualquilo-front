@@ -5,7 +5,7 @@ import Footer from './components/Footer';
 import './styles/App.css';
 import GoBack from './components/GoBack';
 import Review from './components/Review';
-
+import Breadcrumb from './components/BreadCrumb';
 
 export default function App() {
     return (
@@ -13,7 +13,7 @@ export default function App() {
             <Header />
 
             {/* Especificar en este punto la historia de usuario que se desea visualizar */}
-            <HU8 />
+            <HU7 />
 
             <Footer />
         </div>
@@ -90,24 +90,23 @@ const HU6 = () => {
 
 
 const HU7 = () => {
+    const breadcrumbs = [
+        { href: '/mi-cuenta', text: 'Mi cuenta' },
+        { href: '', text: 'Historial de Alquileres'},
+    ];
+
     return (
-        <>
-            <h3>HU7: Comparar especificaciones de celulares</h3>
-            <p>Detalla: Federico Melo </p>
-            <p>Revisa: Mariana Ruiz</p>
-        </>
-    )
+        <Breadcrumb breadcrumbs={breadcrumbs} />
+    );
 }
 
 
-const HU8 = () => {
-    return (
-        <>
-            <GoBack text="Escribir reseña" />
-            <Review />
-        </>
-    )
-}
+const HU8 = () =>
+    <>
+        <GoBack text="Escribir reseña" />
+        <Review />
+    </>
+
 
 
 const HU9 = () => {
