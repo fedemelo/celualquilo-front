@@ -40,20 +40,7 @@ const exampleSpecs = [
 
 export default function Review() {
     return (
-        <Card sx={{
-            width: "80vw",
-            // centered
-            alignContent: "center",
-            alignItems: "center",
-            justifyContent: "center",
-            justifyItems: "center",
-            margin: "auto",
-            marginTop: "20px",
-            marginBottom: "20px",
-            borderRadius: "15px",
-            boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
-            alignSelf: "center",
-        }}>
+        <Card sx={cardStyle}>
             <Grid container spacing={2} padding={7}>
                 {/* Column for Image */}
                 <Grid item xs={12} sm={4}>
@@ -84,6 +71,22 @@ export default function Review() {
             </CardContent>
         </Card>
     );
+}
+
+
+const cardStyle = {
+    width: "80vw",
+    // centered
+    alignContent: "center",
+    alignItems: "center",
+    justifyContent: "center",
+    justifyItems: "center",
+    margin: "auto",
+    marginTop: "20px",
+    marginBottom: "20px",
+    borderRadius: "15px",
+    boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+    alignSelf: "center",
 }
 
 

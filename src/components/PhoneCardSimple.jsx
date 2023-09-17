@@ -7,6 +7,7 @@ import Box from '@mui/joy/Box';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 
+
 export default function PhoneCardSimple({ name, image, cost, days, buttonText }) {
     return (
         <Card sx={{
@@ -44,6 +45,7 @@ export default function PhoneCardSimple({ name, image, cost, days, buttonText })
     );
 }
 
+
 const priceStyle = {
     textAlign: "left",
     verticalAlign: "middle",
@@ -54,6 +56,7 @@ const priceStyle = {
     fontWeight: "bold",
 }
 
+
 const nameStyle = {
     textAlign: "left",
     verticalAlign: "middle",
@@ -63,6 +66,7 @@ const nameStyle = {
     color: "#495057",
     fontWeight: "bold",
 }
+
 
 const daysStyle = {
     textAlign: "left",

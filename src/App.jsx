@@ -17,7 +17,6 @@ export default function App() {
             <HU7 />
             {/* <HU8 /> */}
 
-
             <Footer />
         </div>
     );

@@ -24,13 +24,7 @@ export default function Footer() {
     return (
         <Box
             component="footer"
-            sx={{
-                marginTop: 7,
-                backgroundColor: COLORS.dark,
-                bottom: 0,
-                width: '100%',
-                zIndex: 1,
-            }}
+            sx={boxStyle}
         >
             <Container>
                 <Grid container spacing={4}>
@@ -43,6 +37,17 @@ export default function Footer() {
             </Container>
         </Box>
     );
+}
+
+
+const boxStyle = {
+    marginTop: 7,
+    backgroundColor: COLORS.dark,
+    bottom: 0,
+    width: '100%',
+    zIndex: 1,
+    right: "0px",
+    left: "0px",
 }
 
 

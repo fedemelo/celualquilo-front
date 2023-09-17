@@ -1,6 +1,5 @@
 import * as React from 'react';
 import Card from '@mui/material/Card';
-
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
@@ -82,18 +81,6 @@ const examplePastRents = [
 ]
 
 
-const sectionStyle = {
-    width: "80vw",
-    margin: "auto",
-    marginTop: "20px",
-    marginBottom: "20px",
-    borderRadius: "15px",
-    boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
-    backgroundColor: "#FFFFFF",
-    alignSelf: "center",
-}
-
-
 export default function RentHistory() {
     return (
         <Stack spacing={3.5}>
@@ -110,6 +97,18 @@ export default function RentHistory() {
             </Card>
         </Stack>
     );
+}
+
+
+const sectionStyle = {
+    width: "80vw",
+    margin: "auto",
+    marginTop: "20px",
+    marginBottom: "20px",
+    borderRadius: "15px",
+    boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+    backgroundColor: "#FFFFFF",
+    alignSelf: "center",
 }
 
 
@@ -136,4 +135,6 @@ const SectionTitle = ({ text }) =>
         color: "#000000",
         textAlign: "left",
         p: 2,
-    }}>{text}</Typography>
+    }}>
+        {text}
+    </Typography>

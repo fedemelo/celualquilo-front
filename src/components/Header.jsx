@@ -13,35 +13,44 @@ import '../styles/header.css';
 
 export default function Header() {
     return (
-        <Box sx={{
-            flexGrow: 1,
-            position: 'fixed',
-            top: 0,
-            width: '100%',
-            zIndex: 1,
-        }}>
+        <Box sx={boxStyle}>
             <AppBar position="static" sx={{ backgroundColor: "white" }}>
-                <Toolbar sx={{
-                    alignItems: 'flex-start',
-                    flexDirection: "row",
-                    justifyContent: "space-between",
-                    paddingTop: "10px",
-                }}>
+                <Toolbar sx={firstRowStyle}>
                     <LogoCeluAlquilo />
                     <SearchBar />
                     <LoginButton text="Ingresar" />
                 </Toolbar>
-                <Toolbar sx={{
-                    alignItems: 'flex-end',
-                    flexDirection: "row",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                }}>
+                <Toolbar sx={secondRowStyle}>
                     <Marcas />
                 </Toolbar>
             </AppBar>
         </Box >
     );
+}
+
+
+const boxStyle = {
+    flexGrow: 1,
+    position: 'fixed',
+    top: 0,
+    width: '100%',
+    zIndex: 1,
+}
+
+
+const firstRowStyle = {
+    alignItems: 'flex-start',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingTop: "10px",
+}
+
+
+const secondRowStyle = {
+    alignItems: 'flex-end',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
 }
 
 

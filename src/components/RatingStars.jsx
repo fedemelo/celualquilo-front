@@ -26,15 +26,7 @@ export default function HoverRating() {
     const [hover, setHover] = React.useState(-1);
 
     return (
-        <Box
-            sx={{
-                width: 200,
-                display: 'flex',
-                alignItems: 'center',
-                paddingTop: "5px",
-                paddingBottom: "5px",
-            }}
-        >
+        <Box sx={boxStyle}>
             <Rating
                 value={value}
                 precision={0.5}
@@ -53,4 +45,13 @@ export default function HoverRating() {
             )}
         </Box>
     );
+}
+
+
+const boxStyle = {
+    width: 200,
+    display: 'flex',
+    alignItems: 'center',
+    paddingTop: "5px",
+    paddingBottom: "5px",
 }

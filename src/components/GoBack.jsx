@@ -4,6 +4,7 @@ import { COLORS } from '../styles/colors';
 import { Typography } from '@mui/material';
 import Toolbar from '@mui/material/Toolbar';
 
+
 export default function GoBack({ text }) {
     return (
         <Toolbar sx={{
@@ -24,18 +25,20 @@ export default function GoBack({ text }) {
             />
             <Typography
                 variant="h6"
-
-                style={{
-                    fontFamily: 'Inter',
-                    fontStyle: "normal",
-                    fontWeight: 400,
-                    fontSize: "30px",
-                    lineHeight: "36px",
-                    color: "#000000",
-                    cursor: "pointer",
-                    paddingLeft: "10px",
-                }}
+                style={textStyle}
             >{text}</Typography>
         </Toolbar>
     );
+}
+
+
+const textStyle = {
+    fontFamily: 'Inter',
+    fontStyle: "normal",
+    fontWeight: 400,
+    fontSize: "30px",
+    lineHeight: "36px",
+    color: "#000000",
+    cursor: "pointer",
+    paddingLeft: "10px",
 }
