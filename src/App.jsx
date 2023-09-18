@@ -12,6 +12,8 @@ import MainPage from './components/MainPage';
 import './styles/App.css';
 
 
+import SignInSide from './components/SignIn';
+
 export default function App() {
     return (
         <div className="App">
@@ -51,8 +53,7 @@ const HU1 = () => {
 const HU2 = () => {
     return (
         <>
-            <h3>HU2: Iniciar Sesión</h3>
-            <p>Detalla: Santiago Martínez</p>
+        <SignInSide/>
         </>
     )
 }
@@ -86,8 +87,8 @@ const HU6 = () => {
     return (
         <>
             <h3>HU6: Realizar pago en plataforma</h3>
-            <p>Detalla: Mariana Ruiz</p>
-            <ProductsGrid />
+            <p>Detalla: Santiago Martínez</p>
+            <p>Revisa: Federico Melo </p>
         </>
 
     )

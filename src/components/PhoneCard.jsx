@@ -62,7 +62,7 @@ export default function PhoneCard({ name, image, cost, buttonText, rating}) {
                             sx={{ color: isFavorite ? '#9E30FF' : '#7f7f7f',marginRight: "1vw",fontSize: "2vw"}}
                             fontSize="medium"
                         />
-                        </div>
+                    </div>
                     {buttonText ? <LastButton text={buttonText} /> : null}
                         
                     </div>       
