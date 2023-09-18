@@ -39,36 +39,38 @@ const exampleSpecs = [
 
 export default function Review() {
     return (
-        <Card sx={cardStyle}>
-            <Grid container spacing={2} padding={7}>
-                {/* Column for Image */}
-                <Grid item xs={12} sm={4}>
-                    <img
-                        style={{ maxWidth: '100%', height: '20vw' }}
-                        alt={exampleName}
-                        src={examplePhone}
-                    />
+        <Stack marginBottom={7}>
+            <Card sx={cardStyle}>
+                <Grid container spacing={2} padding={7} >
+                    {/* Column for Image */}
+                    <Grid item xs={12} sm={4}>
+                        <img
+                            style={{ maxWidth: '100%', height: '20vw' }}
+                            alt={exampleName}
+                            src={examplePhone}
+                        />
+                    </Grid>
+
+                    <Grid item xs={12} sm={8} sx={{ textAlign: 'left' }}>
+                        <Typography variant="h6" color="text.primary" padding={1}>
+                            {exampleBrand}
+                        </Typography>
+                        <Typography variant="h6" color="text.primary" padding={1}>
+                            {exampleAvailability}
+                        </Typography>
+                        <Typography variant="h3" component="div" padding={1}>
+                            {exampleName}
+                        </Typography>
+                        <SpecList specs={exampleSpecs} />
+                    </Grid>
+
                 </Grid>
 
-                <Grid item xs={12} sm={8} sx={{ textAlign: 'left' }}>
-                    <Typography variant="h6" color="text.primary" padding={1}>
-                        {exampleBrand}
-                    </Typography>
-                    <Typography variant="h6" color="text.primary" padding={1}>
-                        {exampleAvailability}
-                    </Typography>
-                    <Typography variant="h3" component="div" padding={1}>
-                        {exampleName}
-                    </Typography>
-                    <SpecList specs={exampleSpecs} />
-                </Grid>
-
-            </Grid>
-
-            <CardContent>
-                <CommentArea />
-            </CardContent>
-        </Card>
+                <CardContent>
+                    <CommentArea />
+                </CardContent>
+            </Card>
+        </Stack>
     );
 }
 

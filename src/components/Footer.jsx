@@ -41,7 +41,6 @@ export default function Footer() {
 
 
 const boxStyle = {
-    marginTop: 7,
     backgroundColor: COLORS.dark,
     bottom: 0,
     width: '100%',

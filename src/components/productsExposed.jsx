@@ -90,7 +90,7 @@ const exampleActiveRents = [
 
 export default function ProductsGrid() {
     return (
-        <Stack spacing={3}>
+        <Stack spacing={3} marginBottom={7}>
             <Title />
             <FilterButtons />
             <div style={{ alignItems: 'center', justifyContent: 'center' }}>

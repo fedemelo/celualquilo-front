@@ -23,14 +23,14 @@ export default function App() {
             {/* <MainPage /> */}
             {/* <HU1 /> */}
             {/* <HU2 /> */}
-            <HU3 />
+            {/* <HU3 /> */}
             {/* <HU4 /> */}
             {/* <HU5 /> */}
             {/* <HU6 /> */}
             {/* <HU7 /> */}
             {/* <HU8 /> */}
             {/* <HU9 /> */}
-            {/* <HU10 /> */}
+            <HU10 />
             {/* <HU11 /> */}
             {/* <HU12 /> */}
 
@@ -50,13 +50,7 @@ const HU1 = () => {
 }
 
 
-const HU2 = () => {
-    return (
-        <>
-        <SignInSide/>
-        </>
-    )
-}
+const HU2 = () => <SignInSide />
 
 
 const HU3 = () => <ProductsGrid />
