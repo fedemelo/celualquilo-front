@@ -23,7 +23,7 @@ export default function App() {
             <Header />
 
             {/* Especificar en este punto la historia de usuario que se desea visualizar */}
-            <MainPage /> 
+            {/* <MainPage />  */}
             {/* <HU1 /> */}
             {/* <HU2 /> */}
             {/* <HU3 /> */}
@@ -34,7 +34,7 @@ export default function App() {
             {/* <HU8 /> */}
             {/* <HU9 /> */}
             {/* <HU10 /> */}
-            {/* <HU13 /> */}
+            <HU11 />
             {/* <HU12 /> */}
 
             <Footer />
