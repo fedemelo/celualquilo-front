@@ -2,17 +2,14 @@ import React from 'react';
 import RentButton from './components/RentButton';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import './styles/App.css';
 import GoBack from './components/GoBack';
 import Review from './components/Review';
 import Breadcrumb from './components/BreadCrumb';
 import RentHistory from './components/RentHistory';
-import PhoneCard from './components/PhoneCard';
-import examplePhone8 from './assets/phones/HuaweiP60.png';
 import ProductsGrid from './components/productsExposed';
 import Favourites from './components/Favourites';
-
 import MainPage from './components/MainPage';
+import './styles/App.css';
 
 
 export default function App() {
@@ -21,10 +18,19 @@ export default function App() {
             <Header />
 
             {/* Especificar en este punto la historia de usuario que se desea visualizar */}
-            {/* <HU6 /> */}
-            {/* <HU8 /> */}
             <MainPage />
-
+            {/* <HU1 /> */}
+            {/* <HU2 /> */}
+            {/* <HU3 /> */}
+            {/* <HU4 /> */}
+            {/* <HU5 /> */}
+            {/* <HU6 /> */}
+            {/* <HU7 /> */}
+            {/* <HU8 /> */}
+            {/* <HU9 /> */}
+            {/* <HU10 /> */}
+            {/* <HU11 /> */}
+            {/* <HU12 /> */}
 
             <Footer />
         </div>
