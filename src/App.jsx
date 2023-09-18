@@ -30,7 +30,7 @@ export default function App() {
             {/* <HU7 /> */}
             {/* <HU8 /> */}
             {/* <HU9 /> */}
-            <HU10 />
+            {/* <HU10 /> */}
             {/* <HU11 /> */}
             {/* <HU12 /> */}
 
