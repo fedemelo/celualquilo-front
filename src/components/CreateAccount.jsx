@@ -45,9 +45,10 @@ export default function CreateAccountSide() {
             <Grid container component="main"
                 sx={{
                     height: '100vh',
-                    marginTop: '13vw',
+                    marginTop: '10vw',
                     justifyContent: 'center',
-                    marginBlockEnd: "5vw"
+                    marginBottom: '10vw',
+
                 }}>
                 <style>
 
@@ -62,14 +63,13 @@ export default function CreateAccountSide() {
                         zIndex: 0.7,
                         backgroundImage: `url(${createAccimg})`,
                         backgroundRepeat: 'no-repeat',
-                        backgroundSize: 'cover',
                         backgroundPosition: 'center',
                         display: 'flex',
                         flexDirection: 'column',
                         justifyContent: 'center',
                         alignItems: 'center',
                         fullWidth: 'true',
-                        backgroundSize: '95%',
+                        backgroundSize: '80%',
                         verticalAlign: 'middle',
 
                     }}
@@ -83,7 +83,7 @@ export default function CreateAccountSide() {
                             flexDirection: 'column',
                             alignItems: 'left',
                             justifyContent: 'left',
-                            marginTop: '12vw',
+                            marginTop: '10vw',
                             marginLeft: '5vw',
                             height: '100%',
                         }}
