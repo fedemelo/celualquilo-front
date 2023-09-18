@@ -68,6 +68,8 @@ export default function SignInSide() {
                         flexDirection: 'column',
                         justifyContent: 'center',
                         alignItems: 'center',
+                        backgroundSize: '95%',
+                        verticalAlign: 'middle',
                     }}
                 />
                 <Grid item xs={12} sm={8} md={5} >
@@ -101,7 +103,7 @@ export default function SignInSide() {
                                 required
                                 fullWidth
                                 id="email"
-                                label="Email Address"
+                                label="Escriba su correo electrónico"
                                 name="email"
                                 autoComplete="email"
                                 autoFocus
@@ -116,7 +118,7 @@ export default function SignInSide() {
                                 required
                                 fullWidth
                                 name="password"
-                                label="Password"
+                                label="Contraseña"
                                 id="password"
                                 autoComplete="current-password"
                                 variant="filled"
@@ -146,7 +148,7 @@ export default function SignInSide() {
                                 <Grid item>
                                     <FormControlLabel
                                         control={<Checkbox value="remember" color="primary" />}
-                                        label="Remember me"
+                                        label="Recordarme"
                                     />
                                 </Grid>
                                 <Grid item sx={{ textAlign: 'right' }}>
