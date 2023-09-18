@@ -30,38 +30,40 @@ const examplePrice = "$10.000 "+moneda+"/día"
 
 export default function Review() {
     return (
-        <Card sx={cardStyle}>
-            <Grid container spacing={0} padding={3} direction={'row'} alignItems={'center'}>
-                {/* Column for Image */}
-                <Grid item xs={12} sm={5}>
-                    <img
-                        style={{ maxWidth: '130%', height: '30vw' }}
-                        alt={exampleName}
-                        src={examplePhone}
-                    />
-                </Grid>
+        <Stack marginBottom={7}>
+            <Card sx={cardStyle}>
+                <Grid container spacing={0} padding={3} direction={'row'} alignItems={'center'}>
+                    {/* Column for Image */}
+                    <Grid item xs={12} sm={5}>
+                        <img
+                            style={{ maxWidth: '130%', height: '30vw' }}
+                            alt={exampleName}
+                            src={examplePhone}
+                        />
+                    </Grid>
 
-                <Grid item xs={12} sm={7
-                } sx={{ textAlign: 'left' }}>
-                    <Typography variant="h6" color="text.primary" padding={1}>
-                        {exampleBrand}
-                    </Typography>
-                    <Typography variant="h6" color="text.primary" padding={1}>
-                        {exampleAvailability}
-                    </Typography>
-                    <Typography variant="h3" component="div" padding={1}>
-                        {exampleName}
-                    </Typography>
-                    <Rating name="read-only" value={5} readOnly size="large" />
-                    <SpecList specs={exampleSpecs} />
-                    <Typography variant="h4" component="div" padding={1}>
-                        {examplePrice}
-                    </Typography>
-                    <RentButton text="Alquilar" />
-                </Grid>
+                    <Grid item xs={12} sm={7
+                    } sx={{ textAlign: 'left' }}>
+                        <Typography variant="h6" color="text.primary" padding={1}>
+                            {exampleBrand}
+                        </Typography>
+                        <Typography variant="h6" color="text.primary" padding={1}>
+                            {exampleAvailability}
+                        </Typography>
+                        <Typography variant="h3" component="div" padding={1}>
+                            {exampleName}
+                        </Typography>
+                        <Rating name="read-only" value={5} readOnly size="large" />
+                        <SpecList specs={exampleSpecs} />
+                        <Typography variant="h4" component="div" padding={1}>
+                            {examplePrice}
+                        </Typography>
+                        <RentButton text="Alquilar" />
+                    </Grid>
 
-            </Grid>
-        </Card>
+                </Grid>
+            </Card>
+        </Stack>
     );
 }
 

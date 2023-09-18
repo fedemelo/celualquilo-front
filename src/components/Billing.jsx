@@ -8,7 +8,6 @@ import { COLORS } from '../styles/colors';
 import { TextField } from "@mui/material";
 import PriceDetails from './PriceDetails';
 import Box from '@mui/material/Box';
-import Divider from '@mui/material/Divider';
 import { FormControl, FormControlLabel, FormLabel, Radio, RadioGroup } from '@mui/material';
 
 
@@ -20,7 +19,7 @@ const examplePrice = "$10.000 "+moneda+"/día"
 
 export default function Billing() {
     return (
-        <Grid container direction={'row'} spacing={2} >
+        <Grid container direction={'row'} spacing={2} marginBottom={8}>
             <Grid item xs={12} sm={6}>
                 <BillingAddress />
                 <PayingMethod />

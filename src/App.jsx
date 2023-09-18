@@ -2,11 +2,20 @@ import React from 'react';
 import RentButton from './components/RentButton';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import './styles/App.css';
 import GoBack from './components/GoBack';
 import Review from './components/Review';
 import Breadcrumb from './components/BreadCrumb';
 import RentHistory from './components/RentHistory';
+import ProductsGrid from './components/productsExposed';
+import Favourites from './components/Favourites';
+import MainPage from './components/MainPage';
+import ProductsGridFilter from './components/ProductsGridFilter';
+import ProductsGridPrice from './components/ProductGridPrice';
+import './styles/App.css';
+
+
+import SignInSide from './components/SignIn';
+import CreateAccountSide from './components/CreateAccount';
 import PhoneDetail from './components/PhoneDetail';
 import RentDetail from './components/RentDetail';
 import Billing from './components/Billing';
@@ -17,8 +26,19 @@ export default function App() {
             <Header />
 
             {/* Especificar en este punto la historia de usuario que se desea visualizar */}
-            <HU8 />
+            {/* <MainPage />  */}
+            {/* <HU1 /> */}
+            {/* <HU2 /> */}
+            {/* <HU3 /> */}
+            <HU4 />
+            {/* <HU5 /> */}
+            {/* <HU6 /> */}
+            {/* <HU7 /> */}
             {/* <HU8 /> */}
+            {/* <HU9 /> */}
+            {/* <HU10 /> */}
+            {/* <HU11 /> */}
+            {/* <HU12 /> */}
 
             <Footer />
         </div>
@@ -29,35 +49,16 @@ export default function App() {
 const HU1 = () => {
     return (
         <>
-            <h3>HU1: Registrar un usuario</h3>
-            <p>Detalla: David Burgos</p>
-            <p>Revisa: Santiago Martínez</p>
+            <CreateAccountSide />
         </>
     )
 }
 
 
-const HU2 = () => {
-    return (
-        <>
-            <h3>HU2: Iniciar Sesión</h3>
-            <p>Detalla: Santiago Martínez</p>
-            <p>Revisa: Federico Melo </p>
-        </>
-    )
-}
+const HU2 = () => <SignInSide />
 
 
-const HU3 = () => {
-    return (
-        <>
-            <h3>HU3: Ver Teléfonos Disponibles</h3>
-            <p>Detalla: Federico Melo </p>
-            <p>Revisa: Mariana Ruiz</p>
-            <RentButton text="Alquilar" />
-        </>
-    )
-}
+const HU3 = () => <ProductsGrid />
 
 
 const HU4 = () => {
@@ -119,33 +120,39 @@ const HU8 = () =>
 
 
 const HU9 = () => {
+    const breadcrumbs = [
+        { href: '/mi-cuenta', text: 'Mi cuenta' },
+        { href: '', text: 'Historial de Alquileres' },
+    ];
+
     return (
         <>
-            <h3>HU9: Ver historial de celulares</h3>
-            <p>Detalla: David Burgos</p>
-            <p>Revisa: Santiago Martínez</p>
+            <Breadcrumb breadcrumbs={breadcrumbs} />
+            <RentHistory />
         </>
-    )
+    );
 }
 
 
 const HU10 = () => {
+    const breadcrumbs = [
+        { href: '/mi-cuenta', text: 'Mi cuenta' },
+        { href: '', text: 'Favoritos' },
+    ];
+
     return (
         <>
-            <h3>HU10: Seleccionar celulares favoritos</h3>
-            <p>Detalla: Santiago Martínez</p>
-            <p>Revisa: Federico Melo </p>
+            <Breadcrumb breadcrumbs={breadcrumbs} />
+            <Favourites />
         </>
-    )
+    );
 }
 
 
 const HU11 = () => {
     return (
         <>
-            <h3>HU11: Filtrar celulares por precio</h3>
-            <p>Detalla: Federico Melo </p>
-            <p>Revisa: Mariana Ruiz</p>
+            <ProductsGridPrice />
         </>
     )
 }
@@ -154,9 +161,7 @@ const HU11 = () => {
 const HU12 = () => {
     return (
         <>
-            <h3>HU12: Ver celulares de una marca</h3>
-            <p>Detalla: Mariana Ruiz</p>
-            <p>Revisa: David Burgos</p>
+            <ProductsGridFilter brand={"iPhone"} />
         </>
     )
 }

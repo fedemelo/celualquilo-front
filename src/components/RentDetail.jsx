@@ -17,7 +17,7 @@ const examplePrice = "$10.000 "+moneda+"/día"
 
 export default function RentDetail() {
     return (
-        <Grid container direction={'row'} spacing={2} >
+        <Grid container direction={'row'} spacing={2} marginBottom={8}>
             <Grid item xs={12} sm={6}>
                 <PhoneResume />
             </Grid>

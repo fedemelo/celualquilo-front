@@ -7,12 +7,6 @@ import PhoneCardSimple from './PhoneCardSimple';
 import examplePhone1 from '../assets/phones/iPhone14Pro.png';
 import examplePhone2 from '../assets/phones/HuaweiNovaY71.png';
 import examplePhone3 from '../assets/phones/SamsungGalaxyS22.png';
-import examplePhone4 from '../assets/phones/OPPOReno7.png';
-import examplePhone5 from '../assets/phones/SamsungA22.png';
-import examplePhone6 from '../assets/phones/HuaweiMate50.png';
-import examplePhone7 from '../assets/phones/iPhone13.png';
-import examplePhone8 from '../assets/phones/HuaweiP60.png';
-import examplePhone9 from '../assets/phones/HuaweiNovaY90.png';
 
 
 const exampleActiveRents = [
@@ -21,65 +15,23 @@ const exampleActiveRents = [
         days: "5 días de alquiler",
         image: examplePhone1,
         cost: "$ 10 000 COP / día",
-        buttonText: "Renovar Alquiler",
+        buttonText: "Alquilar",
     },
     {
         name: "Huawei Nova Y71",
         days: "2 días de alquiler",
         image: examplePhone2,
         cost: "$ 7 000 COP / día",
-        buttonText: "Renovar Alquiler",
+        buttonText: "Alquilar",
     },
     {
         name: "Samsung Galaxy S22",
         days: "1 día de alquiler",
         image: examplePhone3,
         cost: "$ 15 000 COP / día",
-        buttonText: "Renovar Alquiler",
+        buttonText: "Alquilar",
     },
 ]
-
-
-const examplePastRents = [
-    {
-        name: "OPPO Reno 7",
-        image: examplePhone4,
-        cost: "$ 10 000 COP / día",
-        buttonText: "Escribir Reseña",
-    },
-    {
-        name: "Samsung A22",
-        image: examplePhone5,
-        cost: "$ 7 000 COP / día",
-        buttonText: "Escribir Reseña",
-    },
-    {
-        name: "Huawei Mate 50",
-        image: examplePhone6,
-        cost: "$ 15 000 COP / día",
-        buttonText: "Escribir Reseña",
-    },
-    {
-        name: "iPhone 13",
-        image: examplePhone7,
-        cost: "$ 10 000 COP / día",
-        buttonText: "Escribir Reseña",
-    },
-    {
-        name: "Huawei P60",
-        image: examplePhone8,
-        cost: "$ 7 000 COP / día",
-        buttonText: "Escribir Reseña",
-    },
-    {
-        name: "Huawei Nova Y90",
-        image: examplePhone9,
-        cost: "$ 15 000 COP / día",
-        buttonText: "Escribir Reseña",
-    }
-
-]
-
 
 export default function RentHistory() {
     return (
@@ -88,14 +40,22 @@ export default function RentHistory() {
                 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400&display=swap');
             </style>
             <Card sx={sectionStyle}>
-                <SectionTitle text="Alquileres Activos" />
+                <SectionTitle text="Favoritos" />
                 <PhonesRow phones={exampleActiveRents} />
             </Card>
-            <Card sx={sectionStyle}>
-                <SectionTitle text="Historial de Alquileres" />
-                <PhonesRow phones={examplePastRents} />
-            </Card>
         </Stack>
+    );
+}
+
+const PhonesRow = ({ phones }) => {
+    return (
+        <Grid container spacing={2} padding={4} >
+            {phones.map((phone) => (
+                <Grid item xs={4} sm={4}>
+                    <PhoneCardSimple {...phone} />
+                </Grid>
+            ))}
+        </Grid>
     );
 }
 
@@ -110,20 +70,6 @@ const sectionStyle = {
     backgroundColor: "#FFFFFF",
     alignSelf: "center",
 }
-
-
-const PhonesRow = ({ phones }) => {
-    return (
-        <Grid container spacing={2} padding={4} >
-            {phones.map((phone) => (
-                <Grid item xs={4} sm={4}>
-                    <PhoneCardSimple {...phone} />
-                </Grid>
-            ))}
-        </Grid>
-    );
-}
-
 
 const SectionTitle = ({ text }) =>
     <Typography sx={{
