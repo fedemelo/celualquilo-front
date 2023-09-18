@@ -7,14 +7,16 @@ import GoBack from './components/GoBack';
 import Review from './components/Review';
 import Breadcrumb from './components/BreadCrumb';
 import RentHistory from './components/RentHistory';
-
+import PhoneCard from './components/PhoneCard';
+import examplePhone8 from './assets/phones/HuaweiP60.png';
+import ProductsGrid from './components/productsExposed';
 export default function App() {
     return (
         <div className="App">
             <Header />
 
             {/* Especificar en este punto la historia de usuario que se desea visualizar */}
-            <HU7 />
+            <HU6 />
             {/* <HU8 /> */}
 
             <Footer />
@@ -86,7 +88,9 @@ const HU6 = () => {
             <h3>HU6: Realizar pago en plataforma</h3>
             <p>Detalla: Santiago Martínez</p>
             <p>Revisa: Federico Melo </p>
+            <ProductsGrid/>
         </>
+        
     )
 }
 
