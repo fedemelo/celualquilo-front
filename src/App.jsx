@@ -13,6 +13,7 @@ import './styles/App.css';
 
 
 import SignInSide from './components/SignIn';
+import CreateAccountSide from './components/CreateAccount';
 
 export default function App() {
     return (
@@ -23,7 +24,7 @@ export default function App() {
             {/* <MainPage /> */}
             {/* <HU1 /> */}
             {/* <HU2 /> */}
-            <HU3 />
+            <HU1 />
             {/* <HU4 /> */}
             {/* <HU5 /> */}
             {/* <HU6 /> */}
@@ -43,8 +44,7 @@ export default function App() {
 const HU1 = () => {
     return (
         <>
-            <h3>HU1: Registrar un usuario</h3>
-            <p>Detalla: Santiago Martínez</p>
+            <CreateAccountSide />
         </>
     )
 }

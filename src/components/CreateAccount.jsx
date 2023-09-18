@@ -17,6 +17,7 @@ import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import createAccimg from '../assets/imgcreateAcc.png';
 
 function Copyright(props) {
   return (
@@ -34,7 +35,7 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 
-export default function SignInSide() {
+export default function CreateAccountSide() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -70,13 +71,15 @@ const togglePasswordVisibility = () => {
             md={6}
             sx={{
                 zIndex: 0.7,
-                backgroundImage: `url(${signinimg})`,
+                backgroundImage: `url(${createAccimg})`,
                 backgroundRepeat: 'no-repeat',
+                backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'center',
                 alignItems: 'center',
+                fullWidth: 'true',
                 backgroundSize: '95%',
                 verticalAlign: 'middle',
 
@@ -91,17 +94,17 @@ const togglePasswordVisibility = () => {
               flexDirection: 'column',
               alignItems: 'left',
               justifyContent: 'left',
-              marginTop: '10vw',
+              marginTop: '12vw',
               marginLeft: '5vw',
               height: '100%',
             }}
           >
             <div style={hacialaIzq}>
                <Typography component="h1" variant="h4" sx={titleStyle}>
-                    Bienvenido de Vuelta
+                    Crear una Cuenta
                 </Typography>
                 <Typography component="h1" variant="h5"sx={subTitleStyle}>
-                    Alquila un celular fácil con CeluAlquilo
+                    Por favor rellene el formulario
                 </Typography> 
             </div>
             
@@ -113,7 +116,23 @@ const togglePasswordVisibility = () => {
                 required
                 fullWidth
                 id="email"
-                label="Escriba su correo electrónico"
+                label="Escriba nombre y apellido"
+                name="email"
+                autoComplete="email"
+                autoFocus
+                sx={{
+                    "& .MuiFilledInput-root": {
+                        background: "rgb(255, 255, 255)"
+                      }
+                }}
+              />
+              <TextField
+                margin="normal"
+                variant="filled"
+                required
+                fullWidth
+                id="email"
+                label="Escriba su correo"
                 name="email"
                 autoComplete="email"
                 autoFocus
@@ -154,18 +173,49 @@ const togglePasswordVisibility = () => {
                 ),
                 }}
               />
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                label="Confirmar contraseña"
+                id="password"
+                autoComplete="current-password"
+                variant="filled"
+                sx={{
+                    "& .MuiFilledInput-root": {
+                        background: "rgb(255, 255, 255)"
+                      }
+                }}
+                type={showPassword ? 'text' : 'password'}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                InputProps={{
+                endAdornment: (
+                    <InputAdornment position="end">
+                    <IconButton
+                        edge="end"
+                        onClick={togglePasswordVisibility}
+                        tabIndex="-1" // Para evitar que el botón sea enfocable
+                    >
+                        {showPassword ? <Visibility /> : <VisibilityOff />}
+                    </IconButton>
+                    </InputAdornment>
+                ),
+                }}
+              />
               <Grid container sx={{ justifyContent: 'space-between' , alignItems: 'center'}}>
-                <Grid item>
-                    <FormControlLabel
-                    control={<Checkbox value="remember" color="primary" />}
-                    label="Recordarme"
-                    />
-                </Grid>
-                <Grid item sx={{ textAlign: 'right'}}>
-                    <Link href="#" variant="body2">
-                    Olvidó su contraseña?
-                    </Link>
-                </Grid>
+              <Typography variant="body2">
+                Registrándome estoy de acuerdo con los{' '}
+                <Link href="#" color="primary">
+                    términos y condiciones
+                </Link>{' '}
+                y nuestras{' '}
+                <Link href="#" color="primary">
+                    políticas de privacidad
+                </Link>
+                </Typography>
+
                 </Grid>
               
               <Button
@@ -174,15 +224,15 @@ const togglePasswordVisibility = () => {
                 variant="contained"
                 sx={{ mt: 3, mb: 2 , backgroundColor:'#9E30FF', color:'#FFFFFF', fontFamily:'Open Sans', fontWeight:'bold'}}
               >
-                Sign In
+                Crear cuenta
               </Button>
               <Grid container sx={{ justifyContent: 'space-around' , alignItems: 'center'}}>
                 <Grid item>
-                    {"Nuevo Usuario?"}
+                    {"Ya estás registrado?"}
                 </Grid>
                 <Grid item>
                   <Link href="#" variant="body2">
-                    {"Crear una cuenta"}
+                    {"Ingresa aquí"}
                   </Link>
                 </Grid>
               </Grid>
