@@ -42,8 +42,7 @@ const HU1 = () => {
     return (
         <>
             <h3>HU1: Registrar un usuario</h3>
-            <p>Detalla: David Burgos</p>
-            <p>Revisa: Santiago Martínez</p>
+            <p>Detalla: Santiago Martínez</p>
         </>
     )
 }
@@ -54,7 +53,6 @@ const HU2 = () => {
         <>
             <h3>HU2: Iniciar Sesión</h3>
             <p>Detalla: Santiago Martínez</p>
-            <p>Revisa: Federico Melo </p>
         </>
     )
 }
@@ -64,8 +62,7 @@ const HU3 = () => {
     return (
         <>
             <h3>HU3: Ver Teléfonos Disponibles</h3>
-            <p>Detalla: Federico Melo </p>
-            <p>Revisa: Mariana Ruiz</p>
+            <p>Detalla: Santiago Martínez</p>
             <RentButton text="Alquilar" />
         </>
     )
@@ -77,7 +74,6 @@ const HU4 = () => {
         <>
             <h3>HU4: Ver información del Teléfono</h3>
             <p>Detalla: Mariana Ruiz</p>
-            <p>Revisa: David Burgos</p>
             <RentButton text="Alquilar" />
         </>
     )
@@ -88,8 +84,7 @@ const HU5 = () => {
     return (
         <>
             <h3>HU5: Alquilar Teléfono</h3>
-            <p>Detalla: David Burgos</p>
-            <p>Revisa: Santiago Martínez</p>
+            <p>Detalla: Mariana Ruiz</p>
         </>
     )
 }
@@ -99,11 +94,10 @@ const HU6 = () => {
     return (
         <>
             <h3>HU6: Realizar pago en plataforma</h3>
-            <p>Detalla: Santiago Martínez</p>
-            <p>Revisa: Federico Melo </p>
-            <ProductsGrid/>
+            <p>Detalla: Mariana Ruiz</p>
+            <ProductsGrid />
         </>
-        
+
     )
 }
 
@@ -132,13 +126,17 @@ const HU8 = () =>
 
 
 const HU9 = () => {
+    const breadcrumbs = [
+        { href: '/mi-cuenta', text: 'Mi cuenta' },
+        { href: '', text: 'Historial de Alquileres' },
+    ];
+
     return (
         <>
-            <h3>HU9: Ver historial de celulares</h3>
-            <p>Detalla: David Burgos</p>
-            <p>Revisa: Santiago Martínez</p>
+            <Breadcrumb breadcrumbs={breadcrumbs} />
+            <RentHistory />
         </>
-    )
+    );
 }
 
 
@@ -161,8 +159,7 @@ const HU11 = () => {
     return (
         <>
             <h3>HU11: Filtrar celulares por precio</h3>
-            <p>Detalla: Federico Melo </p>
-            <p>Revisa: Mariana Ruiz</p>
+            <p>Detalla: David Burgos </p>
         </>
     )
 }
@@ -172,8 +169,7 @@ const HU12 = () => {
     return (
         <>
             <h3>HU12: Ver celulares de una marca</h3>
-            <p>Detalla: Mariana Ruiz</p>
-            <p>Revisa: David Burgos</p>
+            <p>Detalla: David Burgos</p>
         </>
     )
 }
