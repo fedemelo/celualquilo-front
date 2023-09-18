@@ -18,7 +18,7 @@ export default function App() {
             <Header />
 
             {/* Especificar en este punto la historia de usuario que se desea visualizar */}
-            <MainPage />
+            {/* <MainPage /> */}
             {/* <HU1 /> */}
             {/* <HU2 /> */}
             {/* <HU3 /> */}
@@ -58,15 +58,7 @@ const HU2 = () => {
 }
 
 
-const HU3 = () => {
-    return (
-        <>
-            <h3>HU3: Ver Teléfonos Disponibles</h3>
-            <p>Detalla: Santiago Martínez</p>
-            <RentButton text="Alquilar" />
-        </>
-    )
-}
+const HU3 = () => <ProductsGrid />
 
 
 const HU4 = () => {
