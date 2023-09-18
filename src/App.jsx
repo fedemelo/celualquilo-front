@@ -21,7 +21,7 @@ export default function App() {
             {/* <MainPage /> */}
             {/* <HU1 /> */}
             {/* <HU2 /> */}
-            {/* <HU3 /> */}
+            <HU3 />
             {/* <HU4 /> */}
             {/* <HU5 /> */}
             {/* <HU6 /> */}

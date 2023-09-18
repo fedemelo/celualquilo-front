@@ -52,7 +52,6 @@ const secondRowStyle = {
     alignItems: 'flex-end',
     flexDirection: "row",
     justifyContent: "space-between",
-    alignItems: "center",
 }
 
 

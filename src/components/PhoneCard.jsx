@@ -7,11 +7,7 @@ import Box from '@mui/joy/Box';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import Rating from '@mui/material/Rating';
 import StarIcon from '@mui/icons-material/Star';
-import { shadows } from '@mui/system';
-
-
 
 
 export default function PhoneCard({ name, image, cost, buttonText, rating}) {
