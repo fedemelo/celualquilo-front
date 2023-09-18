@@ -8,6 +8,8 @@ import SearchIcon from '@mui/icons-material/Search';
 import Button from '@mui/material/Button';
 import { COLORS } from '../styles/colors';
 import { Container, InputAdornment, TextField } from "@mui/material";
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 import '../styles/header.css';
 
 
@@ -118,14 +120,52 @@ const SearchBar = () =>
 
 
 
-const LoginButton = ({ text }) =>
-    <Button
-        style={{
-            borderRadius: 20,
-            padding: "5px 20px",
-            backgroundColor: COLORS.primary,
-            fontSize: "18px",
-            textTransform: "none",
-        }}
-        variant="contained"
-    >{text}</Button>;
+const LoginButton = ({ text }) =>{
+
+    const [anchorEl, setAnchorEl] = React.useState(null);
+    const open = Boolean(anchorEl);
+
+    const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+    };
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+
+    return(
+
+        <div>
+
+            <Button
+                style={{
+                    borderRadius: 20,
+                    padding: "5px 20px",
+                    backgroundColor: COLORS.primary,
+                    fontSize: "18px",
+                    textTransform: "none",
+                }}
+                variant="contained"
+                onClick={handleClick}
+            >    
+                {text}
+            </Button>
+            <Menu
+                id="basic-menu"
+                anchorEl={anchorEl}
+                open={open}
+                onClose={handleClose}
+                MenuListProps={{
+                    'aria-labelledby': 'basic-button',
+                }}
+
+            >
+
+                <MenuItem onClick={handleClose} sx={{ fontFamily: 'Inter', fontSize: 25 }}>Favoritos</MenuItem>
+                <MenuItem onClick={handleClose} sx={{ fontFamily: 'Inter', fontSize: 25 }}>Historial de Alquileres</MenuItem>
+
+            </Menu>
+
+        </div>
+    )
+}
+

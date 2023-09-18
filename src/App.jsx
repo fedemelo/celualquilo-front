@@ -10,6 +10,8 @@ import RentHistory from './components/RentHistory';
 import PhoneCard from './components/PhoneCard';
 import examplePhone8 from './assets/phones/HuaweiP60.png';
 import ProductsGrid from './components/productsExposed';
+import Favourites from './components/Favourites';
+
 export default function App() {
     return (
         <div className="App">
@@ -130,13 +132,17 @@ const HU9 = () => {
 
 
 const HU10 = () => {
+    const breadcrumbs = [
+        { href: '/mi-cuenta', text: 'Mi cuenta' },
+        { href: '', text: 'Favoritos' },
+    ];
+
     return (
         <>
-            <h3>HU10: Seleccionar celulares favoritos</h3>
-            <p>Detalla: Santiago Martínez</p>
-            <p>Revisa: Federico Melo </p>
+            <Breadcrumb breadcrumbs={breadcrumbs} />
+            <Favourites />
         </>
-    )
+    );
 }
 
 
