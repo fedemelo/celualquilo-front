@@ -9,6 +9,8 @@ import RentHistory from './components/RentHistory';
 import ProductsGrid from './components/productsExposed';
 import Favourites from './components/Favourites';
 import MainPage from './components/MainPage';
+import ProductsGridFilter from './components/ProductsGridFilter';
+import ProductsGridPrice from './components/ProductGridPrice';
 import './styles/App.css';
 
 
@@ -20,10 +22,10 @@ export default function App() {
             <Header />
 
             {/* Especificar en este punto la historia de usuario que se desea visualizar */}
-            {/* <MainPage /> */}
+            <MainPage /> 
             {/* <HU1 /> */}
             {/* <HU2 /> */}
-            <HU3 />
+            {/* <HU3 /> */}
             {/* <HU4 /> */}
             {/* <HU5 /> */}
             {/* <HU6 /> */}
@@ -31,7 +33,7 @@ export default function App() {
             {/* <HU8 /> */}
             {/* <HU9 /> */}
             {/* <HU10 /> */}
-            {/* <HU11 /> */}
+            {/* <HU13 /> */}
             {/* <HU12 /> */}
 
             <Footer />
@@ -151,8 +153,7 @@ const HU10 = () => {
 const HU11 = () => {
     return (
         <>
-            <h3>HU11: Filtrar celulares por precio</h3>
-            <p>Detalla: David Burgos </p>
+            <ProductsGridPrice />
         </>
     )
 }
@@ -161,8 +162,7 @@ const HU11 = () => {
 const HU12 = () => {
     return (
         <>
-            <h3>HU12: Ver celulares de una marca</h3>
-            <p>Detalla: David Burgos</p>
+            <ProductsGridFilter brand={"iPhone"} />
         </>
     )
 }
