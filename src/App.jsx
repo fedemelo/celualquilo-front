@@ -10,14 +10,19 @@ import RentHistory from './components/RentHistory';
 import PhoneCard from './components/PhoneCard';
 import examplePhone8 from './assets/phones/HuaweiP60.png';
 import ProductsGrid from './components/productsExposed';
+import MainPage from './components/MainPage';
+
+
 export default function App() {
     return (
         <div className="App">
             <Header />
 
             {/* Especificar en este punto la historia de usuario que se desea visualizar */}
-            <HU6 />
+            {/* <HU6 /> */}
             {/* <HU8 /> */}
+            <MainPage />
+
 
             <Footer />
         </div>
