@@ -7,6 +7,9 @@ import GoBack from './components/GoBack';
 import Review from './components/Review';
 import Breadcrumb from './components/BreadCrumb';
 import RentHistory from './components/RentHistory';
+import PhoneDetail from './components/PhoneDetail';
+import RentDetail from './components/RentDetail';
+import Billing from './components/Billing';
 
 export default function App() {
     return (
@@ -14,7 +17,7 @@ export default function App() {
             <Header />
 
             {/* Especificar en este punto la historia de usuario que se desea visualizar */}
-            <HU7 />
+            <HU8 />
             {/* <HU8 /> */}
 
             <Footer />
@@ -60,10 +63,8 @@ const HU3 = () => {
 const HU4 = () => {
     return (
         <>
-            <h3>HU4: Ver información del Teléfono</h3>
-            <p>Detalla: Mariana Ruiz</p>
-            <p>Revisa: David Burgos</p>
-            <RentButton text="Alquilar" />
+            <GoBack text="Detalle de un celular" />
+            <PhoneDetail />
         </>
     )
 }
@@ -72,22 +73,25 @@ const HU4 = () => {
 const HU5 = () => {
     return (
         <>
-            <h3>HU5: Alquilar Teléfono</h3>
-            <p>Detalla: David Burgos</p>
-            <p>Revisa: Santiago Martínez</p>
+            <Breadcrumb breadcrumbs={[{ href: '', text: 'Detalles del Alquiler' }]} />
+            <RentDetail />
         </>
     )
 }
 
 
 const HU6 = () => {
+    const breadcrumbs = [
+        { href: '', text: 'Detalles de Alquiler' },
+        { href: '', text: 'Dirección y Facturación' },
+    ];
+
     return (
         <>
-            <h3>HU6: Realizar pago en plataforma</h3>
-            <p>Detalla: Santiago Martínez</p>
-            <p>Revisa: Federico Melo </p>
+            <Breadcrumb breadcrumbs={breadcrumbs} />
+            <Billing />
         </>
-    )
+    );
 }
 
 
