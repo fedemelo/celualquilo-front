@@ -10,13 +10,15 @@ import RentHistory from './components/RentHistory';
 import PhoneCard from './components/PhoneCard';
 import examplePhone8 from './assets/phones/HuaweiP60.png';
 import ProductsGrid from './components/productsExposed';
+import SignInSide from './components/SignIn';
+
 export default function App() {
     return (
         <div className="App">
             <Header />
 
             {/* Especificar en este punto la historia de usuario que se desea visualizar */}
-            <HU6 />
+            <HU2 />
             {/* <HU8 /> */}
 
             <Footer />
@@ -28,9 +30,6 @@ export default function App() {
 const HU1 = () => {
     return (
         <>
-            <h3>HU1: Registrar un usuario</h3>
-            <p>Detalla: David Burgos</p>
-            <p>Revisa: Santiago Martínez</p>
         </>
     )
 }
@@ -39,9 +38,7 @@ const HU1 = () => {
 const HU2 = () => {
     return (
         <>
-            <h3>HU2: Iniciar Sesión</h3>
-            <p>Detalla: Santiago Martínez</p>
-            <p>Revisa: Federico Melo </p>
+        <SignInSide/>
         </>
     )
 }
@@ -53,7 +50,7 @@ const HU3 = () => {
             <h3>HU3: Ver Teléfonos Disponibles</h3>
             <p>Detalla: Federico Melo </p>
             <p>Revisa: Mariana Ruiz</p>
-            <RentButton text="Alquilar" />
+            <ProductsGrid/>
         </>
     )
 }
@@ -88,7 +85,6 @@ const HU6 = () => {
             <h3>HU6: Realizar pago en plataforma</h3>
             <p>Detalla: Santiago Martínez</p>
             <p>Revisa: Federico Melo </p>
-            <ProductsGrid/>
         </>
         
     )
