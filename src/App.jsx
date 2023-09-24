@@ -28,10 +28,10 @@ export default function App() {
             {/* Especificar en este punto la historia de usuario que se desea visualizar */}
             {/* <MainPage />  */}
             {/* <HU1 /> */}
-            <HU2 />
+            {/* <HU2 /> */}
             {/* <HU3 /> */}
             {/* <HU4 /> */}
-            {/* <HU5/> */}
+            <HU5/>
             {/* <HU6 /> */}
             {/* <HU7 /> */}
             {/* <HU8 /> */}
@@ -74,7 +74,6 @@ const HU4 = () => {
 const HU5 = () => {
     return (
         <>
-            
             <RentDetail />
         </>
     )
