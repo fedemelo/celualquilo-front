@@ -33,7 +33,7 @@ export default function Footer() {
                     <FooterColumn title={title3} items={items3} />
                     <FooterColumn title={title4} items={items4} />
                 </Grid>
-                <Copyright />
+                <Copyright/>
             </Container>
         </Box>
     );
@@ -41,6 +41,7 @@ export default function Footer() {
 
 
 const boxStyle = {
+    marginTop: 7,
     backgroundColor: COLORS.dark,
     bottom: 0,
     width: '100%',
@@ -50,14 +51,13 @@ const boxStyle = {
 }
 
 
-const FooterColumn = ({ title, items }) => (
-    <Grid item xs={12} sm={3}>
+const FooterColumn = ({ title, items }) =>
+    <Grid item xs={12} sm={3} >
         <Title title={title} />
         {items.map((item, index) => (
-            <Item key={index} text={item.text} />
+            <Item text={item} key={index} />
         ))}
     </Grid>
-);
 
 
 const Title = ({ title }) =>
