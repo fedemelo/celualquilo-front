@@ -20,6 +20,8 @@ import PhoneDetail from './components/PhoneDetail';
 import RentDetail from './components/RentDetail';
 import Billing from './components/Billing';
 
+
+
 export default function App() {
     return (
         <div className="App">
