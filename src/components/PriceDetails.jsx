@@ -1,22 +1,12 @@
 import * as React from 'react';
 import Card from '@mui/material/Card';
-import Rating from '@mui/material/Rating';
-import examplePhone from '../assets/phones/iPhone14Pro.png';
 import Typography from '@mui/material/Typography';
-import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import ListItem from '@mui/material/ListItem';
-import List from '@mui/material/List';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import CheckIcon from '@mui/icons-material/Check';
-import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
-import { COLORS } from '../styles/colors';
-import { TextField } from "@mui/material";
 import Divider from '@mui/material/Divider';
 
 const exampleName = "iPhone 14 Pro"
 const moneda = "COP"
+const pricePerDay = 10000
 const examplePrice = "$100.000 "+moneda+"/día"
 const taxPrice = "$19.000 "+moneda+"/día"
 const total = "$119.000 "+moneda+"/día"
@@ -48,7 +38,7 @@ export default function PriceDetails(props) {
                     Precio por {props.dias} días
                 </Typography>
                 <Typography variant='h5'>
-                    {examplePrice}
+                    ${Number(pricePerDay)*(Number(props.dias))} {moneda}/dia
                 </Typography>
            </Box>
            <Box display={"flex"} justifyContent="space-between">
@@ -56,7 +46,7 @@ export default function PriceDetails(props) {
                    Impuestos 19%
                 </Typography>
                 <Typography variant='h5'>
-                    {taxPrice}
+                ${Number(pricePerDay)*(Number(props.dias))*0.19} {moneda}/dia
                 </Typography>
            </Box>
            <Box height="48px">
@@ -67,7 +57,7 @@ export default function PriceDetails(props) {
                    Total + Impuestos
                 </Typography>
                 <Typography variant='h5'>
-                    {total}
+                ${Number(pricePerDay)*(Number(props.dias))*1.19} {moneda}/dia
                 </Typography>
            </Box>
            

@@ -33,7 +33,7 @@ export default function App() {
             {/* <HU2 /> */}
             <HU3 />
             {/* <HU4 /> */}
-            {/* <HU5 /> */}
+            <HU5/>
             {/* <HU6 /> */}
             {/* <HU7 /> */}
             {/* <HU8 /> */}
@@ -76,7 +76,7 @@ const HU4 = () => {
 const HU5 = () => {
     return (
         <>
-            <Breadcrumb breadcrumbs={[{ href: '', text: 'Detalles del Alquiler' }]} />
+            
             <RentDetail />
         </>
     )
