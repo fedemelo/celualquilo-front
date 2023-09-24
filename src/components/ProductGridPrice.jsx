@@ -101,7 +101,7 @@ export default function ProductsGrid(){
 
             
             <Typography variant="H1" sx={titleStyle}>
-                Nuestro Productos
+                Nuestros Productos
             </Typography>
         </div>
         <div style={{alignItems:'center', justifyContent: 'center'}}>

@@ -83,7 +83,7 @@ const examplePastRents = [
 
 export default function RentHistory() {
     return (
-        <Stack spacing={3.5}>
+        <Stack spacing={3.5} marginBottom={11}>
             <style>
                 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400&display=swap');
             </style>

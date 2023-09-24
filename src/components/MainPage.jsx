@@ -78,7 +78,7 @@ export default function MainPage() {
             <style>
                 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400&family=Open+Sans:wght@300;400&display=swap');
             </style>
-            <Stack direction="column" spacing={-0.5}>
+            <Stack direction="column" spacing={-0.5} marginBottom={7}>
                 <MainImageText osm={onlySmallScreen}/>
                 <Card sx={cardStyle}>
                     <BrandsTitleStyle text="Nuestras marcas" />

@@ -90,13 +90,13 @@ const exampleActiveRents = [
 
 export default function ProductsGrid() {
     return (
-        <Stack spacing={3}>
+        <Stack spacing={3} marginBottom={7}>
             <Title />
             <FilterButtons />
             <div style={{ alignItems: 'center', justifyContent: 'center' }}>
                 <Grid container sx={{ marginTop: 'vw', justifyContent: 'center' }}>
                     {exampleActiveRents.map((product, index) => (
-                        <Grid item key={index} sx={{ marginBottom: '3vw', marginLeft: '3vw', marginRight: '3vw' }} alignItems="center" disableEqualOverflow>
+                        <Grid item key={index}  sx={{ marginBottom: '3vw', marginLeft: '3vw', marginRight: '3vw' }} alignItems="center" disableEqualOverflow>
                             <PhoneCard
                                 name={product.name}
                                 image={product.image}

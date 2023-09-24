@@ -16,5 +16,4 @@ const buttonStyle = {
     backgroundColor: "#7724BF",
     fontSize: "18px",
     textTransform: "none",
-    fontFamily: "Open Sans",
 }

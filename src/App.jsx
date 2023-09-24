@@ -16,6 +16,9 @@ import './styles/App.css';
 
 import SignInSide from './components/SignIn';
 import CreateAccountSide from './components/CreateAccount';
+import PhoneDetail from './components/PhoneDetail';
+import RentDetail from './components/RentDetail';
+import Billing from './components/Billing';
 
 export default function App() {
     return (
@@ -23,7 +26,7 @@ export default function App() {
             <Header />
 
             {/* Especificar en este punto la historia de usuario que se desea visualizar */}
-            <MainPage /> 
+            {/* <MainPage />  */}
             {/* <HU1 /> */}
             {/* <HU2 /> */}
             {/* <HU3 /> */}
@@ -34,7 +37,7 @@ export default function App() {
             {/* <HU8 /> */}
             {/* <HU9 /> */}
             {/* <HU10 /> */}
-            {/* <HU13 /> */}
+            {/* <HU11 /> */}
             {/* <HU12 /> */}
 
             <Footer />
@@ -52,13 +55,7 @@ const HU1 = () => {
 }
 
 
-const HU2 = () => {
-    return (
-        <>
-        <SignInSide/>
-        </>
-    )
-}
+const HU2 = () => <SignInSide />
 
 
 const HU3 = () => <ProductsGrid />
@@ -67,9 +64,8 @@ const HU3 = () => <ProductsGrid />
 const HU4 = () => {
     return (
         <>
-            <h3>HU4: Ver información del Teléfono</h3>
-            <p>Detalla: Mariana Ruiz</p>
-            <RentButton text="Alquilar" />
+            <GoBack text="Detalle de un celular" />
+            <PhoneDetail />
         </>
     )
 }
@@ -78,22 +74,25 @@ const HU4 = () => {
 const HU5 = () => {
     return (
         <>
-            <h3>HU5: Alquilar Teléfono</h3>
-            <p>Detalla: Mariana Ruiz</p>
+            <Breadcrumb breadcrumbs={[{ href: '', text: 'Detalles del Alquiler' }]} />
+            <RentDetail />
         </>
     )
 }
 
 
 const HU6 = () => {
+    const breadcrumbs = [
+        { href: '', text: 'Detalles de Alquiler' },
+        { href: '', text: 'Dirección y Facturación' },
+    ];
+
     return (
         <>
-            <h3>HU6: Realizar pago en plataforma</h3>
-            <p>Detalla: Santiago Martínez</p>
-            <p>Revisa: Federico Melo </p>
+            <Breadcrumb breadcrumbs={breadcrumbs} />
+            <Billing />
         </>
-
-    )
+    );
 }
 
 
