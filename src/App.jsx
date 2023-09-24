@@ -1,168 +1,44 @@
 import React from 'react';
-import RentButton from './components/RentButton';
+
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
 import Header from './components/Header';
 import Footer from './components/Footer';
-import GoBack from './components/GoBack';
-import Review from './components/Review';
-import Breadcrumb from './components/BreadCrumb';
-import RentHistory from './components/RentHistory';
-import ProductsGrid from './components/productsExposed';
-import Favourites from './components/Favourites';
 import MainPage from './components/MainPage';
-import ProductsGridFilter from './components/ProductsGridFilter';
-import ProductsGridPrice from './components/ProductGridPrice';
-import './styles/App.css';
-
-
-import SignInSide from './components/SignIn';
+import ProductsGrid from './components/productsExposed';
 import CreateAccountSide from './components/CreateAccount';
-import PhoneDetail from './components/PhoneDetail';
+import SignInSide from './components/SignIn';
+import Favourites from './components/Favourites';
+import RentHistory from './components/RentHistory';
+import Review from './components/Review';
 import RentDetail from './components/RentDetail';
 import Billing from './components/Billing';
+
+import './styles/App.css';
+
 
 export default function App() {
     return (
         <div className="App">
             <Header />
-
-            {/* Especificar en este punto la historia de usuario que se desea visualizar */}
-            <MainPage /> 
-            {/* <HU1 /> */}
-            {/* <HU2 /> */}
-            {/* <HU3 /> */}
-            {/* <HU4 /> */}
-            {/* <HU5 /> */}
-            {/* <HU6 /> */}
-            {/* <HU7 /> */}
-            {/* <HU8 /> */}
-            {/* <HU9 /> */}
-            {/* <HU10 /> */}
-            {/* <HU11 /> */}
-            {/* <HU12 /> */}
-
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={<MainPage />} />   
+                    <Route path="/products" element={<ProductsGrid titleText={"Nuestros Productos"} />} />
+                    <Route path="/IPhone" element={<ProductsGrid titleText={"IPhone"} />} />
+                    <Route path="/Samsung" element={<ProductsGrid titleText={"Samsung"} />} />
+                    <Route path="/Huawei" element={<ProductsGrid titleText={"Huawei"} />} />
+                    <Route path="/Xiaomi" element={<ProductsGrid titleText={"Xiaomi"} />} />
+                    <Route path="/Register" element={<CreateAccountSide />} />
+                    <Route path="/Login" element={<SignInSide />} />
+                    <Route path="/Favourites" element={<Favourites />} />
+                    <Route path="/RentHistory" element={<RentHistory />} />
+                    <Route path="/products/:productId" element={<Review />} />
+                    <Route path="/products/:productId/rent" element={<RentDetail />} />
+                    <Route path="/products/:productId/billing" element={<Billing />} />
+                </Routes> 
+            </BrowserRouter>
             <Footer />
         </div>
     );
 }
-
-
-const HU1 = () => {
-    return (
-        <>
-            <CreateAccountSide />
-        </>
-    )
-}
-
-
-const HU2 = () => <SignInSide />
-
-
-const HU3 = () => <ProductsGrid />
-
-
-const HU4 = () => {
-    return (
-        <>
-            <GoBack text="Detalle de un celular" />
-            <PhoneDetail />
-        </>
-    )
-}
-
-
-const HU5 = () => {
-    return (
-        <>
-            <Breadcrumb breadcrumbs={[{ href: '', text: 'Detalles del Alquiler' }]} />
-            <RentDetail />
-        </>
-    )
-}
-
-
-const HU6 = () => {
-    const breadcrumbs = [
-        { href: '', text: 'Detalles de Alquiler' },
-        { href: '', text: 'Dirección y Facturación' },
-    ];
-
-    return (
-        <>
-            <Breadcrumb breadcrumbs={breadcrumbs} />
-            <Billing />
-        </>
-    );
-}
-
-
-const HU7 = () => {
-    const breadcrumbs = [
-        { href: '/mi-cuenta', text: 'Mi cuenta' },
-        { href: '', text: 'Historial de Alquileres' },
-    ];
-
-    return (
-        <>
-            <Breadcrumb breadcrumbs={breadcrumbs} />
-            <RentHistory />
-        </>
-    );
-}
-
-
-const HU8 = () =>
-    <>
-        <GoBack text="Escribir reseña" />
-        <Review />
-    </>
-
-
-
-const HU9 = () => {
-    const breadcrumbs = [
-        { href: '/mi-cuenta', text: 'Mi cuenta' },
-        { href: '', text: 'Historial de Alquileres' },
-    ];
-
-    return (
-        <>
-            <Breadcrumb breadcrumbs={breadcrumbs} />
-            <RentHistory />
-        </>
-    );
-}
-
-
-const HU10 = () => {
-    const breadcrumbs = [
-        { href: '/mi-cuenta', text: 'Mi cuenta' },
-        { href: '', text: 'Favoritos' },
-    ];
-
-    return (
-        <>
-            <Breadcrumb breadcrumbs={breadcrumbs} />
-            <Favourites />
-        </>
-    );
-}
-
-
-const HU11 = () => {
-    return (
-        <>
-            <ProductsGridPrice />
-        </>
-    )
-}
-
-
-const HU12 = () => {
-    return (
-        <>
-            <ProductsGridFilter brand={"iPhone"} />
-        </>
-    )
-}
-

@@ -33,7 +33,7 @@ const exampleActiveRents = [
     },
 ]
 
-export default function RentHistory() {
+export default function Favourites() {
     return (
         <Stack spacing={3.5} marginBottom={11}>
             <style>

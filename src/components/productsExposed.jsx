@@ -88,11 +88,19 @@ const exampleActiveRents = [
 ]
 
 
-export default function ProductsGrid() {
+export default function ProductsGrid({ titleText }) {
+
+    const [selectedButton, setSelectedButton] = useState(null);
+
+    const handleButtonClick = (text) => {
+        setSelectedButton(text);
+    };
+
+
     return (
-        <Stack spacing={3} marginBottom={7}>
-            <Title />
-            <FilterButtons />
+        <Stack spacing={3}>
+            <Title titleText={titleText}/>
+            <FilterButtons selectedButton={selectedButton} handleButtonClick={handleButtonClick}/>
             <div style={{ alignItems: 'center', justifyContent: 'center' }}>
                 <Grid container sx={{ marginTop: 'vw', justifyContent: 'center' }}>
                     {exampleActiveRents.map((product, index) => (
@@ -116,12 +124,7 @@ export default function ProductsGrid() {
 };
 
 
-const FilterButtons = () => {
-    const [selectedButton, setSelectedButton] = useState(null);
-
-    const handleButtonClick = (text) => {
-        setSelectedButton(text);
-    };
+const FilterButtons = ({selectedButton, handleButtonClick}) => {
 
     return (
         <Stack direction="row" spacing={2} sx={{ justifyContent: 'center' }}>
@@ -174,10 +177,10 @@ const FilterButton = ({ text, selected, onClick }) => {
 };
 
 
-const Title = () =>
+const Title = ({ titleText }) =>
     <div style={centerStyle} disableEqualOverflow>
         <Typography variant="H1" sx={titleStyle}>
-            Nuestros Productos
+            {titleText}
         </Typography>
     </div>
 
