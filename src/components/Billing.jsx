@@ -66,22 +66,13 @@ const RentButton = ({ text }) => {
 const BillingAddress = () => {
 
     const [formValues, setFormValues] = useState({ address: "", city: "", number: "0" })
-
-    const handleAddressChange = ((e) => {
-        setFormValues({ ...formValues, address: e.target.value })
-    });
-
-    const handleCityChange = ((e) => {
-        setFormValues({ ...formValues, city: e.target.value })
-    });
-
-    const handleNumberChange = ((e) => {
-        setFormValues({ ...formValues, number: e.target.value })
-    });
+    const [clickedFields, setClickedFields] = useState({ address: false, city: false, number: false})
 
 
     const getProblemInAddress = () => {
         const address = formValues.address.trim();
+
+        if (!clickedFields.address) return null;
 
         if (!address.length > 0) return "Debes ingresar una dirección."
 
@@ -114,6 +105,8 @@ const BillingAddress = () => {
 
         const city = formValues.city.trim();
 
+        if (!clickedFields.city) return null;
+
         if (city.length === 0) return "Debes ingresar una ciudad."
 
         if (/\d/.test(city)) return "La ciudad no puede contener números."
@@ -124,6 +117,8 @@ const BillingAddress = () => {
 
     const getProblemInNumber = () => {
         const number = formValues.number.trim();
+
+        if (!clickedFields.number) return null;
 
         if (number.length === 0) return "Debes ingresar un número de contacto."
 
@@ -147,7 +142,8 @@ const BillingAddress = () => {
                         id="outlined-required"
                         label="Dirección"
                         defaultValue=""
-                        onChange={handleAddressChange}
+                        onChange={(e) => setFormValues({ ...formValues, address: e.target.value })}
+                        onClick={() => setClickedFields({ ...clickedFields, address: true })}
                     />
                     {<Typography variant='body1' color={"red"}>{getProblemInAddress()}</Typography>}
                 </FormControl>
@@ -159,7 +155,8 @@ const BillingAddress = () => {
                         id="outlined-required"
                         label="Ciudad"
                         defaultValue=""
-                        onChange={handleCityChange}
+                        onChange={(e) => setFormValues({ ...formValues, city: e.target.value })}
+                        onClick={() => setClickedFields({ ...clickedFields, city: true })}
                     />
                     {<Typography variant='body1' color={"red"}>{getProblemInCity()}</Typography>}
                 </FormControl>
@@ -174,7 +171,8 @@ const BillingAddress = () => {
                         id="outlined-required"
                         label="Número de contacto"
                         defaultValue=""
-                        onChange={handleNumberChange}
+                        onChange={(e) => setFormValues({ ...formValues, number: e.target.value })}
+                        onClick={() => setClickedFields({ ...clickedFields, number: true })}
                     />
                     {<Typography variant='body1' color={"red"}>{getProblemInNumber()}</Typography>}
                 </FormControl>
