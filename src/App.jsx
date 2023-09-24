@@ -12,7 +12,7 @@ import MainPage from './components/MainPage';
 import ProductsGridFilter from './components/ProductsGridFilter';
 import ProductsGridPrice from './components/ProductGridPrice';
 import './styles/App.css';
-
+import UserProfile from './components/UserProfile';
 
 import SignInSide from './components/SignIn';
 import CreateAccountSide from './components/CreateAccount';
@@ -39,7 +39,7 @@ export default function App() {
             {/* <HU10 /> */}
             {/* <HU11 /> */}
             {/* <HU12 /> */}
-
+            <HU13 />
             <Footer />
         </div>
     );
@@ -166,3 +166,13 @@ const HU12 = () => {
     )
 }
 
+const HU13 = () => {
+    const user = {
+        name: 'John Doe',
+        email: 'john@example.com',
+      };
+    return (
+          
+          <UserProfile user={user} />
+    )
+}
