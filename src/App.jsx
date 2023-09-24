@@ -28,11 +28,11 @@ export default function App() {
             {/* Especificar en este punto la historia de usuario que se desea visualizar */}
             {/* <MainPage />  */}
             {/* <HU1 /> */}
-            {/* <HU2 /> */}
+            <HU2 />
             {/* <HU3 /> */}
             {/* <HU4 /> */}
             {/* <HU5/> */}
-            <HU6 />
+            {/* <HU6 /> */}
             {/* <HU7 /> */}
             {/* <HU8 /> */}
             {/* <HU9 /> */}
