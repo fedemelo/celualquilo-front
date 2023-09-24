@@ -141,8 +141,6 @@ const CommentArea = () => {
                 >¡Dínos tu opinión!</FormLabel>
                 <RatingStars />
                 <Textarea
-                    paddingBlock="16px"
-                    paddingInline="16px"
                     placeholder="Escribe tu reseña aquí..."
                     minRows={3}
                     endDecorator={
