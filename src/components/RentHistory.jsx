@@ -37,6 +37,12 @@ const exampleActiveRents = [
         cost: "$ 15 000 COP / día",
         buttonText: "Renovar Alquiler",
     },
+    {
+        name: "iPhone 13",
+        image: examplePhone4,
+        cost: "$ 10 000 COP / día",
+        buttonText: "Alquilar",
+    },
 ]
 
 
@@ -114,9 +120,9 @@ const sectionStyle = {
 
 const PhonesRow = ({ phones }) => {
     return (
-        <Grid container spacing={2} padding={4} >
-            {phones.map((phone) => (
-                <Grid item xs={4} sm={4}>
+        <Grid container spacing={3} padding={2} >
+            {phones.map((phone, index) => (
+                <Grid item xs={12} sm={6} md={3} key={index}>
                     <PhoneCardSimple {...phone} />
                 </Grid>
             ))}

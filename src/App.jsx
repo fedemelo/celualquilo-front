@@ -9,6 +9,7 @@ import ProductsGrid from './components/productsExposed';
 import Favourites from './components/Favourites';
 import ProductsGridFilter from './components/ProductsGridFilter';
 import ProductsGridPrice from './components/ProductGridPrice';
+import MainPage from './components/MainPage';
 import './styles/App.css';
 
 
@@ -31,11 +32,11 @@ export default function App() {
             {/* <HU2 /> */}
             {/* <HU3 /> */}
             {/* <HU4 /> */}
-            <HU5/>
+            {/* <HU5/> */}
             {/* <HU6 /> */}
             {/* <HU7 /> */}
             {/* <HU8 /> */}
-            {/* <HU9 /> */}
+            <HU9 />
             {/* <HU10 /> */}
             {/* <HU11 /> */}
             {/* <HU12 /> */}

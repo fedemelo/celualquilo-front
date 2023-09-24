@@ -93,14 +93,14 @@ export default function ProductsGrid() {
         <Stack marginBottom={7}>
             <Title />
             <Grid container spacing={0} justifyContent="center" sx={{ marginTop: 'vw' }}>
-                <Grid item xs={6} sm={6} md={6} lg={12} sx={{marginLeft:'6rem',marginRight:'6rem',marginTop:'3rem',marginBottom:'3rem'}}>
-                   <FilterButtons /> 
+                <Grid item xs={6} sm={6} md={6} lg={12} sx={{ marginLeft: '6rem', marginRight: '6rem', marginTop: '3rem', marginBottom: '3rem' }}>
+                    <FilterButtons />
                 </Grid>
             </Grid>
             <div style={{ alignItems: 'center', justifyContent: 'center' }}>
                 <Grid container sx={{ marginTop: 'vw', justifyContent: 'center' }}>
                     {exampleActiveRents.map((product, index) => (
-                        <Grid item key={index}  sx={{ marginBottom: '3vw', marginLeft: '3vw', marginRight: '3vw'}} alignItems="center" disableEqualOverflow>
+                        <Grid item key={index} sx={{ marginBottom: '3vw', marginLeft: '3vw', marginRight: '3vw' }} alignItems="center" disableEqualOverflow>
                             <PhoneCard
                                 name={product.name}
                                 image={product.image}
@@ -122,44 +122,44 @@ export default function ProductsGrid() {
 
 const FilterButtons = () => {
     const [selectedButton, setSelectedButton] = useState(null);
-  
+
     const handleButtonClick = (text) => {
-      setSelectedButton(text);
+        setSelectedButton(text);
     };
-  
+
     return (
-      <Grid container spacing={2} sx={{alignContent:'center'}}>
-        <Grid item xs={12} sm={12} md={6} lg={3}>
-          <FilterButton
-            text="Todos"
-            selected={selectedButton === 'Todos'}
-            onClick={() => handleButtonClick('Todos')}
-          />
+        <Grid container spacing={2} sx={{ alignContent: 'center' }}>
+            <Grid item xs={12} sm={12} md={6} lg={3}>
+                <FilterButton
+                    text="Todos"
+                    selected={selectedButton === 'Todos'}
+                    onClick={() => handleButtonClick('Todos')}
+                />
+            </Grid>
+            <Grid item xs={12} sm={12} md={6} lg={3}>
+                <FilterButton
+                    text="Populares"
+                    selected={selectedButton === 'Populares'}
+                    onClick={() => handleButtonClick('Populares')}
+                />
+            </Grid>
+            <Grid item xs={12} sm={12} md={6} lg={3}>
+                <FilterButton
+                    text="Última Generación"
+                    selected={selectedButton === 'Última Generación'}
+                    onClick={() => handleButtonClick('Última Generación')}
+                />
+            </Grid>
+            <Grid item xs={12} sm={12} md={6} lg={3}>
+                <FilterButton
+                    text="En Descuento"
+                    selected={selectedButton === 'En Descuento'}
+                    onClick={() => handleButtonClick('En Descuento')}
+                />
+            </Grid>
         </Grid>
-        <Grid item xs={12} sm={12} md={6} lg={3}>
-          <FilterButton
-            text="Populares"
-            selected={selectedButton === 'Populares'}
-            onClick={() => handleButtonClick('Populares')}
-          />
-        </Grid>
-        <Grid item xs={12} sm={12} md={6} lg={3}>
-          <FilterButton
-            text="Última Generación"
-            selected={selectedButton === 'Última Generación'}
-            onClick={() => handleButtonClick('Última Generación')}
-          />
-        </Grid>
-        <Grid item xs={12} sm={12} md={6} lg={3}>
-          <FilterButton
-            text="En Descuento"
-            selected={selectedButton === 'En Descuento'}
-            onClick={() => handleButtonClick('En Descuento')}
-          />
-        </Grid>
-      </Grid>
     );
-  };
+};
 
 const FilterButton = ({ text, selected, onClick }) => {
 

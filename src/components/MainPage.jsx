@@ -172,8 +172,8 @@ const BrandsTitleStyle = ({ text }) =>
 const PhonesRow = ({ phones }) => {
     return (
         <Grid container spacing={3} padding={2} >
-            {phones.map((phone) => (
-                <Grid item xs={12} sm={6} md={3}>
+            {phones.map((phone, index) => (
+                <Grid item xs={12} sm={6} md={3} key={index}>
                     <PhoneCardSimple {...phone} />
                 </Grid>
             ))}
