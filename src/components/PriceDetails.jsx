@@ -4,12 +4,8 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
 
-const exampleName = "iPhone 14 Pro"
 const moneda = "COP"
 const pricePerDay = 10000
-const examplePrice = "$100.000 "+moneda+"/día"
-const taxPrice = "$19.000 "+moneda+"/día"
-const total = "$119.000 "+moneda+"/día"
 
 const cardStyle = {
     // centered

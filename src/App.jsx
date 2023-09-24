@@ -1,5 +1,4 @@
 import React from 'react';
-import RentButton from './components/RentButton';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import GoBack from './components/GoBack';
@@ -8,7 +7,6 @@ import Breadcrumb from './components/BreadCrumb';
 import RentHistory from './components/RentHistory';
 import ProductsGrid from './components/productsExposed';
 import Favourites from './components/Favourites';
-import MainPage from './components/MainPage';
 import ProductsGridFilter from './components/ProductsGridFilter';
 import ProductsGridPrice from './components/ProductGridPrice';
 import './styles/App.css';
@@ -29,11 +27,11 @@ export default function App() {
 
             {/* Especificar en este punto la historia de usuario que se desea visualizar */}
             {/* <MainPage />  */}
-            {/* <HU1 /> */}
+            <HU1 />
             {/* <HU2 /> */}
-            <HU3 />
+            {/* <HU3 /> */}
             {/* <HU4 /> */}
-            <HU5/>
+            {/* <HU5/> */}
             {/* <HU6 /> */}
             {/* <HU7 /> */}
             {/* <HU8 /> */}

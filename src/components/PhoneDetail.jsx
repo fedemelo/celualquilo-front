@@ -11,10 +11,7 @@ import CheckIcon from '@mui/icons-material/Check';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import CardContent from '@mui/material/CardContent';
-import { Component } from 'react';
-import { Textarea } from '@mui/joy';
-import { FormLabel } from '@mui/material';
-import { Box } from '@mui/system';
+import FormLabel from '@mui/material/FormLabel';
 import { COLORS } from '../styles/colors';
 
 

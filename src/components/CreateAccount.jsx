@@ -26,6 +26,7 @@ export default function CreateAccountSide() {
     };
 
     const [formValues, setFormValues] = useState({name: "", email: "", password: "", verifiyPassword: "", showPassword: false, showVerifyPassword: false })
+    const [clickedField, setClickedField] = useState({name: false, email: false, password: false, verifiyPassword: false})
 
 
     const handleSignIn = () => {
@@ -43,25 +44,11 @@ export default function CreateAccountSide() {
         setFormValues({ ...formValues, showVerifyPassword: !formValues.showVerifyPassword });
     };
 
-    const handleNameChange = (e) => {  
-        setFormValues({ ...formValues, name: e.target.value });
-    }
-
-    const handleEmailChange = (e) => {
-        setFormValues({ ...formValues, email: e.target.value });
-    }
-
-    const handlePasswordChange = (e) => {
-        setFormValues({ ...formValues, password: e.target.value });
-    }
-
-    const handleVerifyPasswordChange = (e) => {
-        setFormValues({ ...formValues, verifyPassword: e.target.value });
-    }
-
     const getProblemInName = () => {
 
         const name = formValues.name? formValues.name.trim() : ""
+
+        if (!clickedField.name) return "";
 
         if (name === "") return "El nombre no puede estar vacío.";
 
@@ -73,6 +60,8 @@ export default function CreateAccountSide() {
     const getProblemInEmail = () => {
 
         const email = formValues.email? formValues.email.trim() : ""
+
+        if (!clickedField.email) return "";
 
         if (email === "") return "El correo no puede estar vacío.";
 
@@ -92,6 +81,8 @@ export default function CreateAccountSide() {
     const getProblemInPassword = () => {
 
         const password = formValues.password? formValues.password.trim() : ""
+
+        if (!clickedField.password) return "";
 
         if (password === "") return "La contraseña no puede estar vacía";
 
@@ -113,6 +104,8 @@ export default function CreateAccountSide() {
 
         const password = formValues.password? formValues.password.trim() : ""
 
+        if (!clickedField.verifyPassword) return "";
+
         const verifyPassword = formValues.verifyPassword? formValues.verifyPassword.trim() : ""
 
         if (verifyPassword === "") return "Escriba de nuevo la contraseña";
@@ -130,19 +123,19 @@ export default function CreateAccountSide() {
             backgroundColor: '#E6CAFF',
         }}
         >
-            <Grid container component="main"
+            <Grid container={true} component="main"
                 sx={{
                     height: '100vh',
-                    marginTop: '10vw',
+                    marginTop: '7vw',
                     justifyContent: 'center',
-                    marginBottom: '5vw',
+                    marginBottom: '20vw',  // Para que no se pegue al footer
                 }}>
                 <style>
 
                     @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');
                 </style>
                 <CssBaseline />
-                <Grid
+                <Grid 
                     item
                     sm={4}
                     md={6}
@@ -197,7 +190,8 @@ export default function CreateAccountSide() {
                                 name="email"
                                 autoComplete="email"
                                 autoFocus
-                                onChange={handleNameChange}
+                                onChange={(e) => setFormValues({ ...formValues, name: e.target.value })}
+                                onClick={() => setClickedField({ ...clickedField, name: true })}
                                 sx={{
                                     "& .MuiFilledInput-root": {
                                         background: "rgb(255, 255, 255)"
@@ -216,7 +210,8 @@ export default function CreateAccountSide() {
                                 name="email"
                                 autoComplete="email"
                                 autoFocus
-                                onChange={handleEmailChange}
+                                onChange={(e) => setFormValues({ ...formValues, email: e.target.value })}
+                                onClick={() => setClickedField({ ...clickedField, email: true })}
                                 sx={{
                                     "& .MuiFilledInput-root": {
                                         background: "rgb(255, 255, 255)"
@@ -239,7 +234,8 @@ export default function CreateAccountSide() {
                                 }}
                                 type={formValues.showPassword ? 'text' : 'password'}
                                 value={formValues.password}
-                                onChange={handlePasswordChange}
+                                onChange={(e) => setFormValues({ ...formValues, password: e.target.value })}
+                                onClick={() => setClickedField({ ...clickedField, password: true })}
                                 InputProps={{
                                     endAdornment: (
                                         <InputAdornment position="end">
@@ -269,7 +265,8 @@ export default function CreateAccountSide() {
                                 }}
                                 type={formValues.showVerifyPassword ? 'text' : 'password'}
                                 value={formValues.verifyPassword}
-                                onChange={handleVerifyPasswordChange}
+                                onChange={(e) => setFormValues({ ...formValues, verifyPassword: e.target.value })}
+                                onClick={() => setClickedField({ ...clickedField, verifyPassword: true })}
                                 InputProps={{
                                     endAdornment: (
                                         <InputAdornment position="end">
