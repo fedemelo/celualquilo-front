@@ -8,6 +8,7 @@ import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import StarIcon from '@mui/icons-material/Star';
+import { Grid } from '@mui/material';
 
 
 export default function PhoneCard({ name, image, cost, buttonText, rating}) {
@@ -22,58 +23,60 @@ export default function PhoneCard({ name, image, cost, buttonText, rating}) {
                 
                 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');
             </style>
-
-            <MediaRatio image={image} name={name} />
-            <CardContent>
-                <Stack spacing={3}>                    
-                    <Typography gutterBottom variant="h5" component="div"
+            
+            <Box px={5} sx={{marginTop:'1.5rem'}} >
+                <Typography gutterBottom variant="h5" component="div"
                         sx={nameStyle}
                     >
                         {name}
                     </Typography>
-                    <div style={{ display: 'flex'}}>
-                        <Typography variant="body2" color="text.secondary"
-                            sx={priceStyle}>
-                            {cost}
-                        </Typography>
-                        <Typography
-                            variant="body2"
-                            color="text.secondary"
-                            sx={ratingStyle} 
-                            >
-                            {rating}
-                        </Typography>    
-                        <StarIcon
-                            sx={{ color: '#9E30FF', fontSize: '1.2vw',marginLeft: "0.4vw"}} 
-                            fontSize="small"
-                        />
-                        
-                    </div>
-                    <div style={{ display: 'flex', alignItems: 'center' }}>
-                    <div
-                            style={{
-                                display: 'flex',
-                                alignItems: 'center',
-                                cursor: 'pointer',
-                            }}
-                        onClick={toggleFavorite}
-                        >
-                        <FavoriteIcon
-                            sx={{ color: isFavorite ? '#9E30FF' : '#7f7f7f',marginRight: "1vw",fontSize: "2vw"}}
+                        <Grid container spacing={0}>
+                            <Grid item xs={9}>
+                               <Typography xs={8} variant="body2" color="text.secondary"
+                                    sx={priceStyle}>
+                                    {cost} 
+                                </Typography>
+                            </Grid>
+                            <Grid item xs={2}>
+                                <Typography
+                                    variant="body2"
+                                    color="text.secondary"
+                                    sx={ratingStyle} 
+                                >
+                                {rating}
+                                </Typography> 
+                            </Grid> 
+                            <Grid item xs={1} sx={{ verticalAlign: "middle"}}>
+                                <StarIcon
+                                    sx={{ color: '#9E30FF', fontSize: '1.2rem',marginLeft: "0.4vw",marginTop: "0.2vw"}} 
+                                    fontSize="small"
+                                />  
+                            </Grid>  
+                        </Grid>
+            </Box>
+            <MediaRatio image={image} name={name} />
+            <CardContent>
+                <Grid container spacing={0} sx={{alignItems:"center"}}>
+                    <Grid item xs={2} onClick={toggleFavorite}>
+                    <FavoriteIcon
+                            sx={{ color: isFavorite ? '#9E30FF' : '#7f7f7f',fontSize: "2rem",verticalAlign: "middle"}}
                             fontSize="medium"
-                        />
-                    </div>
+                    />
+                    </Grid>
+                    <Grid item xs={10}>
                     {buttonText ? <LastButton text={buttonText} /> : null}
-                        
-                    </div>       
-                </Stack>
+                    </Grid>
+                </Grid>         
             </CardContent>
         </Card >
     );
 }
 const cardStyle = {
     height: "100%",
-    width: "20.84vw",
+    width: "20rem",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
     backgroundColor: "#F1F1F1",
     borderRadius: "15px",
     boxShadow: 3,
@@ -81,19 +84,16 @@ const cardStyle = {
 
 const ratingStyle = {
     textAlign: "right",
-    verticalAlign: "middle",
     fontSize: "16px",
     fontFamily: "Open Sans",
     lineHeight: "1.5rem",
     color: "#495057",
     fontWeight: "medium",
     marginLeft: "1vw",
-    width: "60%",
 }
 
 const priceStyle = {
     textAlign: "left",
-    verticalAlign: "middle",
     fontSize: "16px",
     fontFamily: "Open Sans",
     lineHeight: "1.5rem",
@@ -106,7 +106,6 @@ const nameStyle = {
     verticalAlign: "middle",
     fontSize: "20px",
     fontFamily: "Open Sans",
-    lineHeight: "32%",
     color: "#495057",
     fontWeight: "bold",
 }
