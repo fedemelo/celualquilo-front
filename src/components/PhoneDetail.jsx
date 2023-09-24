@@ -10,6 +10,11 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import CheckIcon from '@mui/icons-material/Check';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
+import CardContent from '@mui/material/CardContent';
+import { Component } from 'react';
+import { Textarea } from '@mui/joy';
+import { FormLabel } from '@mui/material';
+import { Box } from '@mui/system';
 import { COLORS } from '../styles/colors';
 
 
@@ -24,8 +29,62 @@ const exampleSpecs = [
     "Chip A14 Bionic; Neural Engine de última generación",
 ]
 
+const exampleReviews = [
+    {
+        titulo: "Una experiencia móvil sin preocupaciones con CeluAlquilo.com",
+        contenido: "Mi experiencia con CeluAlquilo.com fue impecable. La plataforma ofreció una amplia selección de teléfonos de calidad, una entrega rápida y un proceso de devolución sencillo. El teléfono funcionó de manera excelente durante mi alquiler. Recomiendo CeluAlquilo.com para soluciones de telefonía temporal.",
+        rating: 4.5
+    },
+    {
+        titulo: "Gran servicio de alquiler de teléfonos",
+        contenido: "Utilicé CeluAlquilo.com para alquilar un teléfono durante mis vacaciones y quedé muy satisfecho. El proceso de pedido fue fácil, el teléfono llegó a tiempo y funcionó a la perfección. Sin duda, volveré a utilizar este servicio en el futuro.",
+        rating: 4.0
+    },
+    {
+        titulo: "La solución perfecta para viajes de negocios",
+        contenido: "Como viajero de negocios frecuente, he utilizado CeluAlquilo.com en varias ocasiones. Cada vez, la experiencia ha sido excelente. Los teléfonos siempre están en excelente estado, y la entrega y devolución son muy convenientes.",
+        rating: 4.2
+    },
+    {
+        titulo: "Rápido y confiable",
+        contenido: "Necesitaba un teléfono de repuesto temporalmente y CeluAlquilo.com fue la elección perfecta. El proceso de alquiler fue rápido y sin complicaciones, y el teléfono funcionó sin problemas durante todo el período de alquiler.",
+        rating: 4.8
+    },
+    {
+        titulo: "Excelente servicio al cliente",
+        contenido: "Tuve algunas preguntas sobre el proceso de alquiler y el equipo de CeluAlquilo.com fue muy servicial y amable. Me proporcionaron toda la información que necesitaba de manera clara y rápida. Un servicio al cliente excepcional.",
+        rating: 4.5
+    },
+    {
+        titulo: "Gran variedad de modelos",
+        contenido: "Me impresionó la amplia selección de modelos disponibles en CeluAlquilo.com. Pude elegir un teléfono que se adaptara a mis necesidades y presupuesto. La calidad de los dispositivos es notable.",
+        rating: 4.3
+    },
+    {
+        titulo: "Perfecto para viajes internacionales",
+        contenido: "Alquilé un teléfono de CeluAlquilo.com para un viaje internacional y fue una elección inteligente. Pude usarlo sin problemas en el extranjero y evitar costosos cargos de roaming. Muy recomendado.",
+        rating: 4.6
+    },
+    {
+        titulo: "Proceso de alquiler sencillo",
+        contenido: "El proceso de alquiler en CeluAlquilo.com es muy fácil de seguir. Solo tomó unos minutos completar mi pedido y elegir las opciones que necesitaba. La conveniencia es inigualable.",
+        rating: 4.1
+    },
+    {
+        titulo: "Sin compromisos",
+        contenido: "Siempre dudaba en comprar un teléfono para necesidades temporales. Con CeluAlquilo.com, no tengo que hacerlo. Puedo obtener un teléfono de calidad cuando lo necesito y devolverlo cuando ya no lo necesito.",
+        rating: 4.4
+    },
+    {
+        titulo: "Una solución inteligente",
+        contenido: "CeluAlquilo.com ha sido una solución inteligente para mis necesidades de telefonía temporal. Ofrecen un servicio confiable y conveniente que recomiendo a cualquiera que busque un teléfono de alquiler.",
+        rating: 4.7
+    }
+];
+
+
 const moneda = "COP"
-const examplePrice = "$10.000 "+moneda+"/día"
+const examplePrice = "$10.000 " + moneda + "/día"
 
 
 export default function Review() {
@@ -60,8 +119,12 @@ export default function Review() {
                         </Typography>
                         <RentButton text="Alquilar" />
                     </Grid>
-
                 </Grid>
+
+                <CardContent>
+                    <CommentArea />
+                </CardContent>
+
             </Card>
         </Stack>
     );
@@ -114,4 +177,47 @@ const RentButton = ({ text }) =>
     >{text}</Button>;
 
 
+const CommentArea = () => <Stack spacing={1.3}>
+    <FormLabel
+        sx={{
+            fontFamily: 'Inter',
+            fontStyle: 'normal',
+            fontSize: '2rem',
+            lineHeight: '22px',
+            color: '#202020',
+        }}
+    >Reseñas de otros usuarios</FormLabel>
+    <UserReviews reviews={exampleReviews} />
+</Stack>
+
+
+const UserReviews = ({ reviews }) =>
+    <Stack spacing={3}>
+        {reviews.map((review, index) => (
+            <Card key={index} sx={{ textAlign: 'left'}}>
+                <CardContent>
+                    <Typography variant="h6" color="text.primary">
+                        {review.titulo}
+                    </Typography>
+
+                    <hr style={{
+                        color: 'darkgray',
+                        height: .1,
+                    }} />
+
+
+                    <Typography variant="body2" color="text.primary">
+                        {review.contenido}
+                    </Typography>
+
+                    {/* <hr style={{
+                        color: 'darkgray',
+                        height: .1,
+                    }} /> */}
+
+                    <Rating name="read-only" value={review.rating} readOnly size="large"/>
+                </CardContent>
+            </Card>
+        ))}
+    </Stack>
 
