@@ -4,15 +4,9 @@ import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 import Toolbar from '@mui/material/Toolbar';
 
-function handleClick(event) {
-    event.preventDefault();
-    console.info('You clicked a breadcrumb.');
-}
-
 export default function Breadcrumb({ breadcrumbs }) {
     const handleClick = (event) => {
         event.preventDefault();
-        // Handle click logic here
     };
 
     return (

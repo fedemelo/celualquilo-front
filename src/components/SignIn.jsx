@@ -176,7 +176,7 @@ export default function SignInSide() {
                                             <IconButton
                                                 edge="end"
                                                 onClick={togglePasswordVisibility}
-                                                tabIndex="-1" // Para evitar que el botón sea enfocable
+                                                tabIndex={-1} // Para evitar que el botón sea enfocable
                                             >
                                                 {formValues.showPassword ? <Visibility /> : <VisibilityOff />}
                                             </IconButton>

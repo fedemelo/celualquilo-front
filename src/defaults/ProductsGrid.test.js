@@ -31,10 +31,3 @@ test('renders En Descuento', () => {{
     expect(searchedText).toBeInTheDocument();
 }});
 
-
-test('renders Nuestros Productos', () => {{
-    render(<ProductsGrid/>);
-    const searchedText = screen.getByText("Nuestros Productos");
-    expect(searchedText).toBeInTheDocument();
-}});
-

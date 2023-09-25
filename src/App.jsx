@@ -13,6 +13,9 @@ import SignInSide from './components/SignIn';
 import CreateAccountSide from './components/CreateAccount';
 import RentDetail from './components/RentDetail';
 import Billing from './components/Billing';
+import PhoneDetail from './components/PhoneDetail';
+import ProductsGridPrice from './components/ProductsGridPrice';
+import ProductsGridFilter from './components/ProductsGridFilter';
 
 
 
@@ -43,6 +46,7 @@ export default function App() {
     return (
         <div className="App">
             <Header />
+            
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<MainPage />} />   
@@ -55,11 +59,17 @@ export default function App() {
                     <Route path="/Login" element={<SignInSide />} />
                     <Route path="/Favourites" element={<Favourites />} />
                     <Route path="/RentHistory" element={<RentHistory />} />
-                    <Route path="/products/:productId" element={<Review />} />
+                    <Route path="/products/:productId" element={<PhoneDetail />} />
+                    <Route path="/products/:productId/review" element={<Review />} />
                     <Route path="/products/:productId/rent" element={<RentDetail />} />
                     <Route path="/products/:productId/billing" element={<Billing />} />
+
+                    // TODO: Arreglar
+                    <Route path="/ProductsGridPrice" element={<ProductsGridPrice />} />
+                    <Route path="/ProductsGridFilter" element={<ProductsGridFilter brand={"Apple"}/>} />
                 </Routes> 
             </BrowserRouter>
+
             <Footer />
         </div>
     );
