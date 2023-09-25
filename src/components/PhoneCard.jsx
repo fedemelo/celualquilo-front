@@ -10,7 +10,7 @@ import StarIcon from '@mui/icons-material/Star';
 import { Grid } from '@mui/material';
 
 
-export default function PhoneCard({ name, image, cost, buttonText, rating}) {
+export default function PhoneCard({ name, image, cost, rating}) {
     const [isFavorite, setIsFavorite] = React.useState(false); // Initialize as false
 
     const toggleFavorite = () => {
@@ -33,7 +33,7 @@ export default function PhoneCard({ name, image, cost, buttonText, rating}) {
                             <Grid item xs={9}>
                                <Typography xs={8} variant="body2" color="text.secondary"
                                     sx={priceStyle}>
-                                    {cost} 
+                                    {cost} USD / dia
                                 </Typography>
                             </Grid>
                             <Grid item xs={2}>
@@ -63,7 +63,7 @@ export default function PhoneCard({ name, image, cost, buttonText, rating}) {
                     />
                     </Grid>
                     <Grid item xs={10}>
-                    {buttonText ? <LastButton text={buttonText} /> : null}
+                    {<LastButton text='Alquilar' />}
                     </Grid>
                 </Grid>         
             </CardContent>

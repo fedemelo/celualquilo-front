@@ -15,7 +15,6 @@ import RentDetail from './components/RentDetail';
 import Billing from './components/Billing';
 
 
-
 import './styles/App.css';
 
 async function getDatos() {

@@ -16,6 +16,7 @@ import { Stack } from '@mui/material';
 import Button from '@mui/material/Button';
 import { useState } from 'react';
 import { COLORS } from "../styles/colors";
+import { useParams } from 'react-router';
 
 
 const exampleActiveRents = [
@@ -88,14 +89,21 @@ const exampleActiveRents = [
 ]
 
 
+
 export default function ProductsGrid({ titleText }) {
 
+    const params = useParams();
+    const idCel = params.id;
+
+    const phoneList = localStorage.getItem('phoneList');
+    const phoneListJson = JSON.parse(phoneList);
+    
     const [selectedButton, setSelectedButton] = useState(null);
 
     const handleButtonClick = (text) => {
         setSelectedButton(text);
     };
-
+    
 
     return (
         <Stack marginBottom={7}>
@@ -107,13 +115,12 @@ export default function ProductsGrid({ titleText }) {
             </Grid>
             <div style={{ alignItems: 'center', justifyContent: 'center' }}>
                 <Grid container sx={{ marginTop: 'vw', justifyContent: 'center' }}>
-                    {exampleActiveRents.map((product, index) => (
+                    {phoneListJson.map((product, index) => (
                         <Grid item key={index} sx={{ marginBottom: '3vw', marginLeft: '3vw', marginRight: '3vw' }} alignItems="center">
                             <PhoneCard
                                 name={product.name}
                                 image={product.image}
-                                cost={product.cost}
-                                buttonText={product.buttonText}
+                                cost={product.price_per_day}
                                 rating={product.rating}
                             />
                         </Grid>

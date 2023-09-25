@@ -88,6 +88,7 @@ const examplePrice = "$10.000 " + moneda + "/día"
 
 
 export default function Review() {
+    
     const theme = useTheme();
     const oss = useMediaQuery(theme.breakpoints.down("sm"));
     return (
