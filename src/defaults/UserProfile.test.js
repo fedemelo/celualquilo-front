@@ -11,16 +11,16 @@ test('renders Correo:', () => {{
 }});
 
 
-test('renders Ver reservas activas', () => {{
+test('renders Ver historial', () => {{
     render(<UserProfile/>);
-    const searchedText = screen.getByText("Ver reservas activas");
+    const searchedText = screen.getByText("Ver historial");
     expect(searchedText).toBeInTheDocument();
 }});
 
 
-test('renders Ver reservas pasadas', () => {{
+test('renders Ver favoritos', () => {{
     render(<UserProfile/>);
-    const searchedText = screen.getByText("Ver reservas pasadas");
+    const searchedText = screen.getByText("Ver favoritos");
     expect(searchedText).toBeInTheDocument();
 }});
 

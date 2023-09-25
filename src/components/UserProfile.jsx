@@ -5,6 +5,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import { Nav } from 'react-bootstrap';
 
 const UserProfile = ({ name, email, reservations }) => {
 
@@ -46,25 +47,27 @@ const UserProfile = ({ name, email, reservations }) => {
           <Typography variant="body1" gutterBottom>
             Correo: {email}
           </Typography>
+          <Nav.Link href="/RentHistory">
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={handleActiveReservationsClick}
+              sx={buttonStyle1}
+            >
+              Ver historial
+            </Button>
+          </Nav.Link>
+          <Nav.Link href="/Favourites">
+            <Button
+              variant="contained"
+              color="secondary"
+              onClick={handlePastReservationsClick}
+              sx={buttonStyle2}
+            >
+              Ver favoritos
+            </Button>
+          </Nav.Link>
 
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={handleActiveReservationsClick}
-            sx={buttonStyle1}
-          >
-            Ver reservas activas
-          </Button>
-
-          <Button
-            variant="contained"
-            color="secondary"
-            onClick={handlePastReservationsClick}
-            sx={buttonStyle2}
-          >
-            Ver reservas pasadas
-          </Button>
-          
 
         </CardContent>
       </Card>
