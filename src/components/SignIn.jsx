@@ -190,20 +190,21 @@ export default function SignInSide() {
                                 </Grid>
                             </Grid>
 
-                            <Button
-                                type="submit"
-                                fullWidth
-                                variant="contained"
-                                sx={{ mt: 3, mb: 2, backgroundColor: '#9E30FF', color: '#FFFFFF', fontFamily: 'Open Sans', fontWeight: 'bold' }}
-                            >
-                                Sign In
-                            </Button>
+                            <Link href="/user" >
+                                <Button
+                                    fullWidth
+                                    variant="contained"
+                                    sx={{ mt: 3, mb: 2, backgroundColor: '#9E30FF', color: '#FFFFFF', fontFamily: 'Open Sans', fontWeight: 'bold' }}
+                                >
+                                    Sign In
+                                </Button>
+                            </Link>
                             <Grid container sx={{ justifyContent: 'space-around', alignItems: 'center' }}>
                                 <Grid item>
                                     {"Nuevo Usuario?"}
                                 </Grid>
                                 <Grid item>
-                                    <Link href="#" variant="body2">
+                                    <Link href="/Register" variant="body2">
                                         {"Crear una cuenta"}
                                     </Link>
                                 </Grid>

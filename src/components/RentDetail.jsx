@@ -9,8 +9,7 @@ import { Box, TextField } from "@mui/material";
 import PriceDetails from './PriceDetails';
 import { useState } from 'react';
 import Breadcrumb from './BreadCrumb';
-
-
+import { Link } from 'react-router-dom';
 
 const exampleName = "iPhone 14 Pro"
 const moneda = "COP"
@@ -21,7 +20,10 @@ export default function RentDetail() {
     const [dias, setDias] = useState('5');
     return (
         <Grid container spacing={0}>
-            <Breadcrumb breadcrumbs={[{ href: '', text: 'Detalles del Alquiler' }]} />
+            <Breadcrumb breadcrumbs={[
+                { href: `/products/${1}`, text: 'Alquilar' },
+                { href: '', text: 'Detalles del Alquiler' }
+            ]} />
             <Grid container direction={'row'} spacing={2} marginBottom={8}>
                 <Grid item xs={12} md={6}>
                     <PhoneResume dias={dias} setDias={setDias} />
@@ -54,17 +56,22 @@ const cardStyle = {
 
 
 const RentButton = ({ text }) =>
-    <Button
-        style={{
-            borderRadius: 20,
-            padding: "5px 20px",
-            backgroundColor: COLORS.primary,
-            fontSize: "25px",
-            textTransform: "none",
-            width: "100%",
-        }}
-        variant="contained"
-    >{text}</Button>;
+    <>
+        <Link to={`/products/${1}/billing`}>
+            <Button
+                style={{
+                    borderRadius: 20,
+                    padding: "5px 20px",
+                    backgroundColor: COLORS.primary,
+                    fontSize: "25px",
+                    textTransform: "none",
+                    width: "100%",
+                }}
+                variant="contained"
+            >{text}</Button>
+        </Link>
+    </>
+
 
 
 const PhoneResume = ({ dias, setDias }) => {

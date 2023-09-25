@@ -1,110 +1,22 @@
 import React from 'react';
 import Grid from '@mui/material/Grid';
 import PhoneCard from './PhoneCard';
-import examplePhone1 from '../assets/phones/iPhone14Pro.png';
-import examplePhone2 from '../assets/phones/HuaweiNovaY71.png';
-import examplePhone3 from '../assets/phones/SamsungGalaxyS22.png';
-import examplePhone4 from '../assets/phones/OPPOReno7.png';
-import examplePhone5 from '../assets/phones/SamsungA22.png';
-import examplePhone6 from '../assets/phones/HuaweiMate50.png';
-import examplePhone7 from '../assets/phones/iPhone13.png';
-import examplePhone8 from '../assets/phones/HuaweiP60.png';
-import examplePhone9 from '../assets/phones/HuaweiNovaY90.png';
 import PaginationRounded from './Pagination';
 import Typography from '@mui/material/Typography';
 import { Stack } from '@mui/material';
 import Button from '@mui/material/Button';
 import { COLORS } from "../styles/colors";
-import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
 
-const exampleActiveRents = [
-    {
-        name: "iPhone 12 Pro",
-        days: "5 días de alquiler",
-        image: examplePhone1,
-        cost: "COP 10 000 / día",
-        buttonText: "Alquilar",
-        rating: 4.4,
-    },
-    {
-        name: "Huawei Nova Y71",
-        days: "2 días de alquiler",
-        image: examplePhone2,
-        cost: "COP 7 000 / día",
-        buttonText: "Alquilar",
-        rating: 4.8,
-    },
-    {
-        name: "Samsung Galaxy S22",
-        days: "1 día de alquiler",
-        image: examplePhone3,
-        cost: "COP 15 000 / día",
-        buttonText: "Alquilar",
-        rating: 5.0,
-    },
-    {
-        name: "OPPO Reno 7",
-        image: examplePhone4,
-        cost: "COP 10 000 / día",
-        buttonText: "Alquilar",
-        rating: 4.9,
-    },
-    {
-        name: "Samsung A22",
-        image: examplePhone5,
-        cost: "COP 7 000 / día",
-        buttonText: "Alquilar",
-        rating: 4.7,
-    },
-    {
-        name: "Huawei Mate 50",
-        image: examplePhone6,
-        cost: "COP 15 000 / día",
-        buttonText: "Alquilar",
-        rating: 4.6,
-    },
-    {
-        name: "iPhone 13",
-        image: examplePhone7,
-        cost: "COP 10 000 / día",
-        buttonText: "Alquilar",
-        rating: 4.9,
-    },
-    {
-        name: "Huawei P60",
-        image: examplePhone8,
-        cost: "COP 7 000 / día",
-        buttonText: "Alquilar",
-        rating: 4.7,
-    },
-    {
-        name: "Huawei Nova Y90",
-        image: examplePhone9,
-        cost: "COP 15 000 / día",
-        buttonText: "Alquilar",
-        rating: 4.8,
-    }
-]
-
-
-
 export default function ProductsGrid({ titleText }) {
-
-    const params = useParams();
-    const idCel = params.id;
 
     const phoneList = localStorage.getItem('phoneList');
     const phoneListJson = JSON.parse(phoneList);
     
     const [selectedButton, setSelectedButton] = useState(null);
 
-    const handleButtonClick = (text) => {
-        setSelectedButton(text);
-    };
-    
 
     return (
         <Stack marginBottom={7}>
@@ -118,7 +30,7 @@ export default function ProductsGrid({ titleText }) {
                 <Grid container sx={{ marginTop: 'vw', justifyContent: 'center' }}>
                     {phoneListJson.map((product, index) => (
                         <Grid item key={index} sx={{ marginBottom: '3vw', marginLeft: '3vw', marginRight: '3vw' }} alignItems="center">
-                            <Link to={"/products/" + product.id}>
+                            <Link to={"/products/" + product.id} style={{ textDecoration: 'none' }}>
                             <PhoneCard
                                 name={product.name}
                                 image={product.image}

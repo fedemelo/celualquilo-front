@@ -11,6 +11,7 @@ import Visibility from '@mui/icons-material/Visibility';
 import IconButton from '@mui/material/IconButton';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import createAccimg from '../assets/imgcreateAcc.png';
+import { Nav } from 'react-bootstrap';
 import { useState } from 'react';
 
 
@@ -25,8 +26,8 @@ export default function CreateAccountSide() {
         });
     };
 
-    const [formValues, setFormValues] = useState({name: "", email: "", password: "", verifiyPassword: "", showPassword: false, showVerifyPassword: false })
-    const [clickedField, setClickedField] = useState({name: false, email: false, password: false, verifiyPassword: false})
+    const [formValues, setFormValues] = useState({ name: "", email: "", password: "", verifiyPassword: "", showPassword: false, showVerifyPassword: false })
+    const [clickedField, setClickedField] = useState({ name: false, email: false, password: false, verifiyPassword: false })
 
 
     const togglePasswordVisibility = () => {
@@ -39,7 +40,7 @@ export default function CreateAccountSide() {
 
     const getProblemInName = () => {
 
-        const name = formValues.name? formValues.name.trim() : ""
+        const name = formValues.name ? formValues.name.trim() : ""
 
         if (!clickedField.name) return "";
 
@@ -52,7 +53,7 @@ export default function CreateAccountSide() {
 
     const getProblemInEmail = () => {
 
-        const email = formValues.email? formValues.email.trim() : ""
+        const email = formValues.email ? formValues.email.trim() : ""
 
         if (!clickedField.email) return "";
 
@@ -73,7 +74,7 @@ export default function CreateAccountSide() {
 
     const getProblemInPassword = () => {
 
-        const password = formValues.password? formValues.password.trim() : ""
+        const password = formValues.password ? formValues.password.trim() : ""
 
         if (!clickedField.password) return "";
 
@@ -95,11 +96,11 @@ export default function CreateAccountSide() {
 
     const getProblemInVerifyPassword = () => {
 
-        const password = formValues.password? formValues.password.trim() : ""
+        const password = formValues.password ? formValues.password.trim() : ""
 
         if (!clickedField.verifyPassword) return "";
 
-        const verifyPassword = formValues.verifyPassword? formValues.verifyPassword.trim() : ""
+        const verifyPassword = formValues.verifyPassword ? formValues.verifyPassword.trim() : ""
 
         if (verifyPassword === "") return "Escriba de nuevo la contraseña";
 
@@ -129,7 +130,7 @@ export default function CreateAccountSide() {
                     @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');
                 </style>
                 <CssBaseline />
-                <Grid 
+                <Grid
                     item
                     sm={4}
                     md={6}
@@ -196,7 +197,7 @@ export default function CreateAccountSide() {
                             <TextField
                                 margin="normal"
                                 variant="filled"
-                                color = {getProblemInEmail() === "" ? "success" : "error"}
+                                color={getProblemInEmail() === "" ? "success" : "error"}
                                 required
                                 fullWidth
                                 id="email"
@@ -216,7 +217,7 @@ export default function CreateAccountSide() {
                             <TextField
                                 margin="normal"
                                 required
-                                color = {getProblemInPassword() === "" ? "success" : "error"}
+                                color={getProblemInPassword() === "" ? "success" : "error"}
                                 fullWidth
                                 name="password"
                                 label="Contraseña"
@@ -249,7 +250,7 @@ export default function CreateAccountSide() {
                                 margin="normal"
                                 required
                                 fullWidth
-                                color = {getProblemInVerifyPassword() === "" ? "success" : "error"}
+                                color={getProblemInVerifyPassword() === "" ? "success" : "error"}
                                 label="Confirmar contraseña"
                                 variant="filled"
                                 sx={{
@@ -289,21 +290,21 @@ export default function CreateAccountSide() {
                                 </Typography>
 
                             </Grid>
-
-                            <Button
-                                type="submit"
-                                fullWidth
-                                variant="contained"
-                                sx={{ mt: 3, mb: 2, backgroundColor: '#9E30FF', color: '#FFFFFF', fontFamily: 'Open Sans', fontWeight: 'bold' }}
-                            >
-                                Crear cuenta
-                            </Button>
+                            <Link href="/user">
+                                <Button
+                                    fullWidth
+                                    variant="contained"
+                                    sx={{ mt: 3, mb: 2, backgroundColor: '#9E30FF', color: '#FFFFFF', fontFamily: 'Open Sans', fontWeight: 'bold' }}
+                                >
+                                    Crear cuenta
+                                </Button>
+                            </Link>
                             <Grid container sx={{ justifyContent: 'space-around', alignItems: 'center' }}>
                                 <Grid item>
                                     {"Ya estás registrado?"}
                                 </Grid>
                                 <Grid item>
-                                    <Link href="#" variant="body2">
+                                    <Link href="/Login" variant="body2">
                                         {"Ingresa aquí"}
                                     </Link>
                                 </Grid>

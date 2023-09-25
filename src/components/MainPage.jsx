@@ -13,7 +13,7 @@ import Button from '@mui/material/Button';
 import { COLORS } from "../styles/colors";
 import appleImg from '../assets/brands/apple.png';
 import huaweiImg from '../assets/brands/huawei.png';
-import nvidiaImg from '../assets/brands/nvidia.png';
+import xiaomiImg from '../assets/brands/xiaomi.png';
 import samsungImg from '../assets/brands/samsung.png';
 import mainImage from '../assets/mainImage.png';
 import RentButton from './RentButton';
@@ -23,22 +23,21 @@ import { Nav } from 'react-bootstrap';
 
 
 
-const exampleBrands = [
+const brands = [
     {
         name: "Samsung",
         image: samsungImg
-
     },
     {
-        name: "Nvidia",
-        image: nvidiaImg
+        name: "Xiaomi",
+        image: xiaomiImg
     },
     {
         name: "Huawei",
         image: huaweiImg
     },
     {
-        name: "Apple",
+        name: "iPhone",
         image: appleImg
     },
 ]
@@ -71,6 +70,7 @@ const exampleActiveRents = [
     },
 ]
 
+
 export default function MainPage() {
     const theme = useTheme();
     const onlySmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
@@ -80,10 +80,10 @@ export default function MainPage() {
                 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400&family=Open+Sans:wght@300;400&display=swap');
             </style>
             <Stack direction="column" spacing={-0.5} marginBottom={7}>
-                <MainImageText osm={onlySmallScreen}/>
+                <MainImageText osm={onlySmallScreen} />
                 <Card sx={cardStyle}>
                     <BrandsTitleStyle text="Nuestras marcas" />
-                    <BrandsRow brands={exampleBrands} />
+                    <BrandsRow brands={brands} />
                 </Card>
                 <Card sx={cardStyle}>
                     <SectionTitle text="Populares" />
@@ -145,13 +145,13 @@ const MainImageText = (osm) => {
                         @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400&family=Open+Sans:wght@300;400&family=Space+Grotesk&display=swap');
                     </style>
                     <Typography variant="h2" sx={subtitleStyle}>Encuentra un celular a tu medida y a un precio accesible</Typography>
-                    <Nav.Link href="/products">
-                    <RentButton text="Descubrir" />
+                    <Nav.Link style={{ textDecoration: 'none' }} href="/products">
+                        <RentButton text="Descubrir" />
                     </Nav.Link>
                 </Stack>
             </Grid>
             {osm.osm ? null : <Grid item xs={12} sm={6}>
-                <img src={mainImage} alt="Main" style={{ maxWidth: '100%', objectFit: "cover", height: "100%", objectPosition: "left"}} />
+                <img src={mainImage} alt="Main" style={{ maxWidth: '100%', objectFit: "cover", height: "100%", objectPosition: "left" }} />
             </Grid>}
         </Grid>
     );
@@ -177,7 +177,7 @@ const PhonesRow = ({ phones }) => {
         <Grid container spacing={3} padding={2} >
             {phones.map((phone, index) => (
                 <Grid item xs={12} sm={6} md={3} key={index}>
-                    <PhoneCardSimple {...phone} />
+                    <PhoneCardSimple {...phone} route={`/products`}/>
                 </Grid>
             ))}
         </Grid>
@@ -196,7 +196,9 @@ const BrandsRow = ({ brands }) => {
         <Grid container spacing={2} padding={4}>
             {brands.map((brand, index) => (
                 <Grid item xs={12} sm={6} md={3} key={index} style={brandItemStyle}>
-                    <img src={brand.image} alt={brand.name} style={{maxWidth:"200px"}}/>
+                    <Nav.Link style={{ textDecoration: 'none' }} href={"/" + brand.name}>
+                        <img src={brand.image} alt={brand.name} style={{ maxWidth: "200px" }} />
+                    </Nav.Link>
                 </Grid>
             ))}
         </Grid>
@@ -220,12 +222,12 @@ const SectionTitle = ({ text }) =>
 
 
 const SeeAllButtom = ({ text }) =>
-    <Nav.Link href="/products">
-    <Button
-        style={buttonStyle}
-        variant="contained"
-    >{text} <EastIcon sx={{ paddingLeft: "10px" }} />
-    </Button>
+    <Nav.Link style={{ textDecoration: 'none' }} href="/products">
+        <Button
+            style={buttonStyle}
+            variant="contained"
+        >{text} <EastIcon sx={{ paddingLeft: "10px" }} />
+        </Button>
     </Nav.Link>
 
 

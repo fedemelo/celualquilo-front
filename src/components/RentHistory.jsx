@@ -22,21 +22,21 @@ const exampleActiveRents = [
         days: "5 días de alquiler",
         image: examplePhone1,
         cost: "$ 10 000 COP / día",
-        buttonText: "Renovar Alquiler",
+        buttonText: "Alquilar",
     },
     {
         name: "Huawei Nova Y71",
         days: "2 días de alquiler",
         image: examplePhone2,
         cost: "$ 7 000 COP / día",
-        buttonText: "Renovar Alquiler",
+        buttonText: "Alquilar",
     },
     {
         name: "Samsung Galaxy S22",
         days: "1 día de alquiler",
         image: examplePhone3,
         cost: "$ 15 000 COP / día",
-        buttonText: "Renovar Alquiler",
+        buttonText: "Alquilar",
     },
     {
         name: "iPhone 13",
@@ -92,7 +92,7 @@ export default function RentHistory() {
     return (
         <>
             <Breadcrumb breadcrumbs={[
-                { href: '/mi-cuenta', text: 'Mi cuenta' },
+                { href: '/user', text: 'Mi cuenta' },
                 { href: '', text: 'Historial y Alquileres Activos' },
             ]} />
             <Stack spacing={3.5} marginBottom={11}>
@@ -101,11 +101,11 @@ export default function RentHistory() {
                 </style>
                 <Card sx={sectionStyle}>
                     <SectionTitle text="Alquileres Activos" />
-                    <PhonesRow phones={exampleActiveRents} />
+                    <PhonesRow phones={exampleActiveRents} route={`/products/${1}/rent`} />
                 </Card>
                 <Card sx={sectionStyle}>
                     <SectionTitle text="Historial de Alquileres" />
-                    <PhonesRow phones={examplePastRents} />
+                    <PhonesRow phones={examplePastRents} route={`/products/${1}/review`}/>
                 </Card>
             </Stack>
         </>
@@ -125,12 +125,12 @@ const sectionStyle = {
 }
 
 
-const PhonesRow = ({ phones }) => {
+const PhonesRow = ({ phones, route }) => {
     return (
         <Grid container spacing={3} padding={2} >
             {phones.map((phone, index) => (
                 <Grid item xs={12} sm={6} md={3} key={index}>
-                    <PhoneCardSimple {...phone} />
+                    <PhoneCardSimple {...phone} route={route}/>
                 </Grid>
             ))}
         </Grid>

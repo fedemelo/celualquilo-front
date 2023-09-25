@@ -1,7 +1,6 @@
 import * as React from 'react';
 import Card from '@mui/material/Card';
 import Rating from '@mui/material/Rating';
-import examplePhone from '../assets/phones/iPhone14Pro.png';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import ListItem from '@mui/material/ListItem';
@@ -17,6 +16,7 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import { useParams } from 'react-router';
 import GoBack from './GoBack';
+import { Link } from 'react-router-dom';
 
 
 
@@ -78,15 +78,15 @@ const moneda = "USD"
 
 
 export default function PhoneDetail() {
-    
+
     const params = useParams();
     const idCel = params.productId;
-    
 
-    const phone = localStorage.getItem("cel"+idCel);
+
+    const phone = localStorage.getItem("cel" + idCel);
     console.log(phone);
     const phoneJson = JSON.parse(phone);
-    
+
 
     const theme = useTheme();
     const oss = useMediaQuery(theme.breakpoints.down("sm"));
@@ -94,7 +94,7 @@ export default function PhoneDetail() {
 
     return (
         <Stack marginBottom={7}>
-            <GoBack text="Detalle de un celular" />
+            <GoBack text="Detalle de un celular" route="/products" />
             <Card sx={cardStyle}>
                 <Grid container spacing={0} padding={3} direction={'row'} alignItems={'center'}>
                     {!oss && <Grid item xs={12} sm={5}>
@@ -113,25 +113,26 @@ export default function PhoneDetail() {
                             {phoneJson.brand}
                         </Typography>
                         <Typography variant="h6" color="text.primary" padding={1}>
-                            {phoneJson.availability } unidades disponibles
+                            {phoneJson.availability} unidades disponibles
                         </Typography>
                         <Typography variant="h3" component="div" padding={1}>
                             {phoneJson.name}
                         </Typography>
                         {oss && <Grid item xs={12} sm={5}>
-                        <img
-                            style={{ maxWidth: '130%', height: '60vw' }}
-                            alt={phoneJson.name}
-                            src={phoneJson.image}
-                        />
-                        <Typography variant="h6" color="text.primary" padding={1}>
-                            {price}
-                        </Typography>
+                            <img
+                                style={{ maxWidth: '130%', height: '60vw' }}
+                                alt={phoneJson.name}
+                                src={phoneJson.image}
+                            />
+                            <Typography variant="h6" color="text.primary" padding={1}>
+                                {price}
+                            </Typography>
                         </Grid>}
                         <Rating name="read-only" value={5} readOnly size="large" />
                         <SpecList specs={[phoneJson.camera_specifications, phoneJson.memory_specs, phoneJson.ram_specs]} />
-                        
-                        <RentButton text="Alquilar" />
+                        <Link to={`/products/${phoneJson.id}/rent`}>
+                            <RentButton text="Alquilar" />
+                        </Link>
                     </Grid>
                 </Grid>
 
@@ -192,7 +193,7 @@ const RentButton = ({ text }) =>
 
 
 const CommentArea = () => <Stack spacing={1.3}>
-    
+
     <FormLabel
         sx={{
             fontFamily: 'Inter',
@@ -211,7 +212,7 @@ const CommentArea = () => <Stack spacing={1.3}>
 const UserReviews = ({ reviews }) =>
     <Stack spacing={3}>
         {reviews.map((review, index) => (
-            <Card key={index} sx={{ textAlign: 'left'}}>
+            <Card key={index} sx={{ textAlign: 'left' }}>
                 <CardContent>
                     <Typography variant="h6" color="text.primary">
                         {review.titulo}
@@ -232,7 +233,7 @@ const UserReviews = ({ reviews }) =>
                         height: .1,
                     }} /> */}
 
-                    <Rating name="read-only" value={review.rating} readOnly size="large"/>
+                    <Rating name="read-only" value={review.rating} readOnly size="large" />
                 </CardContent>
             </Card>
         ))}

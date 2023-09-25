@@ -45,7 +45,7 @@ export default function Review() {
     const oss = useMediaQuery(theme.breakpoints.down("sm"));
     return (
         <>
-            <GoBack text="Escribir reseña" />
+            <GoBack text="Escribir reseña" route={`/RentHistory`}/>
             <Stack marginBottom={7}>
                 <Card sx={cardStyle}>
                     <Grid container spacing={0} padding={3} direction={'row'} alignItems={'center'}>

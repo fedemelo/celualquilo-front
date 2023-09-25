@@ -60,7 +60,7 @@ const PhonesRow = ({ phones }) => {
         <Grid container spacing={3} padding={2} >
             {phones.map((phone, index) => (
                 <Grid item xs={12} sm={6} md={3} key={index}>
-                    <PhoneCardSimple {...phone} />
+                    <PhoneCardSimple {...phone} route={`/products/${1}/rent`}/>
                 </Grid>
             ))}
         </Grid>

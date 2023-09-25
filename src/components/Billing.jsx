@@ -8,6 +8,7 @@ import { TextField } from "@mui/material";
 import PriceDetails from './PriceDetails';
 import { useState } from 'react';
 import Box from '@mui/material/Box';
+import { Link } from 'react-router-dom';
 import { FormControl, FormControlLabel, Radio, RadioGroup } from '@mui/material';
 import Breadcrumb from './BreadCrumb';
 
@@ -15,7 +16,8 @@ export default function Billing() {
     return (
         <>
             <Breadcrumb breadcrumbs={[
-                { href: '', text: 'Detalles de Alquiler' },
+                { href: `/products/${1}`, text: 'Alquilar' },
+                { href: `/products/${1}/rent`, text: 'Detalles de Alquiler' },
                 { href: '', text: 'Dirección y Facturación' },
             ]} />
             <Grid container direction={'row'} spacing={2} marginBottom={8}>
@@ -54,7 +56,10 @@ const RentButton = ({ text }) => {
     const clickFinalizarCompra = (() => {
     })
 
-    return (< Button
+    return (
+    <>
+    <Link to={"/RentHistory"}>
+    < Button
         style={{
             borderRadius: 20,
             padding: "5px 20px",
@@ -66,7 +71,10 @@ const RentButton = ({ text }) => {
         }
         onClick={clickFinalizarCompra}
         variant="contained"
-    > {text}</Button >)
+    > {text}</Button >
+    </Link>
+    </>
+    )
 }
 
 const BillingAddress = () => {

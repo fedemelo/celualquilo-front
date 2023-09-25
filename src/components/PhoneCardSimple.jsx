@@ -6,9 +6,10 @@ import AspectRatio from '@mui/joy/AspectRatio';
 import Box from '@mui/joy/Box';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
+import { Link } from 'react-router-dom';
 
 
-export default function PhoneCardSimple({ name, image, cost, days, buttonText }) {
+export default function PhoneCardSimple({ name, image, cost, days, buttonText, route }) {
     return (
         <Card sx={{
             height: "100%",
@@ -23,15 +24,15 @@ export default function PhoneCardSimple({ name, image, cost, days, buttonText })
 
             <Box px={2}>
                 <MediaRatio image={image} name={name} />
-                        <Typography variant="body2" color="text.secondary"
-                            sx={priceStyle}>
-                            {cost}
-                        </Typography>
-                    <Typography  variant="h5" component="div"
-                        sx={nameStyle}
-                    >
-                        {name}
-                    </Typography>
+                <Typography variant="body2" color="text.secondary"
+                    sx={priceStyle}>
+                    {cost}
+                </Typography>
+                <Typography variant="h5" component="div"
+                    sx={nameStyle}
+                >
+                    {name}
+                </Typography>
             </Box>
             <CardContent>
                 <Stack spacing={3}>
@@ -42,7 +43,7 @@ export default function PhoneCardSimple({ name, image, cost, days, buttonText })
                         {days}
                     </Typography> : null}
                     {buttonText ?
-                        <LastButton text={buttonText} /> : null}
+                        <LastButton text={buttonText} route={route} /> : null}
                 </Stack>
             </CardContent>
         </Card >
@@ -81,18 +82,21 @@ const daysStyle = {
 }
 
 
-const LastButton = ({ text }) =>
-    <Button
-        style={{
-            borderRadius: 13,
-            padding: "10px 40px",
-            backgroundColor: "#7724BF",
-            fontSize: "15px",
-            textTransform: "none",
-            fontFamily: "Open Sans",
-        }}
-        variant="contained"
-    >{text}</Button>
+const LastButton = ({ text, route }) => <>
+    <Link to={route}>
+        <Button
+            style={{
+                borderRadius: 13,
+                padding: "10px 40px",
+                backgroundColor: "#7724BF",
+                fontSize: "15px",
+                textTransform: "none",
+                fontFamily: "Open Sans",
+            }}
+            variant="contained"
+        >{text}</Button>
+    </Link>
+</>
 
 
 const MediaRatio = ({ image, name }) =>

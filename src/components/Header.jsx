@@ -15,16 +15,16 @@ import { Nav } from 'react-bootstrap';
 
 
 export default function Header() {
-const theme = useTheme();
-const onlySmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+    const theme = useTheme();
+    const onlySmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
 
     return (
         <Box sx={boxStyle}>
             <AppBar position="static" sx={{ backgroundColor: "white" }}>
                 <Toolbar sx={firstRowStyle}>
-                {onlySmallScreen && 
-                    <HamburgerMenu/>}
+                    {onlySmallScreen &&
+                        <HamburgerMenu />}
                     <LogoCeluAlquilo />
                     {!onlySmallScreen && <SearchBar />}
                     <LoginButton text="Ingresar" />
@@ -65,40 +65,40 @@ const secondRowStyle = {
 
 const LogoCeluAlquilo = () =>
     <Toolbar>
-        <Nav.Link href="/">
-        <Box className='logoCeluAlquilo'
-            component="img"
-            sx={{
-                height: 30,
-            }}
-            alt="Logo de CeluAlquilo"
-            src={logoCeluAlquilo}
-        />
+        <Nav.Link style={{ textDecoration: 'none' }} href="/">
+            <Box className='logoCeluAlquilo'
+                component="img"
+                sx={{
+                    height: 30,
+                }}
+                alt="Logo de CeluAlquilo"
+                src={logoCeluAlquilo}
+            />
         </Nav.Link>
     </Toolbar>
 
 
 
 const Marcas = () =>
-   
-        <div className="brands">
-            <Nav.Link href="/IPhone">
-                <p className="brandName">iPhone</p>
-            </Nav.Link>
-            <div className="separatorLine" />
-            <Nav.Link href="/Xiaomi">
-                <p className="brandName">Xiaomi</p>
-            </Nav.Link>
-            <div className="separatorLine" />
-            <Nav.Link href="/Samsung">
-                <p className="brandName">Samsung</p>
-            </Nav.Link>
-            <div className="separatorLine" />
-            <Nav.Link href="/Huawei">
-                <p className="brandName">Huawei</p>
-            </Nav.Link>
-        </div>
- 
+
+    <div className="brands">
+        <Nav.Link style={{ textDecoration: 'none' }} href="/IPhone">
+            <p className="brandName">iPhone</p>
+        </Nav.Link>
+        <div className="separatorLine" />
+        <Nav.Link style={{ textDecoration: 'none' }} href="/Xiaomi">
+            <p className="brandName">Xiaomi</p>
+        </Nav.Link>
+        <div className="separatorLine" />
+        <Nav.Link style={{ textDecoration: 'none' }} href="/Samsung">
+            <p className="brandName">Samsung</p>
+        </Nav.Link>
+        <div className="separatorLine" />
+        <Nav.Link style={{ textDecoration: 'none' }} href="/Huawei">
+            <p className="brandName">Huawei</p>
+        </Nav.Link>
+    </div>
+
 
 
 
@@ -132,13 +132,11 @@ const SearchBar = () =>
 
 
 
-const LoginButton = ({ text }) =>{
+const LoginButton = ({ text }) => {
 
+    return (
 
-    return(
-
-        <Nav.Link href='/user'>
-
+        <Nav.Link style={{ textDecoration: 'none' }} href='/Register'>
             <Button
                 style={{
                     borderRadius: 20,
@@ -148,10 +146,9 @@ const LoginButton = ({ text }) =>{
                     textTransform: "none",
                 }}
                 variant="contained"
-            >    
+            >
                 {text}
             </Button>
-
         </Nav.Link>
     )
 }
