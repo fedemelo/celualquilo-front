@@ -93,7 +93,7 @@ export default function RentHistory() {
         <>
             <Breadcrumb breadcrumbs={[
                 { href: '/mi-cuenta', text: 'Mi cuenta' },
-                { href: '', text: 'Historial de Alquileres' },
+                { href: '', text: 'Historial y Alquileres Activos' },
             ]} />
             <Stack spacing={3.5} marginBottom={11}>
                 <style>
