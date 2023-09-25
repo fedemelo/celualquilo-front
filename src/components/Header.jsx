@@ -2,7 +2,6 @@ import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-import Typogaphy from '@mui/material/Typography';
 import logoCeluAlquilo from '../assets/logoCeluAlquilo.png';
 import SearchIcon from '@mui/icons-material/Search';
 import Button from '@mui/material/Button';
@@ -13,8 +12,7 @@ import MenuItem from '@mui/material/MenuItem';
 import '../styles/header.css';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
+import HamburgerMenu from './HamburguerMenu';
 
 
 
@@ -29,15 +27,7 @@ const onlySmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
             <AppBar position="static" sx={{ backgroundColor: "white" }}>
                 <Toolbar sx={firstRowStyle}>
                 {onlySmallScreen && 
-                    <IconButton
-                        size="large"
-                        edge="start"
-                        color="black"
-                        aria-label="menu"
-                        sx={{ mr: 2 }}
-                        >
-                    <MenuIcon />
-                    </IconButton>}
+                    <HamburgerMenu/>}
                     <LogoCeluAlquilo />
                     {!onlySmallScreen && <SearchBar />}
                     <LoginButton text="Ingresar" />
@@ -93,7 +83,7 @@ const LogoCeluAlquilo = () =>
 const Marcas = () =>
    
         <div className="brands">
-            <p className="brandName">IPhone</p>
+            <p className="brandName">iPhone</p>
             <div className="separatorLine" />
             <p className="brandName">Xiaomi</p>
             <div className="separatorLine" />
@@ -160,7 +150,6 @@ const LoginButton = ({ text }) =>{
                     textTransform: "none",
                 }}
                 variant="contained"
-                onClick={handleClick}
             >    
                 {text}
             </Button>
