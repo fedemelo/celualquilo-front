@@ -17,13 +17,13 @@ const moneda = "COP"
 const examplePrice = "$10.000 " + moneda + "/día"
 
 export default function RentDetail() {
-    const [dias, setDias] = React.useState('5');
+    const [dias, setDias] = useState('5');
     return (
         <Grid container spacing={0}>
             <Breadcrumb breadcrumbs={[{ href: '', text: 'Detalles del Alquiler' }]} />
             <Grid container direction={'row'} spacing={2} marginBottom={8}>
                 <Grid item xs={12} md={6}>
-                    <PhoneResume setDias={setDias} />
+                    <PhoneResume dias={dias} setDias={setDias} />
                 </Grid>
                 <Grid item xs={12} md={6}>
                     <PriceDetails dias={dias} />
@@ -65,25 +65,17 @@ const RentButton = ({ text }) =>
         variant="contained"
     >{text}</Button>;
 
-const PhoneResume = ({ setDias }) => {
 
-    const [formValues, setFormValues] = useState({ address: "", city: "", number: "0" })
-
-
-    const handleDaysChange = ((e) => {
-        setFormValues({ ...formValues, number: e.target.value })
-    });
-
+const PhoneResume = ({ dias, setDias }) => {
     const getProblemInNumber = () => {
 
-        const number = formValues.number.trim();
+        const number = dias ? Number(dias) : 5
 
-        if (number.length === 0) return "Debes ingresar un número de días de alquiler."
-
-        if (!/\d+/.test(number)) return "El número de días debe ser un número."
+        if (number < 1) return "Debes ingresar un número mayor a 0."
     }
 
-    return <Card sx={cardStyle} >
+
+    return (<Card sx={cardStyle} >
         <Box display={"flex"} justifyContent="center">
             <Box display={"flex"} justifyItems="center" padding="1rem">
                 <img src={examplePhone} alt={exampleName} style={{ maxWidth: '130%' }} />
@@ -95,14 +87,14 @@ const PhoneResume = ({ setDias }) => {
                     color={!getProblemInNumber() ? "success" : "error"}
                     required
                     id="outlined-required"
+                    type="number"
                     defaultValue="5"
                     label="Días de alquiler"
-                    onChange={handleDaysChange}
+                    onChange={(e) => setDias(e.target.value)} // Update state on change     
                 />
                 {<Typography variant='body1' color={"red"}>{getProblemInNumber()}</Typography>}
             </Box>
         </Box>
 
-    </Card>
-
+    </Card>)
 }
