@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
@@ -9,18 +9,37 @@ import ProductsGrid from './components/ProductsGrid';
 import Review from './components/Review';
 import RentHistory from './components/RentHistory';
 import Favourites from './components/Favourites';
-
-
 import SignInSide from './components/SignIn';
 import CreateAccountSide from './components/CreateAccount';
-
 import RentDetail from './components/RentDetail';
 import Billing from './components/Billing';
 
+
+
 import './styles/App.css';
 
+async function getDatos() {
+    const response = await fetch("https://gist.githubusercontent.com/dburgos26/a09fc5108186b8ce6bd0e7c5a38b2432/raw/e6e879db208b06c15647c94df54f26b352dd4f72/cellphones.json");
+    const data = await response.json();
+    return data;
+}
 
 export default function App() {
+
+    useEffect(() => {
+        async function fetchData() {
+          const data = await getDatos();
+          console.log(data);
+
+          localStorage.setItem("phoneList", JSON.stringify(data));
+
+          data.forEach((cellphone) => {
+            localStorage.setItem(`cel${cellphone.id}`, JSON.stringify(cellphone));
+          });
+        }
+        fetchData();
+      }, []);
+
     return (
         <div className="App">
             <Header />

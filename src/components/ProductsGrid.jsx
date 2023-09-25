@@ -102,7 +102,7 @@ export default function ProductsGrid({ titleText }) {
             <Title />
             <Grid container spacing={0} justifyContent="center" sx={{ marginTop: 'vw' }}>
                 <Grid item xs={6} sm={6} md={6} lg={12} sx={{ marginLeft: '6rem', marginRight: '6rem', marginTop: '3rem', marginBottom: '3rem' }}>
-                    <FilterButtons />
+                    <FilterButtons titleText={titleText}/>
                 </Grid>
             </Grid>
             <div style={{ alignItems: 'center', justifyContent: 'center' }}>
@@ -208,7 +208,7 @@ const FilterButton = ({ text, selected, onClick }) => {
 };
 
 
-const Title = () =>
+const Title = ({titleText}) =>
     <div style={centerStyle}>
         <Typography variant="H1" sx={titleStyle}>
             {titleText}
