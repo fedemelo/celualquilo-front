@@ -17,6 +17,7 @@ import CreateAccountSide from './components/CreateAccount';
 import PhoneDetail from './components/PhoneDetail';
 import RentDetail from './components/RentDetail';
 import Billing from './components/Billing';
+import MainPage from './components/MainPage';
 
 
 
@@ -26,12 +27,12 @@ export default function App() {
             <Header id="header" />
 
             {/* Especificar en este punto la historia de usuario que se desea visualizar */}
-            {/* <MainPage />  */}
+            <MainPage /> 
             {/* <HU1 /> */}
             {/* <HU2 /> */}
             {/* <HU3 /> */}
             {/* <HU4 /> */}
-            <HU5/>
+            {/* <HU5/> */}
             {/* <HU6 /> */}
             {/* <HU7 /> */}
             {/* <HU8 /> */}
