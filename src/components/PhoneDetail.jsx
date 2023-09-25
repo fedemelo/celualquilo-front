@@ -106,8 +106,7 @@ export default function Review() {
                         </Typography>
                     </Grid>}
 
-                    <Grid item xs={12} sm={7
-                    } sx={{ textAlign: 'left' }}>
+                    <Grid item xs={12} sm={7} sx={{ textAlign: 'left' }}>
                         <Typography variant="h6" color="text.primary" padding={1}>
                             {exampleBrand}
                         </Typography>
@@ -119,10 +118,9 @@ export default function Review() {
                         </Typography>
                         {oss && <Grid item xs={12} sm={5}>
                         <img
-                            style={{ maxWidth: '130%', height: '30vw' }}
+                            style={{ maxWidth: '130%', height: '60vw' }}
                             alt={exampleName}
                             src={examplePhone}
-                            alignSelf="center"
                         />
                         <Typography variant="h4" component="div" padding={1}>
                             {examplePrice}

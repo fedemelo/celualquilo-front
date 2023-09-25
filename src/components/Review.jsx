@@ -23,6 +23,8 @@ import List from '@mui/material/List';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import CheckIcon from '@mui/icons-material/Check';
 import Stack from '@mui/material/Stack';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
 
 
 const exampleBrand = "Apple"
@@ -38,20 +40,22 @@ const exampleSpecs = [
 
 
 export default function Review() {
+    const theme = useTheme();
+    const oss = useMediaQuery(theme.breakpoints.down("sm"));
     return (
         <Stack marginBottom={7}>
             <Card sx={cardStyle}>
-                <Grid container spacing={2} padding={7} >
+                <Grid container spacing={0} padding={3} direction={'row'} alignItems={'center'}>
                     {/* Column for Image */}
-                    <Grid item xs={12} sm={4}>
+                    {!oss && <Grid item xs={12} sm={6} >
                         <img
-                            style={{ maxWidth: '100%', height: '20vw' }}
+                            style={{ maxWidth: '130%', height: '30vw' }}
                             alt={exampleName}
                             src={examplePhone}
                         />
-                    </Grid>
+                    </Grid>}
 
-                    <Grid item xs={12} sm={8} sx={{ textAlign: 'left' }}>
+                    <Grid item xs={12} sm={6} sx={{ textAlign: 'left' }}>
                         <Typography variant="h6" color="text.primary" padding={1}>
                             {exampleBrand}
                         </Typography>
@@ -61,6 +65,13 @@ export default function Review() {
                         <Typography variant="h3" component="div" padding={1}>
                             {exampleName}
                         </Typography>
+                        {oss && <Grid item xs={12} sm={5}>
+                            <img
+                                style={{ maxWidth: '130%', height: '60vw' }}
+                                alt={exampleName}
+                                src={examplePhone}
+                            />
+                        </Grid>}
                         <SpecList specs={exampleSpecs} />
                     </Grid>
 
@@ -73,6 +84,9 @@ export default function Review() {
         </Stack>
     );
 }
+
+
+
 
 
 const cardStyle = {
