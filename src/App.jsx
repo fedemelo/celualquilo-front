@@ -1,19 +1,21 @@
 import React from 'react';
+
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
 import MainPage from './components/MainPage';
 import ProductsGrid from './components/ProductsGrid';
-import CreateAccountSide from './components/CreateAccount';
-import SignInSide from './components/SignIn';
-import Favourites from './components/Favourites';
-import RentHistory from './components/RentHistory';
 import Review from './components/Review';
+import RentHistory from './components/RentHistory';
+import Favourites from './components/Favourites';
+
+
+import SignInSide from './components/SignIn';
+import CreateAccountSide from './components/CreateAccount';
+
 import RentDetail from './components/RentDetail';
 import Billing from './components/Billing';
-
-
 
 import './styles/App.css';
 
