@@ -15,6 +15,7 @@ import Breadcrumb from './BreadCrumb';
 const exampleName = "iPhone 14 Pro"
 const moneda = "COP"
 const examplePrice = "$10.000 " + moneda + "/día"
+const maxDiasAlquiler = 180
 
 export default function RentDetail() {
     const [dias, setDias] = useState('5');
@@ -72,6 +73,9 @@ const PhoneResume = ({ dias, setDias }) => {
         const number = dias ? Number(dias) : 5
 
         if (number < 1) return "Debes ingresar un número mayor a 0."
+
+        if (number > maxDiasAlquiler) return "No puedes alquilar un celular por más de 6 meses."
+
     }
 
 
