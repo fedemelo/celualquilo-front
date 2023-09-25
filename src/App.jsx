@@ -16,6 +16,7 @@ import Billing from './components/Billing';
 import PhoneDetail from './components/PhoneDetail';
 import ProductsGridPrice from './components/ProductsGridPrice';
 import ProductsGridFilter from './components/ProductsGridFilter';
+import UserProfile from './components/UserProfile';
 
 
 
@@ -63,6 +64,7 @@ export default function App() {
                     <Route path="/products/:productId/review" element={<Review />} />
                     <Route path="/products/:productId/rent" element={<RentDetail />} />
                     <Route path="/products/:productId/billing" element={<Billing />} />
+                    <Route path="/user" element={<UserProfile name="juan" email="juan@gmail.com" />} />
 
                     // TODO: Arreglar
                     <Route path="/ProductsGridPrice" element={<ProductsGridPrice />} />

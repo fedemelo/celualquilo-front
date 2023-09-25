@@ -139,19 +139,10 @@ const SearchBar = () =>
 
 const LoginButton = ({ text }) =>{
 
-    const [anchorEl, setAnchorEl] = React.useState(null);
-    const open = Boolean(anchorEl);
-
-    const handleClick = (event) => {
-        setAnchorEl(event.currentTarget);
-    };
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
 
     return(
 
-        <div>
+        <Nav.Link href='/user'>
 
             <Button
                 style={{
@@ -165,23 +156,8 @@ const LoginButton = ({ text }) =>{
             >    
                 {text}
             </Button>
-            <Menu
-                id="basic-menu"
-                anchorEl={anchorEl}
-                open={open}
-                onClose={handleClose}
-                MenuListProps={{
-                    'aria-labelledby': 'basic-button',
-                }}
 
-            >
-
-                <MenuItem onClick={handleClose} sx={{ fontFamily: 'Inter', fontSize: 25 }}>Favoritos</MenuItem>
-                <MenuItem onClick={handleClose} sx={{ fontFamily: 'Inter', fontSize: 25 }}>Historial de Alquileres</MenuItem>
-
-            </Menu>
-
-        </div>
+        </Nav.Link>
     )
 }
 
