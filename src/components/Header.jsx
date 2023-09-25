@@ -7,16 +7,11 @@ import SearchIcon from '@mui/icons-material/Search';
 import Button from '@mui/material/Button';
 import { COLORS } from '../styles/colors';
 import { Container, InputAdornment, TextField } from "@mui/material";
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
 import '../styles/header.css';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import HamburgerMenu from './HamburguerMenu';
 import { Nav } from 'react-bootstrap';
-
-
-
 
 
 export default function Header() {

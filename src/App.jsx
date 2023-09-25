@@ -66,7 +66,6 @@ export default function App() {
                     <Route path="/products/:productId/billing" element={<Billing />} />
                     <Route path="/user" element={<UserProfile name="juan" email="juan@gmail.com" />} />
 
-                    // TODO: Arreglar
                     <Route path="/ProductsGridPrice" element={<ProductsGridPrice />} />
                     <Route path="/ProductsGridFilter" element={<ProductsGridFilter brand={"Apple"}/>} />
                 </Routes> 
