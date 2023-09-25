@@ -17,12 +17,16 @@ import nvidiaImg from '../assets/brands/nvidia.png';
 import samsungImg from '../assets/brands/samsung.png';
 import mainImage from '../assets/mainImage.png';
 import RentButton from './RentButton';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
+
 
 
 const exampleBrands = [
     {
         name: "Samsung",
         image: samsungImg
+
     },
     {
         name: "Nvidia",
@@ -67,13 +71,15 @@ const exampleActiveRents = [
 ]
 
 export default function MainPage() {
+    const theme = useTheme();
+    const onlySmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
     return (
         <>
             <style>
                 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400&family=Open+Sans:wght@300;400&display=swap');
             </style>
             <Stack direction="column" spacing={-0.5} marginBottom={7}>
-                <MainImageText />
+                <MainImageText osm={onlySmallScreen}/>
                 <Card sx={cardStyle}>
                     <BrandsTitleStyle text="Nuestras marcas" />
                     <BrandsRow brands={exampleBrands} />
@@ -102,7 +108,7 @@ const cardStyle = {
 }
 
 
-const MainImageText = () => {
+const MainImageText = (osm) => {
 
     const textColumnStyle = {
         display: 'flex',
@@ -141,10 +147,9 @@ const MainImageText = () => {
                     <RentButton text="Descubrir" />
                 </Stack>
             </Grid>
-
-            <Grid item xs={12} sm={6}>
-                <img src={mainImage} alt="Main" style={{ maxWidth: '100%' }} />
-            </Grid>
+            {osm.osm ? null : <Grid item xs={12} sm={6}>
+                <img src={mainImage} alt="Main" style={{ maxWidth: '100%', objectFit: "cover", height: "100%", objectPosition: "left"}} />
+            </Grid>}
         </Grid>
     );
 }
@@ -166,9 +171,9 @@ const BrandsTitleStyle = ({ text }) =>
 
 const PhonesRow = ({ phones }) => {
     return (
-        <Grid container spacing={2} padding={4} >
-            {phones.map((phone) => (
-                <Grid item xs={3} sm={3}>
+        <Grid container spacing={3} padding={2} >
+            {phones.map((phone, index) => (
+                <Grid item xs={12} sm={6} md={3} key={index}>
                     <PhoneCardSimple {...phone} />
                 </Grid>
             ))}
@@ -187,8 +192,8 @@ const BrandsRow = ({ brands }) => {
     return (
         <Grid container spacing={2} padding={4}>
             {brands.map((brand, index) => (
-                <Grid item xs={3} sm={3} key={index} style={brandItemStyle}>
-                    <img src={brand.image} alt={brand.name} />
+                <Grid item xs={12} sm={6} md={3} key={index} style={brandItemStyle}>
+                    <img src={brand.image} alt={brand.name} style={{maxWidth:"200px"}}/>
                 </Grid>
             ))}
         </Grid>

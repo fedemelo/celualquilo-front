@@ -98,13 +98,17 @@ export default function ProductsGrid({ titleText }) {
 
 
     return (
-        <Stack spacing={3}>
-            <Title titleText={titleText}/>
-            <FilterButtons selectedButton={selectedButton} handleButtonClick={handleButtonClick}/>
+        <Stack marginBottom={7}>
+            <Title />
+            <Grid container spacing={0} justifyContent="center" sx={{ marginTop: 'vw' }}>
+                <Grid item xs={6} sm={6} md={6} lg={12} sx={{ marginLeft: '6rem', marginRight: '6rem', marginTop: '3rem', marginBottom: '3rem' }}>
+                    <FilterButtons />
+                </Grid>
+            </Grid>
             <div style={{ alignItems: 'center', justifyContent: 'center' }}>
                 <Grid container sx={{ marginTop: 'vw', justifyContent: 'center' }}>
                     {exampleActiveRents.map((product, index) => (
-                        <Grid item key={index} sx={{ marginBottom: '3vw', marginLeft: '3vw', marginRight: '3vw' }} alignItems="center" disableEqualOverflow>
+                        <Grid item key={index} sx={{ marginBottom: '3vw', marginLeft: '3vw', marginRight: '3vw' }} alignItems="center">
                             <PhoneCard
                                 name={product.name}
                                 image={product.image}
@@ -116,7 +120,7 @@ export default function ProductsGrid({ titleText }) {
                     ))}
                 </Grid>
             </div>
-            <div style={centerStyle} disableEqualOverflow>
+            <div style={centerStyle}>
                 <PaginationRounded />
             </div>
         </Stack>
@@ -127,37 +131,64 @@ export default function ProductsGrid({ titleText }) {
 const FilterButtons = ({selectedButton, handleButtonClick}) => {
 
     return (
-        <Stack direction="row" spacing={2} sx={{ justifyContent: 'center' }}>
-            <FilterButton text="Todos" selected={selectedButton === 'Todos'} onClick={() => handleButtonClick('Todos')} />
-            <FilterButton text="Populares" selected={selectedButton === 'Populares'} onClick={() => handleButtonClick('Populares')} />
-            <FilterButton text="Última Generación" selected={selectedButton === 'Última Generación'} onClick={() => handleButtonClick('Última Generación')} />
-            <FilterButton text="En Descuento" selected={selectedButton === 'En Descuento'} onClick={() => handleButtonClick('En Descuento')} />
-        </Stack>
+        <Grid container spacing={2} sx={{ alignContent: 'center' }}>
+            <Grid item xs={12} sm={12} md={6} lg={3}>
+                <FilterButton
+                    text="Todos"
+                    selected={selectedButton === 'Todos'}
+                    onClick={() => handleButtonClick('Todos')}
+                />
+            </Grid>
+            <Grid item xs={12} sm={12} md={6} lg={3}>
+                <FilterButton
+                    text="Populares"
+                    selected={selectedButton === 'Populares'}
+                    onClick={() => handleButtonClick('Populares')}
+                />
+            </Grid>
+            <Grid item xs={12} sm={12} md={6} lg={3}>
+                <FilterButton
+                    text="Última Generación"
+                    selected={selectedButton === 'Última Generación'}
+                    onClick={() => handleButtonClick('Última Generación')}
+                />
+            </Grid>
+            <Grid item xs={12} sm={12} md={6} lg={3}>
+                <FilterButton
+                    text="En Descuento"
+                    selected={selectedButton === 'En Descuento'}
+                    onClick={() => handleButtonClick('En Descuento')}
+                />
+            </Grid>
+        </Grid>
     );
-}
+};
 
 const FilterButton = ({ text, selected, onClick }) => {
 
 
 
     const filterButtonStyle = {
-        backgroundColor: selected ? COLORS.dark : "#E6CAFF",
-        color: selected ? 'white' : "#280C40",
-        fontFamily: "Poppins",
+        fontFamily: 'Poppins',
         fontWeight: 500,
-        fontSize: "20px",
-        borderRadius: 10,
-        border: "1px solid #280C40",
-        padding: "5px 70px",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        gap: 10,
-        flex: "none",
-        order: 2,
-        flexGrow: 0,
-        textTransform: "none",
+        fontSize: '20px',
+        borderRadius: '10px',
+        border: '1px solid #280C40',
+        padding: '1vw 2vw',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        gap: '15px',
+        textTransform: 'none',
+        width: '100%',
+        maxWidth: '300px',
+        minWidth: '200px', // Set a maximum width for the button
+        whiteSpace: 'nowrap', // Prevent text from wrapping
+        overflow: 'hidden', // Hide overflowing text
+        textOverflow: 'ellipsis', // Add ellipsis for overflowed text
+        color: selected ? 'white' : '#280C40',
+        backgroundColor: selected ? COLORS.dark : '#E6CAFF',
     }
 
     return (
@@ -177,8 +208,8 @@ const FilterButton = ({ text, selected, onClick }) => {
 };
 
 
-const Title = ({ titleText }) =>
-    <div style={centerStyle} disableEqualOverflow>
+const Title = () =>
+    <div style={centerStyle}>
         <Typography variant="H1" sx={titleStyle}>
             {titleText}
         </Typography>

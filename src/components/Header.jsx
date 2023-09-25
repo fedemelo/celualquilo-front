@@ -2,7 +2,7 @@ import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
+import Typogaphy from '@mui/material/Typography';
 import logoCeluAlquilo from '../assets/logoCeluAlquilo.png';
 import SearchIcon from '@mui/icons-material/Search';
 import Button from '@mui/material/Button';
@@ -11,47 +11,68 @@ import { Container, InputAdornment, TextField } from "@mui/material";
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import '../styles/header.css';
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
+
+
 
 
 export default function Header() {
+const theme = useTheme();
+const onlySmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+
+
     return (
         <Box sx={boxStyle}>
             <AppBar position="static" sx={{ backgroundColor: "white" }}>
                 <Toolbar sx={firstRowStyle}>
+                {onlySmallScreen && 
+                    <IconButton
+                        size="large"
+                        edge="start"
+                        color="black"
+                        aria-label="menu"
+                        sx={{ mr: 2 }}
+                        >
+                    <MenuIcon />
+                    </IconButton>}
                     <LogoCeluAlquilo />
-                    <SearchBar />
+                    {!onlySmallScreen && <SearchBar />}
                     <LoginButton text="Ingresar" />
                 </Toolbar>
-                <Toolbar sx={secondRowStyle}>
+                {!onlySmallScreen && <Toolbar sx={secondRowStyle}>
                     <Marcas />
-                </Toolbar>
+                </Toolbar>}
             </AppBar>
         </Box >
     );
 }
-
 
 const boxStyle = {
     flexGrow: 1,
     position: 'fixed',
     top: 0,
     width: '100%',
-    zIndex: 1,
+    zIndex: 100,
 }
 
 
 const firstRowStyle = {
-    alignItems: 'flex-start',
+    alignItems: 'center',
     flexDirection: "row",
     justifyContent: "space-between",
-    paddingTop: "10px",
+    paddingTop: "4px",
 }
 
 
 const secondRowStyle = {
-    alignItems: 'flex-end',
+    minHeight: "20px",
+    alignItems: 'center',
     flexDirection: "row",
     justifyContent: "space-between",
+    gap: "20px",
 }
 
 
@@ -60,7 +81,7 @@ const LogoCeluAlquilo = () =>
         <Box className='logoCeluAlquilo'
             component="img"
             sx={{
-                height: 50,
+                height: 30,
             }}
             alt="Logo de CeluAlquilo"
             src={logoCeluAlquilo}
@@ -70,13 +91,7 @@ const LogoCeluAlquilo = () =>
 
 
 const Marcas = () =>
-    <Typography
-        className='brands'
-        variant="h5"
-        noWrap
-        component="div"
-        sx={{ flexGrow: 1, alignSelf: 'flex-end' }}
-    >
+   
         <div className="brands">
             <p className="brandName">IPhone</p>
             <div className="separatorLine" />
@@ -86,23 +101,24 @@ const Marcas = () =>
             <div className="separatorLine" />
             <p className="brandName">Huawei</p>
         </div>
-    </Typography>
+ 
 
 
 
 const SearchBar = () =>
     <Container
-        maxWidth="sm"
+        maxWidth="md"
         sx={{
             display: 'flex',
-            width: '100%',
+            width: '80%',
         }}
     >
         <TextField
             type="search"
             defaultValue="Buscar..."
+            size='small'
             sx={{
-                width: 380,
+                width: '100%',
                 color: "#495057",
             }}
             // value={searchTerm}
@@ -138,9 +154,9 @@ const LoginButton = ({ text }) =>{
             <Button
                 style={{
                     borderRadius: 20,
-                    padding: "5px 20px",
+                    padding: "5px 15px",
                     backgroundColor: COLORS.primary,
-                    fontSize: "18px",
+                    fontSize: "15px",
                     textTransform: "none",
                 }}
                 variant="contained"

@@ -1,25 +1,11 @@
 import * as React from 'react';
 import Card from '@mui/material/Card';
-import Rating from '@mui/material/Rating';
-import examplePhone from '../assets/phones/iPhone14Pro.png';
 import Typography from '@mui/material/Typography';
-import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import ListItem from '@mui/material/ListItem';
-import List from '@mui/material/List';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import CheckIcon from '@mui/icons-material/Check';
-import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
-import { COLORS } from '../styles/colors';
-import { TextField } from "@mui/material";
 import Divider from '@mui/material/Divider';
 
-const exampleName = "iPhone 14 Pro"
 const moneda = "COP"
-const examplePrice = "$100.000 "+moneda+"/día"
-const taxPrice = "$19.000 "+moneda+"/día"
-const total = "$119.000 "+moneda+"/día"
+const pricePerDay = 10000
 
 const cardStyle = {
     // centered
@@ -37,42 +23,41 @@ const cardStyle = {
 }
 
 export default function PriceDetails(props) {
+    const dias = props.dias <= 180 ? props.dias : 180
     return (
-    <Card sx={cardStyle}>
-        <Box display={"flex"} flexDirection={"column"} gap="15px">
-        <Typography variant='h4' textAlign={'left'}>
-            Detalle del precio de alquiler
-           </Typography>
-           <Box display={"flex"} justifyContent="space-between" >
-                <Typography variant='h5'>
-                    Precio por {props.dias} días
+        <Card sx={cardStyle}>
+            <Box display={"flex"} flexDirection={"column"} gap="15px">
+                <Typography variant='h4' textAlign={'left'}>
+                    Detalle del precio de alquiler
                 </Typography>
-                <Typography variant='h5'>
-                    {examplePrice}
-                </Typography>
-           </Box>
-           <Box display={"flex"} justifyContent="space-between">
-                <Typography variant='h5'>
-                   Impuestos 19%
-                </Typography>
-                <Typography variant='h5'>
-                    {taxPrice}
-                </Typography>
-           </Box>
-           <Box height="48px">
-           </Box>
-<Divider/>
-           <Box display={"flex"} justifyContent="space-between">
-                <Typography variant='h5'>
-                   Total + Impuestos
-                </Typography>
-                <Typography variant='h5'>
-                    {total}
-                </Typography>
-           </Box>
-           
-
-        </Box>
-    </Card>
+                <Box display={"flex"} justifyContent="space-between" >
+                    <Typography variant='h5'>
+                        Precio por {dias} días
+                    </Typography>
+                    <Typography variant='h5'>
+                        ${Number(pricePerDay) * (Number(dias))} {moneda}/dia
+                    </Typography>
+                </Box>
+                <Box display={"flex"} justifyContent="space-between">
+                    <Typography variant='h5'>
+                        Impuestos 19%
+                    </Typography>
+                    <Typography variant='h5'>
+                        ${Number(pricePerDay) * (Number(dias)) * 0.19} {moneda}/dia
+                    </Typography>
+                </Box>
+                <Box height="48px">
+                </Box>
+                <Divider />
+                <Box display={"flex"} justifyContent="space-between">
+                    <Typography variant='h5'>
+                        Total + Impuestos
+                    </Typography>
+                    <Typography variant='h5'>
+                        ${Number(pricePerDay) * (Number(dias)) * 1.19} {moneda}
+                    </Typography>
+                </Box>
+            </Box>
+        </Card>
     );
 }

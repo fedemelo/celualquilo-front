@@ -1,5 +1,4 @@
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import { Box } from '@mui/system';
 import { COLORS } from '../styles/colors';
 import { Typography } from '@mui/material';
 import Toolbar from '@mui/material/Toolbar';

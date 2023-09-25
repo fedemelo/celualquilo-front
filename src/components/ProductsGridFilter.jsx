@@ -31,7 +31,7 @@ const exampleActiveRents = [
 export default function ProductsGridFilter({ brand }){
   return (
     <>
-        <div style={centerStyle} disableEqualOverflow>
+        <div style={centerStyle}>
             <Typography variant="H1" sx={titleStyle}>
                 { brand }
             </Typography>
@@ -39,7 +39,7 @@ export default function ProductsGridFilter({ brand }){
         <div style={{alignItems:'center', justifyContent: 'center'}}>
           <Grid container sx={{ marginTop: 'vw', justifyContent: 'center'} }>
         {exampleActiveRents.map((product, index) => (
-            <Grid item key={index} sx={{ marginBottom: '3vw', marginLeft:'3vw',marginRight:'3vw'}} alignItems="center"  disableEqualOverflow>
+            <Grid item key={index} sx={{ marginBottom: '3vw', marginLeft:'3vw',marginRight:'3vw'}} alignItems="center" >
             <PhoneCard
                 name={product.name}
                 image={product.image}
@@ -51,7 +51,7 @@ export default function ProductsGridFilter({ brand }){
         ))}
         </Grid>  
         </div>
-        <div style={centerStyle} disableEqualOverflow>
+        <div style={centerStyle}>
             <PaginationRounded/>
         </div>
     </>
