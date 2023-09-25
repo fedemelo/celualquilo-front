@@ -121,6 +121,7 @@ export default function CreateAccountSide() {
         <Box sx={{
             display: 'flex',
             backgroundColor: '#E6CAFF',
+            paddingBlock: '5vw',
         }}
         >
             <Grid container={true} component="main"

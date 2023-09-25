@@ -80,6 +80,7 @@ export default function SignInSide() {
         <Box sx={{
             display: 'flex',
             backgroundColor: '#E6CAFF',
+            paddingBlock: '5vw',
         }}
         >
             <Grid container component="main" sx={{ height: '100vh', marginTop: '10vw', justifyContent: 'center' }}>
