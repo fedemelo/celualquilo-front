@@ -23,7 +23,7 @@ import Billing from './components/Billing';
 export default function App() {
     return (
         <div className="App">
-            <Header />
+            <Header id="header"/>
 
             {/* Especificar en este punto la historia de usuario que se desea visualizar */}
             {/* <MainPage />  */}
@@ -32,8 +32,8 @@ export default function App() {
             {/* <HU3 /> */}
             {/* <HU4 /> */}
             {/* <HU5/> */}
-            <HU6 />
-            {/* <HU7 /> */}
+            {/* <HU6 /> */}
+            <HU7 />
             {/* <HU8 /> */}
             {/* <HU9 /> */}
             {/* <HU10 /> */}
