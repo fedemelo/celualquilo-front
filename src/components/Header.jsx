@@ -13,6 +13,8 @@ import '../styles/header.css';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import HamburgerMenu from './HamburguerMenu';
+import { Nav } from 'react-bootstrap';
+
 
 
 
@@ -68,6 +70,7 @@ const secondRowStyle = {
 
 const LogoCeluAlquilo = () =>
     <Toolbar>
+        <Nav.Link href="/">
         <Box className='logoCeluAlquilo'
             component="img"
             sx={{
@@ -76,6 +79,7 @@ const LogoCeluAlquilo = () =>
             alt="Logo de CeluAlquilo"
             src={logoCeluAlquilo}
         />
+        </Nav.Link>
     </Toolbar>
 
 
@@ -83,13 +87,21 @@ const LogoCeluAlquilo = () =>
 const Marcas = () =>
    
         <div className="brands">
-            <p className="brandName">iPhone</p>
+            <Nav.Link href="/IPhone">
+                <p className="brandName">iPhone</p>
+            </Nav.Link>
             <div className="separatorLine" />
-            <p className="brandName">Xiaomi</p>
+            <Nav.Link href="/Xiaomi">
+                <p className="brandName">Xiaomi</p>
+            </Nav.Link>
             <div className="separatorLine" />
-            <p className="brandName">Samsung</p>
+            <Nav.Link href="/Samsung">
+                <p className="brandName">Samsung</p>
+            </Nav.Link>
             <div className="separatorLine" />
-            <p className="brandName">Huawei</p>
+            <Nav.Link href="/Huawei">
+                <p className="brandName">Huawei</p>
+            </Nav.Link>
         </div>
  
 
@@ -131,7 +143,7 @@ const LoginButton = ({ text }) =>{
     const open = Boolean(anchorEl);
 
     const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
+        setAnchorEl(event.currentTarget);
     };
     const handleClose = () => {
         setAnchorEl(null);

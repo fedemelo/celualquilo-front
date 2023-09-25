@@ -47,7 +47,7 @@ export default function App() {
                 <Routes>
                     <Route path="/" element={<MainPage />} />   
                     <Route path="/products" element={<ProductsGrid titleText={"Nuestros Productos"} />} />
-                    <Route path="/IPhone" element={<ProductsGrid titleText={"IPhone"} />} />
+                    <Route path="/iPhone" element={<ProductsGrid titleText={"iPhone"} />} />
                     <Route path="/Samsung" element={<ProductsGrid titleText={"Samsung"} />} />
                     <Route path="/Huawei" element={<ProductsGrid titleText={"Huawei"} />} />
                     <Route path="/Xiaomi" element={<ProductsGrid titleText={"Xiaomi"} />} />
