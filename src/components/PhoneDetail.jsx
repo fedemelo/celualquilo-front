@@ -13,6 +13,9 @@ import Button from '@mui/material/Button';
 import CardContent from '@mui/material/CardContent';
 import FormLabel from '@mui/material/FormLabel';
 import { COLORS } from '../styles/colors';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
+
 
 
 const exampleBrand = "Marca: Apple"
@@ -85,18 +88,23 @@ const examplePrice = "$10.000 " + moneda + "/día"
 
 
 export default function Review() {
+    const theme = useTheme();
+    const oss = useMediaQuery(theme.breakpoints.down("sm"));
     return (
         <Stack marginBottom={7}>
             <Card sx={cardStyle}>
                 <Grid container spacing={0} padding={3} direction={'row'} alignItems={'center'}>
                     {/* Column for Image */}
-                    <Grid item xs={12} sm={5}>
+                    {!oss && <Grid item xs={12} sm={5}>
                         <img
                             style={{ maxWidth: '130%', height: '30vw' }}
                             alt={exampleName}
                             src={examplePhone}
                         />
-                    </Grid>
+                        <Typography variant="h4" component="div" padding={1}>
+                            {examplePrice}
+                        </Typography>
+                    </Grid>}
 
                     <Grid item xs={12} sm={7
                     } sx={{ textAlign: 'left' }}>
@@ -109,11 +117,20 @@ export default function Review() {
                         <Typography variant="h3" component="div" padding={1}>
                             {exampleName}
                         </Typography>
-                        <Rating name="read-only" value={5} readOnly size="large" />
-                        <SpecList specs={exampleSpecs} />
+                        {oss && <Grid item xs={12} sm={5}>
+                        <img
+                            style={{ maxWidth: '130%', height: '30vw' }}
+                            alt={exampleName}
+                            src={examplePhone}
+                            alignSelf="center"
+                        />
                         <Typography variant="h4" component="div" padding={1}>
                             {examplePrice}
                         </Typography>
+                        </Grid>}
+                        <Rating name="read-only" value={5} readOnly size="large" />
+                        <SpecList specs={exampleSpecs} />
+                        
                         <RentButton text="Alquilar" />
                     </Grid>
                 </Grid>
@@ -175,6 +192,7 @@ const RentButton = ({ text }) =>
 
 
 const CommentArea = () => <Stack spacing={1.3}>
+    
     <FormLabel
         sx={{
             fontFamily: 'Inter',
@@ -182,6 +200,8 @@ const CommentArea = () => <Stack spacing={1.3}>
             fontSize: '2rem',
             lineHeight: '22px',
             color: '#202020',
+            textAlign: 'left',
+            padding: 2
         }}
     >Reseñas de otros usuarios</FormLabel>
     <UserReviews reviews={exampleReviews} />

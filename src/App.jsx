@@ -9,6 +9,7 @@ import ProductsGrid from './components/productsExposed';
 import Favourites from './components/Favourites';
 import ProductsGridFilter from './components/ProductsGridFilter';
 import ProductsGridPrice from './components/ProductGridPrice';
+import MainPage from './components/MainPage';
 import './styles/App.css';
 
 
@@ -28,9 +29,9 @@ export default function App() {
             {/* Especificar en este punto la historia de usuario que se desea visualizar */}
             {/* <MainPage />  */}
             {/* <HU1 /> */}
-            <HU2 />
+            {/* <HU2 /> */}
             {/* <HU3 /> */}
-            {/* <HU4 /> */}
+            <HU4 />
             {/* <HU5/> */}
             {/* <HU6 /> */}
             {/* <HU7 /> */}
