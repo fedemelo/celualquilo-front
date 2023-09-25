@@ -16,7 +16,9 @@ export default function ProductsGrid({ titleText }) {
     const phoneListJson = JSON.parse(phoneList);
     
     const [selectedButton, setSelectedButton] = useState(null);
-
+    const [currentPage, setCurrentPage] = useState(1);
+    console.log(currentPage);
+    const itemsPerPage = 9;
 
     return (
         <Stack marginBottom={7}>
@@ -28,7 +30,7 @@ export default function ProductsGrid({ titleText }) {
             </Grid>
             <div style={{ alignItems: 'center', justifyContent: 'center' }}>
                 <Grid container sx={{ marginTop: 'vw', justifyContent: 'center' }}>
-                    {phoneListJson.map((product, index) => (
+                    {phoneListJson.slice((currentPage-1)*itemsPerPage, currentPage*itemsPerPage).map((product, index) => (
                         <Grid item key={index} sx={{ marginBottom: '3vw', marginLeft: '3vw', marginRight: '3vw' }} alignItems="center">
                             <Link to={"/products/" + product.id} style={{ textDecoration: 'none' }}>
                             <PhoneCard
@@ -42,7 +44,7 @@ export default function ProductsGrid({ titleText }) {
                 </Grid>
             </div>
             <div style={centerStyle}>
-                <PaginationRounded />
+                <PaginationRounded setCurrentPage={setCurrentPage} totalElements={phoneListJson.length} itemsPerPage={itemsPerPage} />
             </div>
         </Stack>
     );

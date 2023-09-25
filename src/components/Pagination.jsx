@@ -1,14 +1,15 @@
 import * as React from 'react';
 import Pagination from '@mui/material/Pagination';
 
-export default function PaginationRounded() {
+export default function PaginationRounded({setCurrentPage, totalElements, itemsPerPage}) {
   return (
 
       <Pagination
-        count={5}
+        onChange={(event, page) => setCurrentPage(page)}
+        count={Math.ceil(totalElements/itemsPerPage)}
         shape="rounded"
         variant="outlined"
-        size = "large"
+        size = "small"
         sx={{
           '& .MuiPaginationItem-page.Mui-selected': {
             border: '1px solid',
