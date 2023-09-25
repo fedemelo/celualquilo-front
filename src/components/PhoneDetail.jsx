@@ -16,6 +16,7 @@ import { COLORS } from '../styles/colors';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import { useParams } from 'react-router';
+import GoBack from './GoBack';
 
 
 
@@ -93,6 +94,7 @@ export default function PhoneDetail() {
 
     return (
         <Stack marginBottom={7}>
+            <GoBack text="Detalle de un celular" />
             <Card sx={cardStyle}>
                 <Grid container spacing={0} padding={3} direction={'row'} alignItems={'center'}>
                     {!oss && <Grid item xs={12} sm={5}>

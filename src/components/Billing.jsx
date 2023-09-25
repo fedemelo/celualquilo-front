@@ -9,20 +9,26 @@ import PriceDetails from './PriceDetails';
 import { useState } from 'react';
 import Box from '@mui/material/Box';
 import { FormControl, FormControlLabel, Radio, RadioGroup } from '@mui/material';
-
+import Breadcrumb from './BreadCrumb';
 
 export default function Billing() {
     return (
-        <Grid container direction={'row'} spacing={2} marginBottom={8}>
-            <Grid item xs={12} sm={6}>
-                <BillingAddress />
-                <PayingMethod />
+        <>
+            <Breadcrumb breadcrumbs={[
+                { href: '', text: 'Detalles de Alquiler' },
+                { href: '', text: 'Dirección y Facturación' },
+            ]} />
+            <Grid container direction={'row'} spacing={2} marginBottom={8}>
+                <Grid item xs={12} sm={6}>
+                    <BillingAddress />
+                    <PayingMethod />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                    <PriceDetails dias={5} />
+                    <RentButton text="Finalizar compra" />
+                </Grid>
             </Grid>
-            <Grid item xs={12} sm={6}>
-                <PriceDetails dias={5} />
-                <RentButton text="Finalizar compra" />
-            </Grid>
-        </Grid>
+        </>
     );
 }
 
@@ -80,7 +86,7 @@ const BillingAddress = () => {
         if ((address.length < 4) || (!/^(Carrera|Calle|Transversal|Diagonal|Circular|Avenida|Autopista)/.test(address))) return "La dirección debe empezar por: Carrera, Calle, Transversal, Diagonal, Circular, Avenida o Autopista."
 
 
-        if (!/\d/.test(address)) return "La dirección debe incluir un número."
+        if (!/\d/.test(address)) return "La dirección debe seguir con un espacio y un número."
 
 
         const parts = address.split(' ');
@@ -120,7 +126,7 @@ const BillingAddress = () => {
 
         if (!clickedFields.number) return null;
 
-        if (String(number).length == 0) return "Debes ingresar un número de contacto."
+        if (String(number).length === 0) return "Debes ingresar un número de contacto."
 
         const numeros = [{ digito: 0, número: "ceros" }, { digito: 1, número: "unos" }, { digito: 2, número: "doses" },
         { digito: 3, número: "treses" }, { digito: 4, número: "cuatros" }, { digito: 5, número: "cincos" }, { digito: 6, número: "seises" },

@@ -7,14 +7,11 @@ import SearchIcon from '@mui/icons-material/Search';
 import Button from '@mui/material/Button';
 import { COLORS } from '../styles/colors';
 import { Container, InputAdornment, TextField } from "@mui/material";
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
 import '../styles/header.css';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import HamburgerMenu from './HamburguerMenu';
-
-
+import { Nav } from 'react-bootstrap';
 
 
 export default function Header() {
@@ -68,6 +65,7 @@ const secondRowStyle = {
 
 const LogoCeluAlquilo = () =>
     <Toolbar>
+        <Nav.Link href="/">
         <Box className='logoCeluAlquilo'
             component="img"
             sx={{
@@ -76,6 +74,7 @@ const LogoCeluAlquilo = () =>
             alt="Logo de CeluAlquilo"
             src={logoCeluAlquilo}
         />
+        </Nav.Link>
     </Toolbar>
 
 
@@ -83,13 +82,21 @@ const LogoCeluAlquilo = () =>
 const Marcas = () =>
    
         <div className="brands">
-            <p className="brandName">iPhone</p>
+            <Nav.Link href="/IPhone">
+                <p className="brandName">iPhone</p>
+            </Nav.Link>
             <div className="separatorLine" />
-            <p className="brandName">Xiaomi</p>
+            <Nav.Link href="/Xiaomi">
+                <p className="brandName">Xiaomi</p>
+            </Nav.Link>
             <div className="separatorLine" />
-            <p className="brandName">Samsung</p>
+            <Nav.Link href="/Samsung">
+                <p className="brandName">Samsung</p>
+            </Nav.Link>
             <div className="separatorLine" />
-            <p className="brandName">Huawei</p>
+            <Nav.Link href="/Huawei">
+                <p className="brandName">Huawei</p>
+            </Nav.Link>
         </div>
  
 
@@ -127,19 +134,10 @@ const SearchBar = () =>
 
 const LoginButton = ({ text }) =>{
 
-    const [anchorEl, setAnchorEl] = React.useState(null);
-    const open = Boolean(anchorEl);
-
-    const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-    };
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
 
     return(
 
-        <div>
+        <Nav.Link href='/user'>
 
             <Button
                 style={{
@@ -153,23 +151,8 @@ const LoginButton = ({ text }) =>{
             >    
                 {text}
             </Button>
-            <Menu
-                id="basic-menu"
-                anchorEl={anchorEl}
-                open={open}
-                onClose={handleClose}
-                MenuListProps={{
-                    'aria-labelledby': 'basic-button',
-                }}
 
-            >
-
-                <MenuItem onClick={handleClose} sx={{ fontFamily: 'Inter', fontSize: 25 }}>Favoritos</MenuItem>
-                <MenuItem onClick={handleClose} sx={{ fontFamily: 'Inter', fontSize: 25 }}>Historial de Alquileres</MenuItem>
-
-            </Menu>
-
-        </div>
+        </Nav.Link>
     )
 }
 

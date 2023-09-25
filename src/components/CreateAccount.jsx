@@ -29,13 +29,6 @@ export default function CreateAccountSide() {
     const [clickedField, setClickedField] = useState({name: false, email: false, password: false, verifiyPassword: false})
 
 
-    const handleSignIn = () => {
-        // Add your sign-in logic here
-        console.log('Email:', formValues.email);
-        console.log('Password:', formValues.password);
-        // You can replace the console.log with your authentication logic
-    };
-
     const togglePasswordVisibility = () => {
         setFormValues({ ...formValues, showPassword: !formValues.showPassword });
     };
@@ -186,10 +179,10 @@ export default function CreateAccountSide() {
                                 color={getProblemInName() === "" ? "success" : "error"}
                                 required
                                 fullWidth
-                                id="email"
+                                id="name"
                                 label="Escriba nombre y apellido"
-                                name="email"
-                                autoComplete="email"
+                                name="name"
+                                autoComplete="name"
                                 autoFocus
                                 onChange={(e) => setFormValues({ ...formValues, name: e.target.value })}
                                 onClick={() => setClickedField({ ...clickedField, name: true })}
@@ -243,7 +236,7 @@ export default function CreateAccountSide() {
                                             <IconButton
                                                 edge="end"
                                                 onClick={togglePasswordVisibility}
-                                                tabIndex="-1" // Para evitar que el botón sea enfocable
+                                                tabIndex={-1} // Para evitar que el botón sea enfocable
                                             >
                                                 {formValues.showPassword ? <Visibility /> : <VisibilityOff />}
                                             </IconButton>
@@ -274,7 +267,7 @@ export default function CreateAccountSide() {
                                             <IconButton
                                                 edge="end"
                                                 onClick={toggleVerifyPasswordVisibility}
-                                                tabIndex="-1" // Para evitar que el botón sea enfocable
+                                                tabIndex={-1} // Para evitar que el botón sea enfocable
                                             >
                                                 {formValues.showPassword ? <Visibility /> : <VisibilityOff />}
                                             </IconButton>

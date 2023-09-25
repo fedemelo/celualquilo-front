@@ -27,24 +27,16 @@ export default function SignInSide() {
     };
 
 
-    const [formValues, setFormValues] = useState({name: "", email: "", password: "", showPassword: false})
-    const [clickedField, setClickedField] = useState({name: false, email: false, password: false})
-
-    const handleSignIn = () => {
-        // Add your sign-in logic here
-        console.log('Email:', formValues.email);
-        console.log('Password:', formValues.password);
-        // You can replace the console.log with your authentication logic
-    };
+    const [formValues, setFormValues] = useState({ name: "", email: "", password: "", showPassword: false })
+    const [clickedField, setClickedField] = useState({ name: false, email: false, password: false })
 
     const togglePasswordVisibility = () => {
         setFormValues({ ...formValues, showPassword: !formValues.showPassword });
     };
 
-
     const getProblemInEmail = () => {
 
-        const email = formValues.email? formValues.email.trim() : ""
+        const email = formValues.email ? formValues.email.trim() : ""
 
         if (!clickedField.email) return "";
 
@@ -65,7 +57,7 @@ export default function SignInSide() {
 
     const getProblemInPassword = () => {
 
-        const password = formValues.password? formValues.password.trim() : ""
+        const password = formValues.password ? formValues.password.trim() : ""
 
         if (!clickedField.password) return "";
 
@@ -96,7 +88,6 @@ export default function SignInSide() {
                         zIndex: 0.7,
                         backgroundImage: `url(${signinimg})`,
                         backgroundRepeat: 'no-repeat',
-                        backgroundSize: 'cover',
                         backgroundPosition: 'center',
                         display: 'flex',
                         flexDirection: 'column',
@@ -135,7 +126,7 @@ export default function SignInSide() {
                                 margin="normal"
                                 variant="filled"
                                 required
-                                color = {getProblemInEmail() === "" ? "success" : "error"}
+                                color={getProblemInEmail() === "" ? "success" : "error"}
                                 fullWidth
                                 id="email"
                                 label="Escriba su correo electrónico"
@@ -155,7 +146,7 @@ export default function SignInSide() {
                                 margin="normal"
                                 required
                                 fullWidth
-                                color = {getProblemInPassword() === "" ? "success" : "error"}
+                                color={getProblemInPassword() === "" ? "success" : "error"}
                                 name="password"
                                 label="Contraseña"
                                 id="password"
@@ -176,7 +167,7 @@ export default function SignInSide() {
                                             <IconButton
                                                 edge="end"
                                                 onClick={togglePasswordVisibility}
-                                                tabIndex="-1" // Para evitar que el botón sea enfocable
+                                                tabIndex={-1} // Para evitar que el botón sea enfocable
                                             >
                                                 {formValues.showPassword ? <Visibility /> : <VisibilityOff />}
                                             </IconButton>

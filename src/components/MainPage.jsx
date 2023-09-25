@@ -19,6 +19,7 @@ import mainImage from '../assets/mainImage.png';
 import RentButton from './RentButton';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
+import { Nav } from 'react-bootstrap';
 
 
 
@@ -144,7 +145,9 @@ const MainImageText = (osm) => {
                         @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400&family=Open+Sans:wght@300;400&family=Space+Grotesk&display=swap');
                     </style>
                     <Typography variant="h2" sx={subtitleStyle}>Encuentra un celular a tu medida y a un precio accesible</Typography>
+                    <Nav.Link href="/products">
                     <RentButton text="Descubrir" />
+                    </Nav.Link>
                 </Stack>
             </Grid>
             {osm.osm ? null : <Grid item xs={12} sm={6}>
@@ -217,11 +220,13 @@ const SectionTitle = ({ text }) =>
 
 
 const SeeAllButtom = ({ text }) =>
+    <Nav.Link href="/products">
     <Button
         style={buttonStyle}
         variant="contained"
     >{text} <EastIcon sx={{ paddingLeft: "10px" }} />
     </Button>
+    </Nav.Link>
 
 
 const buttonStyle = {
