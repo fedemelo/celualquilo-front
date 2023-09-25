@@ -126,7 +126,7 @@ const BillingAddress = () => {
 
         if (!clickedFields.number) return null;
 
-        if (String(number).length == 0) return "Debes ingresar un número de contacto."
+        if (String(number).length === 0) return "Debes ingresar un número de contacto."
 
         const numeros = [{ digito: 0, número: "ceros" }, { digito: 1, número: "unos" }, { digito: 2, número: "doses" },
         { digito: 3, número: "treses" }, { digito: 4, número: "cuatros" }, { digito: 5, número: "cincos" }, { digito: 6, número: "seises" },

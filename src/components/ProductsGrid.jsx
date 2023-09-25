@@ -14,7 +14,6 @@ import PaginationRounded from './Pagination';
 import Typography from '@mui/material/Typography';
 import { Stack } from '@mui/material';
 import Button from '@mui/material/Button';
-import { useState } from 'react';
 import { COLORS } from "../styles/colors";
 
 
@@ -90,19 +89,14 @@ const exampleActiveRents = [
 
 export default function ProductsGrid({ titleText }) {
 
-    const [selectedButton, setSelectedButton] = useState(null);
-
-    const handleButtonClick = (text) => {
-        setSelectedButton(text);
-    };
-
+    const [selectedButton, setSelectedButton] = React.useState('Todos');
 
     return (
         <Stack marginBottom={7}>
-            <Title titleText={titleText}/>
+            <Title titleText={titleText} />
             <Grid container spacing={0} justifyContent="center" sx={{ marginTop: 'vw' }}>
                 <Grid item xs={6} sm={6} md={6} lg={12} sx={{ marginLeft: '6rem', marginRight: '6rem', marginTop: '3rem', marginBottom: '3rem' }}>
-                    <FilterButtons titleText={titleText}/>
+                    <FilterButtons selectedButton={selectedButton} handleButtonClick={setSelectedButton} />
                 </Grid>
             </Grid>
             <div style={{ alignItems: 'center', justifyContent: 'center' }}>
@@ -128,7 +122,7 @@ export default function ProductsGrid({ titleText }) {
 };
 
 
-const FilterButtons = ({selectedButton, handleButtonClick}) => {
+const FilterButtons = ({ selectedButton, handleButtonClick }) => {
 
     return (
         <Grid container spacing={2} sx={{ alignContent: 'center' }}>
@@ -165,8 +159,6 @@ const FilterButtons = ({selectedButton, handleButtonClick}) => {
 };
 
 const FilterButton = ({ text, selected, onClick }) => {
-
-
 
     const filterButtonStyle = {
         fontFamily: 'Poppins',
@@ -208,7 +200,7 @@ const FilterButton = ({ text, selected, onClick }) => {
 };
 
 
-const Title = ({titleText}) =>
+const Title = ({ titleText }) =>
     <div style={centerStyle}>
         <Typography variant="H1" sx={titleStyle}>
             {titleText}

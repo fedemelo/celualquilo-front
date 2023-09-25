@@ -29,13 +29,6 @@ export default function CreateAccountSide() {
     const [clickedField, setClickedField] = useState({name: false, email: false, password: false, verifiyPassword: false})
 
 
-    const handleSignIn = () => {
-        // Add your sign-in logic here
-        console.log('Email:', formValues.email);
-        console.log('Password:', formValues.password);
-        // You can replace the console.log with your authentication logic
-    };
-
     const togglePasswordVisibility = () => {
         setFormValues({ ...formValues, showPassword: !formValues.showPassword });
     };
