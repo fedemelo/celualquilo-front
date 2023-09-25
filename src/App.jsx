@@ -13,6 +13,7 @@ import SignInSide from './components/SignIn';
 import CreateAccountSide from './components/CreateAccount';
 import RentDetail from './components/RentDetail';
 import Billing from './components/Billing';
+import PhoneDetail from './components/PhoneDetail';
 
 
 import './styles/App.css';
@@ -54,7 +55,7 @@ export default function App() {
                     <Route path="/Login" element={<SignInSide />} />
                     <Route path="/Favourites" element={<Favourites />} />
                     <Route path="/RentHistory" element={<RentHistory />} />
-                    <Route path="/products/:productId" element={<Review />} />
+                    <Route path="/products/:productId" element={<PhoneDetail />} />
                     <Route path="/products/:productId/rent" element={<RentDetail />} />
                     <Route path="/products/:productId/billing" element={<Billing />} />
                 </Routes> 

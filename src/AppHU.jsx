@@ -6,7 +6,7 @@ import GoBack from './components/GoBack';
 import Review from './components/Review';
 import Breadcrumb from './components/BreadCrumb';
 import RentHistory from './components/RentHistory';
-import ProductsGrid from './components/productsExposed';
+import ProductsGrid from './components/ProductsGrid';
 import Favourites from './components/Favourites';
 import MainPage from './components/MainPage';
 import ProductsGridFilter from './components/ProductsGridFilter';
@@ -26,11 +26,11 @@ export default function App() {
             <Header />
 
             {/* Especificar en este punto la historia de usuario que se desea visualizar */}
-            <MainPage /> 
+            {/* <MainPage />  */}
             {/* <HU1 /> */}
             {/* <HU2 /> */}
             {/* <HU3 /> */}
-            {/* <HU4 /> */}
+            <HU4 />
             {/* <HU5 /> */}
             {/* <HU6 /> */}
             {/* <HU7 /> */}

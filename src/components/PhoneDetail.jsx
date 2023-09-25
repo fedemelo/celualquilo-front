@@ -15,19 +15,9 @@ import FormLabel from '@mui/material/FormLabel';
 import { COLORS } from '../styles/colors';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
+import { useParams } from 'react-router';
 
 
-
-const exampleBrand = "Marca: Apple"
-const exampleAvailability = "Disponibilidad: 10 en Stock"
-
-const exampleName = "iPhone 14 Pro"
-
-const exampleSpecs = [
-    "Brillo máximo de 800 nits (normal); brillo máximo de 1.200 nits (HDR)",
-    "Resistencia a las salpicaduras, el agua y el polvo IP68 (hasta 6 metros de profundidad durante un máximo de 30 minutos, según la norma IEC 60529)",
-    "Chip A14 Bionic; Neural Engine de última generación",
-]
 
 const exampleReviews = [
     {
@@ -83,52 +73,61 @@ const exampleReviews = [
 ];
 
 
-const moneda = "COP"
-const examplePrice = "$10.000 " + moneda + "/día"
+const moneda = "USD"
 
 
-export default function Review() {
+export default function PhoneDetail() {
     
+    const params = useParams();
+    const idCel = params.productId;
+    
+
+    const phone = localStorage.getItem("cel"+idCel);
+    console.log(phone);
+    const phoneJson = JSON.parse(phone);
+    
+
     const theme = useTheme();
     const oss = useMediaQuery(theme.breakpoints.down("sm"));
+    const price = phoneJson.price_per_day + " " + moneda + "/día";
+
     return (
         <Stack marginBottom={7}>
             <Card sx={cardStyle}>
                 <Grid container spacing={0} padding={3} direction={'row'} alignItems={'center'}>
-                    {/* Column for Image */}
                     {!oss && <Grid item xs={12} sm={5}>
                         <img
                             style={{ maxWidth: '130%', height: '30vw' }}
-                            alt={exampleName}
-                            src={examplePhone}
+                            alt={phoneJson.name}
+                            src={phoneJson.image}
                         />
                         <Typography variant="h4" component="div" padding={1}>
-                            {examplePrice}
+                            {price}
                         </Typography>
                     </Grid>}
 
                     <Grid item xs={12} sm={7} sx={{ textAlign: 'left' }}>
                         <Typography variant="h6" color="text.primary" padding={1}>
-                            {exampleBrand}
+                            {phoneJson.brand}
                         </Typography>
                         <Typography variant="h6" color="text.primary" padding={1}>
-                            {exampleAvailability}
+                            {phoneJson.availability } unidades disponibles
                         </Typography>
                         <Typography variant="h3" component="div" padding={1}>
-                            {exampleName}
+                            {phoneJson.name}
                         </Typography>
                         {oss && <Grid item xs={12} sm={5}>
                         <img
                             style={{ maxWidth: '130%', height: '60vw' }}
-                            alt={exampleName}
-                            src={examplePhone}
+                            alt={phoneJson.name}
+                            src={phoneJson.image}
                         />
-                        <Typography variant="h4" component="div" padding={1}>
-                            {examplePrice}
+                        <Typography variant="h6" color="text.primary" padding={1}>
+                            {price}
                         </Typography>
                         </Grid>}
                         <Rating name="read-only" value={5} readOnly size="large" />
-                        <SpecList specs={exampleSpecs} />
+                        <SpecList specs={[phoneJson.camera_specifications, phoneJson.memory_specs, phoneJson.ram_specs]} />
                         
                         <RentButton text="Alquilar" />
                     </Grid>

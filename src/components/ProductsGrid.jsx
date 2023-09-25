@@ -17,6 +17,7 @@ import Button from '@mui/material/Button';
 import { useState } from 'react';
 import { COLORS } from "../styles/colors";
 import { useParams } from 'react-router';
+import { Link } from 'react-router-dom';
 
 
 const exampleActiveRents = [
@@ -117,12 +118,13 @@ export default function ProductsGrid({ titleText }) {
                 <Grid container sx={{ marginTop: 'vw', justifyContent: 'center' }}>
                     {phoneListJson.map((product, index) => (
                         <Grid item key={index} sx={{ marginBottom: '3vw', marginLeft: '3vw', marginRight: '3vw' }} alignItems="center">
+                            <Link to={"/products/" + product.id}>
                             <PhoneCard
                                 name={product.name}
                                 image={product.image}
                                 cost={product.price_per_day}
                                 rating={product.rating}
-                            />
+                            /></Link>
                         </Grid>
                     ))}
                 </Grid>
