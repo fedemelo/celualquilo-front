@@ -13,6 +13,7 @@ import { FormControl, FormControlLabel, Radio, RadioGroup } from '@mui/material'
 import Breadcrumb from './BreadCrumb';
 
 export default function Billing() {
+    let dias = localStorage.getItem("dias");
     return (
         <>
             <Breadcrumb breadcrumbs={[
@@ -26,7 +27,7 @@ export default function Billing() {
                     <PayingMethod />
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                    <PriceDetails dias={5} />
+                    <PriceDetails dias={dias} />
                     <RentButton text="Finalizar compra" />
                 </Grid>
             </Grid>

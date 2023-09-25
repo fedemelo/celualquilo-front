@@ -18,6 +18,7 @@ const maxDiasAlquiler = 180
 
 export default function RentDetail() {
     const [dias, setDias] = useState('5');
+
     return (
         <Grid container spacing={0}>
             <Breadcrumb breadcrumbs={[
@@ -30,7 +31,7 @@ export default function RentDetail() {
                 </Grid>
                 <Grid item xs={12} md={6}>
                     <PriceDetails dias={dias} />
-                    <RentButton text="Continuar pago" />
+                    <RentButton text="Continuar pago" onChange={localStorage.setItem("dias", dias)} />
                 </Grid>
             </Grid>
         </Grid>
