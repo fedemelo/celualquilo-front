@@ -8,7 +8,6 @@ import Link from '@mui/material/Link';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
-import { createTheme } from '@mui/material/styles';
 import { useState } from 'react';
 import signinimg from '../assets/imgLogin.png';
 import IconButton from '@mui/material/IconButton';
@@ -195,7 +194,7 @@ export default function SignInSide() {
                                 </Grid>
                                 <Grid item sx={{ textAlign: 'right' }}>
                                     <Link href="#" variant="body2">
-                                        Olvidó su contraseña?
+                                        Olvidaste tu contraseña?
                                     </Link>
                                 </Grid>
                             </Grid>
