@@ -4,10 +4,6 @@ import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import PhoneCardSimple from './PhoneCardSimple';
-import examplePhone1 from '../assets/phones/iPhone14Pro.png';
-import examplePhone2 from '../assets/phones/HuaweiNovaY71.png';
-import examplePhone3 from '../assets/phones/SamsungGalaxyS22.png';
-import examplePhone4 from '../assets/phones/OPPOReno7.png';
 import EastIcon from '@mui/icons-material/East';
 import Button from '@mui/material/Button';
 import { COLORS } from "../styles/colors";
@@ -43,37 +39,16 @@ const brands = [
 ]
 
 
-const exampleActiveRents = [
-    {
-        name: "iPhone 12 Pro",
-        image: examplePhone1,
-        cost: "$ 10 000 COP / día",
-        buttonText: "Alquilar",
-    },
-    {
-        name: "Huawei Nova Y71",
-        image: examplePhone2,
-        cost: "$ 7 000 COP / día",
-        buttonText: "Alquilar",
-    },
-    {
-        name: "Samsung Galaxy S22",
-        image: examplePhone3,
-        cost: "$ 15 000 COP / día",
-        buttonText: "Alquilar",
-    },
-    {
-        name: "iPhone 13",
-        image: examplePhone4,
-        cost: "$ 10 000 COP / día",
-        buttonText: "Alquilar",
-    },
-]
-
 
 export default function MainPage() {
     const theme = useTheme();
     const onlySmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+
+    const phoneList = localStorage.getItem('phoneList');
+    const phoneListJson = JSON.parse(phoneList);
+
+    phoneListJson.sort((a, b) => (a.rating > b.rating) ? -1 : 1);
+
     return (
         <>
             <style>
@@ -87,7 +62,7 @@ export default function MainPage() {
                 </Card>
                 <Card sx={cardStyle}>
                     <SectionTitle text="Populares" />
-                    <PhonesRow phones={exampleActiveRents} />
+                    <PhonesRow phones={phoneListJson.slice(0, 4)} />
                     <SeeAllButtom text="Ver todos" />
                 </Card>
             </Stack>
@@ -177,7 +152,7 @@ const PhonesRow = ({ phones }) => {
         <Grid container spacing={3} padding={2} >
             {phones.map((phone, index) => (
                 <Grid item xs={12} sm={6} md={3} key={index}>
-                    <PhoneCardSimple {...phone} route={`/products`}/>
+                    <PhoneCardSimple name={phone.name} image={phone.image} cost={phone.price_per_day} buttonText="Alquilar" days={8}  route={"/products/" + phone.id}/>
                 </Grid>
             ))}
         </Grid>

@@ -9,7 +9,7 @@ import Stack from '@mui/material/Stack';
 import { Link } from 'react-router-dom';
 
 
-export default function PhoneCardSimple({ name, image, cost, days, buttonText, route }) {
+export default function PhoneCardSimple({ name, image, cost, buttonText, route }) {
     return (
         <Card sx={{
             height: "100%",
@@ -26,7 +26,7 @@ export default function PhoneCardSimple({ name, image, cost, days, buttonText, r
                 <MediaRatio image={image} name={name} />
                 <Typography variant="body2" color="text.secondary"
                     sx={priceStyle}>
-                    {cost}
+                    {cost} USD/dia
                 </Typography>
                 <Typography variant="h5" component="div"
                     sx={nameStyle}
@@ -36,12 +36,6 @@ export default function PhoneCardSimple({ name, image, cost, days, buttonText, r
             </Box>
             <CardContent>
                 <Stack spacing={3}>
-
-                    {days ? <Typography variant="h5" component="div"
-                        sx={daysStyle}
-                    >
-                        {days}
-                    </Typography> : null}
                     {buttonText ?
                         <LastButton text={buttonText} route={route} /> : null}
                 </Stack>
@@ -71,15 +65,6 @@ const nameStyle = {
     fontWeight: "bold",
 }
 
-
-const daysStyle = {
-    textAlign: "left",
-    verticalAlign: "middle",
-    fontSize: "20px",
-    fontFamily: "Open Sans",
-    lineHeight: "32%",
-    color: "#495057",
-}
 
 
 const LastButton = ({ text, route }) => <>
