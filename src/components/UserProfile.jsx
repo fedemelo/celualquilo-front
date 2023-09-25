@@ -6,8 +6,7 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
-const UserProfile = ({ user }) => {
-  const { name, email, reservations } = user;
+const UserProfile = ({ name, email, reservations } ) => {
 
   const handleActiveReservationsClick = () => {
     // Lógica para mostrar las reservas activas del usuario
