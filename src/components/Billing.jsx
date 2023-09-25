@@ -66,7 +66,7 @@ const RentButton = ({ text }) => {
 const BillingAddress = () => {
 
     const [formValues, setFormValues] = useState({ address: "", city: "", number: "0" })
-    const [clickedFields, setClickedFields] = useState({ address: false, city: false, number: false})
+    const [clickedFields, setClickedFields] = useState({ address: false, city: false, number: false })
 
 
     const getProblemInAddress = () => {
@@ -122,8 +122,19 @@ const BillingAddress = () => {
 
         if (number.length === 0) return "Debes ingresar un número de contacto."
 
+        const numeros = [{ digito: 0, número: "ceros" }, { digito: 1, número: "unos" }, { digito: 2, número: "doses" },
+        { digito: 3, número: "treses" }, { digito: 4, número: "cuatros" }, { digito: 5, número: "cincos" }, { digito: 6, número: "seises" },
+        { digito: 7, número: "sietes" }, { digito: 8, número: "ochos" }, { digito: 9, número: "nueves" }]
 
-        if (!/^\d{9}$/.test(number)) return "El número de contacto debe consistir de 9 dígitos contiguos."
+        for (const numero of numeros) {
+            if (new RegExp("^" + numero.digito + "+$").test(number)) return "El número no puede consistir de únicamente " + numero.número + "."
+        }
+
+        if (/^[0]/.test(number)) return "El número de contacto no puede empezar por cero."
+
+        if (!/^\d{10}$/.test(number)) return "El número de contacto debe consistir de 10 dígitos contiguos."
+
+        return null;
 
     }
 
