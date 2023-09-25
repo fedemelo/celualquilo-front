@@ -12,27 +12,31 @@ export default function PhoneCardSimple({ name, image, cost, days, buttonText })
     return (
         <Card sx={{
             height: "100%",
-            maxWidth: "17vw",
             backgroundColor: "#f8f9fa",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
         }}>
             <style>
                 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');
             </style>
 
-            <MediaRatio image={image} name={name} />
-            <CardContent>
-                <Stack spacing={3}>
-
-                    <Typography variant="body2" color="text.secondary"
-                        sx={priceStyle}>
-                        {cost}
-                    </Typography>
-                    <Typography gutterBottom variant="h5" component="div"
+            <Box px={2}>
+                <MediaRatio image={image} name={name} />
+                        <Typography variant="body2" color="text.secondary"
+                            sx={priceStyle}>
+                            {cost}
+                        </Typography>
+                    <Typography  variant="h5" component="div"
                         sx={nameStyle}
                     >
                         {name}
                     </Typography>
-                    {days ? <Typography gutterBottom variant="h5" component="div"
+            </Box>
+            <CardContent>
+                <Stack spacing={3}>
+
+                    {days ? <Typography variant="h5" component="div"
                         sx={daysStyle}
                     >
                         {days}
@@ -62,7 +66,6 @@ const nameStyle = {
     verticalAlign: "middle",
     fontSize: "20px",
     fontFamily: "Open Sans",
-    lineHeight: "32%",
     color: "#495057",
     fontWeight: "bold",
 }

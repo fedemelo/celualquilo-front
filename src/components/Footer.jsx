@@ -33,7 +33,7 @@ export default function Footer() {
                     <FooterColumn title={title3} items={items3} />
                     <FooterColumn title={title4} items={items4} />
                 </Grid>
-                <Copyright/>
+                <Copyright />
             </Container>
         </Box>
     );
@@ -53,8 +53,8 @@ const boxStyle = {
 const FooterColumn = ({ title, items }) =>
     <Grid item xs={12} sm={3}>
         <Title title={title} />
-        {items.map((item) => (
-            <Item text={item} />
+        {items.map((item, index) => (
+            <Item text={item} key={index} />
         ))}
     </Grid>
 

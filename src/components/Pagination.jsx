@@ -6,7 +6,6 @@ export default function PaginationRounded() {
 
       <Pagination
         count={5}
-        disableEqualOverflow
         shape="rounded"
         variant="outlined"
         size = "large"
