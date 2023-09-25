@@ -5,7 +5,7 @@ import GoBack from './components/GoBack';
 import Review from './components/Review';
 import Breadcrumb from './components/BreadCrumb';
 import RentHistory from './components/RentHistory';
-import ProductsGrid from './components/productsExposed';
+import ProductsGrid from './components/ProductsGrid';
 import Favourites from './components/Favourites';
 import ProductsGridFilter from './components/ProductsGridFilter';
 import ProductsGridPrice from './components/ProductGridPrice';
@@ -23,7 +23,7 @@ import Billing from './components/Billing';
 export default function App() {
     return (
         <div className="App">
-            <Header id="header"/>
+            <Header id="header" />
 
             {/* Especificar en este punto la historia de usuario que se desea visualizar */}
             {/* <MainPage />  */}
@@ -33,13 +33,14 @@ export default function App() {
             {/* <HU4 /> */}
             {/* <HU5/> */}
             {/* <HU6 /> */}
-            <HU7 />
+            {/* <HU7 /> */}
             {/* <HU8 /> */}
             {/* <HU9 /> */}
             {/* <HU10 /> */}
             {/* <HU11 /> */}
             {/* <HU12 /> */}
             {/* <HU13 /> */}
+
             <Footer />
         </div>
     );
@@ -169,9 +170,9 @@ const HU13 = () => {
     const user = {
         name: 'John Doe',
         email: 'john@example.com',
-      };
+    };
     return (
-          
-          <UserProfile user={user} />
+
+        <UserProfile user={user} />
     )
 }

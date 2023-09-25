@@ -91,17 +91,15 @@ const PhoneResume = ({ setDias }) => {
             <Box display={"flex"} flexDirection={"column"} gap="15px" justifyContent="center" padding="2rem">
                 <Typography variant='h4' textAlign={'left'}> {exampleName} </Typography>
                 <Typography variant='h5' textAlign={'left'}> {examplePrice} </Typography>
-                <Box display={"flex"} flexDirection={"column"} gap="2px" justifyContent="center">
-                    <Typography variant='h7' textAlign={'left'}> Días de alquiler </Typography>
-                    <TextField
-                        color={!getProblemInNumber() ? "success" : "error"}
-                        required
-                        id="outlined-required"
-                        defaultValue="5"
-                        onChange={handleDaysChange}
-                    />
-                    {<Typography variant='body1' color={"red"}>{getProblemInNumber()}</Typography>}
-                </Box>
+                <TextField
+                    color={!getProblemInNumber() ? "success" : "error"}
+                    required
+                    id="outlined-required"
+                    defaultValue="5"
+                    label="Días de alquiler"
+                    onChange={handleDaysChange}
+                />
+                {<Typography variant='body1' color={"red"}>{getProblemInNumber()}</Typography>}
             </Box>
         </Box>
 
