@@ -9,6 +9,24 @@ export default function Breadcrumb({ breadcrumbs }) {
         event.preventDefault();
     };
 
+    const breadcrumbItems = breadcrumbs.map((breadcrumb, index) => (
+        index < breadcrumbs.length - 1 ? (
+            <Link
+                key={index}
+                underline="hover"
+                color="inherit"
+                href={breadcrumb.href}
+                onClick={handleClick}
+            >
+                {breadcrumb.text}
+            </Link>
+        ) : (
+            <Typography key={index} color="text.primary">
+                {breadcrumb.text}
+            </Typography>
+        )
+    ));
+
     return (
         <Toolbar
             sx={{
@@ -18,22 +36,7 @@ export default function Breadcrumb({ breadcrumbs }) {
             }}
         >
             <Breadcrumbs separator="›" aria-label="breadcrumb">
-                {breadcrumbs.map((breadcrumb, index) => (
-                    <React.Fragment key={index}>
-                        {index < breadcrumbs.length - 1 ? (
-                            <Link
-                                underline="hover"
-                                color="inherit"
-                                href={breadcrumb.href}
-                                onClick={handleClick}
-                            >
-                                {breadcrumb.text}
-                            </Link>
-                        ) : (
-                            <Typography color="text.primary">{breadcrumb.text}</Typography>
-                        )}
-                    </React.Fragment>
-                ))}
+                {breadcrumbItems}
             </Breadcrumbs>
         </Toolbar>
     );
