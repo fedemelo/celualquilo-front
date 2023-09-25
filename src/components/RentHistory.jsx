@@ -13,6 +13,7 @@ import examplePhone6 from '../assets/phones/HuaweiMate50.png';
 import examplePhone7 from '../assets/phones/iPhone13.png';
 import examplePhone8 from '../assets/phones/HuaweiP60.png';
 import examplePhone9 from '../assets/phones/HuaweiNovaY90.png';
+import Breadcrumb from './BreadCrumb';
 
 
 const exampleActiveRents = [
@@ -89,19 +90,25 @@ const examplePastRents = [
 
 export default function RentHistory() {
     return (
-        <Stack spacing={3.5} marginBottom={11}>
-            <style>
-                @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400&display=swap');
-            </style>
-            <Card sx={sectionStyle}>
-                <SectionTitle text="Alquileres Activos" />
-                <PhonesRow phones={exampleActiveRents} />
-            </Card>
-            <Card sx={sectionStyle}>
-                <SectionTitle text="Historial de Alquileres" />
-                <PhonesRow phones={examplePastRents} />
-            </Card>
-        </Stack>
+        <>
+            <Breadcrumb breadcrumbs={[
+                { href: '/mi-cuenta', text: 'Mi cuenta' },
+                { href: '', text: 'Historial de Alquileres' },
+            ]} />
+            <Stack spacing={3.5} marginBottom={11}>
+                <style>
+                    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400&display=swap');
+                </style>
+                <Card sx={sectionStyle}>
+                    <SectionTitle text="Alquileres Activos" />
+                    <PhonesRow phones={exampleActiveRents} />
+                </Card>
+                <Card sx={sectionStyle}>
+                    <SectionTitle text="Historial de Alquileres" />
+                    <PhonesRow phones={examplePastRents} />
+                </Card>
+            </Stack>
+        </>
     );
 }
 

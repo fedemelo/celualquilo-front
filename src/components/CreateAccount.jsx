@@ -186,10 +186,10 @@ export default function CreateAccountSide() {
                                 color={getProblemInName() === "" ? "success" : "error"}
                                 required
                                 fullWidth
-                                id="email"
+                                id="name"
                                 label="Escriba nombre y apellido"
-                                name="email"
-                                autoComplete="email"
+                                name="name"
+                                autoComplete="name"
                                 autoFocus
                                 onChange={(e) => setFormValues({ ...formValues, name: e.target.value })}
                                 onClick={() => setClickedField({ ...clickedField, name: true })}
@@ -243,7 +243,7 @@ export default function CreateAccountSide() {
                                             <IconButton
                                                 edge="end"
                                                 onClick={togglePasswordVisibility}
-                                                tabIndex="-1" // Para evitar que el botón sea enfocable
+                                                tabIndex={-1} // Para evitar que el botón sea enfocable
                                             >
                                                 {formValues.showPassword ? <Visibility /> : <VisibilityOff />}
                                             </IconButton>
@@ -274,7 +274,7 @@ export default function CreateAccountSide() {
                                             <IconButton
                                                 edge="end"
                                                 onClick={toggleVerifyPasswordVisibility}
-                                                tabIndex="-1" // Para evitar que el botón sea enfocable
+                                                tabIndex={-1} // Para evitar que el botón sea enfocable
                                             >
                                                 {formValues.showPassword ? <Visibility /> : <VisibilityOff />}
                                             </IconButton>

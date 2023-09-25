@@ -99,7 +99,7 @@ export default function ProductsGrid({ titleText }) {
 
     return (
         <Stack marginBottom={7}>
-            <Title />
+            <Title titleText={titleText}/>
             <Grid container spacing={0} justifyContent="center" sx={{ marginTop: 'vw' }}>
                 <Grid item xs={6} sm={6} md={6} lg={12} sx={{ marginLeft: '6rem', marginRight: '6rem', marginTop: '3rem', marginBottom: '3rem' }}>
                     <FilterButtons titleText={titleText}/>

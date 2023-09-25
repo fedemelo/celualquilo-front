@@ -15,6 +15,7 @@ import FormLabel from '@mui/material/FormLabel';
 import { COLORS } from '../styles/colors';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
+import GoBack from './GoBack';
 
 
 
@@ -92,6 +93,7 @@ export default function Review() {
     const oss = useMediaQuery(theme.breakpoints.down("sm"));
     return (
         <Stack marginBottom={7}>
+            <GoBack text="Detalle de un celular" />
             <Card sx={cardStyle}>
                 <Grid container spacing={0} padding={3} direction={'row'} alignItems={'center'}>
                     {/* Column for Image */}

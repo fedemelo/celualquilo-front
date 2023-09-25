@@ -25,6 +25,7 @@ import CheckIcon from '@mui/icons-material/Check';
 import Stack from '@mui/material/Stack';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
+import GoBack from './GoBack';
 
 
 const exampleBrand = "Apple"
@@ -43,45 +44,48 @@ export default function Review() {
     const theme = useTheme();
     const oss = useMediaQuery(theme.breakpoints.down("sm"));
     return (
-        <Stack marginBottom={7}>
-            <Card sx={cardStyle}>
-                <Grid container spacing={0} padding={3} direction={'row'} alignItems={'center'}>
-                    {/* Column for Image */}
-                    {!oss && <Grid item xs={12} sm={6} >
-                        <img
-                            style={{ maxWidth: '130%', height: '30vw' }}
-                            alt={exampleName}
-                            src={examplePhone}
-                        />
-                    </Grid>}
-
-                    <Grid item xs={12} sm={6} sx={{ textAlign: 'left' }}>
-                        <Typography variant="h6" color="text.primary" padding={1}>
-                            {exampleBrand}
-                        </Typography>
-                        <Typography variant="h6" color="text.primary" padding={1}>
-                            {exampleAvailability}
-                        </Typography>
-                        <Typography variant="h3" component="div" padding={1}>
-                            {exampleName}
-                        </Typography>
-                        {oss && <Grid item xs={12} sm={5}>
+        <>
+            <GoBack text="Escribir reseña" />
+            <Stack marginBottom={7}>
+                <Card sx={cardStyle}>
+                    <Grid container spacing={0} padding={3} direction={'row'} alignItems={'center'}>
+                        {/* Column for Image */}
+                        {!oss && <Grid item xs={12} sm={6} >
                             <img
-                                style={{ maxWidth: '130%', height: '60vw' }}
+                                style={{ maxWidth: '130%', height: '30vw' }}
                                 alt={exampleName}
                                 src={examplePhone}
                             />
                         </Grid>}
-                        <SpecList specs={exampleSpecs} />
+
+                        <Grid item xs={12} sm={6} sx={{ textAlign: 'left' }}>
+                            <Typography variant="h6" color="text.primary" padding={1}>
+                                {exampleBrand}
+                            </Typography>
+                            <Typography variant="h6" color="text.primary" padding={1}>
+                                {exampleAvailability}
+                            </Typography>
+                            <Typography variant="h3" component="div" padding={1}>
+                                {exampleName}
+                            </Typography>
+                            {oss && <Grid item xs={12} sm={5}>
+                                <img
+                                    style={{ maxWidth: '130%', height: '60vw' }}
+                                    alt={exampleName}
+                                    src={examplePhone}
+                                />
+                            </Grid>}
+                            <SpecList specs={exampleSpecs} />
+                        </Grid>
+
                     </Grid>
 
-                </Grid>
-
-                <CardContent>
-                    <CommentArea />
-                </CardContent>
-            </Card>
-        </Stack>
+                    <CardContent>
+                        <CommentArea />
+                    </CardContent>
+                </Card>
+            </Stack>
+        </>
     );
 }
 
