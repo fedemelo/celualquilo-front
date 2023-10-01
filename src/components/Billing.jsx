@@ -14,11 +14,13 @@ import { FormControl, FormControlLabel, Radio, RadioGroup } from '@mui/material'
 import Breadcrumb from './BreadCrumb';
 
 export default function Billing() {
+    const intl = useIntl();
+
     let dias = localStorage.getItem("dias");
     return (
         <>
             <Breadcrumb breadcrumbs={[
-                { href: `/products/${1}`, text: 'Alquilar' },
+                { href: `/products/${1}`, text: intl.formatMessage({ id: "Rent" }) },
                 { href: `/products/${1}/rent`, text: 'Detalles de Alquiler' },
                 { href: '', text: 'Dirección y Facturación' },
             ]} />

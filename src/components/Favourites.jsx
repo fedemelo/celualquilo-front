@@ -10,7 +10,6 @@ import examplePhone2 from '../assets/phones/HuaweiNovaY71.png';
 import examplePhone3 from '../assets/phones/SamsungGalaxyS22.png';
 import Breadcrumb from './BreadCrumb';
 
-
 const exampleActiveRents = [
     {
         name: "iPhone 12 Pro",
@@ -36,6 +35,9 @@ const exampleActiveRents = [
 ]
 
 export default function RentHistory() {
+
+    const intl = useIntl();
+
     return (
         <>
             <Breadcrumb breadcrumbs={[

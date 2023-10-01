@@ -12,6 +12,9 @@ import { Grid } from '@mui/material';
 
 
 export default function PhoneCard({ name, image, cost, rating }) {
+
+    const intl = useIntl();
+
     const [isFavorite, setIsFavorite] = React.useState(false); // Initialize as false
 
     const toggleFavorite = () => {
@@ -63,7 +66,7 @@ export default function PhoneCard({ name, image, cost, rating }) {
                         />
                     </Grid>
                     <Grid item xs={10}>
-                        {<LastButton text='Alquilar' />}
+                        {<LastButton text={intl.formatMessage({ id: "Rent" })} />}
                     </Grid>
                 </Grid>
             </CardContent>

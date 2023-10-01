@@ -1,0 +1,169 @@
+{
+    "Rent" : "Rent",
+    "Day" : "Day",
+    "Brand" : "Brand",
+    "Email" : "Email",
+    "EmailInputFiller" : "Enter your email",
+    "Password" : "Password",
+    "ConfirmPassword" : "Confirm Password",
+
+    "Header_Search" : "Search",
+    "Header_LogIn" : "Log In",
+    "Header_Usser" : "User",
+
+
+    "MainPage_RentNow_Title" : "Rent your phone now",
+    "MainPage_RentNow_Description" : "Find a phone that suits you at an affordable price",
+    "MainPage_RentNow_DiscoverButton" : "Discover",
+
+    "MainPage_OurBrands_Title" : "Our Brands",
+
+    "MainPage_Popular_Title" : "Popular",
+    "MainPage_Popular_SeeAllButton" : "See All",
+
+
+    "Footer_General_Title" : "General",
+    "Footer_General_AboutUs" : "About Us",
+    "Footer_General_OurBuisness" : "Our Business",
+
+    "Footer_VirtualStore_Title" : "Virtual Store",
+    "Footer_VirtualStore_DeliveryInfo" : "Delivery Information",
+    "Footer_VirtualStore_Returns" : "Returns and Guarantees",
+
+    "Footer_Legal_Title" : "Legal",
+    "Footer_Legal_UseTerms" : "Terms of Use",
+    "Footer_Legal_RentTerms" : "Rent Terms",
+    "Footer_Legal_PrivacyTerms" : "Privacy Policy",
+
+    "Footer_Contact_Title" : "Contact Us",
+
+
+    "Register_CreateAcc" : "Create an Account",
+    "Register_CreateSubtext" : "Please fill out the form",
+    "Register_NameAndLastname" : "Name and Lastname",
+    "Register_NameInputFiller" : "Enter your name and lastname",
+    "Register_RegisterTerms" : "By registering, I agree to the terms and conditions and our privacy policy",
+    "Register_CreateAccButton" : "Create Account",
+    "Register_LogInQuestionText" : "Already registered?",
+    "Register_LogInHiperlink" : "Log In",
+
+
+    "LogIn_Wellcome" : "Welcome back!",
+    "LogIn_WellcomeSubtext" : "Rent a phone easily with CeluAlquilo",
+    "LogIn_RememberMeCheckbox" : "Remember me",
+    "LogIn_ForgotPassword" : "Forgot your password?",
+    "LogIn_LogInButtonText" : "Log In",
+    "LogIn_NewUsserText" : "New user?",
+    "LogIn_CreateAccHiperlink" : "Create an account",
+
+
+    "ProductsList_OurProducts" : "Our Products",
+    "ProductsList_LablelAll" : "All",
+    "ProductsList_LablelPopular" : "Popular",
+    "ProductsList_LablelLastGen" : "Latest Generation",
+    "ProductsList_LablelDiscount" : "Discounted",
+
+
+    "PhoneDetail_LablelDetail" : "Phone Details",
+    "PhoneDetail_LablelAvailability" : "Availability",
+    "PhoneDetail_LablelStock" : "In Stock",
+
+
+    "RentDetail_Title" : "Rent Details",
+    "RentDetail_RentDays" : "Rent Days",
+
+    "RentDetail_PriceInfo_Title" : "Rent Price Details",
+    "RentDetail_PriceInfo_RentPrice" : "Rent Price",
+    "RentDetail_PriceInfo_Tax" : "Taxes",
+    "RentDetail_PriceInfo_TotalAndTax" : "Total + Taxes",
+    "RentDetail_PriceInfo_Continue" : "Continue Payment",
+
+
+    "Billing_Title" : "Address and Billing",
+
+    "Billing_Address_Title" : "Billing Address",
+    "Billing_Address_AddressText" : "Address",
+    "Billing_Address_AddressInputFiller" : "Street name and house number",
+    "Billing_Address_City" : "City",
+    "Billing_Address_ContactNumber" : "Contact Number",
+
+    "Billing_PayMethod_Title" : "Payment Method",
+    "Billing_PayMethod_Card" : "Card",
+    "Billing_PayMethod_Cash" : "Cash",
+
+    "Billing_PriceInfo_Title" : "Rent Price Details",
+    "Billing_PriceInfo_RentPrice" : "Rent Price",
+    "Billing_PriceInfo_Tax" : "Taxes",
+    "Billing_PriceInfo_TotalAndTax" : "Total + Taxes",
+    "Billing_PriceInfo_Finish" : "Finish Purchase",
+
+
+    "RentHistory_Title" : "Rent History",
+    "RentHistory_ActiveRent" : "Active Rents",
+    "RentHistory_RenewButton" : "Renew Rent",
+    "RentHistory_WriteButton" : "Write Review",
+
+
+    "Review_Title" : "Write Review",
+    "Review_RevewLablel" : "Review",
+    "Review_InputFiller" : "Write your review here",
+
+
+    "Favourites_Title" : "Favorites",
+
+
+    "Filters_Title" : "Filters",
+    "Filters_ByPrice" : "Filter by Price",
+    "Filters_Minimum" : "Minimum",
+    "Filters_Maximum" : "Maximum",
+    "Filters_ByBrand" : "Filter by Brand",
+
+    "BreadcrumbMiAccount": "My Account",
+    "BreadcrumbRentDetail": "Rent Details",
+    "BreadcrumbBilling": "Address and Billing",
+    "BreadcrumbRent": "Rent",
+
+    "No_Empty_Name": "Name cannot be empty.",
+    "Len_Above_2": "Name must contain at least two letters.",
+    "EmailNotEmpty": "Email cannot be empty.",
+    "EmailContainsAtSymbol": "Email must contain the '@' symbol.",
+    "EmailContainsDot": "Email must contain a dot '.'.",
+    "AtSymbolNotAtBeginningOrEnd": "The '@' symbol cannot be at the beginning or end of the email.",
+    "DotNotAtBeginningOrEnd": "The dot '.' cannot be at the beginning or end of the email.",
+    "NoConsecutiveAtSymbols": "There cannot be two consecutive '@' symbols in the email.",
+    "PasswordNotEmpty": "Password cannot be empty.",
+    "PasswordContainsNumber": "Password must contain at least one number.",
+    "PasswordContainsLowercase": "Password must contain at least one lowercase letter.",
+    "PasswordContainsUppercase": "Password must contain at least one uppercase letter.",
+    "PasswordContainsSpecialChar": "Password must contain at least one special character.",
+    "PasswordMinLength": "Password must have at least 9 characters.",
+
+    "RewritePassword": "Rewrite the password.",
+    "PasswordsDoNotMatch": "Passwords do not match.",
+
+    "InsertAddress": "You must enter an address.",
+    "InsertCity": "You must enter a city.",
+    "TheCityCannotContainNumbers": "The city cannot contain numbers.",
+    "TheCityMustContainMoreThanOneLetter": "The city must contain more than one letter.",
+    "InsertContactNumber": "You must enter a contact number.",
+    "TheContactNumberCannotStartWithZero": "The contact number cannot start with zero.",
+    "TheContactNumberMustContain10Digits": "The contact number must contain 10 digits.",
+    "zeros": "zeros",
+    "ones": "ones",
+    "twos": "twos",
+    "threes": "threes",
+    "fours": "fours",
+    "fives": "fives",
+    "sixes": "sixes",
+    "sevens": "sevens",
+    "eights": "eights",
+    "nines": "nines",
+    "TheContactNumberCannotConsistOfOnly": "The number cannot consist of only ",
+
+    "Useless": "Useless",
+    "Bad": "Bad",
+    "Average": "Average",
+    "Good": "Good",
+    "Excellent": "Excellent"
+
+}

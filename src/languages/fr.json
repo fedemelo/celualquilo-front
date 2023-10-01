@@ -1,0 +1,169 @@
+{
+    "Rent" : "Louer",
+    "Day" : "Jour",
+    "Brand" : "Marque",
+    "Email" : "E-mail",
+    "EmailInputFiller" : "Entrez votre e-mail",
+    "Password" : "Mot de passe",
+    "ConfirmPassword" : "Confirmer le mot de passe",
+
+    "Header_Search" : "Rechercher",
+    "Header_LogIn" : "Se connecter",
+    "Header_Usser" : "Utilisateur",
+
+
+    "MainPage_RentNow_Title" : "Louez votre téléphone maintenant",
+    "MainPage_RentNow_Description" : "Trouvez un téléphone qui vous convient à un prix abordable",
+    "MainPage_RentNow_DiscoverButton" : "Découvrir",
+
+    "MainPage_OurBrands_Title" : "Nos marques",
+
+    "MainPage_Popular_Title" : "Populaires",
+    "MainPage_Popular_SeeAllButton" : "Voir tous",
+
+
+    "Footer_General_Title" : "Général",
+    "Footer_General_AboutUs" : "À propos de nous",
+    "Footer_General_OurBuisness" : "Notre entreprise",
+
+    "Footer_VirtualStore_Title" : "Magasin virtuel",
+    "Footer_VirtualStore_DeliveryInfo" : "Informations de livraison",
+    "Footer_VirtualStore_Returns" : "Retours et garanties",
+
+    "Footer_Legal_Title" : "Légal",
+    "Footer_Legal_UseTerms" : "Conditions d'utilisation",
+    "Footer_Legal_RentTerms" : "Conditions de location",
+    "Footer_Legal_PrivacyTerms" : "Politique de confidentialité",
+
+    "Footer_Contact_Title" : "Contactez-nous",
+
+
+    "Register_CreateAcc" : "Créer un compte",
+    "Register_CreateSubtext" : "Veuillez remplir le formulaire",
+    "Register_NameAndLastname" : "Nom et prénom",
+    "Register_NameInputFiller" : "Entrez votre nom et prénom",
+    "Register_RegisterTerms" : "En m'inscrivant, j'accepte les conditions générales et notre politique de confidentialité",
+    "Register_CreateAccButton" : "Créer un compte",
+    "Register_LogInQuestionText" : "Déjà inscrit?",
+    "Register_LogInHiperlink" : "Se connecter",
+
+
+    "LogIn_Wellcome" : "Bienvenue de retour!",
+    "LogIn_WellcomeSubtext" : "Louez un téléphone facilement avec CeluAlquilo",
+    "LogIn_RememberMeCheckbox" : "Se souvenir de moi",
+    "LogIn_ForgotPassword" : "Mot de passe oublié?",
+    "LogIn_LogInButtonText" : "Se connecter",
+    "LogIn_NewUsserText" : "Nouvel utilisateur?",
+    "LogIn_CreateAccHiperlink" : "Créer un compte",
+
+
+    "ProductsList_OurProducts" : "Nos produits",
+    "ProductsList_LablelAll" : "Tous",
+    "ProductsList_LablelPopular" : "Populaires",
+    "ProductsList_LablelLastGen" : "Dernière génération",
+    "ProductsList_LablelDiscount" : "En réduction",
+
+
+    "PhoneDetail_LablelDetail" : "Détail du téléphone",
+    "PhoneDetail_LablelAvailability" : "Disponibilité",
+    "PhoneDetail_LablelStock" : "En stock",
+
+
+    "RentDetail_Title" : "Détails de la location",
+    "RentDetail_RentDays" : "Jours de location",
+
+    "RentDetail_PriceInfo_Title" : "Détails du prix de location",
+    "RentDetail_PriceInfo_RentPrice" : "Prix de location",
+    "RentDetail_PriceInfo_Tax" : "Taxes",
+    "RentDetail_PriceInfo_TotalAndTax" : "Total + taxes",
+    "RentDetail_PriceInfo_Continue" : "Continuer le paiement",
+
+
+    "Billing_Title" : "Adresse et facturation",
+
+    "Billing_Address_Title" : "Adresse de facturation",
+    "Billing_Address_AddressText" : "Adresse",
+    "Billing_Address_AddressInputFiller" : "Nom de la rue et numéro de la maison",
+    "Billing_Address_City" : "Ville",
+    "Billing_Address_ContactNumber" : "Numéro de contact",
+
+    "Billing_PayMethod_Title" : "Méthode de paiement",
+    "Billing_PayMethod_Card" : "Carte",
+    "Billing_PayMethod_Cash" : "Espèces",
+
+    "Billing_PriceInfo_Title" : "Détails du prix de location",
+    "Billing_PriceInfo_RentPrice" : "Prix de location",
+    "Billing_PriceInfo_Tax" : "Taxes",
+    "Billing_PriceInfo_TotalAndTax" : "Total + taxes",
+    "Billing_PriceInfo_Finish" : "Terminer l'achat",
+
+
+    "RentHistory_Title" : "Historique de location",
+    "RentHistory_ActiveRent" : "Locations actives",
+    "RentHistory_RenewButton" : "Renouveler la location",
+    "RentHistory_WriteButton" : "Écrire une critique",
+
+
+    "Review_Title" : "Écrire une critique",
+    "Review_RevewLablel" : "Critique",
+    "Review_InputFiller" : "Écrivez votre critique ici",
+
+
+    "Favourites_Title" : "Favoris",
+
+
+    "Filters_Title" : "Filtres",
+    "Filters_ByPrice" : "Filtrer par prix",
+    "Filters_Minimum" : "Minimum",
+    "Filters_Maximum" : "Maximum",
+    "Filters_ByBrand" : "Filtrer par marque",
+
+    "BreadcrumbMiAccount": "Mon compte",
+    "BreadcrumbRentDetail": "Détails de la location",
+    "BreadcrumbBilling": "Adresse et facturation",
+    "BreadcrumbRent": "Louer",
+
+    "No_Empty_Name": "Le nom ne peut pas être vide.",
+    "Len_Above_2": "Le nom doit contenir au moins deux lettres.",
+    "EmailNotEmpty": "L'e-mail ne peut pas être vide.",
+    "EmailContainsAtSymbol": "L'e-mail doit contenir le symbole '@'.",
+    "EmailContainsDot": "L'e-mail doit contenir un point '.'.",
+    "AtSymbolNotAtBeginningOrEnd": "Le symbole '@' ne peut pas être au début ou à la fin de l'e-mail.",
+    "DotNotAtBeginningOrEnd": "Le point '.' ne peut pas être au début ou à la fin de l'e-mail.",
+    "NoConsecutiveAtSymbols": "Il ne peut pas y avoir deux symboles '@' consécutifs dans l'e-mail.",
+    "PasswordNotEmpty": "Le mot de passe ne peut pas être vide.",
+    "PasswordContainsNumber": "Le mot de passe doit contenir au moins un chiffre.",
+    "PasswordContainsLowercase": "Le mot de passe doit contenir au moins une lettre minuscule.",
+    "PasswordContainsUppercase": "Le mot de passe doit contenir au moins une lettre majuscule.",
+    "PasswordContainsSpecialChar": "Le mot de passe doit contenir au moins un caractère spécial.",
+    "PasswordMinLength": "Le mot de passe doit avoir au moins 9 caractères.",
+
+    "RewritePassword": "Écrivez à nouveau le mot de passe.",
+    "PasswordsDoNotMatch": "Les mots de passe ne correspondent pas.",
+
+    "InsertAddress": "Vous devez entrer une adresse.",
+    "InsertCity": "Vous devez entrer une ville.",
+    "TheCityCannotContainNumbers": "La ville ne peut pas contenir de chiffres.",
+    "TheCityMustContainMoreThanOneLetter": "La ville doit contenir plus d'une lettre.",
+    "InsertContactNumber": "Vous devez entrer un numéro de contact.",
+    "TheContactNumberCannotStartWithZero": "Le numéro de contact ne peut pas commencer par zéro.",
+    "TheContactNumberMustContain10Digits": "Le numéro de contact doit contenir 10 chiffres consécutifs.",
+    "zeros": "zéros",
+    "ones": "uns",
+    "twos": "deux",
+    "threes": "trois",
+    "fours": "quatre",
+    "fives": "cinq",
+    "sixes": "six",
+    "sevens": "sept",
+    "eights": "huit",
+    "nines": "neuf",
+    "TheContactNumberCannotConsistOfOnly": "Le numéro ne peut pas consister uniquement en ",
+
+    "Useless": "Inutile",
+    "Bad": "Mauvais",
+    "Average": "Moyen",
+    "Good": "Bien",
+    "Excellent": "Excellent"
+
+}

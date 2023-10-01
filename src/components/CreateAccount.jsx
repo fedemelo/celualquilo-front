@@ -15,7 +15,6 @@ import createAccimg from '../assets/imgcreateAcc.png';
 import { useState } from 'react';
 
 
-
 export default function CreateAccountSide() {
 
     const intl = useIntl();

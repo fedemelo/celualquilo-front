@@ -9,8 +9,8 @@ import { COLORS } from '../styles/colors';
 import { Box, TextField } from "@mui/material";
 import PriceDetails from './PriceDetails';
 import { useState } from 'react';
-import Breadcrumb from './BreadCrumb';
 import { Link } from 'react-router-dom';
+import Breadcrumb from './BreadCrumb';
 
 const exampleName = "iPhone 14 Pro"
 const moneda = "COP"
@@ -18,12 +18,15 @@ const examplePrice = "$10.000 " + moneda + "/día"
 const maxDiasAlquiler = 180
 
 export default function RentDetail() {
+
+    const intl = useIntl();
+
     const [dias, setDias] = useState('5');
 
     return (
         <Grid container spacing={0}>
             <Breadcrumb breadcrumbs={[
-                { href: `/products/${1}`, text: 'Alquilar' },
+                { href: `/products/${1}`, text: intl.formatMessage({ id: "Rent" }) },
                 { href: '', text: 'Detalles del Alquiler' }
             ]} />
             <Grid container direction={'row'} spacing={2} marginBottom={8}>

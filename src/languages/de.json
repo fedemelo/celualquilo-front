@@ -1,0 +1,169 @@
+{
+    "Rent" : "Mieten",
+    "Day" : "Tag",
+    "Brand" : "Marke",
+    "Email" : "E-Mail",
+    "EmailInputFiller" : "Geben Sie Ihre E-Mail ein",
+    "Password" : "Passwort",
+    "ConfirmPassword" : "Passwort bestätigen",
+
+    "Header_Search" : "Suche",
+    "Header_LogIn" : "Anmelden",
+    "Header_Usser" : "Benutzer",
+
+
+    "MainPage_RentNow_Title" : "Miete dein Handy jetzt",
+    "MainPage_RentNow_Description" : "Finde ein Handy, das zu dir passt, zu einem erschwinglichen Preis",
+    "MainPage_RentNow_DiscoverButton" : "Entdecken",
+
+    "MainPage_OurBrands_Title" : "Unsere Marken",
+
+    "MainPage_Popular_Title" : "Beliebt",
+    "MainPage_Popular_SeeAllButton" : "Alle anzeigen",
+
+
+    "Footer_General_Title" : "Allgemein",
+    "Footer_General_AboutUs" : "Über uns",
+    "Footer_General_OurBuisness" : "Unser Geschäft",
+
+    "Footer_VirtualStore_Title" : "Virtueller Laden",
+    "Footer_VirtualStore_DeliveryInfo" : "Lieferinformationen",
+    "Footer_VirtualStore_Returns" : "Rückgaben und Garantien",
+
+    "Footer_Legal_Title" : "Rechtlich",
+    "Footer_Legal_UseTerms" : "Nutzungsbedingungen",
+    "Footer_Legal_RentTerms" : "Mietbedingungen",
+    "Footer_Legal_PrivacyTerms" : "Datenschutzbestimmungen",
+
+    "Footer_Contact_Title" : "Kontaktiere uns",
+
+
+    "Register_CreateAcc" : "Konto erstellen",
+    "Register_CreateSubtext" : "Bitte füllen Sie das Formular aus",
+    "Register_NameAndLastname" : "Name und Nachname",
+    "Register_NameInputFiller" : "Geben Sie Ihren Namen und Nachnamen ein",
+    "Register_RegisterTerms" : "Mit der Registrierung stimme ich den Geschäftsbedingungen und unserer Datenschutzrichtlinie zu",
+    "Register_CreateAccButton" : "Konto erstellen",
+    "Register_LogInQuestionText" : "Bereits registriert?",
+    "Register_LogInHiperlink" : "Anmelden",
+
+
+    "LogIn_Wellcome" : "Willkommen zurück!",
+    "LogIn_WellcomeSubtext" : "Mieten Sie ein Handy einfach mit CeluAlquilo",
+    "LogIn_RememberMeCheckbox" : "Erinnere dich an mich",
+    "LogIn_ForgotPassword" : "Passwort vergessen?",
+    "LogIn_LogInButtonText" : "Anmelden",
+    "LogIn_NewUsserText" : "Neuer Benutzer?",
+    "LogIn_CreateAccHiperlink" : "Konto erstellen",
+
+
+    "ProductsList_OurProducts" : "Unsere Produkte",
+    "ProductsList_LablelAll" : "Alle",
+    "ProductsList_LablelPopular" : "Beliebt",
+    "ProductsList_LablelLastGen" : "Letzte Generation",
+    "ProductsList_LablelDiscount" : "Rabattiert",
+
+
+    "PhoneDetail_LablelDetail" : "Handydetails",
+    "PhoneDetail_LablelAvailability" : "Verfügbarkeit",
+    "PhoneDetail_LablelStock" : "Auf Lager",
+
+
+    "RentDetail_Title" : "Mietdetails",
+    "RentDetail_RentDays" : "Miettage",
+
+    "RentDetail_PriceInfo_Title" : "Mietpreisdetails",
+    "RentDetail_PriceInfo_RentPrice" : "Mietpreis",
+    "RentDetail_PriceInfo_Tax" : "Steuern",
+    "RentDetail_PriceInfo_TotalAndTax" : "Gesamt + Steuern",
+    "RentDetail_PriceInfo_Continue" : "Weiter zur Zahlung",
+
+
+    "Billing_Title" : "Adresse und Rechnung",
+
+    "Billing_Address_Title" : "Rechnungsadresse",
+    "Billing_Address_AddressText" : "Adresse",
+    "Billing_Address_AddressInputFiller" : "Straßenname und Hausnummer",
+    "Billing_Address_City" : "Stadt",
+    "Billing_Address_ContactNumber" : "Kontakt Nummer",
+
+    "Billing_PayMethod_Title" : "Zahlungsmethode",
+    "Billing_PayMethod_Card" : "Karte",
+    "Billing_PayMethod_Cash" : "Bar",
+
+    "Billing_PriceInfo_Title" : "Mietpreisdetails",
+    "Billing_PriceInfo_RentPrice" : "Mietpreis",
+    "Billing_PriceInfo_Tax" : "Steuern",
+    "Billing_PriceInfo_TotalAndTax" : "Gesamt + Steuern",
+    "Billing_PriceInfo_Finish" : "Kauf abschließen",
+
+
+    "RentHistory_Title" : "Mietgeschichte",
+    "RentHistory_ActiveRent" : "Aktive Mieten",
+    "RentHistory_RenewButton" : "Miete erneuern",
+    "RentHistory_WriteButton" : "Rezension schreiben",
+
+
+    "Review_Title" : "Rezension schreiben",
+    "Review_RevewLablel" : "Rezension",
+    "Review_InputFiller" : "Schreiben Sie hier Ihre Rezension",
+
+
+    "Favourites_Title" : "Favoriten",
+
+
+    "Filters_Title" : "Filter",
+    "Filters_ByPrice" : "Filtern nach Preis",
+    "Filters_Minimum" : "Minimum",
+    "Filters_Maximum" : "Maximum",
+    "Filters_ByBrand" : "Filtern nach Marke",
+
+    "BreadcrumbMiAccount": "Mein Konto",
+    "BreadcrumbRentDetail": "Mietdetails",
+    "BreadcrumbBilling": "Adresse und Rechnung",
+    "BreadcrumbRent": "Mieten",
+
+    "No_Empty_Name": "Name darf nicht leer sein.",
+    "Len_Above_2": "Name muss mindestens zwei Buchstaben enthalten.",
+    "EmailNotEmpty": "E-Mail darf nicht leer sein.",
+    "EmailContainsAtSymbol": "E-Mail muss das '@'-Symbol enthalten.",
+    "EmailContainsDot": "E-Mail muss einen Punkt '.' enthalten.",
+    "AtSymbolNotAtBeginningOrEnd": "Das '@'-Symbol darf nicht am Anfang oder Ende der E-Mail stehen.",
+    "DotNotAtBeginningOrEnd": "Der Punkt '.' darf nicht am Anfang oder Ende der E-Mail stehen.",
+    "NoConsecutiveAtSymbols": "Es dürfen keine zwei aufeinander folgende '@'-Symbole in der E-Mail stehen.",
+    "PasswordNotEmpty": "Passwort darf nicht leer sein.",
+    "PasswordContainsNumber": "Passwort muss mindestens eine Zahl enthalten.",
+    "PasswordContainsLowercase": "Passwort muss mindestens einen Kleinbuchstaben enthalten.",
+    "PasswordContainsUppercase": "Passwort muss mindestens einen Großbuchstaben enthalten.",
+    "PasswordContainsSpecialChar": "Passwort muss mindestens ein Sonderzeichen enthalten.",
+    "PasswordMinLength": "Passwort muss mindestens 9 Zeichen lang sein.",
+
+    "RewritePassword": "Passwort erneut eingeben.",
+    "PasswordsDoNotMatch": "Passwörter stimmen nicht überein.",
+
+    "InsertAddress": "Sie müssen eine Adresse eingeben.",
+    "InsertCity": "Sie müssen eine Stadt eingeben.",
+    "TheCityCannotContainNumbers": "Die Stadt darf keine Zahlen enthalten.",
+    "TheCityMustContainMoreThanOneLetter": "Die Stadt muss mehr als einen Buchstaben enthalten.",
+    "InsertContactNumber": "Sie müssen eine Kontakt Nummer eingeben.",
+    "TheContactNumberCannotStartWithZero": "Die Kontakt Nummer darf nicht mit null beginnen.",
+    "TheContactNumberMustContain10Digits": "Die Kontakt Nummer muss aus 10 aufeinander folgenden Ziffern bestehen.",
+    "zeros": "Nullen",
+    "ones": "Einsen",
+    "twos": "Zweien",
+    "threes": "Dreien",
+    "fours": "Vieren",
+    "fives": "Fünfen",
+    "sixes": "Sechsen",
+    "sevens": "Siebener",
+    "eights": "Achten",
+    "nines": "Neunen",
+    "TheContactNumberCannotConsistOfOnly": "Die Nummer darf nicht nur aus ",
+
+    "Useless": "Nutzlos",
+    "Bad": "Schlecht",
+    "Average": "Durchschnitt",
+    "Good": "Gut",
+    "Excellent": "Ausgezeichnet"
+
+}

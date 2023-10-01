@@ -79,6 +79,8 @@ const moneda = "USD"
 
 
 export default function PhoneDetail() {
+    
+    const intl = useIntl();
 
     const params = useParams();
     const idCel = params.productId;
@@ -132,7 +134,7 @@ export default function PhoneDetail() {
                         <Rating name="read-only" value={5} readOnly size="large" />
                         <SpecList specs={[phoneJson.camera_specifications, phoneJson.memory_specs, phoneJson.ram_specs]} />
                         <Link to={`/products/${phoneJson.id}/rent`}>
-                            <RentButton text="Alquilar" />
+                            <RentButton text={intl.formatMessage({ id: "Rent" })} />
                         </Link>
                     </Grid>
                 </Grid>
