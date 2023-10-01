@@ -1,15 +1,33 @@
 import React from 'react';
-import { FormattedMessage, useIntl } from "react-intl";
 import ReactDOM from 'react-dom/client';
 import './styles/index.css';
 import App from './App';
+import { IntlProvider } from 'react-intl';
+
 // import App from './AppHU';
 import * as serviceWorkerRegistration from './defaults/serviceWorkerRegistration';
 
+const lang = navigator.language.split(/[-_]/)[0];
+const messages = getMessages(lang);
+
+function getMessages(lang) {
+    switch (lang) {
+        case 'de':
+            return require('./languages/de.json');
+        case 'fr':
+            return require('./languages/fr.json');
+        case 'es':
+            return require('./languages/es.json');
+        default:
+            return require('./languages/en.json');
+    }
+}
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
-        <App />
+        <IntlProvider locale={lang} messages={messages}>
+            <App />
+        </IntlProvider>
     </React.StrictMode>
 );
 

@@ -17,6 +17,8 @@ import RentButton from './RentButton';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import { Nav } from 'react-bootstrap';
+import { useEffect } from 'react';
+import { useState } from 'react';
 
 
 
@@ -43,15 +45,45 @@ const brands = [
 
 export default function MainPage() {
 
+    async function getDatos() {
+        const response = await fetch("https://gist.githubusercontent.com/dburgos26/a09fc5108186b8ce6bd0e7c5a38b2432/raw/e6e879db208b06c15647c94df54f26b352dd4f72/cellphones.json");
+        const data = await response.json();
+        return data;
+    }
+
+    useEffect(() => {
+        async function fetchData() {
+            const data = await getDatos();
+            console.log(data);
+
+            localStorage.setItem("phoneList", JSON.stringify(data));
+            setPhoneListJson(data);
+
+            data.forEach((cellphone) => {
+                localStorage.setItem(`cel${cellphone.id}`, JSON.stringify(cellphone));
+            });
+        }
+        if (localStorage.getItem('phoneList')) {
+            setPhoneListJson(JSON.parse(localStorage.getItem('phoneList')));
+        }
+        else {
+            fetchData();
+
+        }
+
+    }, []);
+
+
     const intl = useIntl();
 
     const theme = useTheme();
     const onlySmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
-    const phoneList = localStorage.getItem('phoneList');
-    const phoneListJson = JSON.parse(phoneList);
+    const [phoneListJson, setPhoneListJson] = useState([]);
+
 
     phoneListJson.sort((a, b) => (a.rating > b.rating) ? -1 : 1);
+
 
     return (
         <>

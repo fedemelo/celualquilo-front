@@ -22,35 +22,17 @@ import ProductsGridFilter from './components/ProductsGridFilter';
 
 import './styles/App.css';
 
-async function getDatos() {
-    const response = await fetch("https://gist.githubusercontent.com/dburgos26/a09fc5108186b8ce6bd0e7c5a38b2432/raw/e6e879db208b06c15647c94df54f26b352dd4f72/cellphones.json");
-    const data = await response.json();
-    return data;
-}
+
 
 export default function App() {
-
-    useEffect(() => {
-        async function fetchData() {
-          const data = await getDatos();
-          console.log(data);
-
-          localStorage.setItem("phoneList", JSON.stringify(data));
-
-          data.forEach((cellphone) => {
-            localStorage.setItem(`cel${cellphone.id}`, JSON.stringify(cellphone));
-          });
-        }
-        fetchData();
-      }, []);
 
     return (
         <div className="App">
             <Header />
-            
+
             <BrowserRouter>
                 <Routes>
-                    <Route path="/" element={<MainPage />} />   
+                    <Route path="/" element={<MainPage />} />
                     <Route path="/products" element={<ProductsGrid titleText={"Nuestros Productos"} />} />
                     <Route path="/iPhone" element={<ProductsGrid titleText={"iPhone"} />} />
                     <Route path="/Samsung" element={<ProductsGrid titleText={"Samsung"} />} />
@@ -67,8 +49,8 @@ export default function App() {
                     <Route path="/user" element={<UserProfile name="juan" email="juan@gmail.com" />} />
 
                     <Route path="/ProductsGridPrice" element={<ProductsGridPrice />} />
-                    <Route path="/ProductsGridFilter" element={<ProductsGridFilter brand={"Apple"}/>} />
-                </Routes> 
+                    <Route path="/ProductsGridFilter" element={<ProductsGridFilter brand={"Apple"} />} />
+                </Routes>
             </BrowserRouter>
 
             <Footer />
