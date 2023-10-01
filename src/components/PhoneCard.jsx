@@ -19,7 +19,6 @@ export default function PhoneCard({ name, image, cost, rating}) {
     return (
         <Card sx={cardStyle}>
             <style>
-                
                 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');
             </style>
             

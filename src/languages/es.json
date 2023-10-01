@@ -7,8 +7,6 @@
     "Password" : "Contraseña",
     "ConfirmPassword" : "Confirmar contraseña",
 
-
-
     "Header_Search" : "Buscar",
     "Header_LogIn" : "Ingresar",
     "Header_Usser" : "Usuario",
@@ -118,5 +116,54 @@
     "Filters_ByPrice" : "Filtrar por precio",
     "Filters_Minimum" : "Minimo",
     "Filters_Maximum" : "Maximo",
-    "Filters_ByBrand" : "Filtrar por marca"
+    "Filters_ByBrand" : "Filtrar por marca",
+
+    "BreadcrumbMiAccount": "Mi cuenta",
+    "BreadcrumbRentDetail": "Detalles de Alquiler",
+    "BreadcrumbBilling": "Dirección y Facturación",
+    "BreadcrumbRent": "Alquilar",
+
+    "No_Empty_Name": "El nombre no puede estar vacío.",
+    "Len_Above_2": "El nombre debe contener al menos dos letras.",
+    "EmailNotEmpty": "El correo no puede estar vacío.",
+    "EmailContainsAtSymbol": "El correo debe contener el símbolo '@'.",
+    "EmailContainsDot": "El correo debe contener un punto '.'.",
+    "AtSymbolNotAtBeginningOrEnd": "El símbolo '@' no puede estar al principio ni al final del correo.",
+    "DotNotAtBeginningOrEnd": "El punto '.' no puede estar al principio ni al final del correo.",
+    "NoConsecutiveAtSymbols": "No puede haber dos símbolos '@' consecutivos en el correo.",
+    "PasswordNotEmpty": "La contraseña no puede estar vacía.",
+    "PasswordContainsNumber": "La contraseña debe contener al menos un número.",
+    "PasswordContainsLowercase": "La contraseña debe contener al menos una letra minúscula.",
+    "PasswordContainsUppercase": "La contraseña debe contener al menos una letra mayúscula.",
+    "PasswordContainsSpecialChar": "La contraseña debe contener al menos un carácter especial.",
+    "PasswordMinLength": "La contraseña debe tener al menos 9 caracteres.",
+
+    "RewritePassword": "Escriba de nuevo la contraseña.",
+    "PasswordsDoNotMatch": "Las contraseñas no coinciden.",
+
+    "InsertAddress": "Debes ingresar una dirección.",
+    "InsertCity": "Debes ingresar una ciudad.",
+    "TheCityCannotContainNumbers": "La ciudad no puede contener números.",
+    "TheCityMustContainMoreThanOneLetter": "La ciudad debe contener más de una letra.",
+    "InsertContactNumber": "Debes ingresar un número de contacto.",
+    "TheContactNumberCannotStartWithZero": "El número de contacto no puede empezar por cero.",
+    "TheContactNumberMustContain10Digits": "El número de contacto debe consistir de 10 dígitos contiguos.",
+    "zeros": "ceros",
+    "ones": "unos",
+    "twos": "doses",
+    "threes": "treses",
+    "fours": "cuatros",
+    "fives": "cincos",
+    "sixes": "seises",
+    "sevens": "sietes",
+    "eights": "ochos",
+    "nines": "nueves",
+    "TheContactNumberCannotConsistOfOnly": "El número no puede consistir de únicamente ",
+
+    "Useless": "Inútil",
+    "Bad": "Malo",
+    "Average": "Regular",
+    "Good": "Bueno",
+    "Excellent": "Excelente"
+
 }

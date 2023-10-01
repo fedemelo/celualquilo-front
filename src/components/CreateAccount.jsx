@@ -16,6 +16,9 @@ import { useState } from 'react';
 
 
 export default function CreateAccountSide() {
+
+    const intl = useIntl();
+
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
@@ -43,7 +46,7 @@ export default function CreateAccountSide() {
 
         if (!clickedField.name) return "";
 
-        if (name === "") return "El nombre no puede estar vacío.";
+        if (name === "") return intl.formatMessage({ id: "No_Empty_Name" })
 
         if (name.length < 2) return "El nombre debe contener al menos dos letras.";
 

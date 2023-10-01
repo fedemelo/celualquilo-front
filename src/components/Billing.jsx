@@ -58,23 +58,23 @@ const RentButton = ({ text }) => {
     })
 
     return (
-    <>
-    <Link to={"/RentHistory"}>
-    < Button
-        style={{
-            borderRadius: 20,
-            padding: "5px 20px",
-            backgroundColor: COLORS.primary,
-            fontSize: "25px",
-            textTransform: "none",
-            width: "100%",
-        }
-        }
-        onClick={clickFinalizarCompra}
-        variant="contained"
-    > {text}</Button >
-    </Link>
-    </>
+        <>
+            <Link to={"/RentHistory"}>
+                < Button
+                    style={{
+                        borderRadius: 20,
+                        padding: "5px 20px",
+                        backgroundColor: COLORS.primary,
+                        fontSize: "25px",
+                        textTransform: "none",
+                        width: "100%",
+                    }
+                    }
+                    onClick={clickFinalizarCompra}
+                    variant="contained"
+                > {text}</Button >
+            </Link>
+        </>
     )
 }
 
@@ -91,25 +91,26 @@ const BillingAddress = () => {
 
         if (!address.length > 0) return "Debes ingresar una dirección."
 
+        if (navigator.language.startsWith("es")) {
 
-        if ((address.length < 4) || (!/^(Carrera|Calle|Transversal|Diagonal|Circular|Avenida|Autopista)/.test(address))) return "La dirección debe empezar por: Carrera, Calle, Transversal, Diagonal, Circular, Avenida o Autopista."
-
-
-        if (!/\d/.test(address)) return "La dirección debe seguir con un espacio y un número."
+            if ((address.length < 4) || (!/^(Carrera|Calle|Transversal|Diagonal|Circular|Avenida|Autopista)/.test(address))) return "La dirección debe empezar por: Carrera, Calle, Transversal, Diagonal, Circular, Avenida o Autopista."
 
 
-        const parts = address.split(' ');
-
-        const number = parts[1];
-        if (!/^\d+[a-zA-Z]*$/.test(number)) return "El número de la dirección puede contener números y letras opcionales (ejemplo: 14b)"
+            if (!/\d/.test(address)) return "La dirección debe seguir con un espacio y un número."
 
 
-        if (parts[2] !== '#') return "Después del número, la dirección debe incluir el símbolo '#' y un espacio."
+            const parts = address.split(' ');
+
+            const number = parts[1];
+            if (!/^\d+[a-zA-Z]*$/.test(number)) return "El número de la dirección puede contener números y letras opcionales (ejemplo: 14b)"
 
 
-        const hyphenPart = parts[3];
-        if (!/^\d+[a-zA-Z]*-\d+$/.test(hyphenPart)) return "La parte después del '#' debe estar en el formato número, guión, número (ejemplo: 197-65)."
+            if (parts[2] !== '#') return "Después del número, la dirección debe incluir el símbolo '#' y un espacio."
 
+
+            const hyphenPart = parts[3];
+            if (!/^\d+[a-zA-Z]*-\d+$/.test(hyphenPart)) return "La parte después del '#' debe estar en el formato número, guión, número (ejemplo: 197-65)."
+        }
 
         // If none of the conditions above are met, the address is valid
         return null;
