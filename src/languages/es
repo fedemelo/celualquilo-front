@@ -1,0 +1,122 @@
+{
+    "RentButton" : "Alquilar",
+    "Day" : "Día",
+    "Brand" : "Marca",
+    "Email" : "Correo",
+    "EmailInputFiller" : "Escriba su correo",
+    "Password" : "Contraseña",
+    "ConfirmPassword" : "Confirmar contraseña",
+
+
+
+    "Header_Search" : "Buscar",
+    "Header_LogIn" : "Ingresar",
+    "Header_Usser" : "Usuario",
+
+
+    "MainPage_RentNow_Title" : "Alquila tu celular ya",
+    "MainPage_RentNow_Description" : "Encuentra un celular a tu medida y a un precio accesible",
+    "MainPage_RentNow_DiscoverButton" : "Descubrir",
+
+    "MainPage_OurBrands_Title" : "Nuestras Marcas",
+
+    "MainPage_Popular_Title" : "Populares",
+    "MainPage_Popular_SeeAllButton" : "Ver Todos",
+
+
+    "Footer_General_Title" : "General",
+    "Footer_General_AboutUs" : "Sobre nosotros",
+    "Footer_General_OurBuisness" : "Nuestro negocio",
+
+    "Footer_VirtualStore_Title" : "Tienda virtual",
+    "Footer_VirtualStore_DeliveryInfo" : "Información de entrega",
+    "Footer_VirtualStore_Returns" : "Retornos y garantías",
+
+    "Footer_Legal_Title" : "Legal",
+    "Footer_Legal_UseTerms" : "Termios de uso",
+    "Footer_Legal_RentTerms" : "Termios de alquiler",
+    "Footer_Legal_PrivacyTerms" : "Politica de privacidad",
+
+    "Footer_Contact_Title" : "Contáctanos",
+
+
+    "Register_CreateAcc" : "Crea una cuenta",
+    "Register_CreateSubtext" : "Por favor rellene el formulario",
+    "Register_NameAndLastname" : "Nombre y Apellido",
+    "Register_NameInputFiller" : "Escriba su nombre y apellido",
+    "Register_RegisterTerms" : "Registrándome estoy de acuerdo con los términos y condiciones y nuestras políticas de privacidad",
+    "Register_CreateAccButton" : "Crear cuenta",
+    "Register_LogInQuestionText" : "Ya estás registrado?",
+    "Register_LogInHiperlink" : "Ingresa",
+
+    
+    "LogIn_Wellcome" : "Bienvenido de vuelta!",
+    "LogIn_WellcomeSubtext" : "Alquila un celular fácil con CeluAlquilo",
+    "LogIn_RememberMeCheckbox" : "Recordarme",
+    "LogIn_ForgotPassword" : "Olvido su contraseña?",
+    "LogIn_LogInButtonText" : "Ingresar",
+    "LogIn_NewUsserText" : "Nuevo usuario?",
+    "LogIn_CreateAccHiperlink" : "Crear una cuenta",
+
+
+    "ProductsList_OurProducts" : "Nuestros productos",
+    "ProductsList_LablelAll" : "Todos",
+    "ProductsList_LablelPopular" : "Populares",
+    "ProductsList_LablelLastGen" : "Ultima generación",
+    "ProductsList_LablelDiscount" : "En descuento",
+
+
+    "PhoneDetail_LablelDetail" : "Detalle del celular",
+    "PhoneDetail_LablelAvailability" : "Disponibilidad",
+    "PhoneDetail_LablelStock" : "En stock",
+
+
+    "RentDetail_Title" : "Detalles del alquiler",
+    "RentDetail_RentDays" : "Días del alquiler",
+
+    "RentDetail_PriceInfo_Title" : "Detalle del precio de alquiler",
+    "RentDetail_PriceInfo_RentPrice" : "Precio de alquiler",
+    "RentDetail_PriceInfo_Tax" : "Impuestos",
+    "RentDetail_PriceInfo_TotalAndTax" : "Total + impuestos",
+    "RentDetail_PriceInfo_Continue" : "Continuar pago",
+
+
+    "Billing_Title" : "Dirección y facturación",
+
+    "Billing_Address_Title" : "Dirección de Facturación",
+    "Billing_Address_AddressText" : "Dirección",
+    "Billing_Address_AddressInputFiller" : "Nombre de la calle y número de casa",
+    "Billing_Address_City" : "Ciudad",
+    "Billing_Address_ContactNumber" : "Número de contacto",
+
+    "Billing_PayMethod_Title" : "Método de pago",
+    "Billing_PayMethod_Card" : "Tarjeta",
+    "Billing_PayMethod_Cash" : "Efectivo",
+
+    "Billing_PriceInfo_Title" : "Detalle del precio de alquiler",
+    "Billing_PriceInfo_RentPrice" : "Precio de alquiler",
+    "Billing_PriceInfo_Tax" : "Impuestos",
+    "Billing_PriceInfo_TotalAndTax" : "Total + impuestos",
+    "Billing_PriceInfo_Finish" : "Finalizar compra",
+
+
+    "RentHistory_Title" : "Historial de alquileres",
+    "RentHistory_ActiveRent" : "Alquileres activos",
+    "RentHistory_RenewButton" : "Renovar alquiler",
+    "RentHistory_WriteButton" : "Escribir reseña",
+
+
+    "Review_Title" : "Escribir reseña",
+    "Review_RevewLablel" : "Reseña",
+    "Review_InputFiller" : "Escriba su reseña aquí",
+
+
+    "Favourites_Title" : "Favoritos",
+
+
+    "Filters_Title" : "Filtros",
+    "Filters_ByPrice" : "Filtrar por precio",
+    "Filters_Minimum" : "Minimo",
+    "Filters_Maximum" : "Maximo",
+    "Filters_ByBrand" : "Filtrar por marca"
+}
