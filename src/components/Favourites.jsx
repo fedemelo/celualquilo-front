@@ -1,4 +1,5 @@
-import * as React from 'react';
+import React from 'react';
+import { FormattedMessage, useIntl } from "react-intl";
 import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
@@ -60,7 +61,7 @@ const PhonesRow = ({ phones }) => {
         <Grid container spacing={3} padding={2} >
             {phones.map((phone, index) => (
                 <Grid item xs={12} sm={6} md={3} key={index}>
-                    <PhoneCardSimple {...phone} route={`/products/${1}/rent`}/>
+                    <PhoneCardSimple {...phone} route={`/products/${1}/rent`} />
                 </Grid>
             ))}
         </Grid>

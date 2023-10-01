@@ -1,4 +1,5 @@
-import * as React from 'react';
+import React from 'react';
+import { FormattedMessage, useIntl } from "react-intl";
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
@@ -10,7 +11,7 @@ import StarIcon from '@mui/icons-material/Star';
 import { Grid } from '@mui/material';
 
 
-export default function PhoneCard({ name, image, cost, rating}) {
+export default function PhoneCard({ name, image, cost, rating }) {
     const [isFavorite, setIsFavorite] = React.useState(false); // Initialize as false
 
     const toggleFavorite = () => {
@@ -21,50 +22,50 @@ export default function PhoneCard({ name, image, cost, rating}) {
             <style>
                 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');
             </style>
-            
-            <Box px={5} sx={{marginTop:'1.5rem'}} >
+
+            <Box px={5} sx={{ marginTop: '1.5rem' }} >
                 <Typography gutterBottom variant="h5" component="div"
-                        sx={nameStyle}
-                    >
-                        {name}
-                    </Typography>
-                        <Grid container spacing={0}>
-                            <Grid item xs={9}>
-                               <Typography xs={8} variant="body2" color="text.secondary"
-                                    sx={priceStyle}>
-                                    {cost} USD / dia
-                                </Typography>
-                            </Grid>
-                            <Grid item xs={2}>
-                                <Typography
-                                    variant="body2"
-                                    color="text.secondary"
-                                    sx={ratingStyle} 
-                                >
-                                {rating}
-                                </Typography> 
-                            </Grid> 
-                            <Grid item xs={1} sx={{ verticalAlign: "middle"}}>
-                                <StarIcon
-                                    sx={{ color: '#9E30FF', fontSize: '1.2rem',marginLeft: "0.4vw",marginTop: "0.2vw"}} 
-                                    fontSize="small"
-                                />  
-                            </Grid>  
-                        </Grid>
+                    sx={nameStyle}
+                >
+                    {name}
+                </Typography>
+                <Grid container spacing={0}>
+                    <Grid item xs={9}>
+                        <Typography xs={8} variant="body2" color="text.secondary"
+                            sx={priceStyle}>
+                            {cost} USD / dia
+                        </Typography>
+                    </Grid>
+                    <Grid item xs={2}>
+                        <Typography
+                            variant="body2"
+                            color="text.secondary"
+                            sx={ratingStyle}
+                        >
+                            {rating}
+                        </Typography>
+                    </Grid>
+                    <Grid item xs={1} sx={{ verticalAlign: "middle" }}>
+                        <StarIcon
+                            sx={{ color: '#9E30FF', fontSize: '1.2rem', marginLeft: "0.4vw", marginTop: "0.2vw" }}
+                            fontSize="small"
+                        />
+                    </Grid>
+                </Grid>
             </Box>
             <MediaRatio image={image} name={name} />
             <CardContent>
-                <Grid container spacing={0} sx={{alignItems:"center"}}>
+                <Grid container spacing={0} sx={{ alignItems: "center" }}>
                     <Grid item xs={2} onClick={toggleFavorite}>
-                    <FavoriteIcon
-                            sx={{ color: isFavorite ? '#9E30FF' : '#7f7f7f',fontSize: "2rem",verticalAlign: "middle"}}
+                        <FavoriteIcon
+                            sx={{ color: isFavorite ? '#9E30FF' : '#7f7f7f', fontSize: "2rem", verticalAlign: "middle" }}
                             fontSize="medium"
-                    />
+                        />
                     </Grid>
                     <Grid item xs={10}>
-                    {<LastButton text='Alquilar' />}
+                        {<LastButton text='Alquilar' />}
                     </Grid>
-                </Grid>         
+                </Grid>
             </CardContent>
         </Card >
     );
@@ -96,7 +97,7 @@ const priceStyle = {
     fontFamily: "Open Sans",
     lineHeight: "1.5rem",
     color: "#495057",
-    fontWeight: 500 ,
+    fontWeight: 500,
 }
 
 const nameStyle = {

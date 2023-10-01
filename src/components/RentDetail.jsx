@@ -1,4 +1,5 @@
-import * as React from 'react';
+import React from 'react';
+import { FormattedMessage, useIntl } from "react-intl";
 import Card from '@mui/material/Card';
 import examplePhone from '../assets/phones/iPhone14Pro.png';
 import Typography from '@mui/material/Typography';

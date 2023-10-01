@@ -1,4 +1,5 @@
 import React from 'react';
+import { FormattedMessage, useIntl } from "react-intl";
 import ReactDOM from 'react-dom/client';
 import './styles/index.css';
 import App from './App';
@@ -8,7 +9,7 @@ import * as serviceWorkerRegistration from './defaults/serviceWorkerRegistration
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
-        <App/>
+        <App />
     </React.StrictMode>
 );
 

@@ -73,7 +73,8 @@ components_words = [
 
 for i in range(len(components)):
     s = ""
-    s += "import React from 'react';"+"\n"
+    s += "import React from 'react';
+import { FormattedMessage, useIntl } from "react-intl";"+"\n"
     s += "import { render, screen } from '@testing-library/react';"+"\n"
     s += f"import {components[i]} from '../components/{components[i]}';"+"\n"
     s += "import '@testing-library/jest-dom/extend-expect';\n"+"\n"

@@ -1,4 +1,5 @@
-import * as React from 'react';
+import React from 'react';
+import { FormattedMessage, useIntl } from "react-intl";
 import Card from '@mui/material/Card';
 import Rating from '@mui/material/Rating';
 import Typography from '@mui/material/Typography';

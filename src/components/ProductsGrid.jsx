@@ -1,4 +1,5 @@
 import React from 'react';
+import { FormattedMessage, useIntl } from "react-intl";
 import Grid from '@mui/material/Grid';
 import PhoneCard from './PhoneCard';
 import PaginationRounded from './Pagination';
@@ -14,7 +15,7 @@ export default function ProductsGrid({ titleText }) {
 
     const phoneList = localStorage.getItem('phoneList');
     const phoneListJson = JSON.parse(phoneList);
-    
+
     const [selectedButton, setSelectedButton] = useState(null);
     const [currentPage, setCurrentPage] = useState(1);
     console.log(currentPage);
@@ -30,15 +31,15 @@ export default function ProductsGrid({ titleText }) {
             </Grid>
             <div style={{ alignItems: 'center', justifyContent: 'center' }}>
                 <Grid container sx={{ marginTop: 'vw', justifyContent: 'center' }}>
-                    {phoneListJson.slice((currentPage-1)*itemsPerPage, currentPage*itemsPerPage).map((product, index) => (
+                    {phoneListJson.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage).map((product, index) => (
                         <Grid item key={index} sx={{ marginBottom: '3vw', marginLeft: '3vw', marginRight: '3vw' }} alignItems="center">
                             <Link to={"/products/" + product.id} style={{ textDecoration: 'none' }}>
-                            <PhoneCard
-                                name={product.name}
-                                image={product.image}
-                                cost={product.price_per_day}
-                                rating={product.rating}
-                            /></Link>
+                                <PhoneCard
+                                    name={product.name}
+                                    image={product.image}
+                                    cost={product.price_per_day}
+                                    rating={product.rating}
+                                /></Link>
                         </Grid>
                     ))}
                 </Grid>

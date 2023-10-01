@@ -1,4 +1,5 @@
-import * as React from 'react';
+import React from 'react';
+import { FormattedMessage, useIntl } from "react-intl";
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import RatingStars from './RatingStars';
@@ -45,7 +46,7 @@ export default function Review() {
     const oss = useMediaQuery(theme.breakpoints.down("sm"));
     return (
         <>
-            <GoBack text="Escribir reseña" route={`/RentHistory`}/>
+            <GoBack text="Escribir reseña" route={`/RentHistory`} />
             <Stack marginBottom={7}>
                 <Card sx={cardStyle}>
                     <Grid container spacing={0} padding={3} direction={'row'} alignItems={'center'}>

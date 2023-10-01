@@ -1,4 +1,5 @@
 import React from 'react';
+import { FormattedMessage, useIntl } from "react-intl";
 import Grid from '@mui/material/Grid';
 import PhoneCard from './PhoneCard';
 import examplePhone1 from '../assets/phones/iPhone14Pro.png';
@@ -28,34 +29,34 @@ const exampleActiveRents = [
 
 
 
-export default function ProductsGridFilter({ brand }){
-  return (
-    <>
-        <div style={centerStyle}>
-            <Typography variant="H1" sx={titleStyle}>
-                { brand }
-            </Typography>
-        </div>
-        <div style={{alignItems:'center', justifyContent: 'center'}}>
-          <Grid container sx={{ marginTop: 'vw', justifyContent: 'center'} }>
-        {exampleActiveRents.map((product, index) => (
-            <Grid item key={index} sx={{ marginBottom: '3vw', marginLeft:'3vw',marginRight:'3vw'}} alignItems="center" >
-            <PhoneCard
-                name={product.name}
-                image={product.image}
-                cost={product.cost}
-                buttonText={product.buttonText}
-                rating={product.rating}
-            />
-            </Grid>
-        ))}
-        </Grid>  
-        </div>
-        <div style={centerStyle}>
-            <PaginationRounded/>
-        </div>
-    </>
-  );
+export default function ProductsGridFilter({ brand }) {
+    return (
+        <>
+            <div style={centerStyle}>
+                <Typography variant="H1" sx={titleStyle}>
+                    {brand}
+                </Typography>
+            </div>
+            <div style={{ alignItems: 'center', justifyContent: 'center' }}>
+                <Grid container sx={{ marginTop: 'vw', justifyContent: 'center' }}>
+                    {exampleActiveRents.map((product, index) => (
+                        <Grid item key={index} sx={{ marginBottom: '3vw', marginLeft: '3vw', marginRight: '3vw' }} alignItems="center" >
+                            <PhoneCard
+                                name={product.name}
+                                image={product.image}
+                                cost={product.cost}
+                                buttonText={product.buttonText}
+                                rating={product.rating}
+                            />
+                        </Grid>
+                    ))}
+                </Grid>
+            </div>
+            <div style={centerStyle}>
+                <PaginationRounded />
+            </div>
+        </>
+    );
 };
 
 
@@ -64,7 +65,7 @@ const centerStyle = {
     justifyContent: 'center',
     alignItems: 'center',
     height: '25vh', // Center vertically within the viewport
-  };
+};
 
 const titleStyle = {
     color: '#280C40',
