@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormattedMessage, useIntl } from "react-intl";
+import { useIntl } from "react-intl";
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
