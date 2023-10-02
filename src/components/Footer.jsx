@@ -5,22 +5,25 @@ import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import { Box } from "@mui/material";
 import { COLORS } from "../styles/colors";
-
-
-const title1 = "General";
-const items1 = ["Sobre nosotros", "Nuestro negocio"];
-
-const title2 = "Tienda virtual";
-const items2 = ["Información de entrega", "Retornos y garantía"];
-
-const title3 = "Legal";
-const items3 = ["Términos de uso", "Términos de alquiler", "Política de privacidad"];
-
-const title4 = "Contáctanos";
-const items4 = ["Facebook", "Twitter", "Instagram", "Youtube"];
+import { useIntl } from "react-intl";
 
 
 export default function Footer() {
+
+    const intl = useIntl();
+
+    const title1 = intl.formatMessage({ id: 'Footer_General_Title' });
+    const items1 = [intl.formatMessage({ id: 'Footer_General_AboutUs' }), intl.formatMessage({ id: 'Footer_General_OurBuisness' })];
+
+    const title2 = intl.formatMessage({ id: 'Footer_VirtualStore_Title' });
+    const items2 = [intl.formatMessage({ id: 'Footer_VirtualStore_DeliveryInfo' }), intl.formatMessage({ id: 'Footer_VirtualStore_Returns' })];
+
+    const title3 = intl.formatMessage({ id: 'Footer_Legal_Title' });
+    const items3 = [intl.formatMessage({ id: 'Footer_Legal_UseTerms' }), intl.formatMessage({ id: 'Footer_Legal_RentTerms' }), intl.formatMessage({ id: 'Footer_Legal_PrivacyTerms' })];
+
+    const title4 = intl.formatMessage({ id: 'Footer_Contact_Title' });
+    const items4 = ["Facebook", "Twitter", "Instagram", "Youtube"];
+
     return (
         <Box
             component="footer"
