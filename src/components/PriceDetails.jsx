@@ -6,7 +6,6 @@ import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
 
 const moneda = "COP"
-const pricePerDay = 10000
 
 const cardStyle = {
     // centered
@@ -25,6 +24,7 @@ const cardStyle = {
 
 export default function PriceDetails(props) {
     const dias = props.dias <= 180 ? props.dias : 180
+    const pricePerDay = props.price_per_day
     return (
         <Card sx={cardStyle}>
             <Box display={"flex"} flexDirection={"column"} gap="15px">
@@ -55,7 +55,7 @@ export default function PriceDetails(props) {
                         Total + Impuestos
                     </Typography>
                     <Typography variant='h5'>
-                        ${Number(pricePerDay) * (Number(dias)) * 1.19} {moneda}
+                        ${Math.round(Number(pricePerDay) * (Number(dias)) * 11.9) / 10} {moneda}
                     </Typography>
                 </Box>
             </Box>

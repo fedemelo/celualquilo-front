@@ -12,9 +12,16 @@ import Box from '@mui/material/Box';
 import { Link } from 'react-router-dom';
 import { FormControl, FormControlLabel, Radio, RadioGroup } from '@mui/material';
 import Breadcrumb from './BreadCrumb';
+import { useParams } from 'react-router-dom';
 
 export default function Billing() {
     const intl = useIntl();
+    const params = useParams();
+    const idCel = params.productId;
+    const phone = localStorage.getItem("cel" + idCel);
+    const phoneJson = JSON.parse(phone);
+    const phonePrice = phoneJson.price_per_day;
+    console.log(phonePrice);
 
     let dias = localStorage.getItem("dias");
     return (
@@ -30,7 +37,7 @@ export default function Billing() {
                     <PayingMethod />
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                    <PriceDetails dias={dias} />
+                    <PriceDetails dias={dias} price_per_day={phonePrice} />
                     <RentButton text="Finalizar compra" />
                 </Grid>
             </Grid>

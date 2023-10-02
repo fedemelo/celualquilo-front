@@ -1,7 +1,6 @@
 import React from 'react';
 import { FormattedMessage, useIntl } from "react-intl";
 import Card from '@mui/material/Card';
-import examplePhone from '../assets/phones/iPhone14Pro.png';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
@@ -11,13 +10,20 @@ import PriceDetails from './PriceDetails';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Breadcrumb from './BreadCrumb';
+import { useParams } from 'react-router-dom';
 
-const exampleName = "iPhone 14 Pro"
 const moneda = "COP"
-const examplePrice = "$10.000 " + moneda + "/día"
 const maxDiasAlquiler = 180
 
 export default function RentDetail() {
+    const params = useParams();
+    const idCel = params.productId;
+    const phone = localStorage.getItem("cel" + idCel);
+    const phoneJson = JSON.parse(phone);
+    const phoneName = phoneJson.name;
+    const phonePrice = phoneJson.price_per_day + " " + moneda + "/día";
+    const phoneImg = phoneJson.image;
+
 
     const intl = useIntl();
 
@@ -31,11 +37,11 @@ export default function RentDetail() {
             ]} />
             <Grid container direction={'row'} spacing={2} marginBottom={8}>
                 <Grid item xs={12} md={6}>
-                    <PhoneResume dias={dias} setDias={setDias} />
+                    <PhoneResume dias={dias} setDias={setDias} phoneName={phoneName} phonePrice={phonePrice} phoneImg={phoneImg} />
                 </Grid>
                 <Grid item xs={12} md={6}>
-                    <PriceDetails dias={dias} />
-                    <RentButton text="Continuar pago" onChange={localStorage.setItem("dias", dias)} />
+                    <PriceDetails dias={dias} price_per_day={phoneJson.price_per_day} />
+                    <RentButton text="Continuar pago" idCel={idCel} onChange={localStorage.setItem("dias", dias)} />
                 </Grid>
             </Grid>
         </Grid>
@@ -58,11 +64,9 @@ const cardStyle = {
 }
 
 
-
-
-const RentButton = ({ text }) =>
+const RentButton = ({ text, idCel }) =>
     <>
-        <Link to={`/products/${1}/billing`}>
+        <Link to={`/products/${idCel}/billing`}>
             <Button
                 style={{
                     borderRadius: 20,
@@ -79,7 +83,7 @@ const RentButton = ({ text }) =>
 
 
 
-const PhoneResume = ({ dias, setDias }) => {
+const PhoneResume = ({ dias, setDias, phoneName, phonePrice, phoneImg }) => {
     const getProblemInNumber = () => {
 
         const number = dias ? Number(dias) : 5
@@ -94,11 +98,11 @@ const PhoneResume = ({ dias, setDias }) => {
     return (<Card sx={cardStyle} >
         <Box display={"flex"} justifyContent="center">
             <Box display={"flex"} justifyItems="center" padding="1rem">
-                <img src={examplePhone} alt={exampleName} style={{ maxWidth: '130%' }} />
+                <img src={phoneImg} alt={phoneName} style={{ maxWidth: '130%' }} />
             </Box>
             <Box display={"flex"} flexDirection={"column"} gap="15px" justifyContent="center" padding="2rem">
-                <Typography variant='h4' textAlign={'left'}> {exampleName} </Typography>
-                <Typography variant='h5' textAlign={'left'}> {examplePrice} </Typography>
+                <Typography variant='h4' textAlign={'left'}> {phoneName} </Typography>
+                <Typography variant='h5' textAlign={'left'}> {phonePrice} </Typography>
                 <TextField
                     color={!getProblemInNumber() ? "success" : "error"}
                     required
