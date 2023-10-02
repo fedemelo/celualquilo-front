@@ -1,5 +1,4 @@
 import React from 'react';
-import { FormattedMessage, useIntl } from "react-intl";
 import Pagination from '@mui/material/Pagination';
 
 export default function PaginationRounded({ setCurrentPage, totalElements, itemsPerPage }) {

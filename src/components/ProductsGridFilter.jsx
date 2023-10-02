@@ -1,5 +1,4 @@
 import React from 'react';
-import { FormattedMessage, useIntl } from "react-intl";
 import Grid from '@mui/material/Grid';
 import PhoneCard from './PhoneCard';
 import examplePhone1 from '../assets/phones/iPhone14Pro.png';
