@@ -39,11 +39,12 @@ export default function RentHistory() {
     const intl = useIntl();
     const favs = intl.formatMessage({ id: "Favourites_Title" })
     const rent = intl.formatMessage({ id: "Rent" })
+    const BreadcrumbMiAccount = intl.formatMessage({ id: "BreadcrumbMiAccount" })
 
     return (
         <>
             <Breadcrumb breadcrumbs={[
-                { href: '/mi-cuenta', text: 'Mi cuenta' },
+                { href: '/mi-cuenta', text: BreadcrumbMiAccount },
                 { href: '', text: favs },
             ]} />
             <Stack spacing={3.5} marginBottom={11}>

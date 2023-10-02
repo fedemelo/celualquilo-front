@@ -24,6 +24,18 @@ export default function ProductsGrid({ titleText }) {
     console.log(currentPage);
     const itemsPerPage = 9;
 
+    const intl = useIntl();
+    const ProductsList_OurProducts = intl.formatMessage({ id: 'ProductsList_OurProducts' });
+
+    let titulo = ""
+
+    if (titleText === "Nuestros Productos") {
+        titulo = ProductsList_OurProducts;
+    } else {
+        titulo = titleText;
+    }
+
+
     const filteredPhoneList = phoneListJson.filter((product) => {
         const precio = parseFloat(product.price_per_day);
         const precioMin = filtros.PrecioMin ? parseFloat(filtros.PrecioMin) : Number.NEGATIVE_INFINITY;
@@ -35,7 +47,7 @@ export default function ProductsGrid({ titleText }) {
 
     return (
         <Stack marginBottom={7}>
-            <Title titleText={titleText} />
+            <Title titleText={titulo} />
             <Grid container spacing={0} justifyContent="center" sx={{ marginTop: 'vw' }}>
                 <Grid item xs={6} sm={6} md={6} lg={12} sx={{ marginLeft: '6rem', marginRight: '6rem', marginTop: '3rem', marginBottom: '3rem' }}>
                     <FilterButtons selectedButton={selectedButton} handleButtonClick={setSelectedButton} />
@@ -67,32 +79,38 @@ export default function ProductsGrid({ titleText }) {
 
 const FilterButtons = ({ selectedButton, handleButtonClick }) => {
 
+    const intl = useIntl();
+    const ProductsList_LablelAll = intl.formatMessage({ id: 'ProductsList_LablelAll' });
+    const ProductsList_LablelPopular = intl.formatMessage({ id: 'ProductsList_LablelPopular' });
+    const ProductsList_LablelLastGen = intl.formatMessage({ id: 'ProductsList_LablelLastGen' });
+    const ProductsList_LablelDiscount = intl.formatMessage({ id: 'ProductsList_LablelDiscount' });
+
     return (
         <Grid container spacing={2} sx={{ alignContent: 'center' }}>
             <Grid item xs={12} sm={12} md={6} lg={3}>
                 <FilterButton
-                    text="Todos"
+                    text={ProductsList_LablelAll}
                     selected={selectedButton === 'Todos'}
                     onClick={() => handleButtonClick('Todos')}
                 />
             </Grid>
             <Grid item xs={12} sm={12} md={6} lg={3}>
                 <FilterButton
-                    text="Populares"
+                    text={ProductsList_LablelPopular}
                     selected={selectedButton === 'Populares'}
                     onClick={() => handleButtonClick('Populares')}
                 />
             </Grid>
             <Grid item xs={12} sm={12} md={6} lg={3}>
                 <FilterButton
-                    text="Última Generación"
+                    text={ProductsList_LablelLastGen}
                     selected={selectedButton === 'Última Generación'}
                     onClick={() => handleButtonClick('Última Generación')}
                 />
             </Grid>
             <Grid item xs={12} sm={12} md={6} lg={3}>
                 <FilterButton
-                    text="En Descuento"
+                    text={ProductsList_LablelDiscount}
                     selected={selectedButton === 'En Descuento'}
                     onClick={() => handleButtonClick('En Descuento')}
                 />

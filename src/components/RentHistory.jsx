@@ -90,23 +90,31 @@ const examplePastRents = [
 
 
 export default function RentHistory() {
+
+    const intl = useIntl();
+    const title = intl.formatMessage({ id: "RentHistory_Title" })
+    const BreadcrumbMiAccount = intl.formatMessage({ id: "BreadcrumbMiAccount" })
+    const active = intl.formatMessage({ id: "RentHistory_ActiveRent" })
+    const renew = intl.formatMessage({ id: "RentHistory_RenewButton" })
+    const write = intl.formatMessage({ id: "RentHistory_WriteButton" })
+
     return (
         <>
             <Breadcrumb breadcrumbs={[
-                { href: '/user', text: 'Mi cuenta' },
-                { href: '', text: 'Historial y Alquileres Activos' },
+                { href: '/user', text: BreadcrumbMiAccount },
+                { href: '', text: title },
             ]} />
             <Stack spacing={3.5} marginBottom={11}>
                 <style>
                     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400&display=swap');
                 </style>
                 <Card sx={sectionStyle}>
-                    <SectionTitle text="Alquileres Activos" />
-                    <PhonesRow phones={exampleActiveRents} route={`/products/${1}/rent`} />
+                    <SectionTitle text={active} />
+                    <PhonesRow phones={exampleActiveRents} route={`/products/${1}/rent`} text={renew}/>
                 </Card>
                 <Card sx={sectionStyle}>
-                    <SectionTitle text="Historial de Alquileres" />
-                    <PhonesRow phones={examplePastRents} route={`/products/${1}/review`} />
+                    <SectionTitle text={title} />
+                    <PhonesRow phones={examplePastRents} route={`/products/${1}/review`} text={write}/>
                 </Card>
             </Stack>
         </>
@@ -126,12 +134,12 @@ const sectionStyle = {
 }
 
 
-const PhonesRow = ({ phones, route }) => {
+const PhonesRow = ({ phones, route, text }) => {
     return (
         <Grid container spacing={3} padding={2} >
             {phones.map((phone, index) => (
                 <Grid item xs={12} sm={6} md={3} key={index}>
-                    <PhoneCardSimple {...phone} route={route} />
+                    <PhoneCardSimple {...phone} route={route} buttonText={text} />
                 </Grid>
             ))}
         </Grid>
