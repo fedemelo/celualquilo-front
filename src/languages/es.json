@@ -136,7 +136,7 @@
     "AtSymbolNotAtBeginningOrEnd": "El símbolo '@' no puede estar al principio ni al final del correo.",
     "DotNotAtBeginningOrEnd": "El punto '.' no puede estar al principio ni al final del correo.",
     "NoConsecutiveAtSymbols": "No puede haber dos símbolos '@' consecutivos en el correo.",
-    "PasswordNotEmpty": "La contraseña no puede estar vacía.",
+    "PasswordNotEmpty": "La contraseña no puede estar vacía",
     "PasswordContainsNumber": "La contraseña debe contener al menos un número.",
     "PasswordContainsLowercase": "La contraseña debe contener al menos una letra minúscula.",
     "PasswordContainsUppercase": "La contraseña debe contener al menos una letra mayúscula.",

@@ -59,7 +59,7 @@ export default function CreateAccountSide() {
 
         if (name === "") return intl.formatMessage({ id: "No_Empty_Name" })
 
-        if (name.length < 2) return "El nombre debe contener al menos dos letras.";
+        if (name.length < 2) return intl.formatMessage({ id: "NameTooShort" });
 
         return "";
     };
@@ -70,17 +70,17 @@ export default function CreateAccountSide() {
 
         if (!clickedField.email) return "";
 
-        if (email === "") return "El correo no puede estar vacío.";
+        if (email === "") return intl.formatMessage({ id: "EmailNotEmpty" });
 
-        if (!email.includes("@")) return "El correo debe contener el símbolo '@'.";
+        if (!email.includes("@")) return intl.formatMessage({ id: "EmailContainsAtSymbol" });
 
-        if (!email.includes(".")) return "El correo debe contener un punto '.'.";
+        if (!email.includes(".")) return intl.formatMessage({ id: "EmailContainsDot" });
 
-        if (email.startsWith("@") || email.endsWith("@")) return "El símbolo '@' no puede estar al principio ni al final del correo.";
+        if (email.startsWith("@") || email.endsWith("@")) return intl.formatMessage({ id: "AtSymbolNotAtBeginningOrEnd" });
 
-        if (email.startsWith(".") || email.endsWith(".")) return "El punto '.' no puede estar al principio ni al final del correo.";
+        if (email.startsWith(".") || email.endsWith(".")) return intl.formatMessage({ id: "DotNotAtBeginningOrEnd" });
 
-        if (email.includes("@@")) return "No puede haber dos símbolos '@' consecutivos en el correo.";
+        if (email.includes("@@")) return intl.formatMessage({ id: "NoConsecutiveAtSymbols" });
 
         return "";
     };
@@ -91,17 +91,17 @@ export default function CreateAccountSide() {
 
         if (!clickedField.password) return "";
 
-        if (password === "") return "La contraseña no puede estar vacía";
+        if (password === "") return intl.formatMessage({ id: "PasswordNotEmpty" });
 
-        if (!/[0-9]/.test(password)) return "La contraseña debe contener al menos un número.";
+        if (!/[0-9]/.test(password)) return intl.formatMessage({ id: "PasswordContainsNumber" });
 
-        if (!/[a-z]/.test(password)) return "La contraseña debe contener al menos una letra minúscula.";
+        if (!/[a-z]/.test(password)) return intl.formatMessage({ id: "PasswordContainsLowercase" });
 
-        if (!/[A-Z]/.test(password)) return "La contraseña debe contener al menos una letra mayúscula.";
+        if (!/[A-Z]/.test(password)) return intl.formatMessage({ id: "PasswordContainsUppercase" });
 
-        if (!/[^a-zA-Z0-9]/.test(password)) return "La contraseña debe contener al menos un carácter especial.";
+        if (!/[^a-zA-Z0-9]/.test(password)) return intl.formatMessage({ id: "PasswordContainsSpecialChar" });
 
-        if (password.length < 9) return "La contraseña debe tener al menos 9 caracteres.";
+        if (password.length < 9) return intl.formatMessage({ id: "PasswordMinLength" });
 
         return "";
     }
@@ -115,9 +115,9 @@ export default function CreateAccountSide() {
 
         const verifyPassword = formValues.verifyPassword ? formValues.verifyPassword.trim() : ""
 
-        if (verifyPassword === "") return "Escriba de nuevo la contraseña";
+        if (verifyPassword === "") return intl.formatMessage({ id: "RewritePassword" });
 
-        if (password !== verifyPassword) return "Las contraseñas no coinciden";
+        if (password !== verifyPassword) return intl.formatMessage({ id: "PasswordsDoNotMatch" });
 
         return "";
 
