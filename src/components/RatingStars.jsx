@@ -4,27 +4,25 @@ import Rating from '@mui/material/Rating';
 import Box from '@mui/material/Box';
 import StarIcon from '@mui/icons-material/Star';
 
-
-const labels = {
-    0.5: 'Inútil',
-    1: 'Inútil',
-    1.5: 'Malo',
-    2: 'Malo',
-    2.5: 'Regular',
-    3: 'Regular',
-    3.5: 'Bueno',
-    4: 'Bueno',
-    4.5: 'Excelente',
-    5: 'Excelente',
-};
-
-
-const getLabelText = (value) => `${value} Estrella${value !== 1 ? 's' : ''}, ${labels[value]}`;
-
-
 export default function HoverRating() {
+
+    const intl = useIntl();
+
     const [value, setValue] = React.useState(4.5);
     const [hover, setHover] = React.useState(-1);
+
+    const labels = {
+        0.5: intl.formatMessage({ id: "Useless" }),
+        1: intl.formatMessage({ id: "Useless" }),
+        1.5: intl.formatMessage({ id: "Bad" }),
+        2: intl.formatMessage({ id: "Bad" }),
+        2.5: intl.formatMessage({ id: "Average" }),
+        3: intl.formatMessage({ id: "Average" }),
+        3.5: intl.formatMessage({ id: "Good" }),
+        4: intl.formatMessage({ id: "Good" }),
+        4.5: intl.formatMessage({ id: "Excellent" }),
+        5: intl.formatMessage({ id: "Excellent" }),
+    };
 
     return (
         <Box sx={boxStyle}>
@@ -32,7 +30,7 @@ export default function HoverRating() {
                 value={value}
                 precision={0.5}
                 size="large"
-                getLabelText={getLabelText}
+                getLabelText={(value) => `${value} Estrella${value !== 1 ? 's' : ''}, ${labels[value]}`}
                 onChange={(event, newValue) => {
                     setValue(newValue);
                 }}
