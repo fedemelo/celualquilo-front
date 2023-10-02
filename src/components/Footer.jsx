@@ -1,8 +1,8 @@
 import * as React from "react";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
-import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
+import Copyright from "./Copyright"
 import { Box } from "@mui/material";
 import { COLORS } from "../styles/colors";
 import { useIntl } from "react-intl";
@@ -78,21 +78,3 @@ const Item = ({ text }) =>
     }}>
         {text}
     </Typography>
-
-
-const Copyright = () =>
-    <Box sx={{
-        paddingBottom: "20px",
-    }}>
-        <Typography variant="body2" align="center"
-            sx={{
-                color: "white",
-            }}>
-            {"Copyright © "}
-            <Link href="https://celualquilo.com/">
-                CeluAlquilo
-            </Link>{" "}
-            {new Date().getFullYear()}
-            {"."}
-        </Typography>
-    </Box>
