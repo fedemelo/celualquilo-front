@@ -28,17 +28,38 @@ export default function Billing() {
         <>
             <Breadcrumb breadcrumbs={[
                 { href: `/products/${1}`, text: intl.formatMessage({ id: "Rent" }) },
-                { href: `/products/${1}/rent`, text: 'Detalles de Alquiler' },
-                { href: '', text: 'Dirección y Facturación' },
+                { href: `/products/${1}/rent`, text: intl.formatMessage({ id: "BreadcrumbRentDetail" }) },
+                { href: '', text: intl.formatMessage({ id: "BreadcrumbBilling" }) },
             ]} />
             <Grid container direction={'row'} spacing={2} marginBottom={8}>
                 <Grid item xs={12} sm={6}>
-                    <BillingAddress />
-                    <PayingMethod />
+                    <BillingAddress 
+                        direccion = {intl.formatMessage({ id: "Billing_Address_AddressText" })} 
+                        ciudad = {intl.formatMessage({ id: "Billing_Address_City" })} 
+                        numeroContacto={intl.formatMessage({ id: "Billing_Address_ContactNumber" })} 
+                        error1 = {intl.formatMessage({ id: "InsertAddress" })}  
+                        error2 = {intl.formatMessage({ id: "InsertCity" })} 
+                        noNumbers = {intl.formatMessage({ id: "TheCityCannotContainNumbers" })}
+                        moreThanOneLetter = {intl.formatMessage({ id: "TheCityMustContainMoreThanOneLetter" })}
+                        error3 = {intl.formatMessage({ id: "InsertContactNumber" })}
+                        zeros = {intl.formatMessage({ id: "zeros" })}
+                        ones = {intl.formatMessage({ id: "ones" })}
+                        twos = {intl.formatMessage({ id: "twos" })}
+                        threes = {intl.formatMessage({ id: "threes" })}
+                        fours = {intl.formatMessage({ id: "fours" })}
+                        fives = {intl.formatMessage({ id: "fives" })}
+                        six = {intl.formatMessage({ id: "sixes" })}
+                        sevens = {intl.formatMessage({ id: "sevens" })}
+                        eights = {intl.formatMessage({ id: "eights" })}
+                        nines = {intl.formatMessage({ id: "nines" })}
+                        tenDigits = {intl.formatMessage({ id: "TheContactNumberMustContain10Digits" })}
+                        
+                        />
+                    <PayingMethod efectivo={intl.formatMessage({ id: "Billing_PayMethod_Cash" })} tarjeta={intl.formatMessage({ id: "Billing_PayMethod_Card" })}/>
                 </Grid>
                 <Grid item xs={12} sm={6}>
                     <PriceDetails dias={dias} price_per_day={phonePrice} />
-                    <RentButton text="Finalizar compra" />
+                    <RentButton text=  {intl.formatMessage({ id: "Billing_PriceInfo_Finish" })} />
                 </Grid>
             </Grid>
         </>
@@ -88,18 +109,18 @@ const RentButton = ({ text }) => {
     )
 }
 
-const BillingAddress = () => {
+const BillingAddress = ({direccion, ciudad, numeroContacto, error1, error2, noNumbers, moreThanOneLetter, error3, zeros, ones, twos, threes, fours, fives, six, sevens, eights, nines, tenDigits }) => {
 
     const [formValues, setFormValues] = useState({ address: "", city: "", number: "0" })
     const [clickedFields, setClickedFields] = useState({ address: false, city: false, number: false })
 
 
-    const getProblemInAddress = () => {
+    const getProblemInAddress = (e1) => {
         const address = formValues.address.trim();
 
         if (!clickedFields.address) return null;
 
-        if (!address.length > 0) return "Debes ingresar una dirección."
+        if (!address.length > 0) return error1
 
         if (navigator.language.startsWith("es")) {
 
@@ -133,11 +154,11 @@ const BillingAddress = () => {
 
         if (!clickedFields.city) return null;
 
-        if (city.length === 0) return "Debes ingresar una ciudad."
+        if (city.length === 0) return error2
 
-        if (/\d/.test(city)) return "La ciudad no puede contener números."
+        if (/\d/.test(city)) return noNumbers
 
-        if (city.length < 2) return "La ciudad debe contener más de una letra."
+        if (city.length < 2) return moreThanOneLetter
     }
 
 
@@ -146,19 +167,13 @@ const BillingAddress = () => {
 
         if (!clickedFields.number) return null;
 
-        if (String(number).length === 0) return "Debes ingresar un número de contacto."
+        if (String(number).length === 0) return error3
 
-        const numeros = [{ digito: 0, número: "ceros" }, { digito: 1, número: "unos" }, { digito: 2, número: "doses" },
-        { digito: 3, número: "treses" }, { digito: 4, número: "cuatros" }, { digito: 5, número: "cincos" }, { digito: 6, número: "seises" },
-        { digito: 7, número: "sietes" }, { digito: 8, número: "ochos" }, { digito: 9, número: "nueves" }]
+        const numeros = [{ digito: 0, número: {zeros} }, { digito: 1, número: {ones}  }, { digito: 2, número: {twos}  },
+        { digito: 3, número: {threes}  }, { digito: 4, número: {fours} }, { digito: 5, número: {fives} }, { digito: 6, número: {six} },
+        { digito: 7, número: {sevens} }, { digito: 8, número: {eights} }, { digito: 9, número: {nines}}]
 
-        for (const numero of numeros) {
-            if (new RegExp("^" + numero.digito + "+$").test(number)) return "El número no puede consistir de únicamente " + numero.número + "."
-        }
-
-        if (/^[0]/.test(number)) return "El número de contacto no puede empezar por cero."
-
-        if (!/^\d{10}$/.test(number)) return "El número de contacto debe consistir de 10 dígitos contiguos."
+        if (!/^\d{10}$/.test(number)) return tenDigits
 
         return null;
 
@@ -168,7 +183,7 @@ const BillingAddress = () => {
     return <Card sx={cardStyle}>
         <Box display={"flex"} flexDirection={"column"} gap="30px">
             <Typography variant='h4' textAlign={'left'}>
-                Dirección de facturación
+                <FormattedMessage id="Billing_Address_Title" />
             </Typography>
             <Box display={"flex"} gap="10px">
 
@@ -177,7 +192,7 @@ const BillingAddress = () => {
                         color={!getProblemInAddress() ? "success" : "error"}
                         required
                         id="outlined-required"
-                        label="Dirección"
+                        label={direccion}
                         defaultValue=""
                         onChange={(e) => setFormValues({ ...formValues, address: e.target.value })}
                         onClick={() => setClickedFields({ ...clickedFields, address: true })}
@@ -190,7 +205,7 @@ const BillingAddress = () => {
                         color={!getProblemInCity() ? "success" : "error"}
                         required
                         id="outlined-required"
-                        label="Ciudad"
+                        label={ciudad}
                         defaultValue=""
                         onChange={(e) => setFormValues({ ...formValues, city: e.target.value })}
                         onClick={() => setClickedFields({ ...clickedFields, city: true })}
@@ -206,7 +221,7 @@ const BillingAddress = () => {
                         color={!getProblemInNumber() ? "success" : "error"}
                         required
                         id="outlined-required"
-                        label="Número de contacto"
+                        label={numeroContacto}
                         defaultValue=""
                         onChange={(e) => setFormValues({ ...formValues, number: e.target.value })}
                         onClick={() => setClickedFields({ ...clickedFields, number: true })}
@@ -220,10 +235,10 @@ const BillingAddress = () => {
 
 
 let value = "Efectivo"
-const PayingMethod = () => <Card sx={cardStyle}>
+const PayingMethod = ({efectivo, tarjeta}) => <Card sx={cardStyle}>
     <Box display={"flex"} flexDirection={"column"} gap="30px">
         <Typography variant='h4' textAlign={'left'}>
-            Método de Pago
+            <FormattedMessage id="Billing_PayMethod_Title" />
         </Typography>
         <Box display={"flex"} gap="10px">
             <FormControl>
@@ -232,8 +247,8 @@ const PayingMethod = () => <Card sx={cardStyle}>
                     name="controlled-radio-buttons-group"
                     value={value}
                 >
-                    <FormControlLabel value="female" control={<Radio />} label="Efectivo" />
-                    <FormControlLabel value="male" control={<Radio />} label="Tarjeta" />
+                    <FormControlLabel value="Efectivo" control={<Radio />} label={efectivo} />
+                    <FormControlLabel value="Tarjeta" control={<Radio />} label={tarjeta} />
                 </RadioGroup>
             </FormControl>
         </Box>

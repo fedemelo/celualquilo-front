@@ -33,7 +33,7 @@ export default function RentDetail() {
     return (
         <Grid container spacing={0}>
             <Breadcrumb breadcrumbs={[
-                { href: `/products/${1}`, text: intl.formatMessage({ id: "Rent" }) },
+                { href: `/products/${idCel}`, text: intl.formatMessage({ id: "Rent" }) },
                 { href: '', text: intl.formatMessage({ id: "RentDetail_Title" }) }
             ]} />
             <Grid container direction={'row'} spacing={2} marginBottom={8}>
