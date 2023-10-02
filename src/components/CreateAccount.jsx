@@ -18,6 +18,17 @@ import { useState } from 'react';
 export default function CreateAccountSide() {
 
     const intl = useIntl();
+    const Register_CreateAcc = intl.formatMessage({ id: 'Register_CreateAcc' });
+    const Register_CreateSubtext = intl.formatMessage({ id: 'Register_CreateSubtext' });
+    const Register_NameInputFiller = intl.formatMessage({ id: 'Register_NameInputFiller' });
+    const Register_RegisterTerms = intl.formatMessage({ id: 'Register_RegisterTerms' });
+    const Register_CreateAccButton = intl.formatMessage({ id: 'Register_CreateAccButton' });
+    const Register_LogInQuestionText = intl.formatMessage({ id: 'Register_LogInQuestionText' });
+    const Register_LogInHiperlink = intl.formatMessage({ id: 'Register_LogInHiperlink' });
+    const EmailInputFiller = intl.formatMessage({ id: 'EmailInputFiller' });
+    const Password = intl.formatMessage({ id: 'Password' });
+    const ConfirmPassword = intl.formatMessage({ id: 'ConfirmPassword' });
+
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -167,10 +178,10 @@ export default function CreateAccountSide() {
                     >
                         <div style={hacialaIzq}>
                             <Typography component="h1" variant="h4" sx={titleStyle}>
-                                Crear una Cuenta
+                                {Register_CreateAcc}
                             </Typography>
                             <Typography component="h1" variant="h5" sx={subTitleStyle}>
-                                Por favor rellene el formulario
+                                {Register_CreateSubtext}
                             </Typography>
                         </div>
 
@@ -183,7 +194,7 @@ export default function CreateAccountSide() {
                                 required
                                 fullWidth
                                 id="name"
-                                label="Escriba nombre y apellido"
+                                label={Register_NameInputFiller}
                                 name="name"
                                 autoComplete="name"
                                 autoFocus
@@ -203,7 +214,7 @@ export default function CreateAccountSide() {
                                 required
                                 fullWidth
                                 id="email"
-                                label="Escriba su correo"
+                                label={EmailInputFiller}
                                 name="email"
                                 autoComplete="email"
                                 autoFocus
@@ -222,7 +233,7 @@ export default function CreateAccountSide() {
                                 color={getProblemInPassword() === "" ? "success" : "error"}
                                 fullWidth
                                 name="password"
-                                label="Contraseña"
+                                label={Password}
                                 variant="filled"
                                 sx={{
                                     "& .MuiFilledInput-root": {
@@ -253,7 +264,7 @@ export default function CreateAccountSide() {
                                 required
                                 fullWidth
                                 color={getProblemInVerifyPassword() === "" ? "success" : "error"}
-                                label="Confirmar contraseña"
+                                label={ConfirmPassword}
                                 variant="filled"
                                 sx={{
                                     "& .MuiFilledInput-root": {
@@ -281,14 +292,7 @@ export default function CreateAccountSide() {
                             <Typography variant='body1' color={"red"}>{getProblemInVerifyPassword()}</Typography>
                             <Grid container sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
                                 <Typography variant="body2">
-                                    Registrándome estoy de acuerdo con los{' '}
-                                    <Link href="#" color="primary">
-                                        términos y condiciones
-                                    </Link>{' '}
-                                    y nuestras{' '}
-                                    <Link href="#" color="primary">
-                                        políticas de privacidad
-                                    </Link>
+                                    {Register_RegisterTerms}
                                 </Typography>
 
                             </Grid>
@@ -298,16 +302,16 @@ export default function CreateAccountSide() {
                                     variant="contained"
                                     sx={{ mt: 3, mb: 2, backgroundColor: '#9E30FF', color: '#FFFFFF', fontFamily: 'Open Sans', fontWeight: 'bold' }}
                                 >
-                                    Crear cuenta
+                                    {Register_CreateAccButton}
                                 </Button>
                             </Link>
                             <Grid container sx={{ justifyContent: 'space-around', alignItems: 'center' }}>
                                 <Grid item>
-                                    {"Ya estás registrado?"}
+                                    {Register_LogInQuestionText}
                                 </Grid>
                                 <Grid item>
                                     <Link href="/Login" variant="body2">
-                                        {"Ingresa aquí"}
+                                        {Register_LogInHiperlink}
                                     </Link>
                                 </Grid>
                             </Grid>

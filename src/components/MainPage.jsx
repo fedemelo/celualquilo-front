@@ -42,7 +42,6 @@ const brands = [
 ]
 
 
-
 export default function MainPage() {
 
     async function getDatos() {
@@ -50,6 +49,13 @@ export default function MainPage() {
         const data = await response.json();
         return data;
     }
+
+    const intl = useIntl();
+
+    const MainPage_OurBrands_Title = intl.formatMessage({ id: 'MainPage_OurBrands_Title' });
+    const MainPage_Popular_Title = intl.formatMessage({ id: 'MainPage_Popular_Title' });
+    const MainPage_Popular_SeeAllButton = intl.formatMessage({ id: 'MainPage_Popular_SeeAllButton' });
+
 
     useEffect(() => {
         async function fetchData() {
@@ -74,8 +80,6 @@ export default function MainPage() {
     }, []);
 
 
-    const intl = useIntl();
-
     const theme = useTheme();
     const onlySmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
@@ -93,13 +97,13 @@ export default function MainPage() {
             <Stack direction="column" spacing={-0.5} marginBottom={7}>
                 <MainImageText osm={onlySmallScreen} />
                 <Card sx={cardStyle}>
-                    <BrandsTitleStyle text="Nuestras marcas" />
+                    <BrandsTitleStyle text={MainPage_OurBrands_Title} />
                     <BrandsRow brands={brands} />
                 </Card>
                 <Card sx={cardStyle}>
-                    <SectionTitle text="Populares" />
+                    <SectionTitle text={MainPage_Popular_Title} />
                     <PhonesRow phones={phoneListJson.slice(0, 4)} />
-                    <SeeAllButtom text="Ver todos" />
+                    <SeeAllButtom text={MainPage_Popular_SeeAllButton} />
                 </Card>
             </Stack>
         </>
@@ -123,6 +127,9 @@ const cardStyle = {
 const MainImageText = (osm) => {
 
     const intl = useIntl();
+    const MainPage_RentNow_Title = intl.formatMessage({ id: 'MainPage_RentNow_Title' });
+    const MainPage_RentNow_Description = intl.formatMessage({ id: 'MainPage_RentNow_Description' });
+    const MainPage_RentNow_DiscoverButton = intl.formatMessage({ id: 'MainPage_RentNow_DiscoverButton' });
 
     const textColumnStyle = {
         display: 'flex',
@@ -153,13 +160,13 @@ const MainImageText = (osm) => {
         <Grid container spacing={2} width={"100%"}>
             <Grid item xs={12} sm={6} style={textColumnStyle}>
                 <Stack direction="column" spacing={5}>
-                    <Typography variant="h1" sx={callToActionStyle}>Alquila tu celular ya</Typography>
+                    <Typography variant="h1" sx={callToActionStyle}>{MainPage_RentNow_Title}</Typography>
                     <style>
                         @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400&family=Open+Sans:wght@300;400&family=Space+Grotesk&display=swap');
                     </style>
-                    <Typography variant="h2" sx={subtitleStyle}>Encuentra un celular a tu medida y a un precio accesible</Typography>
+                    <Typography variant="h2" sx={subtitleStyle}>{MainPage_RentNow_Description}</Typography>
                     <Nav.Link style={{ textDecoration: 'none' }} href="/products">
-                        <RentButton text="Descubrir" />
+                        <RentButton text={MainPage_RentNow_DiscoverButton} />
                     </Nav.Link>
                 </Stack>
             </Grid>

@@ -3,8 +3,8 @@ import { render, screen } from '@testing-library/react';
 import Copyright from '../components/Copyright';
 import '@testing-library/jest-dom/extend-expect';
 
-test('renders CeluAlquilo link', () => {
+test('renders coypright', () => {
     render(<Copyright />);
-    const searchedText = screen.getByText(/CeluAlquilo/i);
+    const searchedText = screen.getByText(/Copyright/i);
     expect(searchedText).toBeInTheDocument();
 });

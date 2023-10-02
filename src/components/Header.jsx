@@ -19,6 +19,11 @@ export default function Header() {
     const theme = useTheme();
     const onlySmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
+    const intl = useIntl();
+
+    const search = intl.formatMessage({ id: 'Header_Search' });
+    const ingresar = intl.formatMessage({ id: 'Header_LogIn' });
+
 
     return (
         <Box sx={boxStyle}>
@@ -27,8 +32,8 @@ export default function Header() {
                     {onlySmallScreen &&
                         <HamburgerMenu />}
                     <LogoCeluAlquilo />
-                    {!onlySmallScreen && <SearchBar />}
-                    <LoginButton text="Ingresar" />
+                    {!onlySmallScreen && <SearchBar text={search} />}
+                    <LoginButton text={ingresar} />
                 </Toolbar>
                 {!onlySmallScreen && <Toolbar sx={secondRowStyle}>
                     <Marcas />
@@ -103,7 +108,7 @@ const Marcas = () =>
 
 
 
-const SearchBar = () =>
+const SearchBar = ({text}) =>
     <Container
         maxWidth="md"
         sx={{
@@ -113,7 +118,7 @@ const SearchBar = () =>
     >
         <TextField
             type="search"
-            defaultValue="Buscar..."
+            defaultValue={text + "..."}
             size='small'
             sx={{
                 width: '100%',

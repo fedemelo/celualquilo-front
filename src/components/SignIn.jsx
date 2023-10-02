@@ -27,6 +27,18 @@ export default function SignInSide() {
         });
     };
 
+    const intl = useIntl();
+
+    const EmailInputFiller = intl.formatMessage({ id: 'EmailInputFiller' });
+    const Password = intl.formatMessage({ id: 'Password' });
+    const LogIn_Wellcome = intl.formatMessage({ id: 'LogIn_Wellcome' });
+    const LogIn_WellcomeSubtext = intl.formatMessage({ id: 'LogIn_WellcomeSubtext' });
+    const LogIn_RememberMeCheckbox = intl.formatMessage({ id: 'LogIn_RememberMeCheckbox' });
+    const LogIn_ForgotPassword = intl.formatMessage({ id: 'LogIn_ForgotPassword' });
+    const LogIn_LogInButtonText = intl.formatMessage({ id: 'LogIn_LogInButtonText' });
+    const LogIn_NewUsserText = intl.formatMessage({ id: 'LogIn_NewUsserText' });
+    const LogIn_CreateAccHiperlink = intl.formatMessage({ id: 'LogIn_CreateAccHiperlink' });
+
 
     const [formValues, setFormValues] = useState({ name: "", email: "", password: "", showPassword: false })
     const [clickedField, setClickedField] = useState({ name: false, email: false, password: false })
@@ -114,10 +126,10 @@ export default function SignInSide() {
                     >
                         <div style={hacialaIzq}>
                             <Typography component="h1" variant="h4" sx={titleStyle}>
-                                Bienvenido de Vuelta
+                                {LogIn_Wellcome}
                             </Typography>
                             <Typography component="h1" variant="h5" sx={subTitleStyle}>
-                                Alquila un celular fácil con CeluAlquilo
+                                {LogIn_WellcomeSubtext}
                             </Typography>
                         </div>
 
@@ -130,7 +142,7 @@ export default function SignInSide() {
                                 color={getProblemInEmail() === "" ? "success" : "error"}
                                 fullWidth
                                 id="email"
-                                label="Escriba su correo electrónico"
+                                label={EmailInputFiller}
                                 name="email"
                                 autoComplete="email"
                                 autoFocus
@@ -149,7 +161,7 @@ export default function SignInSide() {
                                 fullWidth
                                 color={getProblemInPassword() === "" ? "success" : "error"}
                                 name="password"
-                                label="Contraseña"
+                                label={Password}
                                 id="password"
                                 autoComplete="current-password"
                                 variant="filled"
@@ -181,12 +193,12 @@ export default function SignInSide() {
                                 <Grid item>
                                     <FormControlLabel
                                         control={<Checkbox value="remember" color="primary" />}
-                                        label="Recordarme"
+                                        label={LogIn_RememberMeCheckbox}
                                     />
                                 </Grid>
                                 <Grid item sx={{ textAlign: 'right' }}>
                                     <Link href="#" variant="body2">
-                                        Olvidaste tu contraseña?
+                                        {LogIn_ForgotPassword}
                                     </Link>
                                 </Grid>
                             </Grid>
@@ -197,16 +209,16 @@ export default function SignInSide() {
                                     variant="contained"
                                     sx={{ mt: 3, mb: 2, backgroundColor: '#9E30FF', color: '#FFFFFF', fontFamily: 'Open Sans', fontWeight: 'bold' }}
                                 >
-                                    Sign In
+                                    {LogIn_LogInButtonText}
                                 </Button>
                             </Link>
                             <Grid container sx={{ justifyContent: 'space-around', alignItems: 'center' }}>
                                 <Grid item>
-                                    {"Nuevo Usuario?"}
+                                    {LogIn_NewUsserText}
                                 </Grid>
                                 <Grid item>
                                     <Link href="/Register" variant="body2">
-                                        {"Crear una cuenta"}
+                                        {LogIn_CreateAccHiperlink}
                                     </Link>
                                 </Grid>
                             </Grid>

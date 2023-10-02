@@ -8,7 +8,7 @@
     "ConfirmPassword" : "Confirm Password",
 
     "Header_Search" : "Search",
-    "Header_LogIn" : "Log In",
+    "Header_LogIn" : "LogIn",
     "Header_Usser" : "User",
 
 
@@ -110,6 +110,8 @@
     "Review_Title" : "Write Review",
     "Review_RevewLablel" : "Review",
     "Review_InputFiller" : "Write your review here",
+    "Review_TellOpinion" : "Tell us your opinion about the product",
+    "Review_publichBttn" : "Publish review",
 
 
     "Favourites_Title" : "Favorites",

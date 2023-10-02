@@ -30,7 +30,7 @@ import GoBack from './GoBack';
 
 
 const exampleBrand = "Apple"
-const exampleAvailability = "10 en Stock"
+const exampleAvailability = "10"
 
 const exampleName = "iPhone 14 Pro"
 
@@ -44,9 +44,14 @@ const exampleSpecs = [
 export default function Review() {
     const theme = useTheme();
     const oss = useMediaQuery(theme.breakpoints.down("sm"));
+
+    const intl = useIntl();
+    const title = intl.formatMessage({ id: 'Review_Title' });
+    const stock = intl.formatMessage({ id: 'PhoneDetail_LablelStock' });
+
     return (
         <>
-            <GoBack text="Escribir reseña" route={`/RentHistory`} />
+            <GoBack text={title} route={`/RentHistory`} />
             <Stack marginBottom={7}>
                 <Card sx={cardStyle}>
                     <Grid container spacing={0} padding={3} direction={'row'} alignItems={'center'}>
@@ -64,7 +69,7 @@ export default function Review() {
                                 {exampleBrand}
                             </Typography>
                             <Typography variant="h6" color="text.primary" padding={1}>
-                                {exampleAvailability}
+                                {exampleAvailability} {stock}
                             </Typography>
                             <Typography variant="h3" component="div" padding={1}>
                                 {exampleName}
@@ -146,6 +151,13 @@ const PublishReviewButton = ({ text }) => {
 const CommentArea = () => {
     const [fontWeight, setFontWeight] = React.useState('normal');
     const [anchorEl, setAnchorEl] = React.useState(null);
+
+    const intl = useIntl();
+
+    const tellOp = intl.formatMessage({ id: 'Review_TellOpinion' });
+    const btt = intl.formatMessage({ id: 'Review_publichBttn' });
+    const inputFil = intl.formatMessage({ id: 'Review_InputFiller' });
+
     return (
         <FormControl>
             <Stack spacing={1.3}>
@@ -157,10 +169,10 @@ const CommentArea = () => {
                         lineHeight: '22px',
                         color: '#202020',
                     }}
-                >¡Dínos tu opinión!</FormLabel>
+                >{tellOp}</FormLabel>
                 <RatingStars />
                 <Textarea
-                    placeholder="Escribe tu reseña aquí..."
+                    placeholder={inputFil}
                     minRows={3}
                     endDecorator={
                         <Box
@@ -207,7 +219,7 @@ const CommentArea = () => {
                                     </MenuItem>
                                 ))}
                             </Menu>
-                            <PublishReviewButton text="Publicar Reseña" />
+                            <PublishReviewButton text={btt} />
                         </Box>
                     }
                     sx={{

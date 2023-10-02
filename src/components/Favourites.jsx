@@ -37,20 +37,23 @@ const exampleActiveRents = [
 export default function RentHistory() {
 
     const intl = useIntl();
+    const favs = intl.formatMessage({ id: "Favourites_Title" })
+    const rent = intl.formatMessage({ id: "Rent" })
+    const BreadcrumbMiAccount = intl.formatMessage({ id: "BreadcrumbMiAccount" })
 
     return (
         <>
             <Breadcrumb breadcrumbs={[
-                { href: '/mi-cuenta', text: 'Mi cuenta' },
-                { href: '', text: 'Favoritos' },
+                { href: '/mi-cuenta', text: BreadcrumbMiAccount },
+                { href: '', text: favs },
             ]} />
             <Stack spacing={3.5} marginBottom={11}>
                 <style>
                     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400&display=swap');
                 </style>
                 <Card sx={sectionStyle}>
-                    <SectionTitle text="Favoritos" />
-                    <PhonesRow phones={exampleActiveRents} />
+                    <SectionTitle text={favs} />
+                    <PhonesRow phones={exampleActiveRents} rent={rent}/>
                 </Card>
             </Stack>
         </>
@@ -58,12 +61,12 @@ export default function RentHistory() {
 }
 
 
-const PhonesRow = ({ phones }) => {
+const PhonesRow = ({ phones, rent }) => {
     return (
         <Grid container spacing={3} padding={2} >
             {phones.map((phone, index) => (
                 <Grid item xs={12} sm={6} md={3} key={index}>
-                    <PhoneCardSimple {...phone} route={`/products/${1}/rent`} />
+                    <PhoneCardSimple {...phone} route={`/products/${1}/rent`} buttonText={rent}/>
                 </Grid>
             ))}
         </Grid>
