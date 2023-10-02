@@ -9,6 +9,7 @@ import Button from '@mui/material/Button';
 import { COLORS } from "../styles/colors";
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import FilterSection from './FiltersSection';
 
 
 export default function ProductsGrid({ titleText }) {
@@ -16,10 +17,21 @@ export default function ProductsGrid({ titleText }) {
     const phoneList = localStorage.getItem('phoneList');
     const phoneListJson = JSON.parse(phoneList);
 
+    const [filtros, setFiltros] = useState({ PrecioMin : null, PrecioMax: null, Marcas: {samsung: false, apple: false,huawei: false,xiaomi: false,}})
+
     const [selectedButton, setSelectedButton] = useState(null);
     const [currentPage, setCurrentPage] = useState(1);
     console.log(currentPage);
     const itemsPerPage = 9;
+
+    const filteredPhoneList = phoneListJson.filter((product) => {
+        const precio = parseFloat(product.price_per_day);
+        const precioMin = filtros.PrecioMin ? parseFloat(filtros.PrecioMin) : Number.NEGATIVE_INFINITY;
+        const precioMax = filtros.PrecioMax ? parseFloat(filtros.PrecioMax) : Number.POSITIVE_INFINITY;
+        const marcas = filtros.Marcas;
+        const marca = Object.values(marcas).every((value) => !value) || marcas[product.brand.toLowerCase()];
+        return precio >= precioMin && precio <= precioMax && marca;
+      });
 
     return (
         <Stack marginBottom={7}>
@@ -29,9 +41,10 @@ export default function ProductsGrid({ titleText }) {
                     <FilterButtons selectedButton={selectedButton} handleButtonClick={setSelectedButton} />
                 </Grid>
             </Grid>
+            {titleText === "Nuestros Productos" && <FilterSection filtros={filtros} setFiltros={setFiltros}/> }
             <div style={{ alignItems: 'center', justifyContent: 'center' }}>
-                <Grid container sx={{ marginTop: 'vw', justifyContent: 'center' }}>
-                    {phoneListJson.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage).map((product, index) => (
+            <Grid container sx={{ marginTop: 'vw', justifyContent: 'center' }}>
+                    {filteredPhoneList.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage).map((product, index) => (
                         <Grid item key={index} sx={{ marginBottom: '3vw', marginLeft: '3vw', marginRight: '3vw' }} alignItems="center">
                             <Link to={"/products/" + product.id} style={{ textDecoration: 'none' }}>
                                 <PhoneCard
