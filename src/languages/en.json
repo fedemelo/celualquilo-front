@@ -76,6 +76,8 @@
     "RentDetail_PriceInfo_Title" : "Rent Price Details",
     "RentDetail_PriceInfo_RentPrice" : "Rent Price",
     "RentDetail_PriceInfo_Tax" : "Taxes",
+    "RentDetail_PricePer" : "Price per",
+    "RentDetail_PriceInfo_Days" : "days",
     "RentDetail_PriceInfo_TotalAndTax" : "Total + Taxes",
     "RentDetail_PriceInfo_Continue" : "Continue Payment",
 
@@ -165,6 +167,9 @@
     "Bad": "Bad",
     "Average": "Average",
     "Good": "Good",
-    "Excellent": "Excellent"
+    "Excellent": "Excellent",
+
+    "NumberGreaterThanZero": "You must enter a number greater than 0.",
+    "NoMoreThan180": "You cannot rent a cell phone for more than 6 months."
 
 }

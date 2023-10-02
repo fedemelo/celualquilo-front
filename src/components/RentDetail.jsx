@@ -21,11 +21,12 @@ export default function RentDetail() {
     const phone = localStorage.getItem("cel" + idCel);
     const phoneJson = JSON.parse(phone);
     const phoneName = phoneJson.name;
-    const phonePrice = phoneJson.price_per_day + " " + moneda + "/día";
+    const intl = useIntl();
+    const phonePrice = phoneJson.price_per_day + " " + moneda + "/" + intl.formatMessage({ id: "Day" });
     const phoneImg = phoneJson.image;
 
 
-    const intl = useIntl();
+    
 
     const [dias, setDias] = useState('5');
 
@@ -33,15 +34,15 @@ export default function RentDetail() {
         <Grid container spacing={0}>
             <Breadcrumb breadcrumbs={[
                 { href: `/products/${1}`, text: intl.formatMessage({ id: "Rent" }) },
-                { href: '', text: 'Detalles del Alquiler' }
+                { href: '', text: intl.formatMessage({ id: "RentDetail_Title" }) }
             ]} />
             <Grid container direction={'row'} spacing={2} marginBottom={8}>
                 <Grid item xs={12} md={6}>
-                    <PhoneResume dias={dias} setDias={setDias} phoneName={phoneName} phonePrice={phonePrice} phoneImg={phoneImg} />
+                    <PhoneResume dias={dias} setDias={setDias} phoneName={phoneName} phonePrice={phonePrice} phoneImg={phoneImg} label={intl.formatMessage({ id: "RentDetail_RentDays" })} error1={intl.formatMessage({id: "NumberGreaterThanZero"})} error2={intl.formatMessage({id: "NoMoreThan180"})}/>
                 </Grid>
                 <Grid item xs={12} md={6}>
                     <PriceDetails dias={dias} price_per_day={phoneJson.price_per_day} />
-                    <RentButton text="Continuar pago" idCel={idCel} onChange={localStorage.setItem("dias", dias)} />
+                    <RentButton text= {intl.formatMessage({ id: "RentDetail_PriceInfo_Continue" })} idCel={idCel} onChange={localStorage.setItem("dias", dias)} />
                 </Grid>
             </Grid>
         </Grid>
@@ -83,14 +84,13 @@ const RentButton = ({ text, idCel }) =>
 
 
 
-const PhoneResume = ({ dias, setDias, phoneName, phonePrice, phoneImg }) => {
+const PhoneResume = ({ dias, setDias, phoneName, phonePrice, phoneImg, label, error1, error2}) => {
     const getProblemInNumber = () => {
 
         const number = dias ? Number(dias) : 5
 
-        if (number < 1) return "Debes ingresar un número mayor a 0."
-
-        if (number > maxDiasAlquiler) return "No puedes alquilar un celular por más de 6 meses."
+        if (number < 1) return error1
+        if (number > maxDiasAlquiler) return error2
 
     }
 
@@ -109,7 +109,7 @@ const PhoneResume = ({ dias, setDias, phoneName, phonePrice, phoneImg }) => {
                     id="outlined-required"
                     type="number"
                     defaultValue="5"
-                    label="Días de alquiler"
+                    label={label}
                     onChange={(e) => setDias(e.target.value)} // Update state on change     
                 />
                 {<Typography variant='body1' color={"red"}>{getProblemInNumber()}</Typography>}

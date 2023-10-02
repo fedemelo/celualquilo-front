@@ -75,6 +75,8 @@
 
     "RentDetail_PriceInfo_Title" : "Mietpreisdetails",
     "RentDetail_PriceInfo_RentPrice" : "Mietpreis",
+    "RentDetail_PricePer" : "Preis pro",
+    "RentDetail_PriceInfo_Days" : "tage",
     "RentDetail_PriceInfo_Tax" : "Steuern",
     "RentDetail_PriceInfo_TotalAndTax" : "Gesamt + Steuern",
     "RentDetail_PriceInfo_Continue" : "Weiter zur Zahlung",
@@ -165,6 +167,9 @@
     "Bad": "Schlecht",
     "Average": "Durchschnitt",
     "Good": "Gut",
-    "Excellent": "Ausgezeichnet"
+    "Excellent": "Ausgezeichnet",
+
+    "NumberGreaterThanZero": "Sie müssen eine Zahl größer als 0 eingeben.",
+    "NoMoreThan180": "Sie können kein Handy für mehr als 6 Monate mieten."
 
 }

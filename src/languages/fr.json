@@ -76,6 +76,8 @@
     "RentDetail_PriceInfo_Title" : "Détails du prix de location",
     "RentDetail_PriceInfo_RentPrice" : "Prix de location",
     "RentDetail_PriceInfo_Tax" : "Taxes",
+    "RentDetail_PricePer" : "Prix par",
+    "RentDetail_PriceInfo_Days" : "jours",
     "RentDetail_PriceInfo_TotalAndTax" : "Total + taxes",
     "RentDetail_PriceInfo_Continue" : "Continuer le paiement",
 
@@ -165,6 +167,9 @@
     "Bad": "Mauvais",
     "Average": "Moyen",
     "Good": "Bien",
-    "Excellent": "Excellent"
+    "Excellent": "Excellent",
+
+    "NumberGreaterThanZero": "Vous devez entrer un nombre supérieur à 0.",
+    "NoMoreThan180": "Vous ne pouvez pas louer un téléphone portable pendant plus de 6 mois."
 
 }

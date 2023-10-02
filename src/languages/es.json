@@ -75,6 +75,8 @@
 
     "RentDetail_PriceInfo_Title" : "Detalle del precio de alquiler",
     "RentDetail_PriceInfo_RentPrice" : "Precio de alquiler",
+    "RentDetail_PricePer" : "Precio por",
+    "RentDetail_PriceInfo_Days" : "días",
     "RentDetail_PriceInfo_Tax" : "Impuestos",
     "RentDetail_PriceInfo_TotalAndTax" : "Total + impuestos",
     "RentDetail_PriceInfo_Continue" : "Continuar pago",
@@ -165,6 +167,9 @@
     "Bad": "Malo",
     "Average": "Regular",
     "Good": "Bueno",
-    "Excellent": "Excelente"
+    "Excellent": "Excelente",
+
+    "NumberGreaterThanZero": "Debes ingresar un número mayor a 0.",
+    "NoMoreThan180": "No puedes alquilar un celular por más de 6 meses."
 
 }
