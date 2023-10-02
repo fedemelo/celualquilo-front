@@ -79,7 +79,7 @@ const moneda = "USD"
 
 
 export default function PhoneDetail() {
-    
+
     const intl = useIntl();
 
     const params = useParams();
@@ -93,11 +93,11 @@ export default function PhoneDetail() {
 
     const theme = useTheme();
     const oss = useMediaQuery(theme.breakpoints.down("sm"));
-    const price = phoneJson.price_per_day + " " + moneda + "/día";
+    const price = phoneJson.price_per_day + " " + moneda + "/" + intl.formatMessage({ id: "Day" });
 
     return (
         <Stack marginBottom={7}>
-            <GoBack text="Detalle de un celular" route="/products" />
+            <GoBack text={intl.formatMessage({ id: "PhoneDetail_LablelDetail" })} route="/products" />
             <Card sx={cardStyle}>
                 <Grid container spacing={0} padding={3} direction={'row'} alignItems={'center'}>
                     {!oss && <Grid item xs={12} sm={5}>
@@ -116,7 +116,7 @@ export default function PhoneDetail() {
                             {phoneJson.brand}
                         </Typography>
                         <Typography variant="h6" color="text.primary" padding={1}>
-                            {phoneJson.availability} unidades disponibles
+                            {phoneJson.availability} {intl.formatMessage({ id: "PhoneDetail_LablelStock" })}
                         </Typography>
                         <Typography variant="h3" component="div" padding={1}>
                             {phoneJson.name}
@@ -193,10 +193,8 @@ const RentButton = ({ text }) =>
         }}
         variant="contained"
     >{text}</Button>;
-
-
+    
 const CommentArea = () => <Stack spacing={1.3}>
-
     <FormLabel
         sx={{
             fontFamily: 'Inter',
@@ -207,7 +205,7 @@ const CommentArea = () => <Stack spacing={1.3}>
             textAlign: 'left',
             padding: 2
         }}
-    >Reseñas de otros usuarios</FormLabel>
+    ><FormattedMessage id="PhoneDetail_Reviews"/></FormLabel>
     <UserReviews reviews={exampleReviews} />
 </Stack>
 
