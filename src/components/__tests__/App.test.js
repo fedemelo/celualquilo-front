@@ -3,8 +3,6 @@ import { render, screen } from '@testing-library/react';
 import App from '../../App';
 import '@testing-library/jest-dom';
 import { IntlProvider } from 'react-intl';
-import { BrowserRouter } from 'react-router-dom';
-
 
 const renderWithReactIntl = (component, locale, pMessages) => {
     return render(<IntlProvider locale={locale} messages={pMessages}>
