@@ -27,6 +27,7 @@ export default function GoBack({ text, route }) {
                     // onClick={() => window.history.back()}
                     />
                     <Typography
+                        data-testid="go-back-text"
                         variant="h6"
                         style={textStyle}
                     >{text}</Typography>

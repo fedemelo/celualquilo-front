@@ -32,7 +32,6 @@ export default function Footer() {
             <Container>
                 <Grid container spacing={4}>
                     <FooterColumn title={title1} items={items1} />
-                    <FooterColumn title={title2} items={items2} />
                     <FooterColumn title={title3} items={items3} />
                     <FooterColumn title={title4} items={items4} />
                 </Grid>
@@ -55,7 +54,7 @@ const boxStyle = {
 
 const FooterColumn = ({ title, items }) =>
     <Grid item xs={12} sm={3}>
-        <Title title={title} />
+        <Title title={title}/>
         {items.map((item, index) => (
             <Item text={item} key={index} />
         ))}
@@ -65,7 +64,8 @@ const FooterColumn = ({ title, items }) =>
 const Title = ({ title }) =>
     <Typography variant="h6" gutterBottom sx={{
         color: "white",
-    }}>
+    }}
+        data-testid={title}>
         {title}
     </Typography>
 

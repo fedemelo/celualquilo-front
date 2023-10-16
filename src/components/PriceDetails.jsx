@@ -28,12 +28,12 @@ export default function PriceDetails(props) {
     return (
         <Card sx={cardStyle}>
             <Box display={"flex"} flexDirection={"column"} gap="15px">
-                <Typography variant='h4' textAlign={'left'}>
+                <Typography variant='h4' textAlign={'left'} data-testid="RentDetail_PriceInfo_Title">
                     <FormattedMessage id="RentDetail_PriceInfo_Title" />
                 </Typography>
                 <Box display={"flex"} justifyContent="space-between" >
                     <Typography variant='h5'>
-                    <FormattedMessage id="RentDetail_PricePer" /> {dias} <FormattedMessage id="RentDetail_PriceInfo_Days" />
+                        <FormattedMessage id="RentDetail_PricePer" /> {dias} <FormattedMessage id="RentDetail_PriceInfo_Days" />
                     </Typography>
                     <Typography variant='h5'>
                         ${Number(pricePerDay) * (Number(dias))} {moneda}/<FormattedMessage id="RentDetail_PriceInfo_Days" />

@@ -19,7 +19,21 @@ export default function RentDetail() {
     const params = useParams();
     const idCel = params.productId;
     const phone = localStorage.getItem("cel" + idCel);
-    const phoneJson = JSON.parse(phone);
+    let phoneJson = JSON.parse(phone);
+    if (phoneJson === null) {
+        phoneJson = {
+            id: 1,
+            name: "Samsung Galaxy S21",
+            brand: "Samsung",
+            price_per_day: 10,
+            availability: 10,
+            image: "https://www.samsung.com/us/smartphones/galaxy-s21-5g/buy/galaxy-s21-5g-phantom-violet-128gb-unlocked-sm-g991uzvaxaa/",
+            camera_specifications: "12MP Ultra Wide Camera, 12MP Wide-angle Camera, 64MP Telephoto Camera",
+            memory_specs: "128GB, 256GB, 512GB",
+            ram_specs: "8GB",
+        }
+    }
+
     const phoneName = phoneJson.name;
     const intl = useIntl();
     const phonePrice = phoneJson.price_per_day + " " + moneda + "/" + intl.formatMessage({ id: "Day" });

@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormattedMessage, useIntl } from "react-intl";
+import { useIntl } from "react-intl";
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -89,19 +89,19 @@ const Marcas = () =>
 
     <div className="brands">
         <Nav.Link style={{ textDecoration: 'none' }} href="/IPhone">
-            <p className="brandName">iPhone</p>
+            <p className="brandName" data-testid="iPhone">iPhone</p>
         </Nav.Link>
         <div className="separatorLine" />
         <Nav.Link style={{ textDecoration: 'none' }} href="/Xiaomi">
-            <p className="brandName">Xiaomi</p>
+            <p className="brandName" data-testid="Xiaomi">Xiaomi</p>
         </Nav.Link>
         <div className="separatorLine" />
         <Nav.Link style={{ textDecoration: 'none' }} href="/Samsung">
-            <p className="brandName">Samsung</p>
+            <p className="brandName" data-testid="Samsung">Samsung</p>
         </Nav.Link>
         <div className="separatorLine" />
         <Nav.Link style={{ textDecoration: 'none' }} href="/Huawei">
-            <p className="brandName">Huawei</p>
+            <p className="brandName" data-testid="Huawei">Huawei</p>
         </Nav.Link>
     </div>
 

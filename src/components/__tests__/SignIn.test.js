@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import Copyright from '../components/Copyright';
-import '@testing-library/jest-dom/extend-expect';
+import Copyright from '../Copyright';
+import '@testing-library/jest-dom';
 
 test('renders CeluAlquilo link', () => {
     render(<Copyright />);

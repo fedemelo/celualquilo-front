@@ -19,11 +19,29 @@ export default function Billing() {
     const params = useParams();
     const idCel = params.productId;
     const phone = localStorage.getItem("cel" + idCel);
-    const phoneJson = JSON.parse(phone);
-    const phonePrice = phoneJson.price_per_day;
-    console.log(phonePrice);
+    let phoneJson = JSON.parse(phone);
+
+
+    if (phoneJson === null) {
+        phoneJson = {
+            id: 1,
+            name: "Samsung Galaxy S21",
+            brand: "Samsung",
+            price_per_day: 10,
+            availability: 10,
+            image: "https://www.samsung.com/us/smartphones/galaxy-s21-5g/buy/galaxy-s21-5g-phantom-violet-128gb-unlocked-sm-g991uzvaxaa/",
+            camera_specifications: "12MP Ultra Wide Camera, 12MP Wide-angle Camera, 64MP Telephoto Camera",
+            memory_specs: "128GB, 256GB, 512GB",
+            ram_specs: "8GB",
+        }
+    }
+    let phonePrice = phoneJson.price_per_day;
 
     let dias = localStorage.getItem("dias");
+    if (dias === null) {
+        dias = 10;
+    }
+
     return (
         <>
             <Breadcrumb breadcrumbs={[
@@ -33,33 +51,33 @@ export default function Billing() {
             ]} />
             <Grid container direction={'row'} spacing={2} marginBottom={8}>
                 <Grid item xs={12} sm={6}>
-                    <BillingAddress 
-                        direccion = {intl.formatMessage({ id: "Billing_Address_AddressText" })} 
-                        ciudad = {intl.formatMessage({ id: "Billing_Address_City" })} 
-                        numeroContacto={intl.formatMessage({ id: "Billing_Address_ContactNumber" })} 
-                        error1 = {intl.formatMessage({ id: "InsertAddress" })}  
-                        error2 = {intl.formatMessage({ id: "InsertCity" })} 
-                        noNumbers = {intl.formatMessage({ id: "TheCityCannotContainNumbers" })}
-                        moreThanOneLetter = {intl.formatMessage({ id: "TheCityMustContainMoreThanOneLetter" })}
-                        error3 = {intl.formatMessage({ id: "InsertContactNumber" })}
-                        zeros = {intl.formatMessage({ id: "zeros" })}
-                        ones = {intl.formatMessage({ id: "ones" })}
-                        twos = {intl.formatMessage({ id: "twos" })}
-                        threes = {intl.formatMessage({ id: "threes" })}
-                        fours = {intl.formatMessage({ id: "fours" })}
-                        fives = {intl.formatMessage({ id: "fives" })}
-                        six = {intl.formatMessage({ id: "sixes" })}
-                        sevens = {intl.formatMessage({ id: "sevens" })}
-                        eights = {intl.formatMessage({ id: "eights" })}
-                        nines = {intl.formatMessage({ id: "nines" })}
-                        tenDigits = {intl.formatMessage({ id: "TheContactNumberMustContain10Digits" })}
-                        
-                        />
-                    <PayingMethod efectivo={intl.formatMessage({ id: "Billing_PayMethod_Cash" })} tarjeta={intl.formatMessage({ id: "Billing_PayMethod_Card" })}/>
+                    <BillingAddress
+                        direccion={intl.formatMessage({ id: "Billing_Address_AddressText" })}
+                        ciudad={intl.formatMessage({ id: "Billing_Address_City" })}
+                        numeroContacto={intl.formatMessage({ id: "Billing_Address_ContactNumber" })}
+                        error1={intl.formatMessage({ id: "InsertAddress" })}
+                        error2={intl.formatMessage({ id: "InsertCity" })}
+                        noNumbers={intl.formatMessage({ id: "TheCityCannotContainNumbers" })}
+                        moreThanOneLetter={intl.formatMessage({ id: "TheCityMustContainMoreThanOneLetter" })}
+                        error3={intl.formatMessage({ id: "InsertContactNumber" })}
+                        zeros={intl.formatMessage({ id: "zeros" })}
+                        ones={intl.formatMessage({ id: "ones" })}
+                        twos={intl.formatMessage({ id: "twos" })}
+                        threes={intl.formatMessage({ id: "threes" })}
+                        fours={intl.formatMessage({ id: "fours" })}
+                        fives={intl.formatMessage({ id: "fives" })}
+                        six={intl.formatMessage({ id: "sixes" })}
+                        sevens={intl.formatMessage({ id: "sevens" })}
+                        eights={intl.formatMessage({ id: "eights" })}
+                        nines={intl.formatMessage({ id: "nines" })}
+                        tenDigits={intl.formatMessage({ id: "TheContactNumberMustContain10Digits" })}
+
+                    />
+                    <PayingMethod efectivo={intl.formatMessage({ id: "Billing_PayMethod_Cash" })} tarjeta={intl.formatMessage({ id: "Billing_PayMethod_Card" })} />
                 </Grid>
                 <Grid item xs={12} sm={6}>
                     <PriceDetails dias={dias} price_per_day={phonePrice} />
-                    <RentButton text=  {intl.formatMessage({ id: "Billing_PriceInfo_Finish" })} />
+                    <RentButton text={intl.formatMessage({ id: "Billing_PriceInfo_Finish" })} />
                 </Grid>
             </Grid>
         </>
@@ -109,7 +127,7 @@ const RentButton = ({ text }) => {
     )
 }
 
-const BillingAddress = ({direccion, ciudad, numeroContacto, error1, error2, noNumbers, moreThanOneLetter, error3, zeros, ones, twos, threes, fours, fives, six, sevens, eights, nines, tenDigits }) => {
+const BillingAddress = ({ direccion, ciudad, numeroContacto, error1, error2, noNumbers, moreThanOneLetter, error3, zeros, ones, twos, threes, fours, fives, six, sevens, eights, nines, tenDigits }) => {
 
     const [formValues, setFormValues] = useState({ address: "", city: "", number: "0" })
     const [clickedFields, setClickedFields] = useState({ address: false, city: false, number: false })
@@ -169,9 +187,9 @@ const BillingAddress = ({direccion, ciudad, numeroContacto, error1, error2, noNu
 
         if (String(number).length === 0) return error3
 
-        const numeros = [{ digito: 0, número: {zeros} }, { digito: 1, número: {ones}  }, { digito: 2, número: {twos}  },
-        { digito: 3, número: {threes}  }, { digito: 4, número: {fours} }, { digito: 5, número: {fives} }, { digito: 6, número: {six} },
-        { digito: 7, número: {sevens} }, { digito: 8, número: {eights} }, { digito: 9, número: {nines}}]
+        const numeros = [{ digito: 0, número: { zeros } }, { digito: 1, número: { ones } }, { digito: 2, número: { twos } },
+        { digito: 3, número: { threes } }, { digito: 4, número: { fours } }, { digito: 5, número: { fives } }, { digito: 6, número: { six } },
+        { digito: 7, número: { sevens } }, { digito: 8, número: { eights } }, { digito: 9, número: { nines } }]
 
         if (!/^\d{10}$/.test(number)) return tenDigits
 
@@ -235,7 +253,7 @@ const BillingAddress = ({direccion, ciudad, numeroContacto, error1, error2, noNu
 
 
 let value = "Efectivo"
-const PayingMethod = ({efectivo, tarjeta}) => <Card sx={cardStyle}>
+const PayingMethod = ({ efectivo, tarjeta }) => <Card sx={cardStyle}>
     <Box display={"flex"} flexDirection={"column"} gap="30px">
         <Typography variant='h4' textAlign={'left'}>
             <FormattedMessage id="Billing_PayMethod_Title" />
