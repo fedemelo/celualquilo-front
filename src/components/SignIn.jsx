@@ -135,7 +135,8 @@ export default function SignInSide() {
                         }}
                     >
                         <div style={hacialaIzq}>
-                            <Typography component="h1" variant="h4" sx={titleStyle}>
+                            <Typography component="h1" variant="h4" sx={titleStyle} data-testid= {LogIn_Wellcome}>
+                                
                                 {LogIn_Wellcome}
                             </Typography>
                             <Typography component="h1" variant="h5" sx={subTitleStyle}>
@@ -158,13 +159,14 @@ export default function SignInSide() {
                                 autoFocus
                                 onChange={(e) => setFormValues({ ...formValues, email: e.target.value })}
                                 onClick={() => setClickedField({ ...clickedField, email: true })}
+                                data-testid="email"
                                 sx={{
                                     "& .MuiFilledInput-root": {
                                         background: "rgb(255, 255, 255)"
                                     }
                                 }}
                             />
-                            <Typography variant='body1' color={"red"}>{getProblemInEmail()}</Typography>
+                            <Typography variant='body1' color={"red"} data-testid='emailError'>{getProblemInEmail()}</Typography>
                             <TextField
                                 margin="normal"
                                 required
@@ -184,12 +186,14 @@ export default function SignInSide() {
                                 value={formValues.password}
                                 onChange={(e) => setFormValues({ ...formValues, password: e.target.value })}
                                 onClick={() => setClickedField({ ...clickedField, password: true })}
+                                data-testid="password"
                                 InputProps={{
                                     endAdornment: (
                                         <InputAdornment position="end">
                                             <IconButton
                                                 edge="end"
                                                 onClick={togglePasswordVisibility}
+                                                data-testid="eyeIcon"
                                                 tabIndex={-1} // Para evitar que el botón sea enfocable
                                             >
                                                 {formValues.showPassword ? <Visibility /> : <VisibilityOff />}
@@ -198,7 +202,7 @@ export default function SignInSide() {
                                     ),
                                 }}
                             />
-                            <Typography variant='body1' color={"red"}>{getProblemInPassword()}</Typography>
+                            <Typography variant='body1' color={"red"} data-testid='passwordError'>{getProblemInPassword()}</Typography>
                             <Grid container sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
                                 <Grid item>
                                     <FormControlLabel
@@ -218,6 +222,7 @@ export default function SignInSide() {
                                     fullWidth
                                     variant="contained"
                                     sx={{ mt: 3, mb: 2, backgroundColor: '#9E30FF', color: '#FFFFFF', fontFamily: 'Open Sans', fontWeight: 'bold' }}
+                                    data-testid="submitButton"
                                 >
                                     {LogIn_LogInButtonText}
                                 </Button>

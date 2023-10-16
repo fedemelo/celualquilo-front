@@ -11,7 +11,6 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import FilterSection from './FiltersSection';
 
-
 export default function ProductsGrid({ titleText }) {
 
     const phoneList = localStorage.getItem('phoneList');
@@ -47,7 +46,7 @@ export default function ProductsGrid({ titleText }) {
 
     return (
         <Stack marginBottom={7}>
-            <Title titleText={titulo} />
+            <Title titleText={titulo} data-testid={titulo}/>
             <Grid container spacing={0} justifyContent="center" sx={{ marginTop: 'vw' }}>
                 <Grid item xs={6} sm={6} md={6} lg={12} sx={{ marginLeft: '6rem', marginRight: '6rem', marginTop: '3rem', marginBottom: '3rem' }}>
                     <FilterButtons selectedButton={selectedButton} handleButtonClick={setSelectedButton} />

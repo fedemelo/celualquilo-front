@@ -29,13 +29,16 @@ export default function PhoneCard({ name, image, cost, rating }) {
             <Box px={5} sx={{ marginTop: '1.5rem' }} >
                 <Typography gutterBottom variant="h5" component="div"
                     sx={nameStyle}
+                    data-testid="nombreCelular"
                 >
                     {name}
                 </Typography>
                 <Grid container spacing={0}>
                     <Grid item xs={9}>
                         <Typography xs={8} variant="body2" color="text.secondary"
-                            sx={priceStyle}>
+                            sx={priceStyle}
+                            data-testid="precioCelular"
+                            >
                             {cost} USD / dia
                         </Typography>
                     </Grid>
@@ -44,6 +47,7 @@ export default function PhoneCard({ name, image, cost, rating }) {
                             variant="body2"
                             color="text.secondary"
                             sx={ratingStyle}
+                            data-testid="ratingCelular"
                         >
                             {rating}
                         </Typography>
@@ -63,6 +67,7 @@ export default function PhoneCard({ name, image, cost, rating }) {
                         <FavoriteIcon
                             sx={{ color: isFavorite ? '#9E30FF' : '#7f7f7f', fontSize: "2rem", verticalAlign: "middle" }}
                             fontSize="medium"
+                            data-testid="favoriteIcon"
                         />
                     </Grid>
                     <Grid item xs={10}>

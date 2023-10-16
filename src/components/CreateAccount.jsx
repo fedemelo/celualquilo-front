@@ -59,7 +59,7 @@ export default function CreateAccountSide() {
 
         if (name === "") return intl.formatMessage({ id: "No_Empty_Name" })
 
-        if (name.length < 2) return intl.formatMessage({ id: "NameTooShort" });
+        if (name.length < 2) return intl.formatMessage({ id: "Len_Above_2" });
 
         return "";
     };
@@ -177,7 +177,7 @@ export default function CreateAccountSide() {
                         }}
                     >
                         <div style={hacialaIzq}>
-                            <Typography component="h1" variant="h4" sx={titleStyle}>
+                            <Typography component="h1" variant="h4" sx={titleStyle} data-testid = {Register_CreateAcc}>
                                 {Register_CreateAcc}
                             </Typography>
                             <Typography component="h1" variant="h5" sx={subTitleStyle}>
@@ -188,6 +188,7 @@ export default function CreateAccountSide() {
                         <Box component="form" noValidate onSubmit={handleSubmit} sx={{ zIndex: 0, alignItems: 'left', justifyContent: 'left', textAlign: 'left' }}>
 
                             <TextField
+                                data-testid="name"
                                 margin="normal"
                                 variant="filled"
                                 color={getProblemInName() === "" ? "success" : "error"}
@@ -206,8 +207,9 @@ export default function CreateAccountSide() {
                                     }
                                 }}
                             />
-                            <Typography variant='body1' color={"red"}>{getProblemInName()}</Typography>
+                            <Typography variant='body1' color={"red"} data-testid="nameError">{getProblemInName()}</Typography>
                             <TextField
+                                data-testid="email"
                                 margin="normal"
                                 variant="filled"
                                 color={getProblemInEmail() === "" ? "success" : "error"}
@@ -226,8 +228,9 @@ export default function CreateAccountSide() {
                                     }
                                 }}
                             />
-                            <Typography variant='body1' color={"red"}>{getProblemInEmail()}</Typography>
+                            <Typography variant='body1' color={"red"} data-testid="emailError">{getProblemInEmail()}</Typography>
                             <TextField
+                                data-testid="password"
                                 margin="normal"
                                 required
                                 color={getProblemInPassword() === "" ? "success" : "error"}
@@ -251,6 +254,7 @@ export default function CreateAccountSide() {
                                                 edge="end"
                                                 onClick={togglePasswordVisibility}
                                                 tabIndex={-1} // Para evitar que el botón sea enfocable
+                                                data-testid="eyeIconPassword"
                                             >
                                                 {formValues.showPassword ? <Visibility /> : <VisibilityOff />}
                                             </IconButton>
@@ -258,8 +262,9 @@ export default function CreateAccountSide() {
                                     ),
                                 }}
                             />
-                            <Typography variant='body1' color={"red"}>{getProblemInPassword()}</Typography>
+                            <Typography variant='body1' color={"red"} data-testid="passwordError">{getProblemInPassword()}</Typography>
                             <TextField
+                                data-testid="verifyPassword"
                                 margin="normal"
                                 required
                                 fullWidth
@@ -282,6 +287,7 @@ export default function CreateAccountSide() {
                                                 edge="end"
                                                 onClick={toggleVerifyPasswordVisibility}
                                                 tabIndex={-1} // Para evitar que el botón sea enfocable
+                                                data-testid="eyeIconVerifyPassword"
                                             >
                                                 {formValues.showPassword ? <Visibility /> : <VisibilityOff />}
                                             </IconButton>
@@ -289,7 +295,7 @@ export default function CreateAccountSide() {
                                     ),
                                 }}
                             />
-                            <Typography variant='body1' color={"red"}>{getProblemInVerifyPassword()}</Typography>
+                            <Typography variant='body1' color={"red"} data-testid="verifyPasswordError">{getProblemInVerifyPassword()}</Typography>
                             <Grid container sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
                                 <Typography variant="body2">
                                     {Register_RegisterTerms}
