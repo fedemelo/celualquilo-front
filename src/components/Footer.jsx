@@ -15,9 +15,6 @@ export default function Footer() {
     const title1 = intl.formatMessage({ id: 'Footer_General_Title' });
     const items1 = [intl.formatMessage({ id: 'Footer_General_AboutUs' }), intl.formatMessage({ id: 'Footer_General_OurBuisness' })];
 
-    const title2 = intl.formatMessage({ id: 'Footer_VirtualStore_Title' });
-    const items2 = [intl.formatMessage({ id: 'Footer_VirtualStore_DeliveryInfo' }), intl.formatMessage({ id: 'Footer_VirtualStore_Returns' })];
-
     const title3 = intl.formatMessage({ id: 'Footer_Legal_Title' });
     const items3 = [intl.formatMessage({ id: 'Footer_Legal_UseTerms' }), intl.formatMessage({ id: 'Footer_Legal_RentTerms' }), intl.formatMessage({ id: 'Footer_Legal_PrivacyTerms' })];
 
