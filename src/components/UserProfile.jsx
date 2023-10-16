@@ -1,5 +1,4 @@
 import React from 'react';
-import { FormattedMessage, useIntl } from "react-intl";
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';

@@ -187,10 +187,6 @@ const BillingAddress = ({ direccion, ciudad, numeroContacto, error1, error2, noN
 
         if (String(number).length === 0) return error3
 
-        const numeros = [{ digito: 0, número: { zeros } }, { digito: 1, número: { ones } }, { digito: 2, número: { twos } },
-        { digito: 3, número: { threes } }, { digito: 4, número: { fours } }, { digito: 5, número: { fives } }, { digito: 6, número: { six } },
-        { digito: 7, número: { sevens } }, { digito: 8, número: { eights } }, { digito: 9, número: { nines } }]
-
         if (!/^\d{10}$/.test(number)) return tenDigits
 
         return null;
