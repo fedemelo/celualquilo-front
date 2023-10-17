@@ -1,30 +1,9 @@
 import React from 'react';
-import { render, screen,fireEvent } from '@testing-library/react';
-import { IntlProvider } from 'react-intl';
+import { screen, fireEvent } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import CreateAccount from '../CreateAccount';
 import '@testing-library/jest-dom'
-
-const renderWithReactIntl = (component, locale, pMessages) => {
-    return render(<IntlProvider locale={locale} messages={pMessages}>
-        {component}
-    </IntlProvider>
-    );
-};
-
-
-function getMessages(lang) {
-    switch (lang) {
-        case 'de':
-            return require('../../languages/de.json');
-        case 'fr':
-            return require('../../languages/fr.json');
-        case 'es':
-            return require('../../languages/es.json');
-        default:
-            return require('../../languages/en.json');
-    }
-}
+import { renderWithReactIntl, getMessages } from '../TestHelper';
 
 //Confirms that the Register component is rendered correctly
 test('renders Register title', () => {
@@ -72,9 +51,9 @@ test('hides password when clicking on the eye icon', () => {
     </BrowserRouter>, "en", messages);
     const passwordInput = screen.getByTestId("password").querySelector('input');
     const eyeIcon = screen.getByTestId("eyeIconPassword");
-    expect(passwordInput.type).toBe("password"); 
+    expect(passwordInput.type).toBe("password");
     fireEvent.click(eyeIcon);
-    expect(passwordInput.type).toBe("text"); 
+    expect(passwordInput.type).toBe("text");
     fireEvent.click(eyeIcon);
     expect(passwordInput.type).toBe("password");
 });
@@ -87,9 +66,9 @@ test('hides verify password when clicking on the eye icon', () => {
     </BrowserRouter>, "en", messages);
     const passwordInput = screen.getByTestId("verifyPassword").querySelector('input');
     const eyeIcon = screen.getByTestId("eyeIconVerifyPassword");
-    expect(passwordInput.type).toBe("password"); 
+    expect(passwordInput.type).toBe("password");
     fireEvent.click(eyeIcon);
-    expect(passwordInput.type).toBe("text"); 
+    expect(passwordInput.type).toBe("text");
     fireEvent.click(eyeIcon);
     expect(passwordInput.type).toBe("password");
 });

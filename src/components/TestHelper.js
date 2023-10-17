@@ -29,7 +29,7 @@ function test_single_text(Component, lang, text_id) {
 }
 
 
-function renderWithReactIntl(Component, locale, pMessages) {
+export function renderWithReactIntl(Component, locale, pMessages) {
     return render(<IntlProvider locale={locale} messages={pMessages}>
         {Component}
     </IntlProvider>
@@ -37,7 +37,7 @@ function renderWithReactIntl(Component, locale, pMessages) {
 };
 
 
-function getMessages(lang) {
+export function getMessages(lang) {
     switch (lang) {
         case 'de':
             return require('../languages/de.json');
