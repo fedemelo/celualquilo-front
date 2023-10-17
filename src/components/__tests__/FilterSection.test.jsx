@@ -4,27 +4,7 @@ import { IntlProvider } from 'react-intl';
 import { BrowserRouter } from 'react-router-dom';
 import FilterSection from '../FiltersSection';
 import '@testing-library/jest-dom';
-
-const renderWithReactIntl = (component, locale, messages) => {
-    return render(
-        <IntlProvider locale={locale} messages={messages}>
-            {component}
-        </IntlProvider>
-    );
-};
-
-function getMessages(lang) {
-    switch (lang) {
-        case 'de':
-            return require('../../languages/de.json');
-        case 'fr':
-            return require('../../languages/fr.json');
-        case 'es':
-            return require('../../languages/es.json');
-        default:
-            return require('../../languages/en.json');
-    }
-}
+import { renderWithReactIntl, getMessages } from '../TestHelper';
 
 
 test('renders FilterSection in english', () => {
