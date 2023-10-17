@@ -3,7 +3,6 @@ import { render, screen,fireEvent } from '@testing-library/react';
 import { IntlProvider } from 'react-intl';
 import { BrowserRouter } from 'react-router-dom';
 import CreateAccount from '../CreateAccount';
-import Visibility from '@mui/icons-material/Visibility';
 import '@testing-library/jest-dom'
 
 const renderWithReactIntl = (component, locale, pMessages) => {

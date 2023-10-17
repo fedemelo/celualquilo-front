@@ -34,7 +34,7 @@ const exampleActiveRents = [
     },
 ]
 
-export default function RentHistory() {
+export default function Favourites() {
 
     const intl = useIntl();
     const favs = intl.formatMessage({ id: "Favourites_Title" })
