@@ -29,7 +29,7 @@ function FilterSection({ filtros, setFiltros }) {
     const Maximum = intl.formatMessage({id: "Filters_Maximum"})
 
     return (
-        <div>
+        <div data-testid="filter-section">
             <Box
                 backgroundColor="lightgrey"
                 p={0.1}
@@ -39,37 +39,40 @@ function FilterSection({ filtros, setFiltros }) {
                 display="flex"
                 justifyContent="center"
                 alignItems="center"
+                data-testid="filter-section-header"
             >
-                <h3> <FormattedMessage id='Filters_Title' />  </h3>
-                {mostrarFiltros ? <ArrowDropUp /> : <ArrowDropDown />}
+                <h3 data-testid="filter-section-title"> <FormattedMessage id='Filters_Title' />  </h3>
+                {mostrarFiltros ? <ArrowDropUp data-testid="filter-section-arrow-up" /> : <ArrowDropDown data-testid="filter-section-arrow-down" />}
                 
             </Box>
             {mostrarFiltros && (
                 <Box
                     backgroundColor="lightgrey"
                     textAlign="center"
+                    data-testid="filter-section-content"
                 >
 
                     <Box
-                        backgroundColor="lightgrey"
+                        backgroundColor="lightgrey" 
                         p={2}
                         textAlign="center"
+                        data-testid="filter-section-brand"
                     >
                         <h4> <FormattedMessage id='Filters_ByBrand' />  </h4>
                         <FormControlLabel
-                            control={<Checkbox checked={filtros.Marcas.samsung} onChange={handleChange} name="samsung" />}
+                            control={<Checkbox checked={filtros.Marcas.samsung} onChange={handleChange} name="samsung" data-testid="filter-section-brand-samsung" />}
                             label="Samsung"
                         />
                         <FormControlLabel
-                            control={<Checkbox checked={filtros.Marcas.apple} onChange={handleChange} name="apple" />}
+                            control={<Checkbox checked={filtros.Marcas.apple} onChange={handleChange} name="apple" data-testid="filter-section-brand-apple" />}
                             label="Apple"
                         />
                         <FormControlLabel
-                            control={<Checkbox checked={filtros.Marcas.huawei} onChange={handleChange} name="huawei" />}
+                            control={<Checkbox checked={filtros.Marcas.huawei} onChange={handleChange} name="huawei" data-testid="filter-section-brand-huawei" />}
                             label="Huawei"
                         />
                         <FormControlLabel
-                            control={<Checkbox checked={filtros.Marcas.xiaomi} onChange={handleChange} name="xiaomi" />}
+                            control={<Checkbox checked={filtros.Marcas.xiaomi} onChange={handleChange} name="xiaomi" data-testid="filter-section-brand-xiaomi" />}
                             label="Xiaomi"
                         />
                     </Box>
@@ -77,6 +80,7 @@ function FilterSection({ filtros, setFiltros }) {
                         backgroundColor="lightgrey"
                         p={2}
                         textAlign="center"
+                        data-testid="filter-section-price"
                     >
                         <h4> <FormattedMessage id='Filters_ByPrice' /> </h4>
                         <TextField
@@ -85,6 +89,7 @@ function FilterSection({ filtros, setFiltros }) {
                             value={filtros.PrecioMin}
                             onChange={handleChange}
                             name="PrecioMin"
+                            data-testid="filter-section-price-min"
                         />
                         <TextField
                             label={Maximum}
@@ -92,6 +97,7 @@ function FilterSection({ filtros, setFiltros }) {
                             value={filtros.PrecioMax}
                             onChange={handleChange}
                             name="PrecioMax"
+                            data-testid="filter-section-price-max"
                         />
                     </Box>
 
