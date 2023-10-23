@@ -1,18 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FormattedMessage, useIntl } from "react-intl";
 import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import { COLORS } from '../styles/colors';
-import { TextField } from "@mui/material";
+import { TextField, FormControl, FormControlLabel, Radio, RadioGroup } from "@mui/material";
 import PriceDetails from './PriceDetails';
-import { useState } from 'react';
 import Box from '@mui/material/Box';
-import { Link } from 'react-router-dom';
-import { FormControl, FormControlLabel, Radio, RadioGroup } from '@mui/material';
+import { Link, useParams } from 'react-router-dom';
 import Breadcrumb from './BreadCrumb';
-import { useParams } from 'react-router-dom';
 
 export default function Billing() {
     const intl = useIntl();
@@ -103,9 +100,6 @@ const cardStyle = {
 
 const RentButton = ({ text }) => {
 
-    const clickFinalizarCompra = (() => {
-    })
-
     return (
         <>
             <Link to={"/RentHistory"}>
@@ -119,7 +113,7 @@ const RentButton = ({ text }) => {
                         width: "100%",
                     }
                     }
-                    onClick={clickFinalizarCompra}
+                    
                     variant="contained"
                 > {text}</Button >
             </Link>
