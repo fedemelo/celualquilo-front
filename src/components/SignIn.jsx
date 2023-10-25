@@ -232,7 +232,7 @@ export default function SignInSide() {
                                     {LogIn_NewUsserText}
                                 </Grid>
                                 <Grid item>
-                                    <Link href="/Register" variant="body2">
+                                    <Link href="/Register" variant="body2" data-testid="registerInstead">
                                         {LogIn_CreateAccHiperlink}
                                     </Link>
                                 </Grid>

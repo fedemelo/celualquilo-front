@@ -315,7 +315,7 @@ export default function CreateAccountSide() {
                                     {Register_LogInQuestionText}
                                 </Grid>
                                 <Grid item>
-                                    <Link href="/Login" variant="body2">
+                                    <Link href="/Login" variant="body2" data-testid="loginInstead">
                                         {Register_LogInHiperlink}
                                     </Link>
                                 </Grid>
