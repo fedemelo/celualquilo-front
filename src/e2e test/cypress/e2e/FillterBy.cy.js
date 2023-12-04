@@ -3,7 +3,7 @@ require('@cypress/xpath')
 describe('Testing CeluAlquilo Filtros', () => {
   
   beforeEach(() => {
-    cy.visit('http://localhost:3000')
+    cy.visit('http://localhost:3001')
     cy.wait(1000)
   })
 

@@ -1,8 +1,12 @@
+require('@cypress/xpath')
 describe('Testing CeluAlquilo', () => {
     beforeEach(() => {
-      cy.visit('http://localhost:3000')
+      cy.visit('http://localhost:3001')
       cy.wait(1000)
     })
+    //Se comprueban HU1
+
+    
     it('Visits CeluAlquilo,clicks on login button', () => {
   
       cy.contains('CeluAlquilo')
@@ -82,6 +86,7 @@ describe('Testing CeluAlquilo', () => {
         cy.contains('Ver favoritos').click();
         cy.url().should('include', '/Favourites');
     })
+    //Se comprueban  HU2 - HU9
     it('Successfully creates account and clicks on history button', () => {
       cy.contains('CeluAlquilo')
         cy.contains('Ingresar').click();
@@ -93,6 +98,20 @@ describe('Testing CeluAlquilo', () => {
         cy.contains('Ver historial').click();
         cy.url().should('include', '/RentHistory');
     })
+    //Se comprueban HU7
+    it('Renew phone', () => {
+      cy.contains('CeluAlquilo')
+        cy.contains('Ingresar').click();
+        cy.get('[data-testid="name"]').type('Santiago Martínez');
+        cy.get('[data-testid="email"]').type('alejo@gmail.com');
+        cy.get('[data-testid="password"]').type('12345678aA#');
+        cy.get('[data-testid="verifyPassword"]').type('12345678aA#');
+        cy.contains('Crear cuenta').click();
+        cy.contains('Ver historial').click();
+        cy.contains('Renovar alquiler').click();
+        cy.url().should('include', '/rent');
+    })
+
     it('Goes to login instead of Create account', () => {
           
           cy.contains('CeluAlquilo')
@@ -113,4 +132,47 @@ describe('Testing CeluAlquilo', () => {
             cy.get('[data-testid="registerInstead"]').click();
             cy.url().should('include', '/Register');
       })
+
+    //Se comprueban HU8
+    it('Leaves rating and reviews', () => {
+              
+      cy.contains('CeluAlquilo')
+      cy.contains('Ingresar').click();
+      cy.get('[data-testid="name"]').type('Santiago Martínez');
+      cy.get('[data-testid="email"]').type('alejo@gmail.com');
+      cy.get('[data-testid="password"]').type('12345678aA#');
+      cy.get('[data-testid="verifyPassword"]').type('12345678aA#');
+      cy.contains('Crear cuenta').click();
+      cy.contains('Ver historial').click();
+      cy.contains('Escribir reseña').click();
+      cy.get('.MuiTextarea-root textarea').first().type('Tu reseña aquí');
+      cy.get('.MuiButton-root.MuiButton-variantContained.MuiButton-colorPrimary').click();
+      cy.url().should('include', '/review');
+    }
+  )
+      
+    //Se comprueban HU10
+    it('Visits favourite Phones', () => {
+              
+      cy.contains('CeluAlquilo')
+      cy.contains('Ingresar').click();
+      cy.get('[data-testid="name"]').type('Santiago Martínez');
+      cy.get('[data-testid="email"]').type('alejo@gmail.com');
+      cy.get('[data-testid="password"]').type('12345678aA#');
+      cy.get('[data-testid="verifyPassword"]').type('12345678aA#');
+      cy.contains('Crear cuenta').click();
+      cy.contains('Ver favoritos').click();
+      cy.url().should('include', '/Favourites');
+    })
+
+
+    //Se comprueban HU12
+
+    it('Visits phones by Brand', () => {
+      cy.contains('CeluAlquilo');
+      cy.xpath('/html/body/div[1]/div/div[2]/div[2]/div/div[1]/a').click();
+      cy.url().should('include', '/Samsung');
+    }
+  )
+
   });
