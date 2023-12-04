@@ -4,13 +4,16 @@ describe('Testing CeluAlquilo', () => {
     cy.visit('http://localhost:3001')
     cy.wait(1000)
   })
-
-
+  //Se comprueban HU3 -HU4 - HU5 - HU6
   it('Prueba alquiler exitoso', () => {
+    //HU3
     cy.get('button').contains('Descubrir').click()
+    //HU4
     cy.get('button').contains('Alquilar').click()
+    //HU5
     cy.get('button').contains('Alquilar').click()
     cy.get('input#outlined-required').type('0')
+    //HU6
     cy.get('button').contains('Continuar pago').click()
     cy.xpath('/html/body/div/div/div[3]/div[1]/div[1]/div/div[1]/div[1]/div/div/input').type('Calle 152 # 7-51')
     cy.xpath('/html/body/div/div/div[3]/div[1]/div[1]/div/div[1]/div[2]/div/div/input').type('Bogotá')

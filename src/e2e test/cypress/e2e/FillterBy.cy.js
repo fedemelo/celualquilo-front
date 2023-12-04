@@ -6,7 +6,7 @@ describe('Testing CeluAlquilo Filtros', () => {
     cy.visit('http://localhost:3001')
     cy.wait(1000)
   })
-
+  //Se comprueba HU11
   it("llegar a filtros", () => {
 
     cy.get('button').contains('Descubrir').click()
