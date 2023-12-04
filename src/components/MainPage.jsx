@@ -44,20 +44,8 @@ const brands = [
 
 export default function MainPage() {
 
-    async function getDatos() {
-        const response = await fetch("https://gist.githubusercontent.com/dburgos26/a09fc5108186b8ce6bd0e7c5a38b2432/raw/e6e879db208b06c15647c94df54f26b352dd4f72/cellphones.json");
-        const data = await response.json();
-        return data;
-    }
-
-    const intl = useIntl();
-
-    const MainPage_OurBrands_Title = intl.formatMessage({ id: 'MainPage_OurBrands_Title' });
-    const MainPage_Popular_Title = intl.formatMessage({ id: 'MainPage_Popular_Title' });
-    const MainPage_Popular_SeeAllButton = intl.formatMessage({ id: 'MainPage_Popular_SeeAllButton' });
-
-
     useEffect(() => {
+
         async function fetchData() {
             const data = await getDatos();
             console.log(data);
@@ -74,16 +62,55 @@ export default function MainPage() {
         }
         else {
             fetchData();
-
         }
 
     }, []);
+
+    async function getToken() {
+        const response = await fetch("http://localhost:3000/api/v1/users-auth/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+
+                "username": "admin",
+                "password": "admin"
+            }),
+        });
+        const data = await response.json();
+        return data.token;
+    }
+
+    async function getDatos() {
+        const token = await getToken();
+
+        const response = await fetch("http://localhost:3000/api/v1/phones", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + token
+            },
+        });
+        const data = await response.json();
+        return data;
+    }
+
+    const intl = useIntl();
+
+    const MainPage_OurBrands_Title = intl.formatMessage({ id: 'MainPage_OurBrands_Title' });
+    const MainPage_Popular_Title = intl.formatMessage({ id: 'MainPage_Popular_Title' });
+    const MainPage_Popular_SeeAllButton = intl.formatMessage({ id: 'MainPage_Popular_SeeAllButton' });
+
+
 
 
     const theme = useTheme();
     const onlySmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
     const [phoneListJson, setPhoneListJson] = useState([]);
+
+    console.log(phoneListJson);
 
 
     phoneListJson.sort((a, b) => (a.rating > b.rating) ? -1 : 1);
@@ -200,7 +227,7 @@ const PhonesRow = ({ phones }) => {
         <Grid container spacing={3} padding={2} >
             {phones.map((phone, index) => (
                 <Grid item xs={12} sm={6} md={3} key={index}>
-                    <PhoneCardSimple name={phone.name} image={phone.image} cost={phone.price_per_day} buttonText={intl.formatMessage({ id: "Rent" })} days={8} route={"/products/" + phone.id} />
+                    <PhoneCardSimple name={phone.name} image={phone.image} cost={phone.pricePerDay} buttonText={intl.formatMessage({ id: "Rent" })} days={8} route={"/products/" + phone.id} />
                 </Grid>
             ))}
         </Grid>

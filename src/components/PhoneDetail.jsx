@@ -101,11 +101,12 @@ export default function PhoneDetail({ idCel1 }) {
             camera_specifications: "12MP Ultra Wide Camera, 12MP Wide-angle Camera, 64MP Telephoto Camera",
             memory_specs: "128GB, 256GB, 512GB",
             ram_specs: "8GB",
-    }}
+        }
+    }
 
     const theme = useTheme();
     const oss = useMediaQuery(theme.breakpoints.down("sm"));
-    const price = phoneJson.price_per_day + " " + moneda + "/" + intl.formatMessage({ id: "Day" });
+    const price = phoneJson.pricePerDay + " " + moneda + "/" + intl.formatMessage({ id: "Day" });
 
     return (
         <Stack marginBottom={7}>
@@ -128,7 +129,7 @@ export default function PhoneDetail({ idCel1 }) {
                             {phoneJson.brand}
                         </Typography>
                         <Typography variant="h6" color="text.primary" padding={1}>
-                            {phoneJson.availability} {intl.formatMessage({ id: "PhoneDetail_LablelStock" })} 
+                            {phoneJson.availability} {intl.formatMessage({ id: "PhoneDetail_LablelStock" })}
                         </Typography>
                         <Typography variant="h3" component="div" padding={1}>
                             {phoneJson.name}
@@ -144,7 +145,7 @@ export default function PhoneDetail({ idCel1 }) {
                             </Typography>
                         </Grid>}
                         <Rating name="read-only" value={5} readOnly size="large" />
-                        <SpecList specs={[phoneJson.camera_specifications, phoneJson.memory_specs, phoneJson.ram_specs]} />
+                        <SpecList specs={[phoneJson.cameraSpecs, phoneJson.memorySpecs, phoneJson.screenSpecs]} />
                         <Link to={`/products/${phoneJson.id}/rent`}>
                             <RentButton text={intl.formatMessage({ id: "Rent" })} />
                         </Link>
@@ -205,7 +206,7 @@ const RentButton = ({ text }) =>
         }}
         variant="contained"
     >{text}</Button>;
-    
+
 const CommentArea = () => <Stack spacing={1.3}>
     <FormLabel
         sx={{
@@ -217,7 +218,7 @@ const CommentArea = () => <Stack spacing={1.3}>
             textAlign: 'left',
             padding: 2
         }}
-    ><FormattedMessage id="PhoneDetail_Reviews"/></FormLabel>
+    ><FormattedMessage id="PhoneDetail_Reviews" /></FormLabel>
     <UserReviews reviews={exampleReviews} />
 </Stack>
 

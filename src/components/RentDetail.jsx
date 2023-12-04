@@ -36,7 +36,7 @@ export default function RentDetail() {
 
     const phoneName = phoneJson.name;
     const intl = useIntl();
-    const phonePrice = phoneJson.price_per_day + " " + moneda + "/" + intl.formatMessage({ id: "Day" });
+    const phonePrice = phoneJson.pricePerDay + " " + moneda + "/" + intl.formatMessage({ id: "Day" });
     const phoneImg = phoneJson.image;
 
 
@@ -55,7 +55,7 @@ export default function RentDetail() {
                     <PhoneResume dias={dias} setDias={setDias} phoneName={phoneName} phonePrice={phonePrice} phoneImg={phoneImg} label={intl.formatMessage({ id: "RentDetail_RentDays" })} error1={intl.formatMessage({id: "NumberGreaterThanZero"})} error2={intl.formatMessage({id: "NoMoreThan180"})}/>
                 </Grid>
                 <Grid item xs={12} md={6}>
-                    <PriceDetails dias={dias} price_per_day={phoneJson.price_per_day} />
+                    <PriceDetails dias={dias} price_per_day={phoneJson.pricePerDay} />
                     <RentButton text= {intl.formatMessage({ id: "RentDetail_PriceInfo_Continue" })} idCel={idCel} onChange={localStorage.setItem("dias", dias)} />
                 </Grid>
             </Grid>
@@ -80,8 +80,7 @@ const cardStyle = {
 
 
 const RentButton = ({ text, idCel }) =>
-    <>
-        <Link to={`/products/${idCel}/billing`}>
+    <Link to={`/products/${idCel}/billing`}>
             <Button
                 style={{
                     borderRadius: 20,
@@ -94,7 +93,6 @@ const RentButton = ({ text, idCel }) =>
                 variant="contained"
             >{text}</Button>
         </Link>
-    </>
 
 
 

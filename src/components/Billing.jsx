@@ -32,7 +32,7 @@ export default function Billing() {
             ram_specs: "8GB",
         }
     }
-    let phonePrice = phoneJson.price_per_day;
+    let phonePrice = phoneJson.pricePerDay;
 
     let dias = localStorage.getItem("dias");
     if (dias === null) {

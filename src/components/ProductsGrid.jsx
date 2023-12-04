@@ -16,7 +16,7 @@ export default function ProductsGrid({ titleText }) {
     const phoneList = localStorage.getItem('phoneList');
     const phoneListJson = JSON.parse(phoneList);
 
-    const [filtros, setFiltros] = useState({ PrecioMin : null, PrecioMax: null, Marcas: {samsung: false, apple: false,huawei: false,xiaomi: false,}})
+    const [filtros, setFiltros] = useState({ PrecioMin: null, PrecioMax: null, Marcas: { samsung: false, apple: false, huawei: false, xiaomi: false, } })
 
     const [selectedButton, setSelectedButton] = useState(null);
     const [currentPage, setCurrentPage] = useState(1);
@@ -35,33 +35,35 @@ export default function ProductsGrid({ titleText }) {
     }
 
 
-    const filteredPhoneList = phoneListJson.filter((product) => {
-        const precio = parseFloat(product.price_per_day);
-        const precioMin = filtros.PrecioMin ? parseFloat(filtros.PrecioMin) : Number.NEGATIVE_INFINITY;
-        const precioMax = filtros.PrecioMax ? parseFloat(filtros.PrecioMax) : Number.POSITIVE_INFINITY;
-        const marcas = filtros.Marcas;
-        const marca = Object.values(marcas).every((value) => !value) || marcas[product.brand.toLowerCase()];
-        return precio >= precioMin && precio <= precioMax && marca;
-      });
+    const filteredPhoneList = phoneListJson
+        .filter((product) => {
+            const precio = parseFloat(product.pricePerDay);
+
+            const precioMin = filtros.PrecioMin ? parseFloat(filtros.PrecioMin) : Number.NEGATIVE_INFINITY;
+            const precioMax = filtros.PrecioMax ? parseFloat(filtros.PrecioMax) : Number.POSITIVE_INFINITY;
+            const marcas = filtros.Marcas;
+            const marca = Object.values(marcas).every((value) => !value) || marcas[product.brand.toLowerCase()];
+            return precio >= precioMin && precio <= precioMax && marca;
+        });
 
     return (
         <Stack marginBottom={7}>
-            <Title titleText={titulo} data-testid={titulo}/>
+            <Title titleText={titulo} data-testid={titulo} />
             <Grid container spacing={0} justifyContent="center" sx={{ marginTop: 'vw' }}>
                 <Grid item xs={6} sm={6} md={6} lg={12} sx={{ marginLeft: '6rem', marginRight: '6rem', marginTop: '3rem', marginBottom: '3rem' }}>
                     <FilterButtons selectedButton={selectedButton} handleButtonClick={setSelectedButton} />
                 </Grid>
             </Grid>
-            {titleText === "Nuestros Productos" && <FilterSection filtros={filtros} setFiltros={setFiltros}/> }
+            {titleText === "Nuestros Productos" && <FilterSection filtros={filtros} setFiltros={setFiltros} />}
             <div style={{ alignItems: 'center', justifyContent: 'center' }}>
-            <Grid container sx={{ marginTop: 'vw', justifyContent: 'center' }}>
+                <Grid container sx={{ marginTop: 'vw', justifyContent: 'center' }}>
                     {filteredPhoneList.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage).map((product, index) => (
-                        <Grid item key={index} sx={{ marginBottom: '3vw', marginLeft: '3vw', marginRight: '3vw' }} alignItems="center">
+                        <Grid item key={product.id} sx={{ marginBottom: '3vw', marginLeft: '3vw', marginRight: '3vw' }} alignItems="center">
                             <Link to={"/products/" + product.id} style={{ textDecoration: 'none' }}>
                                 <PhoneCard
                                     name={product.name}
                                     image={product.image}
-                                    cost={product.price_per_day}
+                                    cost={product.pricePerDay}
                                     rating={product.rating}
                                 /></Link>
                         </Grid>
