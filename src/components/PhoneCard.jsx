@@ -23,6 +23,28 @@ export default function PhoneCard({ name, image, cost, rating, phoneId }) {
     const link = "/products/" + phoneId;
 
     const toggleFavorite = () => {
+        if (!localStorage.getItem("accUserName")) {
+            window.location.href = "/Login";
+        }
+        if (isFavorite) {
+            // Remove from favorites
+            fetch(`http://localhost:3000/api/v1/phones/${phoneId}/users`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + localStorage.getItem('token')
+                }
+            });
+        } else {
+            // Add to favorites
+            fetch(`http://localhost:3000/api/v1/phones/${phoneId}/users/${localStorage.getItem("accUserId")}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + localStorage.getItem('token')
+                }
+            });
+        }
         setIsFavorite(!isFavorite);
     };
     return (
