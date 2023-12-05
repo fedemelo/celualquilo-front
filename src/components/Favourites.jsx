@@ -48,7 +48,7 @@ export default function Favourites() {
     return (
         <>
             <Breadcrumb breadcrumbs={[
-                { href: '/mi-cuenta', text: BreadcrumbMiAccount },
+                { href: '/user', text: BreadcrumbMiAccount },
                 { href: '', text: favs },
             ]} />
             <Stack spacing={3.5} marginBottom={11}>
