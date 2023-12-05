@@ -7,13 +7,18 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { Nav } from 'react-bootstrap';
 import { useEffect } from 'react';
+import { useIntl } from 'react-intl';
 
 export default function UserProfile() {
 
     const [name, setName] = React.useState('');
     const [email, setEmail] = React.useState('');
 
-    
+    const intl = useIntl();
+
+    const ViewHistory = intl.formatMessage({ id: 'ViewHistory' });
+    const ViewFavourites = intl.formatMessage({ id: 'ViewFavourites' });
+    const LogOut = intl.formatMessage({ id: 'LogOut' });
 
     useEffect(() => {
 
@@ -44,6 +49,11 @@ export default function UserProfile() {
 
     const handlePastReservationsClick = () => {
         console.log('Ver reservas pasadas');
+    };
+
+    const logOut = () => {
+        localStorage.clear();
+        window.location.href = '/';
     };
 
     return (
@@ -81,7 +91,7 @@ export default function UserProfile() {
                             sx={buttonStyle}
                             color="secondary"
                         >
-                            Ver historial
+                            {ViewHistory}
                         </Button>
                     </Nav.Link>
                     <Nav.Link style={{ textDecoration: 'none' }} href="/Favourites">
@@ -91,11 +101,17 @@ export default function UserProfile() {
                             sx={buttonStyle}
                             color="secondary"
                         >
-                            Ver favoritos
+                            {ViewFavourites}
                         </Button>
                     </Nav.Link>
-
-
+                    <Button
+                            variant="contained"
+                            onClick={logOut}
+                            sx={buttonStyle}
+                            color="secondary"
+                        >
+                            {LogOut}
+                        </Button>
                 </CardContent>
             </Card>
         </Box>

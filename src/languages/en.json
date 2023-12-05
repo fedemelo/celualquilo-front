@@ -172,6 +172,9 @@
     "Excellent": "Excellent",
 
     "NumberGreaterThanZero": "You must enter a number greater than 0.",
-    "NoMoreThan180": "You cannot rent a cell phone for more than 6 months."
+    "NoMoreThan180": "You cannot rent a cell phone for more than 6 months.",
 
+    "ViewHistory": "View history",
+    "ViewFavourites": "View favourites",
+    "LogOut": "Log out"
 }

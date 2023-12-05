@@ -172,6 +172,9 @@
     "Excellent": "Ausgezeichnet",
 
     "NumberGreaterThanZero": "Sie müssen eine Zahl größer als 0 eingeben.",
-    "NoMoreThan180": "Sie können kein Handy für mehr als 6 Monate mieten."
+    "NoMoreThan180": "Sie können kein Handy für mehr als 6 Monate mieten.",
 
+    "ViewHistory": "Verlauf anzeigen",
+    "ViewFavourites": "Favoriten anzeigen",
+    "LogOut": "Abmelden"
 }

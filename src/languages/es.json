@@ -172,6 +172,9 @@
     "Excellent": "Excelente",
 
     "NumberGreaterThanZero": "Debes ingresar un número mayor a 0.",
-    "NoMoreThan180": "No puedes alquilar un celular por más de 6 meses."
+    "NoMoreThan180": "No puedes alquilar un celular por más de 6 meses.",
 
+    "ViewHistory": "Ver historial",
+    "ViewFavourites": "Ver favoritos",
+    "LogOut": "Salir de la cuenta"
 }
