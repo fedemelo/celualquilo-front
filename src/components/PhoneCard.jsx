@@ -9,13 +9,18 @@ import Button from '@mui/material/Button';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import StarIcon from '@mui/icons-material/Star';
 import { Grid } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 
-export default function PhoneCard({ name, image, cost, rating }) {
+export default function PhoneCard({ name, image, cost, rating, phoneId }) {
 
     const intl = useIntl();
 
     const [isFavorite, setIsFavorite] = React.useState(false); // Initialize as false
+
+    const buttonLink = localStorage.getItem("accUserName") ? `/products/${phoneId}/rent` : `/Login`;
+
+    const link = "/products/" + phoneId;
 
     const toggleFavorite = () => {
         setIsFavorite(!isFavorite);
@@ -25,42 +30,45 @@ export default function PhoneCard({ name, image, cost, rating }) {
             <style>
                 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');
             </style>
-
-            <Box px={5} sx={{ marginTop: '1.5rem' }} >
-                <Typography gutterBottom variant="h5" component="div"
-                    sx={nameStyle}
-                    data-testid="nombreCelular"
-                >
-                    {name}
-                </Typography>
-                <Grid container spacing={0}>
-                    <Grid item xs={9}>
-                        <Typography xs={8} variant="body2" color="text.secondary"
-                            sx={priceStyle}
-                            data-testid="precioCelular"
+            <Link to={link} style={{ textDecoration: 'none' }}>
+                <Box px={5} sx={{ marginTop: '1.5rem' }} >
+                    <Typography gutterBottom variant="h5" component="div"
+                        sx={nameStyle}
+                        data-testid="nombreCelular"
+                    >
+                        {name}
+                    </Typography>
+                    <Grid container spacing={0}>
+                        <Grid item xs={9}>
+                            <Typography xs={8} variant="body2" color="text.secondary"
+                                sx={priceStyle}
+                                data-testid="precioCelular"
                             >
-                            {cost} USD / dia
-                        </Typography>
+                                {cost} USD / dia
+                            </Typography>
+                        </Grid>
+                        <Grid item xs={2}>
+                            <Typography
+                                variant="body2"
+                                color="text.secondary"
+                                sx={ratingStyle}
+                                data-testid="ratingCelular"
+                            >
+                                {rating}
+                            </Typography>
+                        </Grid>
+                        <Grid item xs={1} sx={{ verticalAlign: "middle" }}>
+                            <StarIcon
+                                sx={{ color: '#9E30FF', fontSize: '1.2rem', marginLeft: "0.4vw", marginTop: "0.2vw" }}
+                                fontSize="small"
+                            />
+                        </Grid>
                     </Grid>
-                    <Grid item xs={2}>
-                        <Typography
-                            variant="body2"
-                            color="text.secondary"
-                            sx={ratingStyle}
-                            data-testid="ratingCelular"
-                        >
-                            {rating}
-                        </Typography>
-                    </Grid>
-                    <Grid item xs={1} sx={{ verticalAlign: "middle" }}>
-                        <StarIcon
-                            sx={{ color: '#9E30FF', fontSize: '1.2rem', marginLeft: "0.4vw", marginTop: "0.2vw" }}
-                            fontSize="small"
-                        />
-                    </Grid>
-                </Grid>
-            </Box>
-            <MediaRatio image={image} name={name} />
+                </Box>
+
+                <MediaRatio image={image} name={name} />
+
+            </Link>
             <CardContent>
                 <Grid container spacing={0} sx={{ alignItems: "center" }}>
                     <Grid item xs={2} onClick={toggleFavorite}>
@@ -71,7 +79,7 @@ export default function PhoneCard({ name, image, cost, rating }) {
                         />
                     </Grid>
                     <Grid item xs={10}>
-                        {<LastButton text={intl.formatMessage({ id: "Rent" })} />}
+                        {<LastButton text={intl.formatMessage({ id: "Rent" })} link={buttonLink} />}
                     </Grid>
                 </Grid>
             </CardContent>
@@ -119,19 +127,21 @@ const nameStyle = {
 
 
 
-const LastButton = ({ text }) =>
-    <Button
-        style={{
-            borderRadius: 13,
-            padding: "10px 40px",
-            backgroundColor: "#7724BF",
-            fontSize: "15px",
-            textTransform: "none",
-            fontFamily: "Open Sans",
-            width: "100%",
-        }}
-        variant="contained"
-    >{text}</Button>
+const LastButton = ({ text, link }) =>
+    <Link to={link}>
+        <Button
+            style={{
+                borderRadius: 13,
+                padding: "10px 40px",
+                backgroundColor: "#7724BF",
+                fontSize: "15px",
+                textTransform: "none",
+                fontFamily: "Open Sans",
+                width: "100%",
+            }}
+            variant="contained"
+        >{text}</Button>
+    </Link>;
 
 
 const MediaRatio = ({ image, name }) =>

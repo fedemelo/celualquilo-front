@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import { useIntl } from "react-intl";
 import Grid from '@mui/material/Grid';
@@ -7,7 +8,6 @@ import Typography from '@mui/material/Typography';
 import { Stack } from '@mui/material';
 import Button from '@mui/material/Button';
 import { COLORS } from "../styles/colors";
-import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import FilterSection from './FiltersSection';
 import { useLocation } from 'react-router-dom';
@@ -72,9 +72,9 @@ export default function ProductsGrid({ titleText }) {
                 // TODO: Marca
 
                 const found = formattedName.includes(formattedSearchTerm) || formattedSearchTerm.includes(formattedName) ||
-                              formattedMemSpecs.includes(formattedSearchTerm)  || formattedSearchTerm.includes(formattedMemSpecs) ||
-                              formattedCamSpecs.includes(formattedSearchTerm)  || formattedSearchTerm.includes(formattedCamSpecs) ||
-                              formattedScreenSpecs.includes(formattedSearchTerm)  || formattedSearchTerm.includes(formattedScreenSpecs)
+                    formattedMemSpecs.includes(formattedSearchTerm) || formattedSearchTerm.includes(formattedMemSpecs) ||
+                    formattedCamSpecs.includes(formattedSearchTerm) || formattedSearchTerm.includes(formattedCamSpecs) ||
+                    formattedScreenSpecs.includes(formattedSearchTerm) || formattedSearchTerm.includes(formattedScreenSpecs)
 
                 return found;
             }
@@ -95,13 +95,13 @@ export default function ProductsGrid({ titleText }) {
                 <Grid container sx={{ marginTop: 'vw', justifyContent: 'center' }}>
                     {filteredPhoneList.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage).map((product, index) => (
                         <Grid item key={product.id} sx={{ marginBottom: '3vw', marginLeft: '3vw', marginRight: '3vw' }} alignItems="center">
-                            <Link to={"/products/" + product.id} style={{ textDecoration: 'none' }}>
-                                <PhoneCard
-                                    name={product.name}
-                                    image={product.image}
-                                    cost={product.pricePerDay}
-                                    rating={product.rating}
-                                /></Link>
+                            <PhoneCard
+                                name={product.name}
+                                image={product.image}
+                                cost={product.pricePerDay}
+                                rating={product.rating}
+                                phoneId={product.id}
+                            />
                         </Grid>
                     ))}
                 </Grid>

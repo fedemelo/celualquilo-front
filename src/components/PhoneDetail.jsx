@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useEffect } from 'react';
 import { FormattedMessage, useIntl } from "react-intl";
 import Card from '@mui/material/Card';
