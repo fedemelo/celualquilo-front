@@ -45,21 +45,21 @@ export default function RentHistory() {
     const exampleActiveRents = rents.filter((rent) => rent.isActive === true);
     const examplePastRents = rents.filter((rent) => rent.isActive === false);
 
+
     let activePhones = [];
     // Se dańa cuando no hay rentas activas
     for (let i = 0; i < exampleActiveRents.length; i++) {
-        const phone = JSON.parse(localStorage.getItem(`cel${exampleActiveRents[i].phone}`));
-        console.log(phone);
+        const phone = JSON.parse(localStorage.getItem(`cel${exampleActiveRents[i].phone.id}`));
         activePhones.push(phone);
     }
 
     let pastPhones = [];
     // Se dańa cuando no hay rentas pasadas
     for (let i = 0; i < examplePastRents.length; i++) {
-        const phone = JSON.parse(localStorage.getItem(`cel${examplePastRents[i].phone}`));
-        console.log(phone);
+        const phone = JSON.parse(localStorage.getItem(`cel${examplePastRents[i].phone.id}`));
         pastPhones.push(phone);
     }
+
 
 
     return (
@@ -99,7 +99,7 @@ const sectionStyle = {
 
 
 const PhonesRow = ({ phones, route, text }) => {
-    console.log(phones);
+
 
     return (
         <Grid container spacing={3} padding={2} >
@@ -108,7 +108,7 @@ const PhonesRow = ({ phones, route, text }) => {
                 if (phone) {
                     return (
                         <Grid item xs={12} sm={6} md={3} key={index}>
-                            <PhoneCardSimple route={`/products/${phone.id}/${route}`} buttonText={text} />
+                            <PhoneCardSimple {...phone} cost={`$ ${phone.pricePerDay} COP / día`} route={`/products/${phone.id}/${route}`} buttonText={text} />
                         </Grid>
                     );
                 } else {
