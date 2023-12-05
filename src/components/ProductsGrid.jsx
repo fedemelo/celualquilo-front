@@ -37,6 +37,10 @@ export default function ProductsGrid({ titleText }) {
     const intl = useIntl();
     const ProductsList_OurProducts = intl.formatMessage({ id: 'ProductsList_OurProducts' });
 
+    const ProductsList_LablelPopular = intl.formatMessage({ id: 'ProductsList_LablelPopular' });
+    const ProductsList_LablelLastGen = intl.formatMessage({ id: 'ProductsList_LablelLastGen' });
+    const ProductsList_LablelDiscount = intl.formatMessage({ id: 'ProductsList_LablelDiscount' });
+
     let titulo = ""
 
     if (titleText === "Nuestros Productos") {
@@ -46,8 +50,10 @@ export default function ProductsGrid({ titleText }) {
     }
 
 
-    const filteredNumberPhoneList = phoneListJson
+    const filteredPhoneList = phoneListJson
         .filter((product) => {
+            // Filter by price
+
             const precio = parseFloat(product.pricePerDay);
 
             const precioMin = filtros.PrecioMin ? parseFloat(filtros.PrecioMin) : Number.NEGATIVE_INFINITY;
@@ -55,32 +61,59 @@ export default function ProductsGrid({ titleText }) {
             const marcas = filtros.Marcas;
             const marca = Object.values(marcas).every((value) => !value) || marcas[product.brand.toLowerCase()];
             return precio >= precioMin && precio <= precioMax && marca;
-        });
+        }).filter((product) => {
 
-    const filteredPhoneList = filteredNumberPhoneList
-        .filter((product) => {
+            // Filter by searchbar
+
+            if (searchTerm == "")
+                return true;
+
 
             const format = (str) => str.replace(/\s/g, '').toLowerCase();
 
-            if (format(searchTerm)) {
+            const formattedSearchTerm = format(searchTerm)
+            const formattedName = format(product.name)
+            const formattedMemSpecs = format(product.memorySpecs)
+            const formattedCamSpecs = format(product.cameraSpecs)
+            const formattedScreenSpecs = format(product.screenSpecs)
 
-                const formattedSearchTerm = format(searchTerm)
-                const formattedName = format(product.name)
-                const formattedMemSpecs = format(product.memorySpecs)
-                const formattedCamSpecs = format(product.cameraSpecs)
-                const formattedScreenSpecs = format(product.screenSpecs)
-                // TODO: Marca
+            const found = formattedName.includes(formattedSearchTerm) || formattedSearchTerm.includes(formattedName) ||
+                formattedMemSpecs.includes(formattedSearchTerm) || formattedSearchTerm.includes(formattedMemSpecs) ||
+                formattedCamSpecs.includes(formattedSearchTerm) || formattedSearchTerm.includes(formattedCamSpecs) ||
+                formattedScreenSpecs.includes(formattedSearchTerm) || formattedSearchTerm.includes(formattedScreenSpecs)
 
-                const found = formattedName.includes(formattedSearchTerm) || formattedSearchTerm.includes(formattedName) ||
-                    formattedMemSpecs.includes(formattedSearchTerm) || formattedSearchTerm.includes(formattedMemSpecs) ||
-                    formattedCamSpecs.includes(formattedSearchTerm) || formattedSearchTerm.includes(formattedCamSpecs) ||
-                    formattedScreenSpecs.includes(formattedSearchTerm) || formattedSearchTerm.includes(formattedScreenSpecs)
+            return found;
+        }).filter((product) => {
 
-                return found;
+            // Filter by buttons
+
+            if (selectedButton == "")
+                return true;
+            if (selectedButton == ProductsList_LablelPopular) {
+                return product.rating >= 4.5;
+            } else if (selectedButton == ProductsList_LablelLastGen) {
+                return product.isLastGeneration;
+            } else if (selectedButton == ProductsList_LablelDiscount) {
+                return product.isOnSale;
+            } else {
+                return true;
             }
 
-            return true
+        }).filter((product) => {
+            const format = (str) => str.replace(/\s/g, '').toLowerCase();
+            const formatedBrand = format(titleText)
+
+            if (formatedBrand == "iphone" || formatedBrand == "samsung" || formatedBrand == "huawei" || formatedBrand == "xiaomi") {
+
+                const formattedName = format(product.name)
+                const formatedBrand = format(titleText)
+
+                return formatedBrand.includes(formattedName) || formattedName.includes(formatedBrand)
+            }
+
+            return true;
         });
+
 
     return (
         <Stack marginBottom={7}>
@@ -90,7 +123,7 @@ export default function ProductsGrid({ titleText }) {
                     <FilterButtons selectedButton={selectedButton} handleButtonClick={setSelectedButton} />
                 </Grid>
             </Grid>
-            {titleText === "Nuestros Productos" && <FilterSection filtros={filtros} setFiltros={setFiltros} />}
+            <FilterSection filtros={filtros} setFiltros={setFiltros} />
             <div style={{ alignItems: 'center', justifyContent: 'center' }}>
                 <Grid container sx={{ marginTop: 'vw', justifyContent: 'center' }}>
                     {filteredPhoneList.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage).map((product, index) => (

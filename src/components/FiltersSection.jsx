@@ -18,7 +18,7 @@ function FilterSection({ filtros, setFiltros }) {
         } else if (name === 'PrecioMax') {
             setFiltros({ ...filtros, PrecioMax: value });
         } else {
-            setFiltros({ ...filtros, Marcas: { ...filtros.Marcas, [name]: checked } });
+            window.location.href=`/${name == 'apple'? 'iphone': name}`
         }
 
     };
