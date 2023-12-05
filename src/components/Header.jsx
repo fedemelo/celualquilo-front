@@ -4,15 +4,14 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import logoCeluAlquilo from '../assets/logoCeluAlquilo.png';
-import SearchIcon from '@mui/icons-material/Search';
 import Button from '@mui/material/Button';
 import { COLORS } from '../styles/colors';
-import { Container, InputAdornment, TextField } from "@mui/material";
 import '../styles/header.css';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import HamburgerMenu from './HamburguerMenu';
 import { Nav } from 'react-bootstrap';
+import { SearchBar } from './SearchBar';
 
 
 export default function Header() {
@@ -107,38 +106,7 @@ const Marcas = () =>
         </Nav.Link>
     </div>
 
-
-
-
-const SearchBar = ({text}) =>
-    <Container
-        maxWidth="md"
-        sx={{
-            display: 'flex',
-            width: '80%',
-        }}
-    >
-        <TextField
-            type="search"
-            defaultValue={text + "..."}
-            size='small'
-            sx={{
-                width: '100%',
-                color: "#495057",
-            }}
-            // value={searchTerm}
-            // onChange={handleChange}
-            InputProps={{
-                startAdornment: (
-                    <InputAdornment position="start">
-                        <SearchIcon style={{ color: '#1B1D1F' }} />
-                    </InputAdornment>
-                ),
-            }}
-        />
-    </Container>
-
-const LoginButton = ({ text, link}) => {
+const LoginButton = ({ text, link }) => {
 
     return (
 

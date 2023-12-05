@@ -21,7 +21,6 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 
 
-
 const brands = [
     {
         name: "Samsung",
