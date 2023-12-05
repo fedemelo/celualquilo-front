@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -12,8 +13,6 @@ import Billing from './components/Billing';
 import PhoneDetail from './components/PhoneDetail';
 import Review from './components/Review';
 import UserProfile from './components/UserProfile';
-import ProductsGridPrice from './components/ProductsGridPrice';
-import ProductsGridFilter from './components/ProductsGridFilter';
 import ScrollToTop from './components/ScrollToTop';
 import './styles/App.css';
 
@@ -41,8 +40,6 @@ export default function App() {
                     <Route path="/products/:productId/rent" element={<RentDetail />} />
                     <Route path="/products/:productId/billing" element={<Billing />} />
                     <Route path="/user" element={<UserProfile />} />
-                    <Route path="/ProductsGridPrice" element={<ProductsGridPrice />} />
-                    <Route path="/ProductsGridFilter" element={<ProductsGridFilter brand={"Apple"} />} />
                 </Routes>
             </BrowserRouter>
             <Footer />

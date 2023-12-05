@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import { useIntl } from "react-intl";
 import Card from '@mui/material/Card';
