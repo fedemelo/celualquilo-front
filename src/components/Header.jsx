@@ -24,6 +24,7 @@ export default function Header() {
     const search = intl.formatMessage({ id: 'Header_Search' });
     const ingresar = intl.formatMessage({ id: 'Header_LogIn' });
     const text = localStorage.getItem("accUserName") ? localStorage.getItem("accUserName").split(' ')[0] : ingresar;
+    const link = localStorage.getItem("accUserName") ? `/user` : `/Register`;
 
 
     return (
@@ -34,7 +35,7 @@ export default function Header() {
                         <HamburgerMenu />}
                     <LogoCeluAlquilo />
                     {!onlySmallScreen && <SearchBar text={search} />}
-                    <LoginButton text={text} />
+                    <LoginButton text={text} link={link} />
                 </Toolbar>
                 {!onlySmallScreen && <Toolbar sx={secondRowStyle}>
                     <Marcas />
@@ -137,11 +138,11 @@ const SearchBar = ({text}) =>
         />
     </Container>
 
-const LoginButton = ({ text }) => {
+const LoginButton = ({ text, link}) => {
 
     return (
 
-        <Nav.Link style={{ textDecoration: 'none' }} href='/Register'>
+        <Nav.Link style={{ textDecoration: 'none' }} href={link}>
             <Button
                 style={{
                     borderRadius: 20,

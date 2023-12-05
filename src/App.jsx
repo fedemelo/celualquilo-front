@@ -40,7 +40,7 @@ export default function App() {
                     <Route path="/products/:productId/review" element={<Review />} />
                     <Route path="/products/:productId/rent" element={<RentDetail />} />
                     <Route path="/products/:productId/billing" element={<Billing />} />
-                    <Route path="/user" element={<UserProfile name="juan" email="juan@gmail.com" />} />
+                    <Route path="/user" element={<UserProfile />} />
                     <Route path="/ProductsGridPrice" element={<ProductsGridPrice />} />
                     <Route path="/ProductsGridFilter" element={<ProductsGridFilter brand={"Apple"} />} />
                 </Routes>
