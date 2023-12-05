@@ -8,7 +8,7 @@ export default function HoverRating({ setRevrating }) {
 
     const intl = useIntl();
 
-    const [value, setValue] = React.useState(4.5);
+    const [value, setValue] = React.useState(4);
     const [hover, setHover] = React.useState(-1);
 
     const labels = {
@@ -28,7 +28,7 @@ export default function HoverRating({ setRevrating }) {
         <Box sx={boxStyle}>
             <Rating
                 value={value}
-                precision={0.5}
+                precision={1}
                 size="large"
                 getLabelText={(value) => `${value} Estrella${value !== 1 ? 's' : ''}, ${labels[value]}`}
                 onChange={(event, newValue) => {
