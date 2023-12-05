@@ -85,7 +85,7 @@ export default function MainPage() {
 
     async function getDatos() {
         const token = await getToken();
-
+        localStorage.setItem("token", token);
         const response = await fetch("http://localhost:3000/api/v1/phones", {
             method: "GET",
             headers: {
