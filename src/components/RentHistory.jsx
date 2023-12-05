@@ -5,98 +5,9 @@ import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import PhoneCardSimple from './PhoneCardSimple';
-import examplePhone1 from '../assets/phones/iPhone14Pro.png';
-import examplePhone2 from '../assets/phones/HuaweiNovaY71.png';
-import examplePhone3 from '../assets/phones/SamsungGalaxyS22.png';
-import examplePhone4 from '../assets/phones/OPPOReno7.png';
-import examplePhone5 from '../assets/phones/SamsungA22.png';
-import examplePhone6 from '../assets/phones/HuaweiMate50.png';
-import examplePhone7 from '../assets/phones/iPhone13.png';
-import examplePhone8 from '../assets/phones/HuaweiP60.png';
-import examplePhone9 from '../assets/phones/HuaweiNovaY90.png';
 import Breadcrumb from './BreadCrumb';
-
-
-const exampleActiveRents = [
-    {
-        id: localStorage.getItem("currentCel"),
-        name: "iPhone 12 Pro",
-        days: "5 días de alquiler",
-        image: examplePhone1,
-        cost: "$ 10 000 COP / día",
-        buttonText: "Alquilar",
-    },
-    {
-        id: localStorage.getItem("currentCel"),
-        name: "Huawei Nova Y71",
-        days: "2 días de alquiler",
-        image: examplePhone2,
-        cost: "$ 7 000 COP / día",
-        buttonText: "Alquilar",
-    },
-    {
-        id: localStorage.getItem("currentCel"),
-        name: "Samsung Galaxy S22",
-        days: "1 día de alquiler",
-        image: examplePhone3,
-        cost: "$ 15 000 COP / día",
-        buttonText: "Alquilar",
-    },
-    {
-        id: localStorage.getItem("currentCel"),
-        name: "iPhone 13",
-        image: examplePhone4,
-        cost: "$ 10 000 COP / día",
-        buttonText: "Alquilar",
-    },
-]
-
-
-const examplePastRents = [
-    {
-        id: localStorage.getItem("currentCel"),
-        name: "OPPO Reno 7",
-        image: examplePhone4,
-        cost: "$ 10 000 COP / día",
-        buttonText: "Escribir Reseña",
-    },
-    {
-        id: localStorage.getItem("currentCel"),
-        name: "Samsung A22",
-        image: examplePhone5,
-        cost: "$ 7 000 COP / día",
-        buttonText: "Escribir Reseña",
-    },
-    {
-        id: localStorage.getItem("currentCel"),
-        name: "Huawei Mate 50",
-        image: examplePhone6,
-        cost: "$ 15 000 COP / día",
-        buttonText: "Escribir Reseña",
-    },
-    {
-        id: localStorage.getItem("currentCel"),
-        name: "iPhone 13",
-        image: examplePhone7,
-        cost: "$ 10 000 COP / día",
-        buttonText: "Escribir Reseña",
-    },
-    {
-        id: localStorage.getItem("currentCel"),
-        name: "Huawei P60",
-        image: examplePhone8,
-        cost: "$ 7 000 COP / día",
-        buttonText: "Escribir Reseña",
-    },
-    {
-        id: localStorage.getItem("currentCel"),
-        name: "Huawei Nova Y90",
-        image: examplePhone9,
-        cost: "$ 15 000 COP / día",
-        buttonText: "Escribir Reseña",
-    }
-
-]
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 
 export default function RentHistory() {
@@ -107,6 +18,32 @@ export default function RentHistory() {
     const active = intl.formatMessage({ id: "RentHistory_ActiveRent" })
     const renew = intl.formatMessage({ id: "RentHistory_RenewButton" })
     const write = intl.formatMessage({ id: "RentHistory_WriteButton" })
+    const [rents, setRents] = useState([]);
+
+    async function getRents() {
+        const response = await fetch(`http://localhost:3000/api/v1/users/${localStorage.getItem("accUserId")}/rents`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + localStorage.getItem("token")
+            },
+        });
+        const data = await response.json();
+        setRents(data);
+        return data;
+    }
+
+    useEffect(() => {
+        async function fetchData() {
+            const data = await getRents();
+            setRents(data);
+        }
+        fetchData();
+    }, []);
+
+    console.log(rents);
+    const exampleActiveRents = rents.filter((rent) => rent.isActive === true);
+    const examplePastRents = rents.filter((rent) => rent.isActive === false);
 
     return (
         <>
