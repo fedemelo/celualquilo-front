@@ -57,7 +57,7 @@ export default function MainPage() {
                 localStorage.setItem(`cel${cellphone.id}`, JSON.stringify(cellphone));
             });
         }
-        if (localStorage.getItem('phoneList')) {
+        if (localStorage.getItem('phoneList') && localStorage.getItem('phoneList').length > 0) {
             setPhoneListJson(JSON.parse(localStorage.getItem('phoneList')));
         }
         else {
