@@ -57,12 +57,6 @@ export default function PhoneCard({ name, image, cost, rating, phoneId }) {
                                 {rating}
                             </Typography>
                         </Grid>
-                        <Grid item xs={1} sx={{ verticalAlign: "middle" }}>
-                            <StarIcon
-                                sx={{ color: '#9E30FF', fontSize: '1.2rem', marginLeft: "0.4vw", marginTop: "0.2vw" }}
-                                fontSize="small"
-                            />
-                        </Grid>
                     </Grid>
                 </Box>
 
