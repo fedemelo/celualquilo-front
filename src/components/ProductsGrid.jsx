@@ -8,10 +8,21 @@ import { Stack } from '@mui/material';
 import Button from '@mui/material/Button';
 import { COLORS } from "../styles/colors";
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import FilterSection from './FiltersSection';
+import { useLocation } from 'react-router-dom';
+
 
 export default function ProductsGrid({ titleText }) {
+
+    const location = useLocation();
+    const [searchTerm, setSearchTerm] = useState('');
+
+    useEffect(() => {
+        const searchParams = new URLSearchParams(location.search);
+        const queryTerm = searchParams.get('search');
+        setSearchTerm(queryTerm || '');
+    }, [location.search]);
 
     const phoneList = localStorage.getItem('phoneList');
     const phoneListJson = JSON.parse(phoneList);
@@ -35,7 +46,7 @@ export default function ProductsGrid({ titleText }) {
     }
 
 
-    const filteredPhoneList = phoneListJson
+    const filteredNumberPhoneList = phoneListJson
         .filter((product) => {
             const precio = parseFloat(product.pricePerDay);
 
@@ -44,6 +55,31 @@ export default function ProductsGrid({ titleText }) {
             const marcas = filtros.Marcas;
             const marca = Object.values(marcas).every((value) => !value) || marcas[product.brand.toLowerCase()];
             return precio >= precioMin && precio <= precioMax && marca;
+        });
+
+    const filteredPhoneList = filteredNumberPhoneList
+        .filter((product) => {
+
+            const format = (str) => str.replace(/\s/g, '').toLowerCase();
+
+            if (format(searchTerm)) {
+
+                const formattedSearchTerm = format(searchTerm)
+                const formattedName = format(product.name)
+                const formattedMemSpecs = format(product.memorySpecs)
+                const formattedCamSpecs = format(product.cameraSpecs)
+                const formattedScreenSpecs = format(product.screenSpecs)
+                // TODO: Marca
+
+                const found = formattedName.includes(formattedSearchTerm) || formattedSearchTerm.includes(formattedName) ||
+                              formattedMemSpecs.includes(formattedSearchTerm)  || formattedSearchTerm.includes(formattedMemSpecs) ||
+                              formattedCamSpecs.includes(formattedSearchTerm)  || formattedSearchTerm.includes(formattedCamSpecs) ||
+                              formattedScreenSpecs.includes(formattedSearchTerm)  || formattedSearchTerm.includes(formattedScreenSpecs)
+
+                return found;
+            }
+
+            return true
         });
 
     return (
