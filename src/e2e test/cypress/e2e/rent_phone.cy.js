@@ -3,6 +3,16 @@ describe('Testing CeluAlquilo', () => {
   beforeEach(() => {
     cy.visit('http://localhost:3001')
     cy.wait(1000)
+    cy.contains('CeluAlquilo')
+    cy.contains('Ingresar').click();
+    cy.get('[data-testid="name"]').type('Santiago Martínez');
+    cy.get('[data-testid="email"]').type('alejo@gmail.com');
+    cy.get('[data-testid="password"]').type('12345678aA#');
+    cy.get('[data-testid="verifyPassword"]').type('12345678aA#');
+    cy.contains('Crear cuenta').click();
+    cy.wait(1000);
+    cy.xpath('/html/body/div[1]/div/div[1]/header/div[1]/div[1]/a').click()
+    cy.wait(1000);
   })
   //Se comprueban HU3 -HU4 - HU5 - HU6
   it('Prueba alquiler exitoso', () => {
