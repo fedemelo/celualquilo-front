@@ -36,6 +36,7 @@ export default function Review() {
     const intl = useIntl();
     const title = intl.formatMessage({ id: 'Review_Title' });
     const stock = intl.formatMessage({ id: 'PhoneDetail_LablelStock' });
+    const reviewPublished = intl.formatMessage({ id: 'ReviewPublished' });
 
     const [Revrating, setRating] = React.useState(4.5);
     const [Revtext, setRevText] = React.useState("");
@@ -86,7 +87,7 @@ export default function Review() {
         });
 
         setRevText("");
-        alert("Review posted successfully");
+        alert(reviewPublished);
 
     }
 
