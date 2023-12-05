@@ -252,25 +252,35 @@ const BillingAddress = ({ direccion, ciudad, numeroContacto, error1, error2, noN
 }
 
 
-let value = "Efectivo"
-const PayingMethod = ({ efectivo, tarjeta }) => <Card sx={cardStyle}>
-    <Box display={"flex"} flexDirection={"column"} gap="30px">
-        <Typography variant='h4' textAlign={'left'}>
+const PayingMethod = ({ efectivo, tarjeta }) => {
+    const [value, setValue] = useState('Efectivo');
+  
+    const handleChange = (event) => {
+      setValue(event.target.value);
+    };
+  
+    return (
+      <Card sx={cardStyle}>
+        <Box display={"flex"} flexDirection={"column"} gap="30px">
+          <Typography variant='h4' textAlign={'left'}>
             <FormattedMessage id="Billing_PayMethod_Title" />
-        </Typography>
-        <Box display={"flex"} gap="10px">
+          </Typography>
+          <Box display={"flex"} gap="10px">
             <FormControl>
-                <RadioGroup
-                    aria-labelledby="demo-controlled-radio-buttons-group"
-                    name="controlled-radio-buttons-group"
-                    value={value}
-                >
-                    <FormControlLabel value="Efectivo" control={<Radio />} label={efectivo} />
-                    <FormControlLabel value="Tarjeta" control={<Radio />} label={tarjeta} />
-                </RadioGroup>
+              <RadioGroup
+                aria-labelledby="demo-controlled-radio-buttons-group"
+                name="controlled-radio-buttons-group"
+                value={value}
+                onChange={handleChange}
+              >
+                <FormControlLabel value="Efectivo" control={<Radio />} label={efectivo} />
+                <FormControlLabel value="Tarjeta" control={<Radio />} label={tarjeta} />
+              </RadioGroup>
             </FormControl>
+          </Box>
         </Box>
-    </Box>
-</Card>
+      </Card>
+    );
+  };
 
 
