@@ -49,6 +49,28 @@ export default function SignInSide() {
     };
 
     const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+    
+    async function getDatos() {
+
+        const response = fetch(`http://localhost:3000/api/v1/users/bypassword/${formValues.email}/${formValues.password}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${localStorage.getItem('token')}`
+                }
+            }
+        )
+        const data = await (await response).json();
+        console.log(data);
+        localStorage.setItem("accUserId", data.id);
+        localStorage.setItem("accUserName", data.name);
+        window.location.href = "/user";
+    }
+
+
+    const logIn = () => {
+        getDatos();
+    }
 
     React.useEffect(() => {
         if (getProblemInEmail() === "" && getProblemInPassword() === "" && formValues.email !== "" && formValues.password !== "") {
@@ -246,7 +268,7 @@ export default function SignInSide() {
                                     {LogIn_LogInButtonText}
                                 </Button>
                             ) : (
-                                <Link href="/user">
+                                
                                     <Button
                                         fullWidth
                                         variant="contained"
@@ -259,10 +281,11 @@ export default function SignInSide() {
                                             fontWeight: 'bold',
                                         }}
                                         data-testid="submitButton"
+                                        onClick={logIn}
                                     >
                                         {LogIn_LogInButtonText}
                                     </Button>
-                                </Link>
+                                
                             )}
                             <Grid container sx={{ justifyContent: 'space-around', alignItems: 'center' }}>
                                 <Grid item>
