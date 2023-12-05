@@ -87,13 +87,13 @@ export default function ProductsGrid({ titleText }) {
 
             // Filter by buttons
 
-            if (selectedButton == "")
+            if (selectedButton == "" || selectedButton == "Todos")
                 return true;
-            if (selectedButton == ProductsList_LablelPopular) {
+            if (selectedButton == "Populares") {
                 return product.rating >= 4.5;
-            } else if (selectedButton == ProductsList_LablelLastGen) {
+            } else if (selectedButton == "Última Generación") {
                 return product.isLastGeneration;
-            } else if (selectedButton == ProductsList_LablelDiscount) {
+            } else if (selectedButton == "En Descuento") {
                 return product.isOnSale;
             } else {
                 return true;
