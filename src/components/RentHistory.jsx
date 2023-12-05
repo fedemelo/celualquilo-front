@@ -19,6 +19,7 @@ import Breadcrumb from './BreadCrumb';
 
 const exampleActiveRents = [
     {
+        id: localStorage.getItem("currentCel"),
         name: "iPhone 12 Pro",
         days: "5 días de alquiler",
         image: examplePhone1,
@@ -26,6 +27,7 @@ const exampleActiveRents = [
         buttonText: "Alquilar",
     },
     {
+        id: localStorage.getItem("currentCel"),
         name: "Huawei Nova Y71",
         days: "2 días de alquiler",
         image: examplePhone2,
@@ -33,6 +35,7 @@ const exampleActiveRents = [
         buttonText: "Alquilar",
     },
     {
+        id: localStorage.getItem("currentCel"),
         name: "Samsung Galaxy S22",
         days: "1 día de alquiler",
         image: examplePhone3,
@@ -40,6 +43,7 @@ const exampleActiveRents = [
         buttonText: "Alquilar",
     },
     {
+        id: localStorage.getItem("currentCel"),
         name: "iPhone 13",
         image: examplePhone4,
         cost: "$ 10 000 COP / día",
@@ -116,11 +120,11 @@ export default function RentHistory() {
                 </style>
                 <Card sx={sectionStyle}>
                     <SectionTitle text={active} />
-                    <PhonesRow phones={exampleActiveRents} route={`/products/${1}/rent`} text={renew}/>
+                    <PhonesRow phones={exampleActiveRents} route='rent' text={renew}/>
                 </Card>
                 <Card sx={sectionStyle}>
                     <SectionTitle text={title} />
-                    <PhonesRow phones={examplePastRents} text={write}/>
+                    <PhonesRow phones={examplePastRents} route='review' text={write}/>
                 </Card>
             </Stack>
         </>
@@ -140,12 +144,12 @@ const sectionStyle = {
 }
 
 
-const PhonesRow = ({ phones, text }) => {
+const PhonesRow = ({ phones, route, text }) => {
     return (
         <Grid container spacing={3} padding={2} >
             {phones.map((phone, index) => (
                 <Grid item xs={12} sm={6} md={3} key={index}>
-                    <PhoneCardSimple {...phone} route={`/products/${phone.id}/review`} buttonText={text} />
+                    <PhoneCardSimple {...phone} route={`/products/${phone.id}/${route}`} buttonText={text} />
                 </Grid>
             ))}
         </Grid>

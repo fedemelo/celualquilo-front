@@ -27,6 +27,7 @@ import Stack from '@mui/material/Stack';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import GoBack from './GoBack';
+import { useState } from 'react';
 
 
 const exampleBrand = "Apple"
@@ -41,6 +42,7 @@ const exampleSpecs = [
 ]
 
 
+
 export default function Review() {
     const theme = useTheme();
     const oss = useMediaQuery(theme.breakpoints.down("sm"));
@@ -48,14 +50,16 @@ export default function Review() {
     const intl = useIntl();
     const title = intl.formatMessage({ id: 'Review_Title' });
     const stock = intl.formatMessage({ id: 'PhoneDetail_LablelStock' });
+    const [rating, setRating] = useState(5);
+    const [text, setText] = useState("Reseña"); 
 
-    async function postReview(rating, text) {
+    async function postReview() {
         const idCel = localStorage.getItem("currentCel");
         const response = await fetch(`http://localhost:3000/api/v1/reviews`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": "Bearer " + localStorage.getItem("token")
+
             },
             body: JSON.stringify({
                 rating: rating,
@@ -65,7 +69,6 @@ export default function Review() {
         const data = await response.json();
         const idReview = data.id;
     }
-
 
     return (
         <>
@@ -105,7 +108,7 @@ export default function Review() {
                     </Grid>
 
                     <CardContent>
-                        <CommentArea />
+                        <CommentArea postReview/>
                     </CardContent>
                 </Card>
             </Stack>
@@ -151,7 +154,7 @@ const SpecList = ({ specs }) => {
 }
 
 
-const PublishReviewButton = ({ text }) => {
+const PublishReviewButton = ({ text }, postReview) => {
     return <Button
         style={{
             borderRadius: 20,
@@ -162,11 +165,12 @@ const PublishReviewButton = ({ text }) => {
             color: "white",
         }}
         variant="contained"
+        onClick={postReview}
     >{text}</Button>;
 }
 
 
-const CommentArea = () => {
+const CommentArea = (postReview) => {
     const [fontWeight, setFontWeight] = React.useState('normal');
     const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -237,7 +241,7 @@ const CommentArea = () => {
                                     </MenuItem>
                                 ))}
                             </Menu>
-                            <PublishReviewButton text={btt} />
+                            <PublishReviewButton text={btt} postReview={postReview} />
                         </Box>
                     }
                     sx={{
