@@ -30,20 +30,36 @@ export default function RentHistory() {
         });
         const data = await response.json();
         setRents(data);
-        return data;
     }
 
     useEffect(() => {
         async function fetchData() {
-            const data = await getRents();
-            setRents(data);
+            if (localStorage.getItem("accUserId")) {
+                await getRents();
+            }
         }
         fetchData();
     }, []);
-
-    console.log(rents);
+    
+    // Se daña cuando no hay rentas asociadas
     const exampleActiveRents = rents.filter((rent) => rent.isActive === true);
     const examplePastRents = rents.filter((rent) => rent.isActive === false);
+
+    let activePhones = [];
+    // Se dańa cuando no hay rentas activas
+    for (let i = 0; i < exampleActiveRents.length; i++) {
+        const phone = JSON.parse(localStorage.getItem(`cel${exampleActiveRents[i].phone}`));
+        console.log(phone);
+        activePhones.push(phone);
+    }
+
+    let pastPhones = [];
+    // Se dańa cuando no hay rentas pasadas
+    for (let i = 0; i < examplePastRents.length; i++) {
+        const phone = JSON.parse(localStorage.getItem(`cel${examplePastRents[i].phone}`));
+        console.log(phone);
+        pastPhones.push(phone);
+    }
 
     return (
         <>
@@ -57,11 +73,11 @@ export default function RentHistory() {
                 </style>
                 <Card sx={sectionStyle}>
                     <SectionTitle text={active} />
-                    <PhonesRow phones={exampleActiveRents} route='rent' text={renew}/>
+                    <PhonesRow phones={activePhones} route='rent' text={renew}/>
                 </Card>
                 <Card sx={sectionStyle}>
                     <SectionTitle text={title} />
-                    <PhonesRow phones={examplePastRents} route='review' text={write}/>
+                    <PhonesRow phones={pastPhones} route='review' text={write}/>
                 </Card>
             </Stack>
         </>
@@ -82,11 +98,12 @@ const sectionStyle = {
 
 
 const PhonesRow = ({ phones, route, text }) => {
+    console.log(phones);
     return (
         <Grid container spacing={3} padding={2} >
             {phones.map((phone, index) => (
                 <Grid item xs={12} sm={6} md={3} key={index}>
-                    <PhoneCardSimple {...phone} route={`/products/${phone.id}/${route}`} buttonText={text} />
+                    <PhoneCardSimple route={`/products/${phone.id}/${route}`} buttonText={text} />
                 </Grid>
             ))}
         </Grid>
