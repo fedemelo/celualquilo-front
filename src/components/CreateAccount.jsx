@@ -46,12 +46,14 @@ export default function CreateAccountSide() {
     const [isButtonDisabled, setIsButtonDisabled] = useState(true);
 
     useEffect(() => {
-        if (getProblemInName() === "" && getProblemInEmail() === "" && getProblemInPassword() === "" && getProblemInVerifyPassword() === "" && formValues.name !== "" && formValues.email !== "" && formValues.password !== "" && formValues.verifyPassword !== "") {
+        if (getProblemInName() === "" && getProblemInEmail() === "" && getProblemInPassword() === "" && getProblemInVerifyPassword() === "" && formValues.name !== "" && formValues.email !== "" && formValues.password !== "" && formValues.verifyPassword !== "" && formValues.password === formValues.verifyPassword) {
             setIsButtonDisabled(false);
         } else {
             setIsButtonDisabled(true);
         }
     }, [formValues.name, formValues.email, formValues.password, formValues.verifyPassword])
+
+
     const postUser = async () => {
 
         if (clickedField.name && clickedField.email && clickedField.password && clickedField.verifyPassword) {
@@ -332,15 +334,17 @@ export default function CreateAccountSide() {
                                 </Typography>
 
                             </Grid>
-                            <Link href="/user">
+
                                 <Button
                                     fullWidth
                                     variant="contained"
+                                    disabled={isButtonDisabled}
+                                    onClick={postUser}
                                     sx={{ mt: 3, mb: 2, backgroundColor: '#9E30FF', color: '#FFFFFF', fontFamily: 'Open Sans', fontWeight: 'bold' }}
                                 >
                                     {Register_CreateAccButton}
                                 </Button>
-                            </Link>
+
                             <Grid container sx={{ justifyContent: 'space-around', alignItems: 'center' }}>
                                 <Grid item>
                                     {Register_LogInQuestionText}
