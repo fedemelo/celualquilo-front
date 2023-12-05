@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FormattedMessage, useIntl } from "react-intl";
 import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
@@ -17,6 +17,8 @@ export default function Billing() {
     const idCel = params.productId;
     const phone = localStorage.getItem("cel" + idCel);
     let phoneJson = JSON.parse(phone);
+
+    const [isButtonDisabled, setIsButtonDisabled] = useState(true);
 
 
     if (phoneJson === null) {
@@ -68,13 +70,18 @@ export default function Billing() {
                         eights={intl.formatMessage({ id: "eights" })}
                         nines={intl.formatMessage({ id: "nines" })}
                         tenDigits={intl.formatMessage({ id: "TheContactNumberMustContain10Digits" })}
-
+                        isDisabledFunction={setIsButtonDisabled}
                     />
                     <PayingMethod efectivo={intl.formatMessage({ id: "Billing_PayMethod_Cash" })} tarjeta={intl.formatMessage({ id: "Billing_PayMethod_Card" })} />
                 </Grid>
                 <Grid item xs={12} sm={6}>
                     <PriceDetails dias={dias} price_per_day={phonePrice} />
-                    <RentButton text={intl.formatMessage({ id: "Billing_PriceInfo_Finish" })} />
+                    {isButtonDisabled ? (
+                        <RentButton text={intl.formatMessage({ id: "Billing_PriceInfo_Finish" })} isDisabled={true} />
+                    ) : (
+                        <Link to={"/RentHistory"}>
+                            <RentButton text={intl.formatMessage({ id: "Billing_PriceInfo_Finish" })} />
+                        </Link>)}
                 </Grid>
             </Grid>
         </>
@@ -98,33 +105,39 @@ const cardStyle = {
 }
 
 
-const RentButton = ({ text }) => {
+const RentButton = ({ text, isDisabled }) => {
 
     return (
         <>
-            <Link to={"/RentHistory"}>
-                < Button
-                    style={{
-                        borderRadius: 20,
-                        padding: "5px 20px",
-                        backgroundColor: COLORS.primary,
-                        fontSize: "25px",
-                        textTransform: "none",
-                        width: "100%",
-                    }
-                    }
-                    
-                    variant="contained"
-                > {text}</Button >
-            </Link>
+            < Button
+                style={{
+                    borderRadius: 20,
+                    padding: "5px 20px",
+                    backgroundColor: isDisabled ? '#CAB1E0' : COLORS.primary,
+                    fontSize: "25px",
+                    textTransform: "none",
+                    width: "100%",
+                }
+                }
+
+                variant="contained"
+            > {text}</Button >
         </>
     )
 }
 
-const BillingAddress = ({ direccion, ciudad, numeroContacto, error1, error2, noNumbers, moreThanOneLetter, error3, zeros, ones, twos, threes, fours, fives, six, sevens, eights, nines, tenDigits }) => {
+const BillingAddress = ({ direccion, ciudad, numeroContacto, error1, error2, noNumbers, moreThanOneLetter, error3, zeros, ones, twos, threes, fours, fives, six, sevens, eights, nines, tenDigits, isDisabledFunction }) => {
 
     const [formValues, setFormValues] = useState({ address: "", city: "", number: "0" })
     const [clickedFields, setClickedFields] = useState({ address: false, city: false, number: false })
+
+    useEffect(() => {
+        if (getProblemInAddress() == null && getProblemInCity() == null && getProblemInNumber() == null && formValues.number !== "0" && formValues.address !== "" && formValues.city !== "") {
+            isDisabledFunction(false)
+        } else {
+            isDisabledFunction(true)
+        }
+    }, [formValues, clickedFields]);
 
 
     const getProblemInAddress = (e1) => {
@@ -155,8 +168,6 @@ const BillingAddress = ({ direccion, ciudad, numeroContacto, error1, error2, noN
             if (!/^\d+[a-zA-Z]*-\d+$/.test(hyphenPart)) return "La parte después del '#' debe estar en el formato número, guión, número (ejemplo: 197-65)."
         }
 
-        // If none of the conditions above are met, the address is valid
-        return null;
     };
 
 
@@ -171,6 +182,7 @@ const BillingAddress = ({ direccion, ciudad, numeroContacto, error1, error2, noN
         if (/\d/.test(city)) return noNumbers
 
         if (city.length < 2) return moreThanOneLetter
+
     }
 
 
@@ -182,8 +194,6 @@ const BillingAddress = ({ direccion, ciudad, numeroContacto, error1, error2, noN
         if (String(number).length === 0) return error3
 
         if (!/^\d{10}$/.test(number)) return tenDigits
-
-        return null;
 
     }
 
