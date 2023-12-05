@@ -128,7 +128,7 @@ const PhoneResume = ({ dias, setDias, phoneName, phonePrice, phoneImg, label, er
     return (<Card sx={cardStyle} >
         <Box display={"flex"} justifyContent="center">
             <Box display={"flex"} justifyItems="center" padding="1rem">
-                <img src={phoneImg} alt={phoneName} style={{ maxWidth: '130%' }} />
+                <img src={phoneImg} alt={phoneName} style={{ maxWidth: '100%' }} />
             </Box>
             <Box display={"flex"} flexDirection={"column"} gap="15px" justifyContent="center" padding="2rem">
                 <Typography variant='h4' textAlign={'left'}> {phoneName} </Typography>

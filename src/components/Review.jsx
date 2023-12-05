@@ -16,7 +16,6 @@ import ListItemDecorator from '@mui/joy/ListItemDecorator';
 import FormatBold from '@mui/icons-material/FormatBold';
 import KeyboardArrowDown from '@mui/icons-material/KeyboardArrowDown';
 import Check from '@mui/icons-material/Check';
-import examplePhone from '../assets/phones/iPhone14Pro.png';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import ListItem from '@mui/material/ListItem';
@@ -30,20 +29,6 @@ import GoBack from './GoBack';
 import { useParams } from 'react-router-dom';
 
 
-
-const exampleBrand = "Apple"
-const exampleAvailability = "10"
-
-const exampleName = "iPhone 14 Pro"
-
-const exampleSpecs = [
-    "Brillo máximo de 800 nits (normal); brillo máximo de 1.200 nits (HDR)",
-    "Resistencia a las salpicaduras, el agua y el polvo IP68 (hasta 6 metros de profundidad durante un máximo de 30 minutos, según la norma IEC 60529)",
-    "Chip A14 Bionic; Neural Engine de última generación",
-]
-
-
-
 export default function Review() {
     const theme = useTheme();
     const oss = useMediaQuery(theme.breakpoints.down("sm"));
@@ -53,9 +38,27 @@ export default function Review() {
     const stock = intl.formatMessage({ id: 'PhoneDetail_LablelStock' });
 
     const [Revrating, setRating] = React.useState(4.5);
-    const [Revtext, setText] = React.useState("");
+    const [Revtext, setRevText] = React.useState("");
     const params = useParams();
     const idCel = params.productId;
+
+    localStorage.setItem("currentCel", idCel);
+
+    const phone = localStorage.getItem("cel" + idCel);
+    let phoneJson = JSON.parse(phone);
+    if (phoneJson === null) {
+        phoneJson = {
+            id: 1,
+            name: "Samsung Galaxy S21",
+            brand: "Samsung",
+            price_per_day: 10,
+            availability: 10,
+            image: "https://www.samsung.com/us/smartphones/galaxy-s21-5g/buy/galaxy-s21-5g-phantom-violet-128gb-unlocked-sm-g991uzvaxaa/",
+            camera_specifications: "12MP Ultra Wide Camera, 12MP Wide-angle Camera, 64MP Telephoto Camera",
+            memory_specs: "128GB, 256GB, 512GB",
+            ram_specs: "8GB",
+        }
+    }
 
     async function postReview() {
         const response = await fetch(`http://localhost:3000/api/v1/reviews`, {
@@ -70,6 +73,7 @@ export default function Review() {
                 text: Revtext,
             }),
         });
+
         const data = await response.json();
         const idReview = await data.id;
 
@@ -78,8 +82,12 @@ export default function Review() {
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": "Bearer " + localStorage.getItem("token"),
-    },});
-        
+            },
+        });
+
+        setRevText("");
+        alert("Review posted successfully");
+
     }
 
     return (
@@ -92,35 +100,39 @@ export default function Review() {
                         {!oss && <Grid item xs={12} sm={6} >
                             <img
                                 style={{ maxWidth: '130%', height: '30vw' }}
-                                alt={exampleName}
-                                src={examplePhone}
+                                alt={phoneJson.name}
+                                src={phoneJson.image}
                             />
                         </Grid>}
 
                         <Grid item xs={12} sm={6} sx={{ textAlign: 'left' }}>
                             <Typography variant="h6" color="text.primary" padding={1}>
-                                {exampleBrand}
+                                {phoneJson.brand}
                             </Typography>
                             <Typography variant="h6" color="text.primary" padding={1}>
-                                {exampleAvailability} {stock}
+                                {phoneJson.availability} {stock}
                             </Typography>
                             <Typography variant="h3" component="div" padding={1}>
-                                {exampleName}
+                                {phoneJson.name}
                             </Typography>
                             {oss && <Grid item xs={12} sm={5}>
                                 <img
                                     style={{ maxWidth: '130%', height: '60vw' }}
-                                    alt={exampleName}
-                                    src={examplePhone}
+                                    alt={phoneJson.name}
+                                    src={phoneJson.image}
                                 />
                             </Grid>}
-                            <SpecList specs={exampleSpecs} />
+                            <SpecList specs={[
+                                "Brillo máximo de 800 nits (normal); brillo máximo de 1.200 nits (HDR)",
+                                "Resistencia a las salpicaduras, el agua y el polvo IP68 (hasta 6 metros de profundidad durante un máximo de 30 minutos, según la norma IEC 60529)",
+                                "Chip A14 Bionic; Neural Engine de última generación",
+                            ]} />
                         </Grid>
 
                     </Grid>
 
                     <CardContent>
-                        <CommentArea setRating={setRating} setText={setText} postReview={postReview} />
+                        <CommentArea setRating={setRating} setText={setRevText} postReview={postReview} />
                     </CardContent>
                 </Card>
             </Stack>
@@ -182,7 +194,7 @@ const PublishReviewButton = ({ text, postReview }) => {
 }
 
 
-const CommentArea = ({ setRating, setText, postReview}) => {
+const CommentArea = ({ setRating, setText, postReview }) => {
     const [fontWeight, setFontWeight] = React.useState('normal');
     const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -208,7 +220,7 @@ const CommentArea = ({ setRating, setText, postReview}) => {
                         color: '#202020',
                     }}
                 >{tellOp}</FormLabel>
-                <RatingStars setRevrating={setRating}/>
+                <RatingStars setRevrating={setRating} />
                 <Textarea
                     placeholder={inputFil}
                     onChange={handelText}

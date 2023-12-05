@@ -45,8 +45,8 @@ export default function Billing() {
     return (
         <>
             <Breadcrumb breadcrumbs={[
-                { href: `/products/${1}`, text: intl.formatMessage({ id: "Rent" }) },
-                { href: `/products/${1}/rent`, text: intl.formatMessage({ id: "BreadcrumbRentDetail" }) },
+                { href: `/products/${idCel}`, text: intl.formatMessage({ id: "Rent" }) },
+                { href: `/products/${idCel}/rent`, text: intl.formatMessage({ id: "BreadcrumbRentDetail" }) },
                 { href: '', text: intl.formatMessage({ id: "BreadcrumbBilling" }) },
             ]} />
             <Grid container direction={'row'} spacing={2} marginBottom={8}>
