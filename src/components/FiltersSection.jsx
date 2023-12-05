@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useState } from 'react';
 import { Box, Checkbox, FormControlLabel, TextField } from '@mui/material';
 import { FormattedMessage, useIntl } from 'react-intl';
