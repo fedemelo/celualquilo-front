@@ -34,12 +34,43 @@ const exampleActiveRents = [
     },
 ]
 
+
 export default function Favourites() {
 
     const intl = useIntl();
     const favs = intl.formatMessage({ id: "Favourites_Title" })
     const rent = intl.formatMessage({ id: "Rent" })
     const BreadcrumbMiAccount = intl.formatMessage({ id: "BreadcrumbMiAccount" })
+
+    const [favouriteList, setFavouriteList] = React.useState([]);
+
+    async function getFavourites() {
+        const response = await fetch(`http://localhost:3000/api/v1/users/${localStorage.getItem("accUserId")}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+            }
+        });
+        const data = await response.json();
+        let newFavouriteList = [];
+        for (let i = 0; i < data.favorites.length; i++) {
+            let phone = data.favorites[i];
+            let newPhone ={
+                name: phone.name,
+                days: "5 días de alquiler",
+                image: phone.image,
+                cost: `$ ${phone.pricePerDay} COP / día`,
+                buttonText: "Alquilar",
+            }
+            newFavouriteList.push(newPhone);
+        }
+        setFavouriteList(newFavouriteList);
+    }
+
+    React.useEffect(() => {
+        getFavourites();
+    }, []);
 
     return (
         <>
@@ -53,7 +84,7 @@ export default function Favourites() {
                 </style>
                 <Card sx={sectionStyle}>
                     <SectionTitle text={favs} />
-                    <PhonesRow phones={exampleActiveRents} rent={rent}/>
+                    <PhonesRow phones={favouriteList} rent={rent}/>
                 </Card>
             </Stack>
         </>
