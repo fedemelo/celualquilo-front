@@ -27,7 +27,8 @@ import Stack from '@mui/material/Stack';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import GoBack from './GoBack';
-import { useState } from 'react';
+import { useParams } from 'react-router-dom';
+
 
 
 const exampleBrand = "Apple"
@@ -50,24 +51,35 @@ export default function Review() {
     const intl = useIntl();
     const title = intl.formatMessage({ id: 'Review_Title' });
     const stock = intl.formatMessage({ id: 'PhoneDetail_LablelStock' });
-    const [rating, setRating] = useState(5);
-    const [text, setText] = useState("Reseña"); 
+
+    const [Revrating, setRating] = React.useState(4.5);
+    const [Revtext, setText] = React.useState("");
+    const params = useParams();
+    const idCel = params.productId;
 
     async function postReview() {
-        const idCel = localStorage.getItem("currentCel");
         const response = await fetch(`http://localhost:3000/api/v1/reviews`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
+                "Authorization": "Bearer " + localStorage.getItem("token"),
 
             },
             body: JSON.stringify({
-                rating: rating,
-                text: text,
+                rating: Revrating,
+                text: Revtext,
             }),
         });
         const data = await response.json();
-        const idReview = data.id;
+        const idReview = await data.id;
+
+        await fetch(`http://localhost:3000/api/v1/phones/${idCel}/reviews/${idReview}`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + localStorage.getItem("token"),
+    },});
+        
     }
 
     return (
@@ -108,7 +120,7 @@ export default function Review() {
                     </Grid>
 
                     <CardContent>
-                        <CommentArea postReview/>
+                        <CommentArea setRating={setRating} setText={setText} postReview={postReview} />
                     </CardContent>
                 </Card>
             </Stack>
@@ -154,7 +166,7 @@ const SpecList = ({ specs }) => {
 }
 
 
-const PublishReviewButton = ({ text }, postReview) => {
+const PublishReviewButton = ({ text, postReview }) => {
     return <Button
         style={{
             borderRadius: 20,
@@ -170,7 +182,7 @@ const PublishReviewButton = ({ text }, postReview) => {
 }
 
 
-const CommentArea = (postReview) => {
+const CommentArea = ({ setRating, setText, postReview}) => {
     const [fontWeight, setFontWeight] = React.useState('normal');
     const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -179,6 +191,10 @@ const CommentArea = (postReview) => {
     const tellOp = intl.formatMessage({ id: 'Review_TellOpinion' });
     const btt = intl.formatMessage({ id: 'Review_publichBttn' });
     const inputFil = intl.formatMessage({ id: 'Review_InputFiller' });
+
+    const handelText = (event) => {
+        setText(event.target.value);
+    }
 
     return (
         <FormControl>
@@ -192,9 +208,10 @@ const CommentArea = (postReview) => {
                         color: '#202020',
                     }}
                 >{tellOp}</FormLabel>
-                <RatingStars />
+                <RatingStars setRevrating={setRating}/>
                 <Textarea
                     placeholder={inputFil}
+                    onChange={handelText}
                     minRows={3}
                     endDecorator={
                         <Box

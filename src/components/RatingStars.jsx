@@ -4,7 +4,7 @@ import Rating from '@mui/material/Rating';
 import Box from '@mui/material/Box';
 import StarIcon from '@mui/icons-material/Star';
 
-export default function HoverRating() {
+export default function HoverRating({ setRevrating }) {
 
     const intl = useIntl();
 
@@ -33,6 +33,7 @@ export default function HoverRating() {
                 getLabelText={(value) => `${value} Estrella${value !== 1 ? 's' : ''}, ${labels[value]}`}
                 onChange={(event, newValue) => {
                     setValue(newValue);
+                    setRevrating(newValue);
                 }}
                 onChangeActive={(event, newHover) => {
                     setHover(newHover);
