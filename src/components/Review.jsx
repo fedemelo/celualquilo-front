@@ -49,6 +49,24 @@ export default function Review() {
     const title = intl.formatMessage({ id: 'Review_Title' });
     const stock = intl.formatMessage({ id: 'PhoneDetail_LablelStock' });
 
+    async function postReview(rating, text) {
+        const idCel = localStorage.getItem("currentCel");
+        const response = await fetch(`http://localhost:3000/api/v1/reviews`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + localStorage.getItem("token")
+            },
+            body: JSON.stringify({
+                rating: rating,
+                text: text,
+            }),
+        });
+        const data = await response.json();
+        const idReview = data.id;
+    }
+
+
     return (
         <>
             <GoBack text={title} route={`/RentHistory`} />

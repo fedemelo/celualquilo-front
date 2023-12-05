@@ -59,6 +59,7 @@ export default function MainPage() {
         }
         if (localStorage.getItem('phoneList')) {
             setPhoneListJson(JSON.parse(localStorage.getItem('phoneList')));
+            fetchData();
         }
         else {
             fetchData();

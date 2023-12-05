@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FormattedMessage, useIntl } from "react-intl";
 import Card from '@mui/material/Card';
 import Rating from '@mui/material/Rating';
@@ -18,61 +18,7 @@ import { useTheme } from '@mui/material/styles';
 import { useParams } from 'react-router';
 import GoBack from './GoBack';
 import { Link } from 'react-router-dom';
-
-
-
-const exampleReviews = [
-    {
-        titulo: "Una experiencia móvil sin preocupaciones con CeluAlquilo.com",
-        contenido: "Mi experiencia con CeluAlquilo.com fue impecable. La plataforma ofreció una amplia selección de teléfonos de calidad, una entrega rápida y un proceso de devolución sencillo. El teléfono funcionó de manera excelente durante mi alquiler. Recomiendo CeluAlquilo.com para soluciones de telefonía temporal.",
-        rating: 4.5
-    },
-    {
-        titulo: "Gran servicio de alquiler de teléfonos",
-        contenido: "Utilicé CeluAlquilo.com para alquilar un teléfono durante mis vacaciones y quedé muy satisfecho. El proceso de pedido fue fácil, el teléfono llegó a tiempo y funcionó a la perfección. Sin duda, volveré a utilizar este servicio en el futuro.",
-        rating: 4.0
-    },
-    {
-        titulo: "La solución perfecta para viajes de negocios",
-        contenido: "Como viajero de negocios frecuente, he utilizado CeluAlquilo.com en varias ocasiones. Cada vez, la experiencia ha sido excelente. Los teléfonos siempre están en excelente estado, y la entrega y devolución son muy convenientes.",
-        rating: 4.2
-    },
-    {
-        titulo: "Rápido y confiable",
-        contenido: "Necesitaba un teléfono de repuesto temporalmente y CeluAlquilo.com fue la elección perfecta. El proceso de alquiler fue rápido y sin complicaciones, y el teléfono funcionó sin problemas durante todo el período de alquiler.",
-        rating: 4.8
-    },
-    {
-        titulo: "Excelente servicio al cliente",
-        contenido: "Tuve algunas preguntas sobre el proceso de alquiler y el equipo de CeluAlquilo.com fue muy servicial y amable. Me proporcionaron toda la información que necesitaba de manera clara y rápida. Un servicio al cliente excepcional.",
-        rating: 4.5
-    },
-    {
-        titulo: "Gran variedad de modelos",
-        contenido: "Me impresionó la amplia selección de modelos disponibles en CeluAlquilo.com. Pude elegir un teléfono que se adaptara a mis necesidades y presupuesto. La calidad de los dispositivos es notable.",
-        rating: 4.3
-    },
-    {
-        titulo: "Perfecto para viajes internacionales",
-        contenido: "Alquilé un teléfono de CeluAlquilo.com para un viaje internacional y fue una elección inteligente. Pude usarlo sin problemas en el extranjero y evitar costosos cargos de roaming. Muy recomendado.",
-        rating: 4.6
-    },
-    {
-        titulo: "Proceso de alquiler sencillo",
-        contenido: "El proceso de alquiler en CeluAlquilo.com es muy fácil de seguir. Solo tomó unos minutos completar mi pedido y elegir las opciones que necesitaba. La conveniencia es inigualable.",
-        rating: 4.1
-    },
-    {
-        titulo: "Sin compromisos",
-        contenido: "Siempre dudaba en comprar un teléfono para necesidades temporales. Con CeluAlquilo.com, no tengo que hacerlo. Puedo obtener un teléfono de calidad cuando lo necesito y devolverlo cuando ya no lo necesito.",
-        rating: 4.4
-    },
-    {
-        titulo: "Una solución inteligente",
-        contenido: "CeluAlquilo.com ha sido una solución inteligente para mis necesidades de telefonía temporal. Ofrecen un servicio confiable y conveniente que recomiendo a cualquiera que busque un teléfono de alquiler.",
-        rating: 4.7
-    }
-];
+import { useState } from 'react';
 
 
 const moneda = "USD"
@@ -84,6 +30,7 @@ export default function PhoneDetail({ idCel1 }) {
 
     const params = useParams();
     let idCel = params.productId;
+    localStorage.setItem("currentCel", idCel);
 
     if (idCel === undefined) {
         idCel = idCel1;
@@ -108,6 +55,30 @@ export default function PhoneDetail({ idCel1 }) {
     const oss = useMediaQuery(theme.breakpoints.down("sm"));
     const price = phoneJson.pricePerDay + " " + moneda + "/" + intl.formatMessage({ id: "Day" });
 
+    async function getReviews(id) {
+        const response = await fetch(`http://localhost:3000/api/v1/phones/${id}/reviews`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + localStorage.getItem("token")
+            },
+        });
+        const data = await response.json();
+        return data;
+    }
+    
+    const [reviews, setReviews] = useState([]);
+    
+    useEffect(() => {
+        async function fetchData() {
+            const data = await getReviews(localStorage.getItem("currentCel"));
+            setReviews(data);
+        }
+        fetchData();
+    }, []);
+
+    console.log(reviews);
+    
     return (
         <Stack marginBottom={7}>
             <GoBack text={intl.formatMessage({ id: "PhoneDetail_LablelDetail" })} route="/products" />
@@ -153,7 +124,7 @@ export default function PhoneDetail({ idCel1 }) {
                 </Grid>
 
                 <CardContent>
-                    <CommentArea />
+                    <CommentArea reviews = {reviews}/>
                 </CardContent>
 
             </Card>
@@ -207,7 +178,7 @@ const RentButton = ({ text }) =>
         variant="contained"
     >{text}</Button>;
 
-const CommentArea = () => <Stack spacing={1.3}>
+const CommentArea = ({reviews}) => <Stack spacing={1.3}>
     <FormLabel
         sx={{
             fontFamily: 'Inter',
@@ -219,11 +190,10 @@ const CommentArea = () => <Stack spacing={1.3}>
             padding: 2
         }}
     ><FormattedMessage id="PhoneDetail_Reviews" /></FormLabel>
-    <UserReviews reviews={exampleReviews} />
+    <UserReviews reviews = {reviews}/>
 </Stack>
 
-
-const UserReviews = ({ reviews }) =>
+const UserReviews = ({reviews}) =>
     <Stack spacing={3}>
         {reviews.map((review, index) => (
             <Card key={index} sx={{ textAlign: 'left' }}>
@@ -241,11 +211,6 @@ const UserReviews = ({ reviews }) =>
                     <Typography variant="body2" color="text.primary">
                         {review.contenido}
                     </Typography>
-
-                    {/* <hr style={{
-                        color: 'darkgray',
-                        height: .1,
-                    }} /> */}
 
                     <Rating name="read-only" value={review.rating} readOnly size="large" />
                 </CardContent>
