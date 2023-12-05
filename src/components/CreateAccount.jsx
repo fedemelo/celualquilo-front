@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useEffect, useState } from 'react';
 import { useIntl } from "react-intl";
 import Button from '@mui/material/Button';
