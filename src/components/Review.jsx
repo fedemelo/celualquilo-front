@@ -49,6 +49,14 @@ export default function Review() {
     const title = intl.formatMessage({ id: 'Review_Title' });
     const stock = intl.formatMessage({ id: 'PhoneDetail_LablelStock' });
 
+    const [Revrating, setRating] = React.useState(4.5);
+    const [Revtext, setText] = React.useState("");
+
+    const showRatingandText = () => {
+        console.log(Revrating);
+        console.log(Revtext);
+    }
+
     async function postReview(rating, text) {
         const idCel = localStorage.getItem("currentCel");
         const response = await fetch(`http://localhost:3000/api/v1/reviews`, {
@@ -105,7 +113,7 @@ export default function Review() {
                     </Grid>
 
                     <CardContent>
-                        <CommentArea />
+                        <CommentArea setRating={setRating} setText={setText} showRatingandText={showRatingandText} />
                     </CardContent>
                 </Card>
             </Stack>
@@ -151,7 +159,7 @@ const SpecList = ({ specs }) => {
 }
 
 
-const PublishReviewButton = ({ text }) => {
+const PublishReviewButton = ({ text, showRatingandText }) => {
     return <Button
         style={{
             borderRadius: 20,
@@ -162,11 +170,12 @@ const PublishReviewButton = ({ text }) => {
             color: "white",
         }}
         variant="contained"
+        onClick={showRatingandText}
     >{text}</Button>;
 }
 
 
-const CommentArea = () => {
+const CommentArea = ({ setRating, setText, showRatingandText}) => {
     const [fontWeight, setFontWeight] = React.useState('normal');
     const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -175,6 +184,10 @@ const CommentArea = () => {
     const tellOp = intl.formatMessage({ id: 'Review_TellOpinion' });
     const btt = intl.formatMessage({ id: 'Review_publichBttn' });
     const inputFil = intl.formatMessage({ id: 'Review_InputFiller' });
+
+    const handelText = (event) => {
+        setText(event.target.value);
+    }
 
     return (
         <FormControl>
@@ -188,9 +201,10 @@ const CommentArea = () => {
                         color: '#202020',
                     }}
                 >{tellOp}</FormLabel>
-                <RatingStars />
+                <RatingStars setRevrating={setRating}/>
                 <Textarea
                     placeholder={inputFil}
+                    onChange={handelText}
                     minRows={3}
                     endDecorator={
                         <Box
@@ -237,7 +251,7 @@ const CommentArea = () => {
                                     </MenuItem>
                                 ))}
                             </Menu>
-                            <PublishReviewButton text={btt} />
+                            <PublishReviewButton text={btt} showRatingandText={showRatingandText} />
                         </Box>
                     }
                     sx={{
