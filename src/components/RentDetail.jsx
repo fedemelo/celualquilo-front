@@ -39,8 +39,8 @@ export default function RentDetail() {
     const phonePrice = phoneJson.pricePerDay + " " + moneda + "/" + intl.formatMessage({ id: "Day" });
     const phoneImg = phoneJson.image;
 
+    const [isRentDeailsCorrect, setIsRentDeailsCorrect] = useState(false);
 
-    
 
     const [dias, setDias] = useState('5');
 
@@ -52,11 +52,20 @@ export default function RentDetail() {
             ]} />
             <Grid container direction={'row'} spacing={2} marginBottom={8}>
                 <Grid item xs={12} md={6}>
-                    <PhoneResume dias={dias} setDias={setDias} phoneName={phoneName} phonePrice={phonePrice} phoneImg={phoneImg} label={intl.formatMessage({ id: "RentDetail_RentDays" })} error1={intl.formatMessage({id: "NumberGreaterThanZero"})} error2={intl.formatMessage({id: "NoMoreThan180"})}/>
+                    <PhoneResume dias={dias} setDias={setDias} phoneName={phoneName} phonePrice={phonePrice} phoneImg={phoneImg} label={intl.formatMessage({ id: "RentDetail_RentDays" })} error1={intl.formatMessage({ id: "NumberGreaterThanZero" })} error2={intl.formatMessage({ id: "NoMoreThan180" })} isGood={setIsRentDeailsCorrect} />
                 </Grid>
                 <Grid item xs={12} md={6}>
                     <PriceDetails dias={dias} price_per_day={phoneJson.pricePerDay} />
-                    <RentButton text= {intl.formatMessage({ id: "RentDetail_PriceInfo_Continue" })} idCel={idCel} onChange={localStorage.setItem("dias", dias)} />
+
+                    {isRentDeailsCorrect ? (
+                        <Link to={`/products/${idCel}/billing`}>
+                            <RentButton text={intl.formatMessage({ id: "RentDetail_PriceInfo_Continue" })} onChange={localStorage.setItem("dias", dias)} />
+                        </Link>
+                    ) : (
+                        <RentButton text={intl.formatMessage({ id: "RentDetail_PriceInfo_Continue" })} onChange={localStorage.setItem("dias", dias)} isDisabled={true} />
+                    )}
+
+
                 </Grid>
             </Grid>
         </Grid>
@@ -78,31 +87,40 @@ const cardStyle = {
     alignSelf: "center",
 }
 
+const RentButton = ({ text, isDisabled }) => (
+    <Button
+        style={{
+            borderRadius: 20,
+            padding: "5px 20px",
+            backgroundColor: isDisabled ? '#CAB1E0' : COLORS.primary,
+            fontSize: "25px",
+            textTransform: "none",
+            width: "100%",
+        }}
+        variant="contained"
+        disabled={isDisabled}
+    >
+        {text}
+    </Button>
+);
 
-const RentButton = ({ text, idCel }) =>
-    <Link to={`/products/${idCel}/billing`}>
-            <Button
-                style={{
-                    borderRadius: 20,
-                    padding: "5px 20px",
-                    backgroundColor: COLORS.primary,
-                    fontSize: "25px",
-                    textTransform: "none",
-                    width: "100%",
-                }}
-                variant="contained"
-            >{text}</Button>
-        </Link>
 
 
-
-const PhoneResume = ({ dias, setDias, phoneName, phonePrice, phoneImg, label, error1, error2}) => {
+const PhoneResume = ({ dias, setDias, phoneName, phonePrice, phoneImg, label, error1, error2, isGood }) => {
     const getProblemInNumber = () => {
 
         const number = dias ? Number(dias) : 5
 
-        if (number < 1) return error1
-        if (number > maxDiasAlquiler) return error2
+        if (number < 1) {
+            isGood(false)
+            return error1
+        } else if (number > maxDiasAlquiler) {
+            isGood(false)
+            return error2
+        } else {
+            isGood(true)
+            return ""
+        }
 
     }
 

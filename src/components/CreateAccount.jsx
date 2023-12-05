@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useIntl } from "react-intl";
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -38,9 +38,20 @@ export default function CreateAccountSide() {
         });
     };
 
+
+
     const [formValues, setFormValues] = useState({ name: "", email: "", password: "", verifiyPassword: "", showPassword: false, showVerifyPassword: false })
     const [clickedField, setClickedField] = useState({ name: false, email: false, password: false, verifiyPassword: false })
 
+    const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+
+    useEffect(() => {
+        if (getProblemInName() === "" && getProblemInEmail() === "" && getProblemInPassword() === "" && getProblemInVerifyPassword() === "" && formValues.name !== "" && formValues.email !== "" && formValues.password !== "" && formValues.verifyPassword !== "") {
+            setIsButtonDisabled(false);
+        } else {
+            setIsButtonDisabled(true);
+        }
+    }, [formValues.name, formValues.email, formValues.password, formValues.verifyPassword])
     const postUser = async () => {
 
         if (clickedField.name && clickedField.email && clickedField.password && clickedField.verifyPassword) {
@@ -196,7 +207,7 @@ export default function CreateAccountSide() {
                         }}
                     >
                         <div style={hacialaIzq}>
-                            <Typography component="h1" variant="h4" sx={titleStyle} data-testid = {Register_CreateAcc}>
+                            <Typography component="h1" variant="h4" sx={titleStyle} data-testid={Register_CreateAcc}>
                                 {Register_CreateAcc}
                             </Typography>
                             <Typography component="h1" variant="h5" sx={subTitleStyle}>
@@ -321,16 +332,15 @@ export default function CreateAccountSide() {
                                 </Typography>
 
                             </Grid>
-
+                            <Link href="/user">
                                 <Button
                                     fullWidth
                                     variant="contained"
-                                    onClick={postUser}
                                     sx={{ mt: 3, mb: 2, backgroundColor: '#9E30FF', color: '#FFFFFF', fontFamily: 'Open Sans', fontWeight: 'bold' }}
                                 >
                                     {Register_CreateAccButton}
                                 </Button>
-
+                            </Link>
                             <Grid container sx={{ justifyContent: 'space-around', alignItems: 'center' }}>
                                 <Grid item>
                                     {Register_LogInQuestionText}
