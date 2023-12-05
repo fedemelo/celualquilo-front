@@ -6,16 +6,43 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { Nav } from 'react-bootstrap';
+import { useEffect } from 'react';
 
-export default function UserProfile({ name, email }) {
+export default function UserProfile() {
+
+    const [name, setName] = React.useState('');
+    const [email, setEmail] = React.useState('');
+
+    
+
+    useEffect(() => {
+
+        const getDatos = async () => {
+            const usid = localStorage.getItem('accUserId');
+            console.log(usid);
+            const response = await fetch(`http://localhost:3000/api/v1/users/${usid}`,
+                {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${localStorage.getItem('token')}`
+                    },
+                }
+            );
+            const data = await response.json();
+            setName(data.name);
+            setEmail(data.email);
+        };
+
+        getDatos();
+
+    }, []);
 
     const handleActiveReservationsClick = () => {
-        // Lógica para mostrar las reservas activas del usuario
         console.log('Ver reservas activas');
     };
 
     const handlePastReservationsClick = () => {
-        // Lógica para mostrar las reservas pasadas del usuario
         console.log('Ver reservas pasadas');
     };
 
@@ -42,7 +69,7 @@ export default function UserProfile({ name, email }) {
                         }}
                     />
                     <Typography variant="h4" gutterBottom>
-                        {name}
+                         {name}
                     </Typography>
                     <Typography variant="body1" gutterBottom>
                         Correo: {email}

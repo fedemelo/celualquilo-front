@@ -13,7 +13,6 @@ import IconButton from '@mui/material/IconButton';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import createAccimg from '../assets/imgcreateAcc.png';
 
-
 export default function CreateAccountSide() {
 
     const intl = useIntl();
@@ -71,6 +70,7 @@ export default function CreateAccountSide() {
             const data = await response.json();
             console.log(data);
             localStorage.setItem("accUserId", data.id);
+            window.location.href = "/user";
         }
     };
 
