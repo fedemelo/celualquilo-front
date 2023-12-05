@@ -40,7 +40,7 @@ export default function RentHistory() {
         }
         fetchData();
     }, []);
-    
+
     // Se daña cuando no hay rentas asociadas
     const exampleActiveRents = rents.filter((rent) => rent.isActive === true);
     const examplePastRents = rents.filter((rent) => rent.isActive === false);
@@ -61,7 +61,7 @@ export default function RentHistory() {
         pastPhones.push(phone);
     }
 
-    
+
     return (
         <>
             <Breadcrumb breadcrumbs={[
@@ -74,11 +74,11 @@ export default function RentHistory() {
                 </style>
                 <Card sx={sectionStyle}>
                     <SectionTitle text={active} />
-                    <PhonesRow phones={activePhones} route='rent' text={renew}/>
+                    <PhonesRow phones={activePhones} route='rent' text={renew} />
                 </Card>
                 <Card sx={sectionStyle}>
                     <SectionTitle text={title} />
-                    <PhonesRow phones={pastPhones} route='review' text={write}/>
+                    <PhonesRow phones={pastPhones} route='review' text={write} />
                 </Card>
             </Stack>
         </>
@@ -100,13 +100,25 @@ const sectionStyle = {
 
 const PhonesRow = ({ phones, route, text }) => {
     console.log(phones);
+
     return (
         <Grid container spacing={3} padding={2} >
-            {phones.map((phone, index) => (
-                <Grid item xs={12} sm={6} md={3} key={index}>
-                    <PhoneCardSimple route={`/products/${phone.id}/${route}`} buttonText={text} />
-                </Grid>
-            ))}
+
+            {phones.map((phone, index) => {
+                if (phone) {
+                    return (
+                        <Grid item xs={12} sm={6} md={3} key={index}>
+                            <PhoneCardSimple route={`/products/${phone.id}/${route}`} buttonText={text} />
+                        </Grid>
+                    );
+                } else {
+                    return (
+                        <Grid item xs={12} sm={6} md={3} key={index}>
+                        </Grid>
+                    );
+                }
+            })}
+
         </Grid>
     );
 }

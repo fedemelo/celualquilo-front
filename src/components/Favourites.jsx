@@ -5,34 +5,7 @@ import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import PhoneCardSimple from './PhoneCardSimple';
-import examplePhone1 from '../assets/phones/iPhone14Pro.png';
-import examplePhone2 from '../assets/phones/HuaweiNovaY71.png';
-import examplePhone3 from '../assets/phones/SamsungGalaxyS22.png';
 import Breadcrumb from './BreadCrumb';
-
-const exampleActiveRents = [
-    {
-        name: "iPhone 12 Pro",
-        days: "5 días de alquiler",
-        image: examplePhone1,
-        cost: "$ 10 000 COP / día",
-        buttonText: "Alquilar",
-    },
-    {
-        name: "Huawei Nova Y71",
-        days: "2 días de alquiler",
-        image: examplePhone2,
-        cost: "$ 7 000 COP / día",
-        buttonText: "Alquilar",
-    },
-    {
-        name: "Samsung Galaxy S22",
-        days: "1 día de alquiler",
-        image: examplePhone3,
-        cost: "$ 15 000 COP / día",
-        buttonText: "Alquilar",
-    },
-]
 
 
 export default function Favourites() {
@@ -75,7 +48,7 @@ export default function Favourites() {
     return (
         <>
             <Breadcrumb breadcrumbs={[
-                { href: '/mi-cuenta', text: BreadcrumbMiAccount },
+                { href: '/user', text: BreadcrumbMiAccount },
                 { href: '', text: favs },
             ]} />
             <Stack spacing={3.5} marginBottom={11}>
