@@ -47,6 +47,16 @@ export default function SignInSide() {
         setFormValues({ ...formValues, showPassword: !formValues.showPassword });
     };
 
+    const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+
+    React.useEffect(() => {
+        if (getProblemInEmail() === "" && getProblemInPassword() === "" && formValues.email !== "" && formValues.password !== "") {
+            setIsButtonDisabled(false);
+        } else {
+            setIsButtonDisabled(true);
+        }
+    }, [formValues.email, formValues.password]);
+
     const getProblemInEmail = () => {
 
         const email = formValues.email ? formValues.email.trim() : ""
@@ -135,8 +145,8 @@ export default function SignInSide() {
                         }}
                     >
                         <div style={hacialaIzq}>
-                            <Typography component="h1" variant="h4" sx={titleStyle} data-testid= {LogIn_Wellcome}>
-                                
+                            <Typography component="h1" variant="h4" sx={titleStyle} data-testid={LogIn_Wellcome}>
+
                                 {LogIn_Wellcome}
                             </Typography>
                             <Typography component="h1" variant="h5" sx={subTitleStyle}>
@@ -217,16 +227,42 @@ export default function SignInSide() {
                                 </Grid>
                             </Grid>
 
-                            <Link href="/user" >
+                            {isButtonDisabled ? (
                                 <Button
                                     fullWidth
                                     variant="contained"
-                                    sx={{ mt: 3, mb: 2, backgroundColor: '#9E30FF', color: '#FFFFFF', fontFamily: 'Open Sans', fontWeight: 'bold' }}
+                                    sx={{
+                                        mt: 3,
+                                        mb: 2,
+                                        backgroundColor: '#9E30FF',
+                                        color: '#FFFFFF',
+                                        fontFamily: 'Open Sans',
+                                        fontWeight: 'bold',
+                                    }}
                                     data-testid="submitButton"
+                                    disabled={isButtonDisabled}
                                 >
                                     {LogIn_LogInButtonText}
                                 </Button>
-                            </Link>
+                            ) : (
+                                <Link href="/user">
+                                    <Button
+                                        fullWidth
+                                        variant="contained"
+                                        sx={{
+                                            mt: 3,
+                                            mb: 2,
+                                            backgroundColor: '#9E30FF',
+                                            color: '#FFFFFF',
+                                            fontFamily: 'Open Sans',
+                                            fontWeight: 'bold',
+                                        }}
+                                        data-testid="submitButton"
+                                    >
+                                        {LogIn_LogInButtonText}
+                                    </Button>
+                                </Link>
+                            )}
                             <Grid container sx={{ justifyContent: 'space-around', alignItems: 'center' }}>
                                 <Grid item>
                                     {LogIn_NewUsserText}

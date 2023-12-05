@@ -78,6 +78,7 @@ export default function PhoneDetail({ idCel1 }) {
     }, []);
 
     console.log(reviews);
+    const link = localStorage.getItem("accUserName") ? `/products/${phoneJson.id}/rent` : `/Login`;
     
     return (
         <Stack marginBottom={7}>
@@ -117,7 +118,7 @@ export default function PhoneDetail({ idCel1 }) {
                         </Grid>}
                         <Rating name="read-only" value={5} readOnly size="large" />
                         <SpecList specs={[phoneJson.cameraSpecs, phoneJson.memorySpecs, phoneJson.screenSpecs]} />
-                        <Link to={`/products/${phoneJson.id}/rent`}>
+                        <Link to={link}>
                             <RentButton text={intl.formatMessage({ id: "Rent" })} />
                         </Link>
                     </Grid>
@@ -209,7 +210,7 @@ const UserReviews = ({reviews}) =>
 
 
                     <Typography variant="body2" color="text.primary">
-                        {review.contenido}
+                        {review.text}
                     </Typography>
 
                     <Rating name="read-only" value={review.rating} readOnly size="large" />

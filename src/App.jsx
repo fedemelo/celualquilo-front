@@ -14,12 +14,8 @@ import Review from './components/Review';
 import UserProfile from './components/UserProfile';
 import ProductsGridPrice from './components/ProductsGridPrice';
 import ProductsGridFilter from './components/ProductsGridFilter';
-
-
-
+import ScrollToTop from './components/ScrollToTop';
 import './styles/App.css';
-
-
 
 export default function App() {
 
@@ -28,6 +24,7 @@ export default function App() {
             <Header />
 
             <BrowserRouter>
+                <ScrollToTop />
                 <Routes>
                     <Route path="/" element={<MainPage />} />
                     <Route path="/products" element={<ProductsGrid titleText={"Nuestros Productos"} />} />
@@ -44,12 +41,10 @@ export default function App() {
                     <Route path="/products/:productId/rent" element={<RentDetail />} />
                     <Route path="/products/:productId/billing" element={<Billing />} />
                     <Route path="/user" element={<UserProfile name="juan" email="juan@gmail.com" />} />
-
                     <Route path="/ProductsGridPrice" element={<ProductsGridPrice />} />
                     <Route path="/ProductsGridFilter" element={<ProductsGridFilter brand={"Apple"} />} />
                 </Routes>
             </BrowserRouter>
-
             <Footer />
         </div>
     );

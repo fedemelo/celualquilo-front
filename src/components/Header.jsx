@@ -23,6 +23,7 @@ export default function Header() {
 
     const search = intl.formatMessage({ id: 'Header_Search' });
     const ingresar = intl.formatMessage({ id: 'Header_LogIn' });
+    const text = localStorage.getItem("accUserName") ? localStorage.getItem("accUserName").split(' ')[0] : ingresar;
 
 
     return (
@@ -33,7 +34,7 @@ export default function Header() {
                         <HamburgerMenu />}
                     <LogoCeluAlquilo />
                     {!onlySmallScreen && <SearchBar text={search} />}
-                    <LoginButton text={ingresar} />
+                    <LoginButton text={text} />
                 </Toolbar>
                 {!onlySmallScreen && <Toolbar sx={secondRowStyle}>
                     <Marcas />
@@ -135,8 +136,6 @@ const SearchBar = ({text}) =>
             }}
         />
     </Container>
-
-
 
 const LoginButton = ({ text }) => {
 
