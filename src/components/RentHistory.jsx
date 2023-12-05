@@ -61,6 +61,7 @@ export default function RentHistory() {
         pastPhones.push(phone);
     }
 
+    
     return (
         <>
             <Breadcrumb breadcrumbs={[
