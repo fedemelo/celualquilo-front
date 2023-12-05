@@ -100,13 +100,12 @@ describe('Testing CeluAlquilo', () => {
     })
     //Se comprueban HU7
     it('Renew phone', () => {
-      cy.contains('CeluAlquilo')
+        cy.contains('CeluAlquilo')
         cy.contains('Ingresar').click();
-        cy.get('[data-testid="name"]').type('Santiago Martínez');
-        cy.get('[data-testid="email"]').type('alejo@gmail.com');
-        cy.get('[data-testid="password"]').type('12345678aA#');
-        cy.get('[data-testid="verifyPassword"]').type('12345678aA#');
-        cy.contains('Crear cuenta').click();
+        cy.xpath('/html/body/div[1]/div/div[2]/main/div[2]/div/form/div[6]/div[2]/a').click();
+        cy.get('[data-testid="email"]').type('federicomelobarrero@gmail.com');
+        cy.get('[data-testid="password"]').type('Pu$$yD1stroyer$');
+        cy.xpath('/html/body/div[1]/div/div[2]/main/div[2]/div/form/button').click()
         cy.contains('Ver historial').click();
         cy.contains('Renovar alquiler').click();
         cy.url().should('include', '/rent');
@@ -138,11 +137,10 @@ describe('Testing CeluAlquilo', () => {
               
       cy.contains('CeluAlquilo')
       cy.contains('Ingresar').click();
-      cy.get('[data-testid="name"]').type('Santiago Martínez');
-      cy.get('[data-testid="email"]').type('alejo@gmail.com');
-      cy.get('[data-testid="password"]').type('12345678aA#');
-      cy.get('[data-testid="verifyPassword"]').type('12345678aA#');
-      cy.contains('Crear cuenta').click();
+      cy.xpath('/html/body/div[1]/div/div[2]/main/div[2]/div/form/div[6]/div[2]/a').click();
+      cy.get('[data-testid="email"]').type('federicomelobarrero@gmail.com');
+      cy.get('[data-testid="password"]').type('Pu$$yD1stroyer$');
+      cy.xpath('/html/body/div[1]/div/div[2]/main/div[2]/div/form/button').click()
       cy.contains('Ver historial').click();
       cy.contains('Escribir reseña').click();
       cy.get('.MuiTextarea-root textarea').first().type('Tu reseña aquí');

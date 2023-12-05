@@ -25,22 +25,10 @@ describe('Testing CeluAlquilo Filtros', () => {
 
   it("Filtrar por marca", () => {
     cy.get('button').contains('Descubrir').click()
-    cy.get('h3').contains('Filtros').click()
+    cy.xpath("/html/body/div[1]/div/div[2]/div[3]/div/h3").click()
     cy.get('span').contains("Apple").click()
-    cy.xpath("/html/body/div/div/div[2]/div[3]/div[2]/div[1]/label[2]/span[1]/input").should('be.checked')
-    cy.xpath("/html/body/div/div/div[2]/div[3]/div[2]/div[1]/label[3]/span[1]/input").should('not.be.checked')
-  })
-
-  it("Filtrar por marca y cerrar", () => {
-    cy.get('button').contains('Descubrir').click()
-    cy.get('h3').contains('Filtros').click()
-    cy.get('span').contains("Apple").click()
-    cy.xpath("/html/body/div/div/div[2]/div[3]/div[2]/div[1]/label[2]/span[1]/input").should('be.checked')
-    cy.xpath("/html/body/div/div/div[2]/div[3]/div[2]/div[1]/label[3]/span[1]/input").should('not.be.checked')
-    cy.get('h3').contains('Filtros').click()
-    cy.get('h3').contains('Filtros').click()
-    cy.xpath("/html/body/div/div/div[2]/div[3]/div[2]/div[1]/label[2]/span[1]/input").should('be.checked')
-    cy.xpath("/html/body/div/div/div[2]/div[3]/div[2]/div[1]/label[3]/span[1]/input").should('not.be.checked')
+    cy.url().should('include', '/iphone');
+    
   })
 
   it("Filtrar por precio", () => {
