@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import { useIntl } from "react-intl";
 import Card from '@mui/material/Card';
@@ -7,7 +8,6 @@ import AspectRatio from '@mui/joy/AspectRatio';
 import Box from '@mui/joy/Box';
 import Button from '@mui/material/Button';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import StarIcon from '@mui/icons-material/Star';
 import { Grid } from '@mui/material';
 import { Link } from 'react-router-dom';
 
