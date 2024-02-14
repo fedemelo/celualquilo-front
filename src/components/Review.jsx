@@ -38,7 +38,7 @@ export default function Review() {
     const stock = intl.formatMessage({ id: 'PhoneDetail_LablelStock' });
     const reviewPublished = intl.formatMessage({ id: 'ReviewPublished' });
 
-    const [Revrating, setRating] = React.useState(4.5);
+    const [Revrating, setRating] = React.useState(4);
     const [Revtext, setRevText] = React.useState("");
     const params = useParams();
     const idCel = params.productId;
