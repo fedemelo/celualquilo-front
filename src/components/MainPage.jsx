@@ -226,11 +226,15 @@ const PhonesRow = ({ phones }) => {
 
     return (
         <Grid container spacing={3} padding={2} >
-            {phones.map((phone, index) => (
+            {phones.map((phone, index) => {
+                const buttonLink = localStorage.getItem("accUserName") ? `/products/${phone.id}/rent` : `/Login`;
+                const buttonText = intl.formatMessage({ id: "Rent" })
+
+                return (
                 <Grid item xs={12} sm={6} md={3} key={index}>
-                    <PhoneCardSimple name={phone.name} image={phone.image} cost={phone.pricePerDay} buttonText={intl.formatMessage({ id: "Rent" })} days={8} route={"/products/" + phone.id} />
+                    <PhoneCardSimple name={phone.name} image={phone.image} cost={phone.pricePerDay} buttonText={buttonText} days={8} route={buttonLink} />
                 </Grid>
-            ))}
+            )})}
         </Grid>
     );
 }

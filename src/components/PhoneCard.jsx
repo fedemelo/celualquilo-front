@@ -95,7 +95,7 @@ export default function PhoneCard({ name, image, cost, rating, phoneId }) {
                         />
                     </Grid>
                     <Grid item xs={10}>
-                        {<LastButton text={intl.formatMessage({ id: "Rent" })} link={buttonLink} />}
+                        <LastButton text={intl.formatMessage({ id: "Rent" })} link={buttonLink} />
                     </Grid>
                 </Grid>
             </CardContent>
