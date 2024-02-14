@@ -32,10 +32,6 @@ export default function CreateAccountSide() {
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
-        console.log({
-            email: data.get('email'),
-            password: data.get('password'),
-        });
     };
 
 
@@ -57,7 +53,6 @@ export default function CreateAccountSide() {
     const postUser = async () => {
 
         if (clickedField.name && clickedField.email && clickedField.password && clickedField.verifyPassword) {
-            console.log("All fields clicked");
 
             const response = await fetch('http://localhost:3000/api/v1/users', {
                 method: 'POST',
@@ -69,7 +64,6 @@ export default function CreateAccountSide() {
                 body: JSON.stringify({ name: formValues.name, email: formValues.email, password: formValues.password }),
             });
             const data = await response.json();
-            console.log(data);
             localStorage.setItem("accUserId", data.id);
             localStorage.setItem("accUserName", data.name);
             window.location.href = "/user";

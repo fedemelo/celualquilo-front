@@ -31,7 +31,6 @@ export default function ProductsGrid({ titleText }) {
 
     const [selectedButton, setSelectedButton] = useState(null);
     const [currentPage, setCurrentPage] = useState(1);
-    console.log(currentPage);
     const itemsPerPage = 9;
 
     const intl = useIntl();

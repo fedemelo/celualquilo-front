@@ -78,7 +78,6 @@ export default function PhoneDetail({ idCel1 }) {
         fetchData();
     }, []);
 
-    console.log(reviews);
     const link = localStorage.getItem("accUserName") ? `/products/${phoneJson.id}/rent` : `/Login`;
     
     return (

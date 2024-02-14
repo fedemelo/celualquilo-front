@@ -48,7 +48,6 @@ export default function MainPage() {
 
         async function fetchData() {
             const data = await getDatos();
-            console.log(data);
 
             localStorage.setItem("phoneList", JSON.stringify(data));
             setPhoneListJson(data);
@@ -110,9 +109,6 @@ export default function MainPage() {
     const onlySmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
     const [phoneListJson, setPhoneListJson] = useState([]);
-
-    console.log(phoneListJson);
-
 
     phoneListJson.sort((a, b) => (a.rating > b.rating) ? -1 : 1);
 

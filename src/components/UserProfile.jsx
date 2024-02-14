@@ -24,7 +24,6 @@ export default function UserProfile() {
 
         const getDatos = async () => {
             const usid = localStorage.getItem('accUserId');
-            console.log(usid);
             const response = await fetch(`http://localhost:3000/api/v1/users/${usid}`,
                 {
                     method: 'GET',
@@ -44,11 +43,13 @@ export default function UserProfile() {
     }, []);
 
     const handleActiveReservationsClick = () => {
-        console.log('Ver reservas activas');
+        // TODO: See active reservations
+        console.log('Feature not implemented yet.');
     };
 
     const handlePastReservationsClick = () => {
-        console.log('Ver reservas pasadas');
+        // TODO: See past reservations
+        console.log('Feature not implemented yet.');
     };
 
     const logOut = () => {

@@ -22,10 +22,6 @@ export default function SignInSide() {
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
-        console.log({
-            email: data.get('email'),
-            password: data.get('password'),
-        });
     };
 
     const intl = useIntl();
@@ -61,7 +57,6 @@ export default function SignInSide() {
             }
         )
         const data = await (await response).json();
-        console.log(data);
         localStorage.setItem("accUserId", data.id);
         localStorage.setItem("accUserName", data.name);
         window.location.href = "/user";
