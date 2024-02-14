@@ -12,7 +12,7 @@ This repository contains the frontend of the CeluAlquilo web platform. It is bui
 
 ## Backend
 
-Naturally, the frontend needs a backend to work properly. The backend is built with NestJS and is located in a separate repository. You can find it [here](https://github.com/fedemelo/celualquilo-back)
+Naturally, the frontend needs a backend to work properly. The backend is built with NestJS and is located in a separate repository. You can find both the code and instructions on how to run it [here](https://github.com/fedemelo/celualquilo-back)
 
 ## Running the frontend
 
