@@ -1,10 +1,10 @@
 # CeluAlquilo
 
-CeluAlquilo es una plataforma web diseñada para facilitar a los usuarios el alquiler rápido y asequible de teléfonos móviles.
+CeluAlquilo is a web platform designed to facilitate users with quick and affordable mobile phone rentals.
 
 ---
 
-CeluAlquilo is a web platform designed to facilitate users with quick and affordable mobile phone rentals.
+CeluAlquilo es una plataforma web diseñada para facilitar a los usuarios el alquiler rápido y asequible de teléfonos móviles.
 
 ## Frontend
 
