@@ -177,5 +177,6 @@
     "ViewHistory": "Voir l'historique",
     "ViewFavourites": "Voir les favoris",
     "LogOut": "Déconnexion",
-    "ReviewPublished": "Votre critique a été publiée avec succès."
+    "ReviewPublished": "Votre critique a été publiée avec succès.",
+    "ErrorPublishingReview": "Une erreur s'est produite lors de la publication de votre critique."
 }

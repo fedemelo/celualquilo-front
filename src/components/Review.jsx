@@ -37,9 +37,11 @@ export default function Review() {
     const title = intl.formatMessage({ id: 'Review_Title' });
     const stock = intl.formatMessage({ id: 'PhoneDetail_LablelStock' });
     const reviewPublished = intl.formatMessage({ id: 'ReviewPublished' });
+    const errorPublishingReview = intl.formatMessage({ id: 'ErrorPublishingReview' });
 
-    const [Revrating, setRating] = React.useState(4);
-    const [Revtext, setRevText] = React.useState("");
+    const [reviewRating, setReviewRating] = React.useState(4);
+    const [reviewText, setReviewText] = React.useState("");
+
     const params = useParams();
     const idCel = params.productId;
 
@@ -47,19 +49,6 @@ export default function Review() {
 
     const phone = localStorage.getItem("cel" + idCel);
     let phoneJson = JSON.parse(phone);
-    if (phoneJson === null) {
-        phoneJson = {
-            id: 1,
-            name: "Samsung Galaxy S21",
-            brand: "Samsung",
-            price_per_day: 10,
-            availability: 10,
-            image: "https://www.samsung.com/us/smartphones/galaxy-s21-5g/buy/galaxy-s21-5g-phantom-violet-128gb-unlocked-sm-g991uzvaxaa/",
-            camera_specifications: "12MP Ultra Wide Camera, 12MP Wide-angle Camera, 64MP Telephoto Camera",
-            memory_specs: "128GB, 256GB, 512GB",
-            ram_specs: "8GB",
-        }
-    }
 
     async function postReview() {
         const response = await fetch(`http://localhost:3000/api/v1/reviews`, {
@@ -70,25 +59,37 @@ export default function Review() {
 
             },
             body: JSON.stringify({
-                rating: Revrating,
-                text: Revtext,
+                rating: reviewRating,
+                text: reviewText
             }),
         });
 
         const data = await response.json();
+        console.log(data);
         const idReview = await data.id;
 
-        await fetch(`http://localhost:3000/api/v1/phones/${idCel}/reviews/${idReview}`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": "Bearer " + localStorage.getItem("token"),
-            },
-        });
+        if (idReview === undefined) {
+            alert(errorPublishingReview);
+            return;
+        } else {
 
-        setRevText("");
-        alert(reviewPublished);
+            await fetch(`http://localhost:3000/api/v1/phones/${idCel}/reviews/${idReview}`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer " + localStorage.getItem("token"),
+                },
+            });
 
+            setReviewText("");
+
+            if (response.status === 201) {
+                alert(reviewPublished);
+            } else {
+                alert(errorPublishingReview);
+            }
+
+        }
     }
 
     return (
@@ -108,7 +109,7 @@ export default function Review() {
 
                         <Grid item xs={12} sm={6} sx={{ textAlign: 'left' }}>
                             <Typography variant="h6" color="text.primary" padding={1}>
-                                {phoneJson.brand}
+                                {phoneJson.brand.name}
                             </Typography>
                             <Typography variant="h6" color="text.primary" padding={1}>
                                 {phoneJson.availability} {stock}
@@ -123,17 +124,13 @@ export default function Review() {
                                     src={phoneJson.image}
                                 />
                             </Grid>}
-                            <SpecList specs={[
-                                "Brillo máximo de 800 nits (normal); brillo máximo de 1.200 nits (HDR)",
-                                "Resistencia a las salpicaduras, el agua y el polvo IP68 (hasta 6 metros de profundidad durante un máximo de 30 minutos, según la norma IEC 60529)",
-                                "Chip A14 Bionic; Neural Engine de última generación",
-                            ]} />
+                            <SpecList specs={[phoneJson.screenSpecs, phoneJson.cameraSpecs, phoneJson.memorySpecs]} />
                         </Grid>
 
                     </Grid>
 
                     <CardContent>
-                        <CommentArea setRating={setRating} setText={setRevText} postReview={postReview} />
+                        <CommentArea setRating={setReviewRating} setText={setReviewText} postReview={postReview} />
                     </CardContent>
                 </Card>
             </Stack>

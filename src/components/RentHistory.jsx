@@ -100,25 +100,13 @@ const sectionStyle = {
 
 const PhonesRow = ({ phones, route, text }) => {
 
-
     return (
         <Grid container spacing={3} padding={2} >
-
-            {phones.map((phone, index) => {
-                if (phone) {
-                    return (
-                        <Grid item xs={12} sm={6} md={3} key={index}>
-                            <PhoneCardSimple {...phone} cost={`$ ${phone.pricePerDay} COP / día`} route={`/products/${phone.id}/${route}`} buttonText={text} />
-                        </Grid>
-                    );
-                } else {
-                    return (
-                        <Grid item xs={12} sm={6} md={3} key={index}>
-                        </Grid>
-                    );
-                }
-            })}
-
+            {phones.map((phone, index) => (
+                <Grid item xs={12} sm={6} md={3} key={index}>
+                    <PhoneCardSimple {...phone} cost={`$ ${phone.pricePerDay} COP / día`} route={`/products/${phone.id}/${route}`} buttonText={text} />
+                </Grid>
+            ))}
         </Grid>
     );
 }

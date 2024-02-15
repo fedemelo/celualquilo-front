@@ -177,5 +177,6 @@
     "ViewHistory": "Ver historial",
     "ViewFavourites": "Ver favoritos",
     "LogOut": "Salir de la cuenta",
-    "ReviewPublished": "Reseña publicada con éxito"
+    "ReviewPublished": "Reseña publicada con éxito",
+    "ErrorPublishingReview": "Error al publicar la reseña"
 }

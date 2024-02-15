@@ -58,7 +58,7 @@ export default function ProductsGrid({ titleText }) {
             const precioMin = filtros.PrecioMin ? parseFloat(filtros.PrecioMin) : Number.NEGATIVE_INFINITY;
             const precioMax = filtros.PrecioMax ? parseFloat(filtros.PrecioMax) : Number.POSITIVE_INFINITY;
             const marcas = filtros.Marcas;
-            const marca = Object.values(marcas).every((value) => !value) || marcas[product.brand.toLowerCase()];
+            const marca = Object.values(marcas).every((value) => !value) || marcas[product.brand.name.toLowerCase()];
             return precio >= precioMin && precio <= precioMax && marca;
         }).filter((product) => {
 

@@ -98,7 +98,7 @@ export default function PhoneDetail({ idCel1 }) {
 
                     <Grid item xs={12} sm={7} sx={{ textAlign: 'left' }}>
                         <Typography variant="h6" color="text.primary" padding={1}>
-                            {phoneJson.brand}
+                            {phoneJson.brand.name}
                         </Typography>
                         <Typography variant="h6" color="text.primary" padding={1}>
                             {phoneJson.availability} {intl.formatMessage({ id: "PhoneDetail_LablelStock" })}
@@ -216,5 +216,5 @@ const UserReviews = ({reviews}) =>
                     <Rating name="read-only" value={review.rating} readOnly size="large" />
                 </CardContent>
             </Card>
-        ))}
+        )).reverse()}
     </Stack>
