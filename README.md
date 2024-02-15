@@ -19,10 +19,10 @@ Naturally, the frontend needs a backend to work properly. The backend is built w
 1. Ensure Docker and Docker Compose are installed in your system. An easy way is to [install Docker Desktop](https://www.docker.com/products/docker-desktop/), which includes both.
 
 2. To build and run the frontend, execute the following command from the root folder of the repository in the terminal:
-```bash
-docker-compose up
-```
-If changes are made to the code and the backend needs to be rebuilt, the `--build` flag can be used. The containers can be run in the background using the `-d` flag.
+  ```bash
+  docker-compose up
+  ```
+  If changes are made to the code and the backend needs to be rebuilt, the `--build` flag can be used. The containers can be run in the background using the `-d` flag.
 
 3. Access the app by visiting [http://localhost](http://localhost) in your browser.
 
